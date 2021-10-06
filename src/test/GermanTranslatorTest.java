@@ -3,7 +3,6 @@ package test;
 import controller.TranslatorFactory;
 import controller.Translator;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
 
 public class GermanTranslatorTest {
@@ -14,7 +13,6 @@ public class GermanTranslatorTest {
         // <0
         // Soll eine Error-Ausgabe nach Spezifikation zurückgeben
         Translator zn = TranslatorFactory.gtFactory();
-
         for (int i = -1000; i < 0; i++) {
             assertEquals("Übersetzung der Zahl " + i + " nicht möglich (" + Translator.version + ")",
                     zn.translateNumber(i));
