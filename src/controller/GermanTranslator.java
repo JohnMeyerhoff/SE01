@@ -5,21 +5,24 @@ import java.util.HashMap;
 public class GermanTranslator implements Translator {
 
 	HashMap<Integer, String> sprache = new HashMap<>();
-	GermanTranslator(){
-		sprache.put(0,"null");
-		sprache.put(1,"eins");
-		sprache.put(2,"zwei");
-		sprache.put(3,"drei");
-		sprache.put(4,"vier");
-		sprache.put(5,"fünf");
-		sprache.put(6,"sechs");
-		sprache.put(7,"sieben");
-		sprache.put(8,"acht");
-		sprache.put(9,"neun");
-		sprache.put(10,"zehn"); 
+
+	GermanTranslator() {
+		sprache.put(0, "null");
+		sprache.put(1, "eins");
+		sprache.put(2, "zwei");
+		sprache.put(3, "drei");
+		sprache.put(4, "vier");
+		sprache.put(5, "fünf");
+		sprache.put(6, "sechs");
+		sprache.put(7, "sieben");
+		sprache.put(8, "acht");
+		sprache.put(9, "neun");
+		sprache.put(10, "zehn");
 	}
+
 	public String translateNumber(int number) {
-		return sprache.getOrDefault(number,"Übersetzung der Zahl " + number + " nicht möglich (" + Translator.version + ")");
+		return sprache.getOrDefault(number,
+				"Übersetzung der Zahl " + number + " nicht möglich (" + Translator.version + ")");
 	}
 
 	/**
