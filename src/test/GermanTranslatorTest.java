@@ -41,8 +41,7 @@ public class GermanTranslatorTest {
         // ungültige eingaben, zahl zu gross
         Translator gn = TranslatorFactory.gtFactory();
         for (int i = 11; i < 1000; i++) {
-            final int javafixer = i;// i not allowed in the next line, java pls fix?
-            assertThrows(IllegalArgumentException.class, () -> gn.translateNumber(javafixer));
+            assertEquals("Übersetzung der Zahl "+i+" nicht möglich ("+Translator.version+")", gn.translateNumber(i));
         }
     }
 }
