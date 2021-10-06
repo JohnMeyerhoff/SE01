@@ -3,7 +3,6 @@ package test;
 import controller.TranslatorFactory;
 import controller.Translator;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -15,9 +14,11 @@ public class GermanTranslatorTest {
         // <0
         // Soll eine Error-Ausgabe nach Spezifikation zurückgeben
         Translator zn = TranslatorFactory.gtFactory();
-        assertThrows(IllegalArgumentException.class, () -> zn.translateNumber(-300));
-        assertThrows(IllegalArgumentException.class, () -> zn.translateNumber(-7));
-        assertThrows(IllegalArgumentException.class, () -> zn.translateNumber(-1));
+
+        for (int i = -1000; i < 0; i++) {
+            assertEquals("Übersetzung der Zahl " + i + " nicht möglich (" + Translator.version + ")",
+                    zn.translateNumber(i));
+        }
     }
 
     @Test
@@ -34,6 +35,7 @@ public class GermanTranslatorTest {
             assertEquals(d, gt.translateNumber(i++));
         }
     }
+
     @Test
     public void zahlenGross() {
         // Äquivalenzklasse 3
@@ -41,7 +43,8 @@ public class GermanTranslatorTest {
         // ungültige eingaben, zahl zu gross
         Translator gn = TranslatorFactory.gtFactory();
         for (int i = 11; i < 1000; i++) {
-            assertEquals("Übersetzung der Zahl "+i+" nicht möglich ("+Translator.version+")", gn.translateNumber(i));
+            assertEquals("Übersetzung der Zahl " + i + " nicht möglich (" + Translator.version + ")",
+                    gn.translateNumber(i));
         }
     }
 }

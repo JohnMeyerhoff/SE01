@@ -1,17 +1,25 @@
 package controller;
 
+import java.util.HashMap;
+
 public class GermanTranslator implements Translator {
 
+	HashMap<Integer, String> sprache = new HashMap<>();
+	GermanTranslator(){
+		sprache.put(0,"null");
+		sprache.put(1,"eins");
+		sprache.put(2,"zwei");
+		sprache.put(3,"drei");
+		sprache.put(4,"vier");
+		sprache.put(5,"fünf");
+		sprache.put(6,"sechs");
+		sprache.put(7,"sieben");
+		sprache.put(8,"acht");
+		sprache.put(9,"neun");
+		sprache.put(10,"zehn"); 
+	}
 	public String translateNumber(int number) {
-		if (number < 0)
-			throw new IllegalArgumentException();
-		if (number <= 10) {
-
-			String[] sprache = { "null", "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun",
-					"zehn" };
-			return sprache[number];
-		}
-		throw new IllegalArgumentException();
+		return sprache.getOrDefault(number,"Übersetzung der Zahl " + number + " nicht möglich (" + Translator.version + ")");
 	}
 
 	/**
@@ -101,6 +109,5 @@ public class GermanTranslator implements Translator {
 	 */
 	public void printInfo() {
 		System.out.println("GermanTranslator c / o 2021 by John Meyerhoff");
-
 	}
 }
