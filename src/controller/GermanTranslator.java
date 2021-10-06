@@ -15,6 +15,11 @@ public class GermanTranslator implements Translator {
 		}
 		throw new IllegalArgumentException();
 	}
+/**
+ * 
+ * @param number nimmt werte mit Betrag < 100 entgegen.
+ * @return Gibt die deutsche kleingeschriebene Zahl wieder
+ */
 
 	public String translateLargerNumber(int number) {
 		if (number < 0)
