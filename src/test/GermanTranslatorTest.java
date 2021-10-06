@@ -11,7 +11,7 @@ public class GermanTranslatorTest {
 
     @Test
     public void zahlenNegativ() {
-        // Äquivalenzklasse 2
+        // Äquivalenzklasse 1
         // <0
         // Soll eine Error-Ausgabe nach Spezifikation zurückgeben
         Translator zn = TranslatorFactory.gtFactory();
@@ -22,6 +22,9 @@ public class GermanTranslatorTest {
 
     @Test
     public void zahlenPositiv() {
+        // Äquivalenzklasse 2
+        // 0< zahl <=10
+        // gültige eingaben
         Translator gt = TranslatorFactory.gtFactory();
         assertEquals("fünf", gt.translateNumber(5));
         String[] deutsch = { "null", "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun",
@@ -29,6 +32,17 @@ public class GermanTranslatorTest {
         int i = 0;
         for (String d : deutsch) {
             assertEquals(d, gt.translateNumber(i++));
+        }
+    }
+    @Test
+    public void zahlenGross() {
+        // Äquivalenzklasse 3
+        // 10 < zahl
+        // ungültige eingaben, zahl zu gross
+        Translator gn = TranslatorFactory.gtFactory();
+        for (int i = 11; i < 1000; i++) {
+            final int javafixer = i;// i not allowed in the next line, java pls fix?
+            assertThrows(IllegalArgumentException.class, () -> gn.translateNumber(javafixer));
         }
     }
 }
