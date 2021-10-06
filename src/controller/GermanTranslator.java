@@ -4,7 +4,21 @@ public class GermanTranslator implements Translator {
 
 	public String translateNumber(int number) {
 		if (number < 0)
-			return "minus " + translateNumber(-number);
+			throw new IllegalArgumentException();
+		if (number <= 10) {
+
+			String[] sprache = { "null", "eins",
+			 "zwei", "drei", "vier", "fünf",
+			 "sechs", "sieben", "acht", "neun",
+					"zehn" };
+			return sprache[number];
+		}
+		throw new IllegalArgumentException();
+	}
+
+	public String translateLargerNumber(int number) {
+		if (number < 0)
+			return "minus " + translateLargerNumber(-number);
 		if (number <= 20) {
 			switch (number) {
 				case 1:
@@ -69,10 +83,10 @@ public class GermanTranslator implements Translator {
 					default:
 						return "neunzig";
 				}
-			}else{//just for structure
-				String einer = translateNumber(number % 10);
-				String zehner = translateNumber(number- ( number% 10));
-				return einer+"und"+zehner;
+			} else {// just for structure
+				String einer = translateLargerNumber(number % 10);
+				String zehner = translateLargerNumber(number - (number % 10));
+				return einer + "und" + zehner;
 			}
 		}
 		return null;
