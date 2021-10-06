@@ -38,9 +38,13 @@ public class GermanTranslatorTest {
 
     @Test
     public void zahlenGross() {
-        // Äquivalenzklasse 3
-        // 10 < zahl
-        // ungültige eingaben, zahl zu gross
+        /**
+         * <pre>
+         * Äquivalenzklasse 3.
+         * 10 < zahl .
+         * ungültige eingaben, zahl zu gross.
+         * </pre>
+         */
         Translator gn = TranslatorFactory.gtFactory();
         for (int i = 11; i < 1000; i++) {
             assertEquals("Übersetzung der Zahl " + i + " nicht möglich (" + Translator.version + ")",
