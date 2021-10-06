@@ -4,8 +4,8 @@ public class GermanTranslator implements Translator {
 
 	public String translateNumber(int number) {
 		if (number < 0)
-			return "minus "+ translateNumber(-number);
-		if (number < 20) {
+			return "minus " + translateNumber(-number);
+		if (number <= 20) {
 			switch (number) {
 				case 1:
 					return "eins";
@@ -49,6 +49,30 @@ public class GermanTranslator implements Translator {
 					return "zwanzig";
 				default:
 					return "null";
+			}
+		}
+		if (number < 100) {
+			if (number % 10 == 0) {
+				switch (number) {
+					case 30:
+						return "dreißig";
+					case 40:
+						return "vierzig";
+					case 50:
+						return "fünfzig";
+					case 60:
+						return "sechzig";
+					case 70:
+						return "siebzig";
+					case 80:
+						return "achzig";
+					default:
+						return "neunzig";
+				}
+			}else{//just for structure
+				String einer = translateNumber(number % 10);
+				String zehner = translateNumber(number- ( number% 10));
+				return einer+"und"+zehner;
 			}
 		}
 		return null;
