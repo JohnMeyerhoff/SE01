@@ -7,6 +7,7 @@ public class Start {
         c.display(-5);
         c.display(50);
         c.display(55);
+        c.display(-75);
         c.display(35);
     }
 }
