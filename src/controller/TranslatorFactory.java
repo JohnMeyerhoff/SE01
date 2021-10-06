@@ -1,6 +1,6 @@
 package controller;
 
-public class GermanTranslatorHelper {
+public class TranslatorFactory {
 
     public static GermanTranslator gtFactory() {
         return new GermanTranslator();
