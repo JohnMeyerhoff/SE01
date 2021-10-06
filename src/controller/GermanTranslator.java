@@ -7,19 +7,18 @@ public class GermanTranslator implements Translator {
 			throw new IllegalArgumentException();
 		if (number <= 10) {
 
-			String[] sprache = { "null", "eins",
-			 "zwei", "drei", "vier", "fünf",
-			 "sechs", "sieben", "acht", "neun",
+			String[] sprache = { "null", "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun",
 					"zehn" };
 			return sprache[number];
 		}
 		throw new IllegalArgumentException();
 	}
-/**
- * 
- * @param number nimmt werte mit Betrag < 100 entgegen.
- * @return Gibt die deutsche kleingeschriebene Zahl wieder
- */
+
+	/**
+	 * 
+	 * @param number nimmt werte mit Betrag < 100 entgegen.
+	 * @return Gibt die deutsche kleingeschriebene Zahl wieder
+	 */
 
 	public String translateLargerNumber(int number) {
 		if (number < 0)

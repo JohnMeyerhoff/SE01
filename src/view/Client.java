@@ -9,8 +9,6 @@ public class Client {
 	 */
 	public void display(int nummer) {
 		Translator generalTranslator = TranslatorFactory.gtFactory();
-		System.out.println("Ergebnis: " + 
-			generalTranslator.
-			translateNumber(nummer));
+		System.out.println("Ergebnis: " + generalTranslator.translateNumber(nummer));
 	}
 }
