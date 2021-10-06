@@ -3,6 +3,8 @@ package controller;
 public class GermanTranslator implements Translator {
 
 	public String translateNumber(int number) {
+		if (number < 0)
+			return "minus "+ translateNumber(-number);
 		if (number < 20) {
 			switch (number) {
 				case 1:
@@ -56,7 +58,7 @@ public class GermanTranslator implements Translator {
 	 * Objektmethode der Klasse GermanTranslator zur Ausgabe einer Info.
 	 */
 	public void printInfo() {
-		System.out.println("GermanTranslator c / o 2020 by HBRS");
+		System.out.println("GermanTranslator c / o 2021 by John Meyerhoff");
 
 	}
 }
