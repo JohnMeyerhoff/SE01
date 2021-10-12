@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 public class GermanTranslatorTest {
+    private static final String TRANSLATIONOF = "Übersetzung der Zahl ";
+    private static final String NOTPOSSIBLE = " nicht möglich (";
 
     @Test
     public void zahlenNegativ() {
@@ -14,8 +16,7 @@ public class GermanTranslatorTest {
         // Soll eine Error-Ausgabe nach Spezifikation zurückgeben
         Translator zn = GermanTranslatorFactory.gtFactory();
         for (int i = -1000; i < 0; i++) {
-            assertEquals("Übersetzung der Zahl " + i + " nicht möglich (" + Translator.version + ")",
-                    zn.translateNumber(i));
+            assertEquals(TRANSLATIONOF + i + NOTPOSSIBLE + Translator.version + ")", zn.translateNumber(i));
         }
     }
 
@@ -25,8 +26,7 @@ public class GermanTranslatorTest {
         // <0
         // Soll eine Error-Ausgabe nach Spezifikation zurückgeben
         Translator zn = GermanTranslatorFactory.gtFactory();
-        assertEquals("Übersetzung der Zahl " + 0 + " nicht möglich (" + Translator.version + ")",
-                zn.translateNumber(0));
+        assertEquals(TRANSLATIONOF + 0 + NOTPOSSIBLE + Translator.version + ")", zn.translateNumber(0));
 
     }
 
@@ -55,8 +55,7 @@ public class GermanTranslatorTest {
          */
         Translator gn = GermanTranslatorFactory.gtFactory();
         for (int i = 11; i < 1000; i++) {
-            assertEquals("Übersetzung der Zahl " + i + " nicht möglich (" + Translator.version + ")",
-                    gn.translateNumber(i));
+            assertEquals(TRANSLATIONOF + i + NOTPOSSIBLE + Translator.version + ")", gn.translateNumber(i));
         }
     }
 }
