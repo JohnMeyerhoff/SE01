@@ -17,21 +17,11 @@ Das verwendete Design Pattern heißt Factory Pattern.
 
 ## Anpassung für Kompilerfehler
 Um die Instanz korrekt zu verwenden sollte im Client die 
-``
-GermanTranslator
-`` Instanz als 
-``
-Translator
-`` behandelt werden.
-Dazu muss der Typ der Variable welche den Translator hält auf
-`` Translator
-``
-gesetzt werden. Dies erreicht man indem man
+`` GermanTranslator `` Instanz als `` Translator `` behandelt werden.
+Dazu muss der Typ der Variable welche den Translator hält auf `` Translator `` gesetzt werden. Dies erreicht man indem man
 ```Java
 Translator generalTranslator = TranslatorFactory.gtFactory(); 
 ```
-schreibt. Dafür muss die Sichtbarkeit des Translator-Interfaces auf 
-``
+schreibt. Dafür muss die Sichtbarkeit des Translator-Interfaces auf ``
 public
-``
-gesetzt werden.
+`` gesetzt werden.
