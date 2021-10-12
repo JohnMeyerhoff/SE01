@@ -25,3 +25,12 @@ Translator generalTranslator = TranslatorFactory.gtFactory();
 schreibt. Dafür muss die Sichtbarkeit des Translator-Interfaces auf ``
 public
 `` gesetzt werden.
+
+# 2
+## Seperate Test-Klassen
+Der Vorteil der Seperaten Test-Klassen ist, dass die Komponenten, welche getestet werden
+zwangsläufig auf ihr Verhalten nach aussen getestet werden. Somit werden die Sichtbarkeiten
+der Variablen und Methoden direkt mitgetestet. Mit Externen Tests testet man auf Korrektheit
+des Programms, indem man Prüft ob gültige Eingaben ungültige Ausgaben erzeugen. Zielführend
+ist es möglichst viele Arten von Fehlern mit den Testfellen abzudecken. Die Seperaten
+Test-Klassen lassen sich für bessere Übersicht in einem Test-Verzeichnis zusammenfassen.
