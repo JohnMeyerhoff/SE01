@@ -18,7 +18,7 @@ jobs:
       - uses: JohnMeyerhoff/markdown-to-pdf@devel
         with:
           input_dir: 'doc/'
-          image_import: 'doc/images'
+          image_import: 'images'
           output_dir: 'doc/Pdf/'
           theme: '.github/workflows/SE.css'
           highlight_theme: '.github/workflows/Codetheme.css'
