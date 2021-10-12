@@ -1,7 +1,7 @@
 package controller;
 
-public class TranslatorFactory {
-    TranslatorFactory() {
+public class GermanTranslatorFactory {
+    GermanTranslatorFactory() {
         // Empty
     }
 
