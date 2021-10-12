@@ -1,6 +1,6 @@
 # 1.
 ## Objekt-Erzeugung
-Die Objekt-Erzeugung kann nach dem Factory Pattern in einer anderern Klasse stattfinden. Die andere Klasse habe ich im controller verzeichnis abgelegt, sie könnte aber auch im model-Package liegen.
+Die Objekt-Erzeugung kann nach dem Factory Method Pattern in einer anderern Klasse stattfinden. Die andere Klasse habe ich im controller verzeichnis abgelegt, sie könnte aber auch im model-Package liegen.
 Die Factory Klasse erzeugt innerhalb einer statischen Methode eine Instanz der Klasse ``GermanTranslator`` und gibt diese direkt zurück.
 ```Java
 return new GermanTranslator(); 
