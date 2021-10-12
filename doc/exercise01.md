@@ -26,8 +26,12 @@ public
 `` gesetzt werden.
 
 # 2
-# Software-Implementierung
+## Software-Implementierung
 Die Implementierung der Softwarelösung befindet sich im GitHub repository [JohnMeyerhoff/SE01](https://github.com/JohnMeyerhoff/SE01).
+
+## Klassendiagramm in UML
+![Klassendiagramm >](images/Translator.svg)
+
 # 3
 ## Seperate Test-Klassen
 Der Vorteil der Seperaten Test-Klassen ist, dass die Komponenten, welche getestet werden

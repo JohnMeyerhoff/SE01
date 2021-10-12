@@ -1,6 +1,6 @@
 package test;
 
-import controller.TranslatorFactory;
+import controller.GermanTranslatorFactory;
 import controller.Translator;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,7 @@ public class GermanTranslatorTest {
         // Äquivalenzklasse 1
         // <0
         // Soll eine Error-Ausgabe nach Spezifikation zurückgeben
-        Translator zn = TranslatorFactory.gtFactory();
+        Translator zn = GermanTranslatorFactory.gtFactory();
         for (int i = -1000; i < 0; i++) {
             assertEquals("Übersetzung der Zahl " + i + " nicht möglich (" + Translator.version + ")",
                     zn.translateNumber(i));
@@ -20,15 +20,25 @@ public class GermanTranslatorTest {
     }
 
     @Test
+    public void nullUebersetzen() {
+        // Äquivalenzklasse 1
+        // <0
+        // Soll eine Error-Ausgabe nach Spezifikation zurückgeben
+        Translator zn = GermanTranslatorFactory.gtFactory();
+        assertEquals("Übersetzung der Zahl " + 0 + " nicht möglich (" + Translator.version + ")",
+                zn.translateNumber(0));
+
+    }
+
+    @Test
     public void zahlenPositiv() {
         // Äquivalenzklasse 2
         // 0< zahl <=10
         // gültige eingaben
-        Translator gt = TranslatorFactory.gtFactory();
+        Translator gt = GermanTranslatorFactory.gtFactory();
         assertEquals("fünf", gt.translateNumber(5));
-        String[] deutsch = { "null", "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun",
-                "zehn" };
-        int i = 0;
+        String[] deutsch = { "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn" };
+        int i = 1;
         for (String d : deutsch) {
             assertEquals(d, gt.translateNumber(i++));
         }
@@ -43,7 +53,7 @@ public class GermanTranslatorTest {
          * ungültige eingaben, zahl zu gross.
          * </pre>
          */
-        Translator gn = TranslatorFactory.gtFactory();
+        Translator gn = GermanTranslatorFactory.gtFactory();
         for (int i = 11; i < 1000; i++) {
             assertEquals("Übersetzung der Zahl " + i + " nicht möglich (" + Translator.version + ")",
                     gn.translateNumber(i));

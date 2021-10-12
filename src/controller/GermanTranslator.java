@@ -7,7 +7,7 @@ public class GermanTranslator implements Translator {
 	HashMap<Integer, String> sprache = new HashMap<>();
 
 	GermanTranslator() {
-		sprache.put(0, "null");
+		//0, "null"
 		sprache.put(1, "eins");
 		sprache.put(2, "zwei");
 		sprache.put(3, "drei");
