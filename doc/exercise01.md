@@ -16,8 +16,7 @@ Das verwendete Design Pattern heißt Factory Pattern.
 |Auslagerung von Erzeugungslogik in eigene Klasse|
 
 ## Anpassung für Kompilerfehler
-Um die Instanz korrekt zu verwenden sollte im Client die 
-`` GermanTranslator `` Instanz als `` Translator `` behandelt werden.
+Um die Instanz korrekt zu verwenden sollte im Client die `` GermanTranslator `` Instanz als `` Translator `` behandelt werden.
 Dazu muss der Typ der Variable welche den Translator hält auf `` Translator `` gesetzt werden. Dies erreicht man indem man
 ```Java
 Translator generalTranslator = TranslatorFactory.gtFactory(); 
@@ -34,3 +33,6 @@ der Variablen und Methoden direkt mitgetestet. Mit Externen Tests testet man auf
 des Programms, indem man Prüft ob gültige Eingaben ungültige Ausgaben erzeugen. Zielführend
 ist es möglichst viele Arten von Fehlern mit den Testfellen abzudecken. Die Seperaten
 Test-Klassen lassen sich für bessere Übersicht in einem Test-Verzeichnis zusammenfassen.
+
+# 2
+Die Implementierung der Softwarelösung befindet sich im GitHub repository [JohnMeyerhoff/SE01](https://github.com/JohnMeyerhoff/SE01)
