@@ -1,5 +1,6 @@
 package uebung2.test;
-
+//Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
+//und Johannes Meyerhoff bearbeitet worden.
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

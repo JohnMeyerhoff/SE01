@@ -1,5 +1,7 @@
 package uebung2;
 
+//Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
+//und Johannes Meyerhoff bearbeitet worden.
 public class ExampleMember implements uebung2.Member {
     private static int uniqueCounter = 0;
 

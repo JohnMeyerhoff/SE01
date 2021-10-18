@@ -1,5 +1,7 @@
 package uebung2;
 
+//Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
+//und Johannes Meyerhoff bearbeitet worden.
 import java.util.ArrayList;
 
 public class Container {

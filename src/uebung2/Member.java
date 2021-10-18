@@ -1,5 +1,7 @@
 package uebung2;
 
+//Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
+//und Johannes Meyerhoff bearbeitet worden.
 public interface Member {
     // ID ist über einen Konstruktor einer abgeleiteten Klasse
     // explizit außerhalb der Container-Klasse zu belegen

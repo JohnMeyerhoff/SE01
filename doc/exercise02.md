@@ -1,5 +1,8 @@
+# Team-Kennzeichnung
+Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic und Johannes Meyerhoff bearbeitet worden.
 # 1
 ## Aktivitätsdiagramm in UML
+
 ![Aktivitätsdiagramm >](images/Abgabe.svg)
 
 # 2
