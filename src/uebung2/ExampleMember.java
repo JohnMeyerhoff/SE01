@@ -1,11 +1,17 @@
 package uebung2;
 
-public class ExampleMember implements uebung2.Member{
+public class ExampleMember implements uebung2.Member {
+    private static int uniqueCounter = 0;
+
+    public ExampleMember() {
+        this.internalID = uniqueCounter++;
+    }
+
+    private Integer internalID;
 
     @Override
     public Integer getID() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.internalID;
     }
 
     @Override
