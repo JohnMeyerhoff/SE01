@@ -8,4 +8,8 @@ public class ExampleMember implements uebung2.Member{
         return null;
     }
 
+    @Override
+    public String toString() {
+        return "Member (ID = " + getID() + ")";
+    }
 }

@@ -5,8 +5,18 @@ import java.util.ArrayList;
 public class Container {
     ArrayList<Member> inhalt = new ArrayList<>();
 
-    public void addMember(Member member) {
-
+    public void addMember(Member neu) throws ContainerException {
+        boolean found = false;
+        for (Member m : inhalt) {
+            if (m.getID().equals(neu.getID())) {
+                found = true;
+            }
+        }
+        if(found){
+            throw new ContainerException("Das Member-Objekt mit der ID " + neu.getID() +" ist be-reits vorhanden!");
+        }else{
+            inhalt.add(neu);
+        }
     }
 
     public String deleteMember(Integer id) {
@@ -20,18 +30,18 @@ public class Container {
             }
         }
         return "unchanged";
-        // Welche Nachteileergeben sich aus ihrer Sicht 
+        // Welche Nachteileergeben sich aus ihrer Sicht
         // für ein solchen Fehler-handling
         // gegenüber einer Lösung mit Exceptions?
-        //Return codes sollten keine Strings sein.
-        //Bool wäre als return code okay, hier sind es jetzt
-        //drei Werte zwischen denen entschieden werden muss,
-        //welche sich jederzeit ändern könnten
+        // Return codes sollten keine Strings sein.
+        // Bool wäre als return code okay, hier sind es jetzt
+        // drei Werte zwischen denen entschieden werden muss,
+        // welche sich jederzeit ändern könnten
     }
 
     public void dump() {
         for (Member x : this.inhalt) {
-            System.out.println("BLA" + x.toString());
+            System.out.println(x.toString());
         }
     }
 
