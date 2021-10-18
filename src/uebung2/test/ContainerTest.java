@@ -35,17 +35,23 @@ public class ContainerTest {
         assertThrows(ContainerException.class, () -> c1.addMember(m1));
         assertThrows(ContainerException.class, () -> c1.addMember(m1));
 
+        assertEquals(1, c1.size());
         assertDoesNotThrow(() -> c1.addMember(m2));
+        assertEquals(2, c1.size());
         assertDoesNotThrow(() -> c1.addMember(m3));
+        assertEquals(3, c1.size());
         assertThrows(ContainerException.class, () -> c1.addMember(m2));
         assertThrows(ContainerException.class, () -> c1.addMember(m2));
         assertThrows(ContainerException.class, () -> c1.addMember(m2));
         assertThrows(ContainerException.class, () -> c1.addMember(m3));
         assertThrows(ContainerException.class, () -> c1.addMember(m3));
         assertThrows(ContainerException.class, () -> c1.addMember(m3));
+        assertEquals(3, c1.size());
 
         assertDoesNotThrow(() -> c1.deleteMember(m3.getID()));
+        assertEquals(2, c1.size());
         assertDoesNotThrow(() -> c1.addMember(m3));
+        assertEquals(3, c1.size());
 
     }
 }
