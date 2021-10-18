@@ -1,6 +1,8 @@
 {
     "recommendations": [
         "sonarsource.sonarlint-vscode",
-        "vscjava.vscode-java-pack"
+        "vscjava.vscode-java-pack",
+        "ms-vscode.atom-keybindings",
+        "yzhang.markdown-all-in-one"
     ]
 }
