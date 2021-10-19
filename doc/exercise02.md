@@ -2,8 +2,11 @@
 Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic und Johannes Meyerhoff bearbeitet worden.
 # 1
 ## Aktivitätsdiagramm in UML
+<p>
+<img src="images/Abgabe.svg" alt="Aktivitätsdiagramm"
+	title="Aktivitätsdiagramm der Abgabe" width="100%" height="100%" />
+</p>
 
-![Aktivitätsdiagramm >](images/Abgabe.svg)
 ## Anmerkungen zum Diagramm
 Der Vorschlag unsererseits ist, dass wenn ein Dringendes Projekt einen Fehler im Fachkonzept hat, das Fachkonzept mit Vorbehalt verabschiedet wird, nachdem der Software-Architekt das Fachkonzept ein letzes mal korrigiert hat.
 # 2
@@ -13,8 +16,11 @@ Aufgabenstellung fordert fünf Klassen:
 - Container Klasse
 - Container Test
 - ContainerException
-- __keine__ ID-Klasse 
 - zum Testen: Instanzierbare Implementiierung der Memberklasse
+  
+  </br>
+
+Explizit: __keine__ ID-Klasse 
 
 Anforderungen an die Containerklasse: 
 - Verwendung einer ``Containerexception``
