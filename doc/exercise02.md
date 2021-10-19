@@ -33,3 +33,11 @@ Anforderungen an die Member-Unterklasse:
 
 Format-Anforderung an die Container-Exception:
 - Das Member-Objekt mit der ID [hier die ID des Objekts] ist bereits vorhanden!
+
+## Tests
+Tabelle der Tests
+| Test Case No. | Category (pos; neg) | Äquivalenzklassen        | input | output (erwartet)  |
+|---------------|---------------------|--------------------------|-------|--------------------|
+| 1             | pos                 | gÄK1: leere Liste        | m1    | OK / Size = 1      |
+| 2             | pos                 | gÄK1:neues Element       | m2    | OK / Size = 2      |
+| 3             | neg                 | gÄK1:bestehendes Element | m1    | NOT OK / Exception |
