@@ -1,6 +1,6 @@
 @media print {
   h1:not(:first-of-type) {
-    page-break-before: always;
+    page-break-before: never;
   }
 }
 
