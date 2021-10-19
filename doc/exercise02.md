@@ -4,7 +4,7 @@ Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic und Johannes Meyerhof
 ## Aktivitätsdiagramm in UML
 <p>
 <img src="images/Abgabe.svg" alt="Aktivitätsdiagramm"
-	title="Aktivitätsdiagramm der Abgabe" width="100%" height="100%" />
+	title="Aktivitätsdiagramm der Abgabe" width="100%" height="80%" style="max-height:1400px" />
 </p>
 
 ## Anmerkungen zum Diagramm
