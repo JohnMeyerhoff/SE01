@@ -1,7 +1,7 @@
-package view;
+package org.hbrs.se.ws21.uebung1.view;
 
-import controller.GermanTranslatorFactory;
-import controller.Translator;
+import org.hbrs.se.ws21.uebung1.controller.GermanTranslatorFactory;
+import org.hbrs.se.ws21.uebung1.controller.Translator;
 
 public class Client {
 	/*

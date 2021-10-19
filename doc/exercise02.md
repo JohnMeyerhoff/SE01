@@ -4,7 +4,8 @@ Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic und Johannes Meyerhof
 ## Aktivitätsdiagramm in UML
 
 ![Aktivitätsdiagramm >](images/Abgabe.svg)
-
+## Anmerkungen zum Diagramm
+Der Vorschlag unsererseits ist, dass wenn ein Dringendes Projekt einen Fehler im Fachkonzept hat, das Fachkonzept mit Vorbehalt verabschiedet wird, nachdem der Software-Architekt das Fachkonzept ein letzes mal korrigiert hat.
 # 2
 ## Programmierung der Member-Container
 Aufgabenstellung fordert fünf Klassen:

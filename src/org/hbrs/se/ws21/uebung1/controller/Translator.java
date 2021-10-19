@@ -1,4 +1,4 @@
-package controller;
+package org.hbrs.se.ws21.uebung1.controller;
 
 /**
  * Das Translator Interface. Die Anzahl der Methoden ist fix und darf nicht

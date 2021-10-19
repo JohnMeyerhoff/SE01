@@ -1,8 +1,8 @@
-package uebung2;
+package org.hbrs.se.ws21.uebung2;
 
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 //und Johannes Meyerhoff bearbeitet worden.
-public class ExampleMember implements uebung2.Member {
+public class ExampleMember implements org.hbrs.se.ws21.uebung2.Member {
     private static int uniqueCounter = 0;
 
     public ExampleMember() {

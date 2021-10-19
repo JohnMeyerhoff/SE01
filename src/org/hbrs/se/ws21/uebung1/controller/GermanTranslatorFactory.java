@@ -1,4 +1,4 @@
-package controller;
+package org.hbrs.se.ws21.uebung1.controller;
 
 public class GermanTranslatorFactory {
     GermanTranslatorFactory() {

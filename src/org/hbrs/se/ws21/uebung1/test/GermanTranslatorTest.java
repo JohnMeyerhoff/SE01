@@ -1,7 +1,7 @@
-package test;
+package org.hbrs.se.ws21.uebung1.test;
 
-import controller.GermanTranslatorFactory;
-import controller.Translator;
+import org.hbrs.se.ws21.uebung1.controller.GermanTranslatorFactory;
+import org.hbrs.se.ws21.uebung1.controller.Translator;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 

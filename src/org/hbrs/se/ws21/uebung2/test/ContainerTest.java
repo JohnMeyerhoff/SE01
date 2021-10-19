@@ -1,4 +1,4 @@
-package uebung2.test;
+package org.hbrs.se.ws21.uebung2.test;
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 //und Johannes Meyerhoff bearbeitet worden.
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -8,10 +8,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import uebung2.Container;
-import uebung2.ContainerException;
-import uebung2.ExampleMember;
-import uebung2.Member;
+import org.hbrs.se.ws21.uebung2.Container;
+import org.hbrs.se.ws21.uebung2.ContainerException;
+import org.hbrs.se.ws21.uebung2.ExampleMember;
+import org.hbrs.se.ws21.uebung2.Member;
 
 public class ContainerTest {
     Container c1;

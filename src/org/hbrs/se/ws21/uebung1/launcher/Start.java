@@ -1,6 +1,6 @@
-package launcher;
+package org.hbrs.se.ws21.uebung1.launcher;
 
-import view.Client;
+import org.hbrs.se.ws21.uebung1.view.Client;
 
 public class Start {
     public static void main(String[] args) {
