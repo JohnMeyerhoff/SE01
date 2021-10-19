@@ -23,7 +23,8 @@ Aufgabenstellung fordert fünf Klassen:
 Explizit: __keine__ ID-Klasse 
 
 Anforderungen an die Containerklasse: 
-- Verwendung einer ``Containerexception``
+- Verwendung einer ``ContainerException``
+- keine HashMap verwenden
 
 Anforderungen an die Member-Unterklasse: 
 - toString-Ausgabe: Member (ID = [hier die ID des Members])
@@ -31,4 +32,4 @@ Anforderungen an die Member-Unterklasse:
 - das Sicherstelllen der Eindeutigkeit dieses Attributs
 
 Format-Anforderung an die Container-Exception:
-- Das Member-Objekt mit der ID [hier die ID des Objekts] ist be-reits vorhanden!
+- Das Member-Objekt mit der ID [hier die ID des Objekts] ist bereits vorhanden!
