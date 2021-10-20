@@ -62,5 +62,10 @@ public class ContainerTest {
         assertEquals(1, c1.size());
         ContainerException exception = assertThrows(ContainerException.class, () -> c1.addMember(m1));
         assertEquals("Das Member-Objekt mit der ID "+m1.getID()+" ist bereits vorhanden!", exception.getMessage());
+        try {
+            c1.addMember(m1);
+        } catch (ContainerException e) {
+            e.printStackTrace();
+        }
     }
 }
