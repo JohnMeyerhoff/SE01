@@ -31,7 +31,7 @@ public class ContainerTest {
     public void einlesenTest() {
         assertEquals(0, c1.size());
         assertDoesNotThrow(() -> c1.addMember(m1));
-        assertEquals(1, c1.size());
+        assertEquals(12, c1.size());
         assertThrows(ContainerException.class, () -> c1.addMember(m1));
         assertThrows(ContainerException.class, () -> c1.addMember(m1));
         assertThrows(ContainerException.class, () -> c1.addMember(m1));
