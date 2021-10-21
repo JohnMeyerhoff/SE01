@@ -6,6 +6,19 @@ import java.util.ArrayList;
 
 public class Container {
     ArrayList<Member> inhalt = new ArrayList<>();
+    public static Container instanz = null;
+
+    private Container(){
+
+    }
+    
+    private static Container getInstanz() {
+        if(instanz == null){
+            instanz = new Container();
+        }
+        return instanz;
+    }
+
 
     public void addMember(Member neu) throws ContainerException {
         boolean found = false;
@@ -50,5 +63,8 @@ public class Container {
     public int size() {
         return inhalt.size();
         // gegebene Methode von ArrayList
+    }
+    public void store() throws public static SingleObject getInstance{
+      return instance;
     }
 }
