@@ -15,7 +15,7 @@ public class Container {
             }
         }
         if(found){
-            throw new ContainerException("Das SCHREIBFEHLER FÜR JUNIT Member-Objekt mit der ID " + neu.getID() +" ist bereits vorhanden!");
+            throw new ContainerException("Das Member-Objekt mit der ID " + neu.getID() +" ist bereits vorhanden!");
         }else{
             inhalt.add(neu);
         }
