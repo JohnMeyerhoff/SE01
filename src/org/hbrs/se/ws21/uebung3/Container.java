@@ -8,7 +8,18 @@ import java.util.ArrayList;
 
 public class Container {
     ArrayList<Member> inhalt = new ArrayList<>();
-    
+    private static Container instance = null;
+
+    private Container(){
+        //default-Konstruktor überschrieben
+        //Verwendung des singleton-Pattern
+    }
+    public static Container getInstance(){
+        if(instance == null){
+            instance = new Container();
+        }
+        return instance;
+    }
     public void addMember(Member neu) throws ContainerException {
         boolean found = false;
         for (Member m : inhalt) {
