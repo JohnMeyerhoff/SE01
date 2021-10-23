@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="JUnit Jupiter" tests="8" skipped="0" failures="0" errors="2" time="0.131" hostname="JMacBook-Pro.fritz.box" timestamp="2021-10-23T13:13:12">
+<testsuite name="JUnit Jupiter" tests="8" skipped="0" failures="0" errors="0" time="0.088" hostname="JMacBook-Pro.fritz.box" timestamp="2021-10-23T18:22:11">
 <properties>
 <property name="file.encoding" value="UTF-8"/>
 <property name="file.separator" value="/"/>
@@ -52,65 +52,19 @@
 <property name="user.name" value="horus"/>
 <property name="user.timezone" value="Europe/Berlin"/>
 </properties>
-<testcase name="einlesenTest()" classname="org.hbrs.se.ws21.uebung3.test.ContainerTest" time="0">
-<error message="@BeforeAll method 'public void org.hbrs.se.ws21.uebung3.test.ContainerTest.initialize()' must be static unless the test class is annotated with @TestInstance(Lifecycle.PER_CLASS)." type="org.junit.platform.commons.JUnitException"><![CDATA[org.junit.platform.commons.JUnitException: @BeforeAll method 'public void org.hbrs.se.ws21.uebung3.test.ContainerTest.initialize()' must be static unless the test class is annotated with @TestInstance(Lifecycle.PER_CLASS).
-	at org.junit.jupiter.engine.descriptor.LifecycleMethodUtils.assertStatic(LifecycleMethodUtils.java:57)
-	at org.junit.jupiter.engine.descriptor.LifecycleMethodUtils.lambda$findMethodsAndAssertStatic$0(LifecycleMethodUtils.java:81)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at java.base/java.util.Collections$UnmodifiableCollection.forEach(Collections.java:1087)
-	at org.junit.jupiter.engine.descriptor.LifecycleMethodUtils.findMethodsAndAssertStatic(LifecycleMethodUtils.java:81)
-	at org.junit.jupiter.engine.descriptor.LifecycleMethodUtils.findBeforeAllMethods(LifecycleMethodUtils.java:40)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.prepare(ClassBasedTestDescriptor.java:161)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.prepare(ClassBasedTestDescriptor.java:80)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$2(NodeTestTask.java:123)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:123)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:90)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
-	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
-	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:53)
-	at org.junit.platform.console.tasks.ConsoleTestExecutor.executeTests(ConsoleTestExecutor.java:66)
-	at org.junit.platform.console.tasks.ConsoleTestExecutor.lambda$execute$0(ConsoleTestExecutor.java:58)
-	at org.junit.platform.console.tasks.CustomContextClassLoaderExecutor.replaceThreadContextClassLoaderAndInvoke(CustomContextClassLoaderExecutor.java:41)
-	at org.junit.platform.console.tasks.CustomContextClassLoaderExecutor.invoke(CustomContextClassLoaderExecutor.java:31)
-	at org.junit.platform.console.tasks.ConsoleTestExecutor.execute(ConsoleTestExecutor.java:58)
-	at org.junit.platform.console.ConsoleLauncher.executeTests(ConsoleLauncher.java:95)
-	at org.junit.platform.console.ConsoleLauncher.execute(ConsoleLauncher.java:73)
-	at org.junit.platform.console.ConsoleLauncher.execute(ConsoleLauncher.java:50)
-	at org.junit.platform.console.ConsoleLauncher.execute(ConsoleLauncher.java:43)
-	at org.junit.platform.console.ConsoleLauncher.main(ConsoleLauncher.java:37)
-]]></error>
+<testcase name="einlesenTest()" classname="org.hbrs.se.ws21.uebung3.test.ContainerTest" time="0.003">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung3.test.ContainerTest]/[method:einlesenTest()]
 display-name: einlesenTest()
 ]]></system-out>
 </testcase>
-<testcase name="exceptionTest()" classname="org.hbrs.se.ws21.uebung2.test.ContainerTest" time="0.014">
+<testcase name="exceptionTest()" classname="org.hbrs.se.ws21.uebung2.test.ContainerTest" time="0.004">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung2.test.ContainerTest]/[method:exceptionTest()]
 display-name: exceptionTest()
 ]]></system-out>
 </testcase>
-<testcase name="nullUebersetzen()" classname="org.hbrs.se.ws21.uebung1.test.GermanTranslatorTest" time="0.001">
+<testcase name="nullUebersetzen()" classname="org.hbrs.se.ws21.uebung1.test.GermanTranslatorTest" time="0">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung1.test.GermanTranslatorTest]/[method:nullUebersetzen()]
 display-name: nullUebersetzen()
@@ -122,7 +76,7 @@ unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung1.test.GermanTra
 display-name: zahlenGross()
 ]]></system-out>
 </testcase>
-<testcase name="zahlenPositiv()" classname="org.hbrs.se.ws21.uebung1.test.GermanTranslatorTest" time="0.026">
+<testcase name="zahlenPositiv()" classname="org.hbrs.se.ws21.uebung1.test.GermanTranslatorTest" time="0.021">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung1.test.GermanTranslatorTest]/[method:zahlenPositiv()]
 display-name: zahlenPositiv()
@@ -134,59 +88,13 @@ unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung1.test.GermanTra
 display-name: zahlenNegativ()
 ]]></system-out>
 </testcase>
-<testcase name="einlesenTest()" classname="org.hbrs.se.ws21.uebung2.test.ContainerTest" time="0.01">
+<testcase name="einlesenTest()" classname="org.hbrs.se.ws21.uebung2.test.ContainerTest" time="0.003">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung2.test.ContainerTest]/[method:einlesenTest()]
 display-name: einlesenTest()
 ]]></system-out>
 </testcase>
-<testcase name="exceptionTest()" classname="org.hbrs.se.ws21.uebung3.test.ContainerTest" time="0">
-<error message="@BeforeAll method 'public void org.hbrs.se.ws21.uebung3.test.ContainerTest.initialize()' must be static unless the test class is annotated with @TestInstance(Lifecycle.PER_CLASS)." type="org.junit.platform.commons.JUnitException"><![CDATA[org.junit.platform.commons.JUnitException: @BeforeAll method 'public void org.hbrs.se.ws21.uebung3.test.ContainerTest.initialize()' must be static unless the test class is annotated with @TestInstance(Lifecycle.PER_CLASS).
-	at org.junit.jupiter.engine.descriptor.LifecycleMethodUtils.assertStatic(LifecycleMethodUtils.java:57)
-	at org.junit.jupiter.engine.descriptor.LifecycleMethodUtils.lambda$findMethodsAndAssertStatic$0(LifecycleMethodUtils.java:81)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at java.base/java.util.Collections$UnmodifiableCollection.forEach(Collections.java:1087)
-	at org.junit.jupiter.engine.descriptor.LifecycleMethodUtils.findMethodsAndAssertStatic(LifecycleMethodUtils.java:81)
-	at org.junit.jupiter.engine.descriptor.LifecycleMethodUtils.findBeforeAllMethods(LifecycleMethodUtils.java:40)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.prepare(ClassBasedTestDescriptor.java:161)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.prepare(ClassBasedTestDescriptor.java:80)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$2(NodeTestTask.java:123)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:123)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:90)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
-	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
-	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:53)
-	at org.junit.platform.console.tasks.ConsoleTestExecutor.executeTests(ConsoleTestExecutor.java:66)
-	at org.junit.platform.console.tasks.ConsoleTestExecutor.lambda$execute$0(ConsoleTestExecutor.java:58)
-	at org.junit.platform.console.tasks.CustomContextClassLoaderExecutor.replaceThreadContextClassLoaderAndInvoke(CustomContextClassLoaderExecutor.java:41)
-	at org.junit.platform.console.tasks.CustomContextClassLoaderExecutor.invoke(CustomContextClassLoaderExecutor.java:31)
-	at org.junit.platform.console.tasks.ConsoleTestExecutor.execute(ConsoleTestExecutor.java:58)
-	at org.junit.platform.console.ConsoleLauncher.executeTests(ConsoleLauncher.java:95)
-	at org.junit.platform.console.ConsoleLauncher.execute(ConsoleLauncher.java:73)
-	at org.junit.platform.console.ConsoleLauncher.execute(ConsoleLauncher.java:50)
-	at org.junit.platform.console.ConsoleLauncher.execute(ConsoleLauncher.java:43)
-	at org.junit.platform.console.ConsoleLauncher.main(ConsoleLauncher.java:37)
-]]></error>
+<testcase name="exceptionTest()" classname="org.hbrs.se.ws21.uebung3.test.ContainerTest" time="0.005">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung3.test.ContainerTest]/[method:exceptionTest()]
 display-name: exceptionTest()
