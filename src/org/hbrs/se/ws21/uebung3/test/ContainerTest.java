@@ -15,13 +15,13 @@ import org.hbrs.se.ws21.uebung3.ExampleMember;
 import org.hbrs.se.ws21.uebung3.Member;
 
 public class ContainerTest {
-    Container c1;
-    Member m1;
-    Member m2;
-    Member m3;
+    static Container c1;
+    static Member m1;
+    static Member m2;
+    static Member m3;
 
     @BeforeAll
-    public void initialize() {
+    public static void initialize() {
         c1 = Container.getInstance();
         m1 = new ExampleMember();
         m2 = new ExampleMember();
@@ -63,10 +63,6 @@ public class ContainerTest {
         assertEquals(1, c1.size());
         ContainerException exception = assertThrows(ContainerException.class, () -> c1.addMember(m1));
         assertEquals("Das Member-Objekt mit der ID "+m1.getID()+" ist bereits vorhanden!", exception.getMessage());
-        try {
-            c1.addMember(m1);
-        } catch (ContainerException e) {
-            e.printStackTrace();
-        }
+        c1.deleteMember(m1.getID());
     }
 }
