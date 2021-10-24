@@ -8,6 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: JUNIT Test Report Tool
-        uses: JohnMeyerhoff/JunitAnnotations@v0.0.6
+        uses: JohnMeyerhoff/JunitAnnotations@v0.0.7
         with:
           source_dir: './src'
