@@ -1,5 +1,6 @@
 package org.hbrs.se.ws21.uebung3;
 
+import java.io.Serializable;
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 //und Johannes Meyerhoff bearbeitet worden.
 import java.util.ArrayList;
@@ -9,9 +10,9 @@ import org.hbrs.se.ws21.uebung3.persistence.PersistenceException;
 import org.hbrs.se.ws21.uebung3.persistence.PersistenceException.ExceptionType;
 
 
-
-public class Container {
+public class Container implements Serializable {
     ArrayList<Member> inhalt = new ArrayList<>();
+    
     private static Container instance = null;
 
     private Container(){
@@ -35,7 +36,8 @@ public class Container {
         for (Member objekt : inhalt) {
             datenspeicher.add(index, objekt);
             index++;
-        }
+        } 
+
     }
     //von Klara:
     public void load() throws PersistenceException{

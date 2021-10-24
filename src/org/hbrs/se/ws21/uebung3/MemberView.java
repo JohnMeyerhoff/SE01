@@ -19,7 +19,7 @@ public class MemberView {
     }
 
     public void dump(List<Member> liste){
-        for (Member x : Container.getInstance().inhalt) {
+        for (Member x : liste) {
             System.out.println(x.toString());
         }
     } 
