@@ -58,7 +58,7 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
             }
             connected = true;
         }else{ 
-            //ToDo
+            //DoNothing if already connected
         }
     }
 
