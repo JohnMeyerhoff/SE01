@@ -1,31 +1,65 @@
 package org.hbrs.se.ws21.uebung3.persistence;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-
+import java.net.ConnectException;
 import java.util.List;
 
-public class PersistenceStrategyStream<Member> implements PersistenceStrategy<Member> {
+import org.hbrs.se.ws21.uebung3.ExampleMember;
+import org.hbrs.se.ws21.uebung3.Member;
+
+import org.hbrs.se.ws21.uebung3.persistence.PersistenceException.ExceptionType;
+
+public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
 
     // URL of file, in which the objects are stored
     private String location = "objects.ser";
+    private FileInputStream fileInput;
+    private FileOutputStream fileOutput;
+    private ObjectInputStream objectInput;
+    private ObjectOutputStream objectOutput;
+    boolean connected = false;
+    // Backdoor method used only for testing purposes, if the location should be
+    // changed in a Unit-Test
+    // Example: Location is a directory (Streams do not like directories, so try
+    // this out ;-)!
 
-    // Backdoor method used only for testing purposes, if the location should be changed in a Unit-Test
-    // Example: Location is a directory (Streams do not like directories, so try this out ;-)!
+    private PersistenceStrategyStream() {
+       
+    }
+
     public void setLocation(String location) {
         this.location = location;
     }
 
     @Override
     /**
-     * Method for opening the connection to a stream (here: Input- and Output-Stream)
-     * In case of having problems while opening the streams, leave the code in methods load
-     * and save
+     * Method for opening the connection to a stream (here: Input- and
+     * Output-Stream) In case of having problems while opening the streams, leave
+     * the code in methods load and save
      */
     public void openConnection() throws PersistenceException {
-
+        if (!connected) {
+            try {
+                fileInput = new FileInputStream(location);
+                fileOutput = new FileOutputStream(location);
+            } catch (FileNotFoundException e) {
+                throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getMessage());
+            }
+            try {
+                objectOutput = new ObjectOutputStream(fileOutput);
+                objectInput = new ObjectInputStream(fileInput);
+            } catch (IOException r) {
+                throw new PersistenceException(ExceptionType.ConnectionNotAvailable, r.getMessage());
+            }
+            connected = true;
+        }else{ 
+            //ToDo
+        }
     }
 
     @Override
@@ -40,21 +74,21 @@ public class PersistenceStrategyStream<Member> implements PersistenceStrategy<Me
     /**
      * Method for saving a list of Member-objects to a disk (HDD)
      */
-    public void save(List<Member> member) throws PersistenceException  {
+    public void save(List<Member> member) throws PersistenceException {
 
     }
 
     @Override
     /**
-     * Method for loading a list of Member-objects from a disk (HDD)
-     * Some coding examples come for free :-)
-     * Take also a look at the import statements above ;-!
+     * Method for loading a list of Member-objects from a disk (HDD) Some coding
+     * examples come for free :-) Take also a look at the import statements above
+     * ;-!
      */
-    public List<Member> load() throws PersistenceException  {
+    public List<Member> load() throws PersistenceException {
         // Some Coding hints ;-)
         // ObjectInputStream ois = null;
         // FileInputStream fis = null;
-        // List<...> newListe =  null;
+        // List<...> newListe = null;
         //
         // Initiating the Stream (can also be moved to method openConnection()... ;-)
         // fis = new FileInputStream( " a location to a file" );
@@ -64,7 +98,7 @@ public class PersistenceStrategyStream<Member> implements PersistenceStrategy<Me
         // Object obj = ois.readObject();
 
         // if (obj instanceof List<?>) {
-        //       newListe = (List) obj;
+        // newListe = (List) obj;
         // return newListe
 
         // and finally close the streams (guess where this could be...?)
