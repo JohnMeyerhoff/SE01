@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="JUnit Jupiter" tests="8" skipped="0" failures="0" errors="0" time="0.088" hostname="JMacBook-Pro.fritz.box" timestamp="2021-10-23T18:22:11">
+<testsuite name="JUnit Jupiter" tests="8" skipped="0" failures="0" errors="0" time="0.118" hostname="JMacBook-Pro.local" timestamp="2021-10-25T15:23:47">
 <properties>
 <property name="file.encoding" value="UTF-8"/>
 <property name="file.separator" value="/"/>
@@ -58,7 +58,7 @@ unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung3.test.Container
 display-name: einlesenTest()
 ]]></system-out>
 </testcase>
-<testcase name="exceptionTest()" classname="org.hbrs.se.ws21.uebung2.test.ContainerTest" time="0.004">
+<testcase name="exceptionTest()" classname="org.hbrs.se.ws21.uebung2.test.ContainerTest" time="0.006">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung2.test.ContainerTest]/[method:exceptionTest()]
 display-name: exceptionTest()
@@ -76,13 +76,13 @@ unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung1.test.GermanTra
 display-name: zahlenGross()
 ]]></system-out>
 </testcase>
-<testcase name="zahlenPositiv()" classname="org.hbrs.se.ws21.uebung1.test.GermanTranslatorTest" time="0.021">
+<testcase name="zahlenPositiv()" classname="org.hbrs.se.ws21.uebung1.test.GermanTranslatorTest" time="0.028">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung1.test.GermanTranslatorTest]/[method:zahlenPositiv()]
 display-name: zahlenPositiv()
 ]]></system-out>
 </testcase>
-<testcase name="zahlenNegativ()" classname="org.hbrs.se.ws21.uebung1.test.GermanTranslatorTest" time="0.004">
+<testcase name="zahlenNegativ()" classname="org.hbrs.se.ws21.uebung1.test.GermanTranslatorTest" time="0.005">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung1.test.GermanTranslatorTest]/[method:zahlenNegativ()]
 display-name: zahlenNegativ()
@@ -94,7 +94,7 @@ unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung2.test.Container
 display-name: einlesenTest()
 ]]></system-out>
 </testcase>
-<testcase name="exceptionTest()" classname="org.hbrs.se.ws21.uebung3.test.ContainerTest" time="0.005">
+<testcase name="exceptionTest()" classname="org.hbrs.se.ws21.uebung3.test.ContainerTest" time="0.007">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung3.test.ContainerTest]/[method:exceptionTest()]
 display-name: exceptionTest()
