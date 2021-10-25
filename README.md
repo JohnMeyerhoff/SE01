@@ -8,5 +8,5 @@
 You can download the current build of the documentation in german by klicking [here](https://nightly.link/JohnMeyerhoff/SE01/workflows/SE/master/Exercises.zip). The documentation is rendered both as HTML and PDF.
 
 # Credit
-If you use these solutions, please reference the repository and credit the authors. @JohnMeyerhoff and @KlaraGolubovic
+If you use these solutions, please reference this repository and credit the authors John Meyerhoff (@JohnMeyerhoff) and Klara Golubovic (@KlaraGolubovic).
 
