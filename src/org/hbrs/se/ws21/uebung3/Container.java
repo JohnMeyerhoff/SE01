@@ -36,21 +36,22 @@ public class Container {
     public void store() throws PersistenceException {
         if (strategy == null) {
             throw new PersistenceException(ExceptionType.NoStrategyIsSet,
-                    "Es gibt keine Objekte zum abspeichern.");
+                    "Es gibt keine Strategie zum abspeichern.");
         }
         strategy.openConnection();
         strategy.save(inhalt);
-        strategy.closeConnection();
     }
 
     public void load() throws PersistenceException {
         if (strategy == null) {
             throw new PersistenceException(ExceptionType.NoStrategyIsSet,
-                    "Es gibt keine Objekte zum abspeichern.");
+                    "Es gibt keine Strategie zum abspeichern.");
         }
-        strategy.openConnection();
-        inhalt = strategy.load();
-        strategy.closeConnection();
+        ArrayList<Member> newContent = (ArrayList<Member>) strategy.load();
+        if(newContent.isEmpty()){
+            throw new IllegalAccessError("Loster move....");
+        }
+        this.inhalt = newContent;
     }
 
     public void addMember(Member neu) throws ContainerException {

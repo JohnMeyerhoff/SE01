@@ -6,13 +6,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import org.hbrs.se.ws21.uebung3.ContainerException;
 import org.hbrs.se.ws21.uebung3.Container;
 import org.hbrs.se.ws21.uebung3.ExampleMember;
 import org.hbrs.se.ws21.uebung3.Member;
+import org.hbrs.se.ws21.uebung3.persistence.PersistenceStrategyStream;
 
 public class ContainerTest {
     static Container c1;
@@ -29,14 +29,14 @@ public class ContainerTest {
     }
 
     @Test
-    public void einlesenTest() {
+    public void einspeichernTest() {
+        c1.setStrategy(new PersistenceStrategyStream());
         assertEquals(0, c1.size());
         assertDoesNotThrow(() -> c1.addMember(m1));
         assertEquals(1, c1.size());
         assertThrows(ContainerException.class, () -> c1.addMember(m1));
         assertThrows(ContainerException.class, () -> c1.addMember(m1));
         assertThrows(ContainerException.class, () -> c1.addMember(m1));
-
         assertEquals(1, c1.size());
         assertDoesNotThrow(() -> c1.addMember(m2));
         assertEquals(2, c1.size());
@@ -54,7 +54,40 @@ public class ContainerTest {
         assertEquals(2, c1.size());
         assertDoesNotThrow(() -> c1.addMember(m3));
         assertEquals(3, c1.size());
+        //store 
+        assertDoesNotThrow(() -> c1.store()); 
+        //empty the list
+        assertDoesNotThrow(() -> c1.deleteMember(m3.getID()));
+        assertEquals(2, c1.size());
+        assertDoesNotThrow(() -> c1.deleteMember(m2.getID()));
+        assertEquals(1, c1.size());
+        assertDoesNotThrow(() -> c1.deleteMember(m1.getID()));
+        assertEquals(0, c1.size());
+        //load 
+        assertDoesNotThrow(() -> c1.load()); 
+        assertEquals(3, c1.size());
 
+        //empty the list
+        assertDoesNotThrow(() -> c1.deleteMember(m3.getID()));
+        assertEquals(2, c1.size());
+        assertDoesNotThrow(() -> c1.deleteMember(m2.getID()));
+        assertEquals(1, c1.size());
+        assertDoesNotThrow(() -> c1.deleteMember(m1.getID()));
+        assertEquals(0, c1.size());
+        //load 
+        assertDoesNotThrow(() -> c1.load()); 
+        assertEquals(3, c1.size());
+
+        //empty the list
+        assertDoesNotThrow(() -> c1.deleteMember(m3.getID()));
+        assertEquals(2, c1.size());
+        assertDoesNotThrow(() -> c1.deleteMember(m2.getID()));
+        assertEquals(1, c1.size());
+        assertDoesNotThrow(() -> c1.deleteMember(m1.getID()));
+        assertEquals(0, c1.size());
+        //load 
+        assertDoesNotThrow(() -> c1.load()); 
+        assertEquals(3, c1.size());
     }
     
     @Test

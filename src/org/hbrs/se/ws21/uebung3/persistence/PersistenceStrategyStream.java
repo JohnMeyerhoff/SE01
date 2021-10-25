@@ -8,6 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ConnectException;
 import java.nio.channels.NetworkChannel;
+import java.util.Collections;
 import java.util.List;
 
 import org.hbrs.se.ws21.uebung3.ExampleMember;
@@ -18,9 +19,9 @@ import org.hbrs.se.ws21.uebung3.persistence.PersistenceException.ExceptionType;
 public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
 
     // URL of file, in which the objects are stored
-    private String location = "objects.ser";
-    // private FileInputStream fileInput;
-    // private FileOutputStream fileOutput;
+    private String             location  = "/Users/horus/Documents/GitHub/SE01/src/objects.ser";
+    private FileInputStream    fileInput;
+    private FileOutputStream   fileOutput;
     private ObjectInputStream  objectInput;
     private ObjectOutputStream objectOutput;
     boolean                    connected = false;
@@ -29,12 +30,8 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
     // Example: Location is a directory (Streams do not like directories, so try
     // this out ;-)!
 
-    private PersistenceStrategyStream() {
-
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLocation(String loc) {
+        this.location = loc;
     }
 
     @Override
@@ -46,8 +43,10 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
         // CONNECTED besagt ob eine verbindung besteht
         if (!connected) { // es besteht noch keine Verbindung
             try {
-                objectOutput = new ObjectOutputStream(new FileOutputStream(location));
-                objectInput = new ObjectInputStream(new FileInputStream(location));
+                fileInput = new FileInputStream(location);
+                fileOutput = new FileOutputStream(location);
+                objectOutput = new ObjectOutputStream(this.fileOutput);
+                objectInput = new ObjectInputStream(this.fileInput);
             } catch (IOException r) {
                 throw new PersistenceException(ExceptionType.ConnectionNotAvailable,
                         r.getMessage());
@@ -65,12 +64,17 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
     public void closeConnection() throws PersistenceException {
         if (connected) { // es gibt eine Verbindung
             try {
+                objectOutput.flush();
                 objectInput.close();
                 objectOutput.close();
+                fileInput.close();
+                fileOutput.flush();
+                fileOutput.close();
             } catch (IOException e) {
                 throw new PersistenceException(ExceptionType.ConnectionNotAvailable,
                         e.getMessage());
             }
+            connected = false;
         } else { // es gibt keine zu schließende Verbindung
                  // nicht in der Augabenstellung erwähnt
         }
@@ -83,10 +87,12 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
     public void save(List<Member> containerInhalt) throws PersistenceException {
         if (!connected) {
             openConnection();
-        } // es besteht auf jeden fall eine Verbindung
+        } else {
+            closeConnection();
+            openConnection();
+        }
         try {
             objectOutput.writeObject(containerInhalt);
-            objectOutput.flush();
         } catch (IOException e) {
             throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getMessage());
         }
@@ -101,17 +107,21 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
     public List<Member> load() throws PersistenceException {
         if (!connected) {
             openConnection();
-        } // es besteht auf jeden fall eine Verbindung
+        } else {
+            closeConnection();
+            openConnection();
+        }
         try {
             Object tmp = objectInput.readObject();
             if (tmp instanceof List<?>) {
                 return (List<Member>) tmp;
             } else {
-                throw new PersistenceException(ExceptionType.ConnectionNotAvailable,
-                        "Saved data was not the correct type.");
+                return Collections.emptyList();
             }
+
         } catch (IOException | ClassNotFoundException e) {
-            throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getMessage());
+            throw new IllegalArgumentException(e.getMessage());
+            //throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getMessage());
         }
         // and finally close the streams (guess where this could be...?)
     }
