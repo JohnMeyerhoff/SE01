@@ -7,6 +7,10 @@
         {
             "filePath": "src/org/hbrs/se/ws21/uebung3/Container.java",
             "group": "Default"
+        },
+        {
+            "filePath": "src/org/hbrs/se/ws21/uebung3/persistence/PersistenceStrategyStream.java",
+            "group": "Default"
         }
     ]
 }
