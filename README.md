@@ -9,5 +9,4 @@
 </br>
 
 If you use these solutions, please reference the repository and credit the authors.
-You can download the documentation in german via the documentation workflow badge as long as you are logged in.
-(Artifact in job summary is a zip of all the pdfs)
+You can download the documentation in german by klicking [here](https://nightly.link/JohnMeyerhoff/SE01/workflows/SE/master/Exercises.zip).
