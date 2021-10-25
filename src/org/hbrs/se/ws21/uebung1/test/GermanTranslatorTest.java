@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 public class GermanTranslatorTest {
-    private static final String TRANSLATIONOF = "Übersetzung der Zahl ";
+    private static final String TRANSLATIONOF = "Übersetzung  FEHLER VOR TESTumstellung der Zahl ";
     private static final String NOTPOSSIBLE = " nicht möglich (";
 
     @Test
