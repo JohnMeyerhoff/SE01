@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ConnectException;
+import java.nio.channels.NetworkChannel;
 import java.util.List;
 
 import org.hbrs.se.ws21.uebung3.ExampleMember;
@@ -112,8 +113,22 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
         // if (obj instanceof List<?>) {
         // newListe = (List) obj;
         // return newListe
+        List<Member> newListe = null;
+        if (!connected) {
+            openConnection();
+        } // es besteht auf jeden fall eine Verbindung
+        try {
+            Object tmp = objectInput.readObject();
+            if(tmp instanceof List<?>){
+                newListe =(List<Member>) tmp;
+                return newListe;
+            }else{
+                throw new PersistenceException(ExceptionType.ConnectionNotAvailable, "Saved data was not the correct type.");
 
+            }
+        } catch (IOException| ClassNotFoundException e) {
+            throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getMessage());
+        }
         // and finally close the streams (guess where this could be...?)
-        return null;
     }
 }
