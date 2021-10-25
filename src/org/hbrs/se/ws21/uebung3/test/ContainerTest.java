@@ -6,30 +6,60 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import org.hbrs.se.ws21.uebung3.ContainerException;
 import org.hbrs.se.ws21.uebung3.Container;
 import org.hbrs.se.ws21.uebung3.ExampleMember;
 import org.hbrs.se.ws21.uebung3.Member;
+import org.hbrs.se.ws21.uebung3.persistence.PersistenceException;
+import org.hbrs.se.ws21.uebung3.persistence.PersistenceStrategyMongoDB;
 import org.hbrs.se.ws21.uebung3.persistence.PersistenceStrategyStream;
 
 public class ContainerTest {
-    static Container c1;
+    Container c1;
     static Member m1;
     static Member m2;
     static Member m3;
 
     @BeforeAll
     public static void initialize() {
-        c1 = Container.getInstance();
         m1 = new ExampleMember();
         m2 = new ExampleMember();
         m3 = new ExampleMember();
     }
+    @BeforeEach
+    public void destroy(){
+        c1 = Container.getInstance();
+        c1.developmentReset();
+    }
+
+    @Test
+    public void noStrategy(){
+        c1 = Container.getInstance();
+        assertEquals(0, c1.size());
+        assertDoesNotThrow(() -> c1.addMember(m1));
+        assertEquals(1, c1.size());
+        PersistenceException exception = assertThrows(PersistenceException.class, () ->c1.store());
+        assertEquals("Es gibt keine Strategie zum abspeichern.", exception.getMessage());
+    }
+
+    @Test
+    public void mongoDBTest(){
+        c1 = Container.getInstance();
+        c1.setStrategy(new PersistenceStrategyMongoDB());
+        assertEquals(0, c1.size());
+        assertDoesNotThrow(() -> c1.addMember(m1));
+        assertEquals(1, c1.size());
+        PersistenceException exception = assertThrows(PersistenceException.class, () ->c1.store());
+        assertEquals("Not implemented!", exception.getMessage());
+    }
 
     @Test
     public void einspeichernTest() {
+
+        c1 = Container.getInstance();
         c1.setStrategy(new PersistenceStrategyStream());
         assertEquals(0, c1.size());
         assertDoesNotThrow(() -> c1.addMember(m1));

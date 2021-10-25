@@ -14,7 +14,7 @@ import org.hbrs.se.ws21.uebung3.persistence.PersistenceException.ExceptionType;
 
 public class Container {
     List<Member>                inhalt   = new ArrayList<>();
-    PersistenceStrategyStream strategy = null;
+    PersistenceStrategy<Member> strategy = null;
 
     private static Container instance = null;
 
@@ -23,7 +23,7 @@ public class Container {
         // Verwendung des singleton-Pattern
     }
 
-    public void setStrategy(PersistenceStrategyStream strategy) {
+    public void setStrategy(PersistenceStrategy<Member> strategy) {
         this.strategy = strategy;
     }
 
@@ -92,5 +92,9 @@ public class Container {
     public int size() {
         return inhalt.size();
         // gegebene Methode von ArrayList
+    }
+
+    public static void developmentReset() {
+        instance = null;
     }
 }
