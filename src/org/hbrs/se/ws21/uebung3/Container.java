@@ -1,8 +1,8 @@
 package org.hbrs.se.ws21.uebung3;
 
 import java.io.Serializable;
-//Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
-//und Johannes Meyerhoff bearbeitet worden.
+// Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
+// und Johannes Meyerhoff bearbeitet worden.
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -11,47 +11,46 @@ import org.hbrs.se.ws21.uebung3.persistence.PersistenceException;
 import org.hbrs.se.ws21.uebung3.persistence.PersistenceStrategy;
 import org.hbrs.se.ws21.uebung3.persistence.PersistenceException.ExceptionType;
 
-
-public class Container  {
-    ArrayList<Member> inhalt = new ArrayList<>();
+public class Container {
+    List<Member>                inhalt   = new ArrayList<>();
     PersistenceStrategy<Member> strategy = null;
-    
+
     private static Container instance = null;
 
-    private Container(){
-        //default-Konstruktor überschrieben
-        //Verwendung des singleton-Pattern
+    private Container() {
+        // default-Konstruktor überschrieben
+        // Verwendung des singleton-Pattern
     }
+
     public void setStrategy(PersistenceStrategy<Member> strategy) {
         this.strategy = strategy;
     }
-    public static Container getInstance(){
-        if(instance == null){
+
+    public static Container getInstance() {
+        if (instance == null) {
             instance = new Container();
         }
         return instance;
     }
-    //von Klara:
-    public void store() throws PersistenceException{
-        strategy.openConnection();
-        
-       /* List<Member> datenspeicher = null;
-        int index = 0;
-        if(inhalt == null || inhalt.size() == 0){
-            throw new PersistenceException(ExceptionType.ImplementationNotAvailable, "Es gibt keine Objekte zum abspeichern.");
-        //Ist das die korrekte Exception? Man muss die richtige wöhlen
-        }
-        for (Member objekt : inhalt) {
-            datenspeicher.add(index, objekt);
-            index++;
-        } 
-*/
-    }
-    //von Klara:
-    public void load() throws PersistenceException{
-        if(instance.inhalt.size() != 0){
 
+    public void store() throws PersistenceException {
+        if (strategy == null) {
+            throw new PersistenceException(ExceptionType.NoStrategyIsSet,
+                    "Es gibt keine Objekte zum abspeichern.");
         }
+        strategy.openConnection();
+        strategy.save(inhalt);
+        strategy.closeConnection();
+    }
+
+    public void load() throws PersistenceException {
+        if (strategy == null) {
+            throw new PersistenceException(ExceptionType.NoStrategyIsSet,
+                    "Es gibt keine Objekte zum abspeichern.");
+        }
+        strategy.openConnection();
+        inhalt = strategy.load();
+        strategy.closeConnection();
     }
 
     public void addMember(Member neu) throws ContainerException {
@@ -61,9 +60,10 @@ public class Container  {
                 found = true;
             }
         }
-        if(found){
-            throw new ContainerException("Das Member-Objekt mit der ID " + neu.getID() +" ist bereits vorhanden!");
-        }else{
+        if (found) {
+            throw new ContainerException(
+                    "Das Member-Objekt mit der ID " + neu.getID() + " ist bereits vorhanden!");
+        } else {
             inhalt.add(neu);
         }
     }
@@ -87,8 +87,6 @@ public class Container  {
         // drei Werte zwischen denen entschieden werden muss,
         // welche sich jederzeit ändern könnten
     }
-
- 
 
     public int size() {
         return inhalt.size();
