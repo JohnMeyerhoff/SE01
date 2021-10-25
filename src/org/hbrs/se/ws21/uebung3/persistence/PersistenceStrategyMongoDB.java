@@ -1,4 +1,6 @@
 package org.hbrs.se.ws21.uebung3.persistence;
+//Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
+//und Johannes Meyerhoff bearbeitet worden.
 
 import java.util.List;
 
