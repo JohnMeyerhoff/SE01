@@ -1,0 +1,12 @@
+{
+    "favorites.resources": [
+        {
+            "filePath": "src/org/hbrs/se/ws21/uebung3/test/ContainerTest.java",
+            "group": "Default"
+        },
+        {
+            "filePath": "src/org/hbrs/se/ws21/uebung3/Container.java",
+            "group": "Default"
+        }
+    ]
+}
