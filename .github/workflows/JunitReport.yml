@@ -1,6 +1,11 @@
 name: build and test
 on:
   push:
+    branches: [ master ]
+    paths: 
+    - 'src/**'
+    - '.github/workflows/JunitReport.yml'
+
 
 jobs:
   build:
