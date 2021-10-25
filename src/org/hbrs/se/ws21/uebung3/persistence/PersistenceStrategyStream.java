@@ -18,8 +18,8 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
 
     // URL of file, in which the objects are stored
     private String location = "objects.ser";
-    private FileInputStream fileInput;
-    private FileOutputStream fileOutput;
+    // private FileInputStream fileInput;
+    // private FileOutputStream fileOutput;
     private ObjectInputStream objectInput;
     private ObjectOutputStream objectOutput;
     boolean connected = false;
@@ -29,7 +29,7 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
     // this out ;-)!
 
     private PersistenceStrategyStream() {
-       
+
     }
 
     public void setLocation(String location) {
@@ -43,22 +43,17 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
      * the code in methods load and save
      */
     public void openConnection() throws PersistenceException {
-        if (!connected) {
-            try {
-                fileInput = new FileInputStream(location);
-                fileOutput = new FileOutputStream(location);
-            } catch (FileNotFoundException e) {
-                throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getMessage());
-            }
-            try {
-                objectOutput = new ObjectOutputStream(fileOutput);
-                objectInput = new ObjectInputStream(fileInput);
-            } catch (IOException r) {
-                throw new PersistenceException(ExceptionType.ConnectionNotAvailable, r.getMessage());
-            }
-            connected = true;
-        }else{ 
-            //DoNothing if already connected
+        //CONNECTED besagt ob eine verbindung besteht
+        if (!connected) {  //es besteht noch keine Verbindung
+        try {
+            objectOutput = new ObjectOutputStream(new FileOutputStream(location));
+            objectInput = new ObjectInputStream(new FileInputStream(location));
+        } catch (IOException r) {
+            throw new PersistenceException(ExceptionType.ConnectionNotAvailable, r.getMessage());
+        }
+        connected = true;
+        }else{
+          //nicht in der Aufgabenstellung vorgegeben  
         }
     }
 
@@ -67,15 +62,32 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
      * Method for closing the connections to a stream
      */
     public void closeConnection() throws PersistenceException {
-
+        if (connected) { //es gibt eine Verbindung
+            try {
+                objectInput.close();
+                objectOutput.close();
+            } catch (IOException e) {
+                throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getMessage());
+            } 
+        }else{ //es gibt keine zu schließende BEdingung
+            //nicht in der Augabnestellung behandelt
+        }
     }
 
     @Override
     /**
      * Method for saving a list of Member-objects to a disk (HDD)
      */
-    public void save(List<Member> member) throws PersistenceException {
-
+    public void save(List<Member> containerInhalt) throws PersistenceException {
+        if(!connected){
+            openConnection();
+        } //es besteht auf jeden fall eine Verbindung
+        try {
+            objectOutput.writeObject(containerInhalt);
+            objectOutput.flush();
+        } catch (IOException e) {
+            throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getMessage());
+        }
     }
 
     @Override

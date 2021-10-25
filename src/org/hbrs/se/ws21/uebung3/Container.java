@@ -5,19 +5,25 @@ import java.io.Serializable;
 //und Johannes Meyerhoff bearbeitet worden.
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.hbrs.se.ws21.uebung3.persistence.PersistenceException;
+import org.hbrs.se.ws21.uebung3.persistence.PersistenceStrategy;
 import org.hbrs.se.ws21.uebung3.persistence.PersistenceException.ExceptionType;
 
 
-public class Container implements Serializable {
+public class Container  {
     ArrayList<Member> inhalt = new ArrayList<>();
+    PersistenceStrategy<Member> strategy = null;
     
     private static Container instance = null;
 
     private Container(){
         //default-Konstruktor überschrieben
         //Verwendung des singleton-Pattern
+    }
+    public void setStrategy(PersistenceStrategy<Member> strategy) {
+        this.strategy = strategy;
     }
     public static Container getInstance(){
         if(instance == null){
@@ -27,7 +33,8 @@ public class Container implements Serializable {
     }
     //von Klara:
     public void store() throws PersistenceException{
-        List<Member> datenspeicher = null;
+        strategy.openConnection();
+       /* List<Member> datenspeicher = null;
         int index = 0;
         if(inhalt == null || inhalt.size() == 0){
             throw new PersistenceException(ExceptionType.ImplementationNotAvailable, "Es gibt keine Objekte zum abspeichern.");
@@ -37,7 +44,7 @@ public class Container implements Serializable {
             datenspeicher.add(index, objekt);
             index++;
         } 
-
+*/
     }
     //von Klara:
     public void load() throws PersistenceException{

@@ -1,8 +1,10 @@
 package org.hbrs.se.ws21.uebung3;
 
+import java.io.Serializable;
+
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 //und Johannes Meyerhoff bearbeitet worden.
-public interface Member {
+public interface Member extends Serializable{
     // ID ist über einen Konstruktor einer abgeleiteten Klasse
     // explizit außerhalb der Container-Klasse zu belegen
     // --> Primärschlüssel zur Unterscheidung aller Member-Objekte
