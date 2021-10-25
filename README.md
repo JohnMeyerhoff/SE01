@@ -1,12 +1,12 @@
 # Software Engineering 1
-## Solutions and Documentation for the Software Engineering module
-
 ![Documentation](https://github.com/JohnMeyerhoff/SE01/actions/workflows/SE.yml/badge.svg)
 
 ![JUnit Tests](https://github.com/JohnMeyerhoff/SE01/actions/workflows/JunitReport.yml/badge.svg)
 
 
-</br>
+# Documentation 
+You can download the current build of the documentation in german by klicking [here](https://nightly.link/JohnMeyerhoff/SE01/workflows/SE/master/Exercises.zip). The documentation is rendered both as HTML and PDF.
 
-If you use these solutions, please reference the repository and credit the authors.
-You can download the documentation in german by klicking [here](https://nightly.link/JohnMeyerhoff/SE01/workflows/SE/master/Exercises.zip).
+# Credit
+If you use these solutions, please reference the repository and credit the authors. @JohnMeyerhoff and @KlaraGolubovic
+
