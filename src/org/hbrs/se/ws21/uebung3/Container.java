@@ -9,11 +9,12 @@ import java.util.Set;
 
 import org.hbrs.se.ws21.uebung3.persistence.PersistenceException;
 import org.hbrs.se.ws21.uebung3.persistence.PersistenceStrategy;
+import org.hbrs.se.ws21.uebung3.persistence.PersistenceStrategyStream;
 import org.hbrs.se.ws21.uebung3.persistence.PersistenceException.ExceptionType;
 
 public class Container {
     List<Member>                inhalt   = new ArrayList<>();
-    PersistenceStrategy<Member> strategy = null;
+    PersistenceStrategyStream strategy = null;
 
     private static Container instance = null;
 
@@ -22,7 +23,7 @@ public class Container {
         // Verwendung des singleton-Pattern
     }
 
-    public void setStrategy(PersistenceStrategy<Member> strategy) {
+    public void setStrategy(PersistenceStrategyStream strategy) {
         this.strategy = strategy;
     }
 
@@ -47,11 +48,11 @@ public class Container {
             throw new PersistenceException(ExceptionType.NoStrategyIsSet,
                     "Es gibt keine Strategie zum abspeichern.");
         }
-        ArrayList<Member> newContent = (ArrayList<Member>) strategy.load();
-        if(newContent.isEmpty()){
+       // List<Member> newContent = strategy.load();
+        /*if(newContent.isEmpty()){
             throw new IllegalAccessError("Loster move....");
-        }
-        this.inhalt = newContent;
+        }*/
+        this.inhalt = strategy.load();
     }
 
     public void addMember(Member neu) throws ContainerException {

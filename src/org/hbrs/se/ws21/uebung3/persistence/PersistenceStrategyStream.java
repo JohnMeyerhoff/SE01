@@ -105,23 +105,24 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
      */
     @SuppressWarnings("unchecked")
     public List<Member> load() throws PersistenceException {
-        if (!connected) {
+        /*if (!connected) {
             openConnection();
         } else {
             closeConnection();
             openConnection();
-        }
+        }*/
         try {
-            Object tmp = objectInput.readObject();
+            return (List<Member>) objectInput.readObject();
+            /*Object tmp = objectInput.readObject();
             if (tmp instanceof List<?>) {
                 return (List<Member>) tmp;
-            } else {
+            }else {
                 return Collections.emptyList();
-            }
+            }*/
 
         } catch (IOException | ClassNotFoundException e) {
-            throw new IllegalArgumentException(e.getMessage());
-            //throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getMessage());
+            throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getMessage());
+            //throw new IllegalArgumentException(e.getMessage());
         }
         // and finally close the streams (guess where this could be...?)
     }
