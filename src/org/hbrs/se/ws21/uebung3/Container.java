@@ -34,6 +34,7 @@ public class Container  {
     //von Klara:
     public void store() throws PersistenceException{
         strategy.openConnection();
+        
        /* List<Member> datenspeicher = null;
         int index = 0;
         if(inhalt == null || inhalt.size() == 0){

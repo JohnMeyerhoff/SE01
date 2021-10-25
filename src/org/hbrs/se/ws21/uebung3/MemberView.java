@@ -1,17 +1,15 @@
 package org.hbrs.se.ws21.uebung3;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MemberView {
     
-    /*public void dump() {
-        for (Member x : super.inhalt) {
-            System.out.println(x.toString());
-        }
-    }*/
-    
     public List<Member> getCurrentList(){
-        List<Member> result = null;
+        /**
+         * In the current implementation, this method returns a copy of the current list.
+         */
+        List<Member> result = new ArrayList<>();
         for (Member member : Container.getInstance().inhalt) {
             result.add(member);
         }
