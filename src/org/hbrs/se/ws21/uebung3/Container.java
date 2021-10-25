@@ -39,7 +39,6 @@ public class Container {
             throw new PersistenceException(ExceptionType.NoStrategyIsSet,
                     "Es gibt keine Strategie zum abspeichern.");
         }
-        strategy.openConnection();
         strategy.save(inhalt);
     }
 

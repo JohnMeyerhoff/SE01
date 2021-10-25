@@ -19,7 +19,7 @@ import org.hbrs.se.ws21.uebung3.persistence.PersistenceException.ExceptionType;
 public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
 
     // URL of file, in which the objects are stored
-    private String             location  = "/Users/horus/Documents/GitHub/SE01/src/objects.ser";
+    private String             location  = "objects.ser";
     private FileInputStream    fileInput;
     private FileOutputStream   fileOutput;
     private ObjectInputStream  objectInput;
@@ -43,6 +43,7 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
         // CONNECTED besagt ob eine verbindung besteht
         if (!connected) { // es besteht noch keine Verbindung
             try {
+
                 fileInput = new FileInputStream(location);
                 fileOutput = new FileOutputStream(location);
                 objectOutput = new ObjectOutputStream(this.fileOutput);
@@ -64,8 +65,8 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
     public void closeConnection() throws PersistenceException {
         if (connected) { // es gibt eine Verbindung
             try {
-                objectOutput.flush();
                 objectInput.close();
+                objectOutput.flush();
                 objectOutput.close();
                 fileInput.close();
                 fileOutput.flush();
@@ -93,9 +94,12 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
         }
         try {
             objectOutput.writeObject(containerInhalt);
+            objectOutput.flush();
+            fileOutput.flush();
         } catch (IOException e) {
             throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getMessage());
         }
+        
     }
 
     @Override
@@ -105,14 +109,20 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
      */
     @SuppressWarnings("unchecked")
     public List<Member> load() throws PersistenceException {
-        /*if (!connected) {
+        
+        if (!connected) {
             openConnection();
-        } else {
+        }/* else {
             closeConnection();
             openConnection();
         }*/
         try {
-            return (List<Member>) objectInput.readObject();
+            List<Member> result = (List<Member>) objectInput.readObject();
+            //throw new IllegalArgumentException("HI");
+            objectOutput.writeObject(result);
+            objectOutput.flush();
+            fileOutput.flush();
+            return result;
             /*Object tmp = objectInput.readObject();
             if (tmp instanceof List<?>) {
                 return (List<Member>) tmp;

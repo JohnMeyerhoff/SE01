@@ -55,6 +55,7 @@ public class ContainerTest {
         assertEquals(2, c1.size());
         assertDoesNotThrow(() -> c1.addMember(m3));
         assertEquals(3, c1.size());
+        
         //store 
         assertDoesNotThrow(() -> c1.store()); 
         //empty the list
@@ -68,7 +69,6 @@ public class ContainerTest {
         //load 
         assertDoesNotThrow(() -> c1.load()); 
         assertEquals(3, c1.size());
-        assertDoesNotThrow(() -> c1.store()); 
         //empty the list
         assertDoesNotThrow(() -> c1.deleteMember(m3.getID()));
         assertEquals(2, c1.size());
@@ -79,7 +79,7 @@ public class ContainerTest {
         //load 
         assertDoesNotThrow(() -> c1.load()); 
         assertEquals(3, c1.size());
-        assertDoesNotThrow(() -> c1.store()); 
+        //assertDoesNotThrow(() -> c1.store()); 
         //empty the list
         assertDoesNotThrow(() -> c1.deleteMember(m3.getID()));
         assertEquals(2, c1.size());
