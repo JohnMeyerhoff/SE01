@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="JUnit Jupiter" tests="8" skipped="0" failures="0" errors="0" time="0.091" hostname="JMacBook-Pro.local" timestamp="2021-10-25T15:41:45">
+<testsuite name="JUnit Jupiter" tests="10" skipped="0" failures="1" errors="0" time="0.164" hostname="JMacBook-Pro.local" timestamp="2021-10-26T16:00:26">
 <properties>
 <property name="file.encoding" value="UTF-8"/>
 <property name="file.separator" value="/"/>
@@ -52,52 +52,150 @@
 <property name="user.name" value="horus"/>
 <property name="user.timezone" value="Europe/Berlin"/>
 </properties>
-<testcase name="einlesenTest()" classname="org.hbrs.se.ws21.uebung3.test.ContainerTest" time="0.003">
-<system-out><![CDATA[
-unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung3.test.ContainerTest]/[method:einlesenTest()]
-display-name: einlesenTest()
-]]></system-out>
-</testcase>
-<testcase name="exceptionTest()" classname="org.hbrs.se.ws21.uebung2.test.ContainerTest" time="0.004">
+<testcase name="exceptionTest()" classname="org.hbrs.se.ws21.uebung2.test.ContainerTest" time="0.003">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung2.test.ContainerTest]/[method:exceptionTest()]
 display-name: exceptionTest()
 ]]></system-out>
 </testcase>
-<testcase name="nullUebersetzen()" classname="org.hbrs.se.ws21.uebung1.test.GermanTranslatorTest" time="0">
+<testcase name="nullUebersetzen()" classname="org.hbrs.se.ws21.uebung1.test.GermanTranslatorTest" time="0.001">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung1.test.GermanTranslatorTest]/[method:nullUebersetzen()]
 display-name: nullUebersetzen()
 ]]></system-out>
 </testcase>
-<testcase name="zahlenGross()" classname="org.hbrs.se.ws21.uebung1.test.GermanTranslatorTest" time="0.001">
+<testcase name="zahlenGross()" classname="org.hbrs.se.ws21.uebung1.test.GermanTranslatorTest" time="0.002">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung1.test.GermanTranslatorTest]/[method:zahlenGross()]
 display-name: zahlenGross()
 ]]></system-out>
 </testcase>
-<testcase name="zahlenPositiv()" classname="org.hbrs.se.ws21.uebung1.test.GermanTranslatorTest" time="0.02">
+<testcase name="noStrategy()" classname="org.hbrs.se.ws21.uebung3.test.ContainerTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung3.test.ContainerTest]/[method:noStrategy()]
+display-name: noStrategy()
+]]></system-out>
+</testcase>
+<testcase name="wrongLocation()" classname="org.hbrs.se.ws21.uebung3.test.ContainerTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung3.test.ContainerTest]/[method:wrongLocation()]
+display-name: wrongLocation()
+]]></system-out>
+</testcase>
+<testcase name="mongoDBTest()" classname="org.hbrs.se.ws21.uebung3.test.ContainerTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung3.test.ContainerTest]/[method:mongoDBTest()]
+display-name: mongoDBTest()
+]]></system-out>
+</testcase>
+<testcase name="zahlenPositiv()" classname="org.hbrs.se.ws21.uebung1.test.GermanTranslatorTest" time="0.038">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung1.test.GermanTranslatorTest]/[method:zahlenPositiv()]
 display-name: zahlenPositiv()
 ]]></system-out>
 </testcase>
-<testcase name="zahlenNegativ()" classname="org.hbrs.se.ws21.uebung1.test.GermanTranslatorTest" time="0.004">
+<testcase name="einspeichernTest()" classname="org.hbrs.se.ws21.uebung3.test.ContainerTest" time="0.045">
+<failure message="Unexpected exception thrown: org.hbrs.se.ws21.uebung3.persistence.PersistenceException: EOFException" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Unexpected exception thrown: org.hbrs.se.ws21.uebung3.persistence.PersistenceException: EOFException
+	at org.junit.jupiter.api.AssertDoesNotThrow.createAssertionFailedError(AssertDoesNotThrow.java:83)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:54)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:37)
+	at org.junit.jupiter.api.Assertions.assertDoesNotThrow(Assertions.java:3135)
+	at org.hbrs.se.ws21.uebung3.test.ContainerTest.einspeichernTest(ContainerTest.java:111)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:725)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:149)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:140)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:84)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:214)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:210)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:135)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:66)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:53)
+	at org.junit.platform.console.tasks.ConsoleTestExecutor.executeTests(ConsoleTestExecutor.java:66)
+	at org.junit.platform.console.tasks.ConsoleTestExecutor.lambda$execute$0(ConsoleTestExecutor.java:58)
+	at org.junit.platform.console.tasks.CustomContextClassLoaderExecutor.replaceThreadContextClassLoaderAndInvoke(CustomContextClassLoaderExecutor.java:41)
+	at org.junit.platform.console.tasks.CustomContextClassLoaderExecutor.invoke(CustomContextClassLoaderExecutor.java:31)
+	at org.junit.platform.console.tasks.ConsoleTestExecutor.execute(ConsoleTestExecutor.java:58)
+	at org.junit.platform.console.ConsoleLauncher.executeTests(ConsoleLauncher.java:95)
+	at org.junit.platform.console.ConsoleLauncher.execute(ConsoleLauncher.java:73)
+	at org.junit.platform.console.ConsoleLauncher.execute(ConsoleLauncher.java:50)
+	at org.junit.platform.console.ConsoleLauncher.execute(ConsoleLauncher.java:43)
+	at org.junit.platform.console.ConsoleLauncher.main(ConsoleLauncher.java:37)
+Caused by: org.hbrs.se.ws21.uebung3.persistence.PersistenceException: EOFException
+	at org.hbrs.se.ws21.uebung3.persistence.PersistenceStrategyStream.load(PersistenceStrategyStream.java:137)
+	at org.hbrs.se.ws21.uebung3.Container.load(Container.java:53)
+	at org.hbrs.se.ws21.uebung3.test.ContainerTest.lambda$wrongLocation$4(ContainerTest.java:66)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:50)
+	... 76 more
+]]></failure>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung3.test.ContainerTest]/[method:einspeichernTest()]
+display-name: einspeichernTest()
+]]></system-out>
+</testcase>
+<testcase name="zahlenNegativ()" classname="org.hbrs.se.ws21.uebung1.test.GermanTranslatorTest" time="0.005">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung1.test.GermanTranslatorTest]/[method:zahlenNegativ()]
 display-name: zahlenNegativ()
 ]]></system-out>
 </testcase>
-<testcase name="einlesenTest()" classname="org.hbrs.se.ws21.uebung2.test.ContainerTest" time="0.003">
+<testcase name="einlesenTest()" classname="org.hbrs.se.ws21.uebung2.test.ContainerTest" time="0.002">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung2.test.ContainerTest]/[method:einlesenTest()]
 display-name: einlesenTest()
-]]></system-out>
-</testcase>
-<testcase name="exceptionTest()" classname="org.hbrs.se.ws21.uebung3.test.ContainerTest" time="0.006">
-<system-out><![CDATA[
-unique-id: [engine:junit-jupiter]/[class:org.hbrs.se.ws21.uebung3.test.ContainerTest]/[method:exceptionTest()]
-display-name: exceptionTest()
 ]]></system-out>
 </testcase>
 <system-out><![CDATA[

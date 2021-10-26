@@ -26,7 +26,7 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
     private FileOutputStream   fileOutput;
     private ObjectInputStream  objectInput;
     private ObjectOutputStream objectOutput;
-    boolean                    connected = false;
+    private boolean            connected = false;
     // Backdoor method used only for testing purposes, if the location should be
     // changed in a Unit-Test
     // Example: Location is a directory (Streams do not like directories, so try
@@ -50,6 +50,7 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
                 fileOutput = new FileOutputStream(location);
                 objectOutput = new ObjectOutputStream(this.fileOutput);
                 objectInput = new ObjectInputStream(this.fileInput);
+                
             } catch (IOException r) {
                 throw new PersistenceException(ExceptionType.ConnectionNotAvailable,
                         r.getMessage());
@@ -91,8 +92,7 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
         if (!connected) {
             openConnection();
         } else {
-            closeConnection();
-            openConnection();
+            reopenConnection();
         }
         try {
             objectOutput.writeObject(containerInhalt);
@@ -114,28 +114,28 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
         
         if (!connected) {
             openConnection();
-        }/* else {
-            closeConnection();
-            openConnection();
-        }*/
+        } else {
+            reopenConnection();
+        }
         try {
+            
             List<Member> result = (List<Member>) objectInput.readObject();
-            //throw new IllegalArgumentException("HI");
-            objectOutput.writeObject(result);
+            throw new IllegalArgumentException("HI");
+            /*objectOutput.writeObject(result);
             objectOutput.flush();
-            fileOutput.flush();
-            return result;
-            /*Object tmp = objectInput.readObject();
-            if (tmp instanceof List<?>) {
-                return (List<Member>) tmp;
-            }else {
-                return Collections.emptyList();
-            }*/
+            fileOutput.flush();*/
+            //return result;
 
         } catch (IOException | ClassNotFoundException e) {
-            throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getMessage());
+            
+            throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getClass().getSimpleName());
             //throw new IllegalArgumentException(e.getMessage());
         }
         // and finally close the streams (guess where this could be...?)
+    }
+
+    private void reopenConnection() throws PersistenceException {
+        closeConnection();
+        openConnection();
     }
 }
