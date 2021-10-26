@@ -2,6 +2,9 @@ package org.hbrs.se.ws21.uebung3.persistence;
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 //und Johannes Meyerhoff bearbeitet worden.
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -23,10 +26,10 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
     // URL of file, in which the objects are stored
     private String             location  = "objects.ser";
     private FileInputStream    fileInput;
-    private FileOutputStream   fileOutput;
     private ObjectInputStream  objectInput;
     private ObjectOutputStream objectOutput;
     private boolean            connected = false;
+    private ByteArrayOutputStream byteOutputStream;
     // Backdoor method used only for testing purposes, if the location should be
     // changed in a Unit-Test
     // Example: Location is a directory (Streams do not like directories, so try
@@ -45,12 +48,17 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
         // CONNECTED besagt ob eine verbindung besteht
         if (!connected) { // es besteht noch keine Verbindung
             try {
-
+                File file = new File(location);
+                if (!file.exists()) {
+                    boolean success = file.createNewFile();
+                    if(!success){
+                        throw new IOException(location +" (No such file or directory)");
+                    }
+                }
                 fileInput = new FileInputStream(location);
-                fileOutput = new FileOutputStream(location);
-                objectOutput = new ObjectOutputStream(this.fileOutput);
+                byteOutputStream = new ByteArrayOutputStream();
+                objectOutput = new ObjectOutputStream(this.byteOutputStream);
                 objectInput = new ObjectInputStream(this.fileInput);
-                
             } catch (IOException r) {
                 throw new PersistenceException(ExceptionType.ConnectionNotAvailable,
                         r.getMessage());
@@ -82,8 +90,8 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
                 objectOutput.flush();
                 objectOutput.close();
                 fileInput.close();
-                fileOutput.flush();
-                fileOutput.close();
+                byteOutputStream.flush();
+                byteOutputStream.close();
             } catch (IOException e) {
                 throw new PersistenceException(ExceptionType.ConnectionNotAvailable,
                         e.getMessage());
@@ -107,11 +115,13 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
         try {
             objectOutput.writeObject(containerInhalt);
             objectOutput.flush();
-            fileOutput.flush();
+            
+            FileOutputStream fos = new FileOutputStream(location);
+            fos.write(byteOutputStream.toByteArray());
+            fos.close();
         } catch (IOException e) {
             throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getMessage());
         }
-        
     }
 
     @Override
@@ -121,7 +131,6 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
      */
     @SuppressWarnings("unchecked")
     public List<Member> load() throws PersistenceException {
-        
         if (!connected) {
             openConnection();
         } else {
@@ -130,15 +139,13 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
         try {
             
             List<Member> result = (List<Member>) objectInput.readObject();
-            throw new IllegalArgumentException("HI");
             /*objectOutput.writeObject(result);
             objectOutput.flush();
             fileOutput.flush();*/
-            //return result;
+            return result;
 
         } catch (IOException | ClassNotFoundException e) {
-            
-            throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getClass().getSimpleName());
+            throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getMessage());
             //throw new IllegalArgumentException(e.getMessage());
         }
         // and finally close the streams (guess where this could be...?)
