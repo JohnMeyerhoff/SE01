@@ -54,6 +54,9 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
                 File file = new File(location);
                 if (!file.exists()&& !location.endsWith("/") && !location.startsWith("/")) {
                     file.createNewFile();
+                    ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
+                    oos.writeObject(Collections.emptyList());
+                    oos.close();
                 }
                 fileInput = new FileInputStream(location);
                 byteOutputStream = new ByteArrayOutputStream();

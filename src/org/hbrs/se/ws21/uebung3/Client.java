@@ -2,7 +2,7 @@ package org.hbrs.se.ws21.uebung3;
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 //und Johannes Meyerhoff bearbeitet worden.
 public class Client {
-    public static void displayContainerWithMemberview(Container storage, MemberView view){
+    public void displayContainerWithMemberview(Container storage, MemberView view){
         Member a = new ExampleMember();
         Member b = new ExampleMember();
         Member c = new ExampleMember();

@@ -11,6 +11,6 @@ public class Main {
         Container maincontainer = Container.getInstance();
         maincontainer.setStrategy(new PersistenceStrategyStream());
         Client cl = new Client();
-        cl.displayContainerWithMemberview(maincontainer.getInstance(), new MemberView());
+        cl.displayContainerWithMemberview(Container.getInstance(), new MemberView());
     }
 }
