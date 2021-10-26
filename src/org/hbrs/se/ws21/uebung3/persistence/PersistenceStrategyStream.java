@@ -1,26 +1,17 @@
 package org.hbrs.se.ws21.uebung3.persistence;
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 
-//und Johannes Meyerhoff bearbeitet worden.
-
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.net.ConnectException;
-import java.nio.channels.NetworkChannel;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import org.hbrs.se.ws21.uebung3.ExampleMember;
 import org.hbrs.se.ws21.uebung3.Member;
-
 import org.hbrs.se.ws21.uebung3.persistence.PersistenceException.ExceptionType;
 
 public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
@@ -52,14 +43,11 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
         if (!connected) { // es besteht noch keine Verbindung
             try {
                 File file = new File(location);
-                if (!file.exists()&& !location.endsWith("/") && !location.startsWith("/")) {
-                    boolean couldcreate = file.createNewFile();
+                if (!file.exists()&& !location.endsWith("/")) {
+                    file.createNewFile();
                     ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
-                    oos.writeObject(Collections.emptyList());
+                    oos.writeObject(new ArrayList<>());
                     oos.close();
-                    if(!couldcreate){
-                        throw new PersistenceException(ExceptionType.ConnectionNotAvailable, "File Error");
-                    }
                 }
                 fileInput = new FileInputStream(location);
                 byteOutputStream = new ByteArrayOutputStream();
@@ -110,7 +98,6 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
      */
     public void save(List<Member> containerInhalt) throws PersistenceException {
         if (connected) {
-            //reopenConnection();
             try {
                 //Es muss mehr überschrieben werden!
                 objectOutput.writeObject(containerInhalt);
@@ -137,10 +124,5 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
             }
         }
         return new ArrayList<>();
-    }
-
-    private void reopenConnection() throws PersistenceException {
-        closeConnection();
-        openConnection();
     }
 }

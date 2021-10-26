@@ -1,21 +1,15 @@
 package org.hbrs.se.ws21.uebung3;
 
-// Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
-// und Johannes Meyerhoff bearbeitet worden.
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.hbrs.se.ws21.uebung3.persistence.PersistenceException;
-import org.hbrs.se.ws21.uebung3.persistence.PersistenceStrategy;
-import org.hbrs.se.ws21.uebung3.persistence.PersistenceStrategyStream;
 import org.hbrs.se.ws21.uebung3.persistence.PersistenceException.ExceptionType;
+import org.hbrs.se.ws21.uebung3.persistence.PersistenceStrategy;
 
 public class Container {
     private List<Member>                inhalt   = new ArrayList<>();
     private PersistenceStrategy<Member> strategy = null;
-    private boolean                     connectionisopen = false;
     private static Container            instance = null;
 
     private Container() {
@@ -25,13 +19,6 @@ public class Container {
 
     public void setStrategy(PersistenceStrategy<Member> strategy) {
         this.strategy = strategy;
-        try {
-            this.strategy.openConnection();
-            this.connectionisopen = true;
-        } catch (PersistenceException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
     }
 
     public static Container getInstance() {
@@ -61,10 +48,10 @@ public class Container {
             throw new PersistenceException(ExceptionType.NoStrategyIsSet,
                     "Es gibt keine Strategie zum abspeichern.");
         }
-        if (!connectionisopen){
-            strategy.openConnection();
-        }
+        
+        strategy.openConnection();
         strategy.save(inhalt);
+        strategy.closeConnection();
     }
 
     public void load() throws PersistenceException {
@@ -72,11 +59,10 @@ public class Container {
             throw new PersistenceException(ExceptionType.NoStrategyIsSet,
                     "Es gibt keine Strategie zum abspeichern.");
         }
-        if (!connectionisopen){
-            strategy.openConnection();
-        }
-        List<Member> newContent = strategy.load();
-        this.inhalt = newContent;
+        
+        strategy.openConnection();
+        this.inhalt = strategy.load();
+        strategy.closeConnection();
     }
 
     public void addMember(Member neu) throws ContainerException {
