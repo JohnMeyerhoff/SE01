@@ -107,11 +107,9 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
      */
     public void save(List<Member> containerInhalt) throws PersistenceException {
         if (connected) {
-
             try {
                 objectOutput.writeObject(containerInhalt);
                 objectOutput.flush();
-
                 FileOutputStream fos = new FileOutputStream(location);
                 fos.write(byteOutputStream.toByteArray());
                 fos.close();
@@ -122,30 +120,18 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
     }
 
     @Override
-    /**
-     * Method for loading a list of Member-objects from a disk (HDD) Some coding
-     * examples come for free :-) Take also a look at the import statements above
-     * ;-!
-     */
     @SuppressWarnings("unchecked")
     public List<Member> load() throws PersistenceException {
         if (connected) {
-
             try {
-
                 List<Member> result = (List<Member>) objectInput.readObject();
-                /*
-                 * objectOutput.writeObject(result); objectOutput.flush(); fileOutput.flush();
-                 */
                 return result;
-
             } catch (IOException | ClassNotFoundException e) {
                 throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getMessage());
                 // throw new IllegalArgumentException(e.getMessage());
             }
         }
         return new ArrayList<>();
-        // and finally close the streams (guess where this could be...?)
     }
 
     private void reopenConnection() throws PersistenceException {

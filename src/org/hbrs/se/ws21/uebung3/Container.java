@@ -15,6 +15,7 @@ import org.hbrs.se.ws21.uebung3.persistence.PersistenceException.ExceptionType;
 public class Container {
     private List<Member>                inhalt   = new ArrayList<>();
     private PersistenceStrategy<Member> strategy = null;
+    private boolean                     connectionisopen;
     private static Container            instance = null;
 
     private Container() {
@@ -24,6 +25,13 @@ public class Container {
 
     public void setStrategy(PersistenceStrategy<Member> strategy) {
         this.strategy = strategy;
+        try {
+            this.strategy.openConnection();
+            this.connectionisopen = true;
+        } catch (PersistenceException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public static Container getInstance() {
@@ -53,9 +61,10 @@ public class Container {
             throw new PersistenceException(ExceptionType.NoStrategyIsSet,
                     "Es gibt keine Strategie zum abspeichern.");
         }
-        strategy.openConnection();
+        if (connectionisopen){
+            strategy.openConnection();
+        }
         strategy.save(inhalt);
-        strategy.closeConnection();
     }
 
     public void load() throws PersistenceException {
@@ -63,13 +72,14 @@ public class Container {
             throw new PersistenceException(ExceptionType.NoStrategyIsSet,
                     "Es gibt keine Strategie zum abspeichern.");
         }
-        // List<Member> newContent = strategy.load();
-        /*
-         * if(newContent.isEmpty()){ throw new IllegalAccessError("Loster move...."); }
-         */
-        strategy.openConnection();
-        this.inhalt = strategy.load();
-        strategy.closeConnection();
+        if (connectionisopen){
+            strategy.openConnection();
+        }
+        List<Member> newContent = strategy.load();
+        if (newContent.isEmpty()) {
+            throw new PersistenceException(ExceptionType.ConnectionNotAvailable, "Empty List");
+        }
+        this.inhalt = newContent;
     }
 
     public void addMember(Member neu) throws ContainerException {
