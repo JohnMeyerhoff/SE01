@@ -76,9 +76,6 @@ public class Container {
             strategy.openConnection();
         }
         List<Member> newContent = strategy.load();
-        if (newContent.isEmpty()) {
-            throw new PersistenceException(ExceptionType.ConnectionNotAvailable, "Empty List");
-        }
         this.inhalt = newContent;
     }
 

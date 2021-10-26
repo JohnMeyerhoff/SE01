@@ -53,10 +53,13 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
             try {
                 File file = new File(location);
                 if (!file.exists()&& !location.endsWith("/") && !location.startsWith("/")) {
-                    file.createNewFile();
+                    boolean couldcreate = file.createNewFile();
                     ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
                     oos.writeObject(Collections.emptyList());
                     oos.close();
+                    if(!couldcreate){
+                        throw new PersistenceException(ExceptionType.ConnectionNotAvailable, "File Error");
+                    }
                 }
                 fileInput = new FileInputStream(location);
                 byteOutputStream = new ByteArrayOutputStream();
@@ -108,6 +111,7 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
     public void save(List<Member> containerInhalt) throws PersistenceException {
         if (connected) {
             try {
+                //Es muss mehr überschrieben werden!
                 objectOutput.writeObject(containerInhalt);
                 objectOutput.flush();
                 FileOutputStream fos = new FileOutputStream(location);
