@@ -61,6 +61,16 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
         }
     }
 
+
+    /**
+ * 
+ * - Erst ByteArrayStream öffnen input unf output
+ * - Diese mit ObjectStreams Wrappen
+ * - Dann in den respektiven Methoden Load und Save Input und Output respektive 
+ * - Auf den filestream Schreiben. mit ObjectInputStream.getByteArray oder toByteArray
+ */
+
+ 
     @Override
     /**
      * Method for closing the connections to a stream
