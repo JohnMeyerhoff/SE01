@@ -34,11 +34,14 @@ public class Container {
     }
 
     public void store() throws PersistenceException {
+
         if (strategy == null) {
             throw new PersistenceException(ExceptionType.NoStrategyIsSet,
                     "Es gibt keine Strategie zum abspeichern.");
         }
+        strategy.openConnection();
         strategy.save(inhalt);
+        strategy.closeConnection();
     }
 
     public void load() throws PersistenceException {
@@ -50,7 +53,9 @@ public class Container {
         /*if(newContent.isEmpty()){
             throw new IllegalAccessError("Loster move....");
         }*/
+        strategy.openConnection();
         this.inhalt = strategy.load();
+        strategy.closeConnection();
     }
 
     public void addMember(Member neu) throws ContainerException {

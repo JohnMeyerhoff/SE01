@@ -1,5 +1,6 @@
 package org.hbrs.se.ws21.uebung3.persistence;
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
+
 //und Johannes Meyerhoff bearbeitet worden.
 
 import java.io.ByteArrayInputStream;
@@ -13,6 +14,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ConnectException;
 import java.nio.channels.NetworkChannel;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -24,11 +26,11 @@ import org.hbrs.se.ws21.uebung3.persistence.PersistenceException.ExceptionType;
 public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
 
     // URL of file, in which the objects are stored
-    private String             location  = "objects.ser";
-    private FileInputStream    fileInput;
-    private ObjectInputStream  objectInput;
+    private String location = "objects.ser";
+    private FileInputStream fileInput;
+    private ObjectInputStream objectInput;
     private ObjectOutputStream objectOutput;
-    private boolean            connected = false;
+    private boolean connected = false;
     private ByteArrayOutputStream byteOutputStream;
     // Backdoor method used only for testing purposes, if the location should be
     // changed in a Unit-Test
@@ -41,27 +43,24 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
 
     @Override
     /**
-     * Method for opening the connection to a stream (here: Input- and Output-Stream) In case of
-     * having problems while opening the streams, leave the code in methods load and save
+     * Method for opening the connection to a stream (here: Input- and
+     * Output-Stream) In case of having problems while opening the streams, leave
+     * the code in methods load and save
      */
     public void openConnection() throws PersistenceException {
         // CONNECTED besagt ob eine verbindung besteht
         if (!connected) { // es besteht noch keine Verbindung
             try {
                 File file = new File(location);
-                if (!file.exists()) {
-                    boolean success = file.createNewFile();
-                    if(!success){
-                        throw new IOException(location +" (No such file or directory)");
-                    }
+                if (!file.exists()&& !location.endsWith("/")) {
+                    file.createNewFile();
                 }
                 fileInput = new FileInputStream(location);
                 byteOutputStream = new ByteArrayOutputStream();
                 objectOutput = new ObjectOutputStream(this.byteOutputStream);
                 objectInput = new ObjectInputStream(this.fileInput);
             } catch (IOException r) {
-                throw new PersistenceException(ExceptionType.ConnectionNotAvailable,
-                        r.getMessage());
+                throw new PersistenceException(ExceptionType.ConnectionNotAvailable, r.getMessage());
             }
             connected = true;
         } else {
@@ -69,16 +68,14 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
         }
     }
 
-
     /**
- * 
- * - Erst ByteArrayStream öffnen input unf output
- * - Diese mit ObjectStreams Wrappen
- * - Dann in den respektiven Methoden Load und Save Input und Output respektive 
- * - Auf den filestream Schreiben. mit ObjectInputStream.getByteArray oder toByteArray
- */
+     * 
+     * - Erst ByteArrayStream öffnen input unf output - Diese mit ObjectStreams
+     * Wrappen - Dann in den respektiven Methoden Load und Save Input und Output
+     * respektive - Auf den filestream Schreiben. mit ObjectInputStream.getByteArray
+     * oder toByteArray
+     */
 
- 
     @Override
     /**
      * Method for closing the connections to a stream
@@ -93,8 +90,7 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
                 byteOutputStream.flush();
                 byteOutputStream.close();
             } catch (IOException e) {
-                throw new PersistenceException(ExceptionType.ConnectionNotAvailable,
-                        e.getMessage());
+                throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getMessage());
             }
             connected = false;
         } else { // es gibt keine zu schließende Verbindung
@@ -107,47 +103,45 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
      * Method for saving a list of Member-objects to a disk (HDD)
      */
     public void save(List<Member> containerInhalt) throws PersistenceException {
-        if (!connected) {
-            openConnection();
-        } else {
-            reopenConnection();
-        }
-        try {
-            objectOutput.writeObject(containerInhalt);
-            objectOutput.flush();
-            
-            FileOutputStream fos = new FileOutputStream(location);
-            fos.write(byteOutputStream.toByteArray());
-            fos.close();
-        } catch (IOException e) {
-            throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getMessage());
+        if (connected) {
+
+            try {
+                objectOutput.writeObject(containerInhalt);
+                objectOutput.flush();
+
+                FileOutputStream fos = new FileOutputStream(location);
+                fos.write(byteOutputStream.toByteArray());
+                fos.close();
+            } catch (IOException e) {
+                throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getMessage());
+            }
         }
     }
 
     @Override
     /**
-     * Method for loading a list of Member-objects from a disk (HDD) Some coding examples come for
-     * free :-) Take also a look at the import statements above ;-!
+     * Method for loading a list of Member-objects from a disk (HDD) Some coding
+     * examples come for free :-) Take also a look at the import statements above
+     * ;-!
      */
     @SuppressWarnings("unchecked")
     public List<Member> load() throws PersistenceException {
-        if (!connected) {
-            openConnection();
-        } else {
-            reopenConnection();
-        }
-        try {
-            
-            List<Member> result = (List<Member>) objectInput.readObject();
-            /*objectOutput.writeObject(result);
-            objectOutput.flush();
-            fileOutput.flush();*/
-            return result;
+        if (connected) {
 
-        } catch (IOException | ClassNotFoundException e) {
-            throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getMessage());
-            //throw new IllegalArgumentException(e.getMessage());
+            try {
+
+                List<Member> result = (List<Member>) objectInput.readObject();
+                /*
+                 * objectOutput.writeObject(result); objectOutput.flush(); fileOutput.flush();
+                 */
+                return result;
+
+            } catch (IOException | ClassNotFoundException e) {
+                throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getMessage());
+                // throw new IllegalArgumentException(e.getMessage());
+            }
         }
+        return new ArrayList<>();
         // and finally close the streams (guess where this could be...?)
     }
 
