@@ -1,6 +1,7 @@
 package org.hbrs.se.ws21.uebung3;
-//Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
-//und Johannes Meyerhoff bearbeitet worden.
+
+// Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
+// und Johannes Meyerhoff bearbeitet worden.
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +13,9 @@ import org.hbrs.se.ws21.uebung3.persistence.PersistenceStrategyStream;
 import org.hbrs.se.ws21.uebung3.persistence.PersistenceException.ExceptionType;
 
 public class Container {
-    List<Member>                inhalt   = new ArrayList<>();
-    PersistenceStrategy<Member> strategy = null;
-
-    private static Container instance = null;
+    private List<Member>                inhalt   = new ArrayList<>();
+    private PersistenceStrategy<Member> strategy = null;
+    private static Container            instance = null;
 
     private Container() {
         // default-Konstruktor überschrieben
@@ -33,8 +33,22 @@ public class Container {
         return instance;
     }
 
-    public void store() throws PersistenceException {
+    public List<Member> getCurrentList() {
+        return this.inhalt;
+    }
 
+    public List<Member> getCurrentListCopy() {
+        /**
+         * In the current implementation, this method returns a copy of the current list.
+         */
+        List<Member> result = new ArrayList<>();
+        for (Member member : this.inhalt) {
+            result.add(member);
+        }
+        return result;
+    }
+
+    public void store() throws PersistenceException {
         if (strategy == null) {
             throw new PersistenceException(ExceptionType.NoStrategyIsSet,
                     "Es gibt keine Strategie zum abspeichern.");
@@ -49,10 +63,10 @@ public class Container {
             throw new PersistenceException(ExceptionType.NoStrategyIsSet,
                     "Es gibt keine Strategie zum abspeichern.");
         }
-       // List<Member> newContent = strategy.load();
-        /*if(newContent.isEmpty()){
-            throw new IllegalAccessError("Loster move....");
-        }*/
+        // List<Member> newContent = strategy.load();
+        /*
+         * if(newContent.isEmpty()){ throw new IllegalAccessError("Loster move...."); }
+         */
         strategy.openConnection();
         this.inhalt = strategy.load();
         strategy.closeConnection();

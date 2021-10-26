@@ -52,7 +52,7 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
         if (!connected) { // es besteht noch keine Verbindung
             try {
                 File file = new File(location);
-                if (!file.exists()&& !location.endsWith("/")) {
+                if (!file.exists()&& !location.endsWith("/") && !location.startsWith("/")) {
                     file.createNewFile();
                 }
                 fileInput = new FileInputStream(location);
