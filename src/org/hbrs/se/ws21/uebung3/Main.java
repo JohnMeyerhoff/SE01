@@ -8,7 +8,7 @@ import org.hbrs.se.ws21.uebung3.persistence.PersistenceStrategyStream;
 public class Main {
 
     public static void main(String[] args) {
-        Container maincontainer = new Main().buildInstances();
+        Container maincontainer = new Main().buildEmptyContainer();
         try {
             maincontainer.load();
         } catch (PersistenceException e) {
@@ -16,7 +16,8 @@ public class Main {
             e.printStackTrace();
         }
     }
-    public Container buildInstances(){
+
+    public Container buildInstances() {
         Container objekt = null;
         Member a = new ExampleMember();
         Member b = new ExampleMember();
@@ -25,17 +26,26 @@ public class Main {
         Member e = new ExampleMember();
         objekt = Container.getInstance();
         objekt.setStrategy(new PersistenceStrategyStream());
-        try{
+        try {
 
             objekt.addMember(a);
             objekt.addMember(b);
             objekt.addMember(c);
             objekt.addMember(d);
             objekt.addMember(e);
-        }catch(Exception exx){
+        } catch (Exception exx) {
             exx.printStackTrace();
         }
-            return objekt;
+        return objekt;
     }
-    
+
+    public Container buildEmptyContainer() {
+        Container objekt = null;
+
+        objekt = Container.getInstance();
+        objekt.setStrategy(new PersistenceStrategyStream());
+
+        return objekt;
+    }
+
 }
