@@ -110,7 +110,7 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
      */
     public void save(List<Member> containerInhalt) throws PersistenceException {
         if (connected) {
-            reopenConnection();
+            //reopenConnection();
             try {
                 //Es muss mehr überschrieben werden!
                 objectOutput.writeObject(containerInhalt);
