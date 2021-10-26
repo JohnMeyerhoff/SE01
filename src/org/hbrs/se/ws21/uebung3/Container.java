@@ -15,7 +15,7 @@ import org.hbrs.se.ws21.uebung3.persistence.PersistenceException.ExceptionType;
 public class Container {
     private List<Member>                inhalt   = new ArrayList<>();
     private PersistenceStrategy<Member> strategy = null;
-    private boolean                     connectionisopen;
+    private boolean                     connectionisopen = false;
     private static Container            instance = null;
 
     private Container() {
@@ -61,7 +61,7 @@ public class Container {
             throw new PersistenceException(ExceptionType.NoStrategyIsSet,
                     "Es gibt keine Strategie zum abspeichern.");
         }
-        if (connectionisopen){
+        if (!connectionisopen){
             strategy.openConnection();
         }
         strategy.save(inhalt);
@@ -72,7 +72,7 @@ public class Container {
             throw new PersistenceException(ExceptionType.NoStrategyIsSet,
                     "Es gibt keine Strategie zum abspeichern.");
         }
-        if (connectionisopen){
+        if (!connectionisopen){
             strategy.openConnection();
         }
         List<Member> newContent = strategy.load();
