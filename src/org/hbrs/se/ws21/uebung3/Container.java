@@ -1,4 +1,5 @@
 package org.hbrs.se.ws21.uebung3;
+
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 //und Johannes Meyerhoff bearbeitet worden.
 import java.util.ArrayList;
@@ -9,9 +10,9 @@ import org.hbrs.se.ws21.uebung3.persistence.PersistenceException.ExceptionType;
 import org.hbrs.se.ws21.uebung3.persistence.PersistenceStrategy;
 
 public class Container {
-    private List<Member>                inhalt   = new ArrayList<>();
+    private List<Member> inhalt = new ArrayList<>();
     private PersistenceStrategy<Member> strategy = null;
-    private static Container            instance = null;
+    private static Container instance = null;
 
     private Container() {
         // default-Konstruktor überschrieben
@@ -29,13 +30,30 @@ public class Container {
         return instance;
     }
 
+    private static final Object lock = new Object(); // Schlüssel für kritischen Block
+
+    public static Container getInstanceAlda() {
+        // Vorteil: Instanzuerung des Bedarf(!). Lazy
+        // Nachteil: Thread-safe? Nein (ohne synchronized)
+        //Thread-Safe: eine Komponente gleichzeitig von verschiedenen Programmbereichen
+        // mehrfach ausgeführt werden kann, ohne dass diese sich gegenseitig behindern.
+        synchronized (lock) { // kritischer Code
+            if (instance == null) {
+                instance = new Container();
+            }
+        }
+        // unkritischer Code
+        return instance;
+    }
+
     public List<Member> getCurrentList() {
         return this.inhalt;
     }
 
     public List<Member> getCurrentListCopy() {
         /**
-         * In the current implementation, this method returns a copy of the current list.
+         * In the current implementation, this method returns a copy of the current
+         * list.
          */
         List<Member> result = new ArrayList<>();
         for (Member member : this.inhalt) {
@@ -46,10 +64,9 @@ public class Container {
 
     public void store() throws PersistenceException {
         if (strategy == null) {
-            throw new PersistenceException(ExceptionType.NoStrategyIsSet,
-                    "Es gibt keine Strategie zum abspeichern.");
+            throw new PersistenceException(ExceptionType.NoStrategyIsSet, "Es gibt keine Strategie zum abspeichern.");
         }
-        
+
         strategy.openConnection();
         strategy.save(inhalt);
         strategy.closeConnection();
@@ -57,10 +74,9 @@ public class Container {
 
     public void load() throws PersistenceException {
         if (strategy == null) {
-            throw new PersistenceException(ExceptionType.NoStrategyIsSet,
-                    "Es gibt keine Strategie zum abspeichern.");
+            throw new PersistenceException(ExceptionType.NoStrategyIsSet, "Es gibt keine Strategie zum abspeichern.");
         }
-        
+
         strategy.openConnection();
         this.inhalt = strategy.load();
         strategy.closeConnection();
@@ -74,8 +90,7 @@ public class Container {
             }
         }
         if (found) {
-            throw new ContainerException(
-                    "Das Member-Objekt mit der ID " + neu.getID() + " ist bereits vorhanden!");
+            throw new ContainerException("Das Member-Objekt mit der ID " + neu.getID() + " ist bereits vorhanden!");
         } else {
             inhalt.add(neu);
         }
