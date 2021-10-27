@@ -1,4 +1,4 @@
-name: SE Exercise PDF Generator
+name: Render Documentation as HTML and PDF
 
 on:
   push:
