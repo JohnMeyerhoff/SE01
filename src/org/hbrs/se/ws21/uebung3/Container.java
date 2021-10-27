@@ -26,7 +26,19 @@ public class Container {
     }
 
     public void setStrategy(PersistenceStrategy<Member> strategy) {
+        if(this.strategy!=null){
+            try {
+                this.strategy.closeConnection();
+            } catch (PersistenceException e) {
+                System.out.println("Could not close connection");
+            }
+        }
         this.strategy = strategy;
+        try {
+            strategy.openConnection();
+        } catch (PersistenceException e) {
+            System.out.println("Could not open connection");
+        }
     }
 
     public static Container getInstance() {

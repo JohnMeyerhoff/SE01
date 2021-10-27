@@ -65,9 +65,9 @@ public class ContainerTest {
     public void wrongLocation() {
         c1 = Container.getInstance();
         PersistenceStrategyStream stream = new PersistenceStrategyStream();
-        c1.setStrategy(stream);
         String loc = "failDirectory/";
         stream.setLocation(loc);
+        c1.setStrategy(stream);
         PersistenceException exception = assertThrows(PersistenceException.class, () -> c1.load());
         assertEquals("failDirectory (No such file or directory)", exception.getMessage());
     }
