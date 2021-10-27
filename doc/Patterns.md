@@ -12,4 +12,9 @@ Es existiert zur Laufzeit Maximal eine Instanz.
 Es muss sichergestellt werden, dass es nicht zu einem Datenverlust beim Multi-Threading bzw.
 bei Parallelisierung führt.
 
+Ein Singleton darf keinesfalls über Checks innerhalb des Konstruktors umgesetzt werden,
+alle Umsetzungen welche auf Code innerhalb des Konstruktors aufbauen sind keine Lösungen
+nach dem Singleton-Pattern, da der Konstruktor für das Funktionieren des Codes bereits
+aufgerufen worden sein muss.
+
 
