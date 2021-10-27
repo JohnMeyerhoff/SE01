@@ -18,7 +18,7 @@ import org.hbrs.se.ws21.uebung3.persistence.PersistenceException.ExceptionType;
 public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
 
     // URL of file, in which the objects are stored
-    private String location = "objects.ser";
+    private String location = "objects.ser"; //Name der Datei
     private FileInputStream fileInput;
     private ObjectInputStream objectInput;
     private ObjectOutputStream objectOutput;
@@ -62,6 +62,41 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
             // nicht in der Aufgabenstellung vorgegeben
         }
     }
+    
+    public void openConnectionAlda() throws PersistenceException {
+        // CONNECTED besagt ob eine verbindung besteht
+        //sollte oben:
+        //FileInputStream fis;
+        //FileOutputStream fos;
+            try {
+                File file = new File(location);
+                if (!file.exists() && !location.endsWith("/")) {
+                   //fos = new FileInputStream(location);
+                  // fis = new FileInputStream(location);
+                }
+                fileInput = new FileInputStream(location);
+                byteOutputStream = new ByteArrayOutputStream();
+                objectOutput = new ObjectOutputStream(this.byteOutputStream);
+                objectInput = new ObjectInputStream(this.fileInput);
+            } catch (IOException r) {
+                throw new PersistenceException(ExceptionType.ConnectionNotAvailable, r.getMessage());
+            }
+            try {
+                File file = new File(location);
+                if (!file.exists() && !location.endsWith("/")) {
+                    file.createNewFile();
+                    ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
+                    oos.writeObject(new ArrayList<>());
+                    oos.close();
+                }
+                fileInput = new FileInputStream(location);
+                byteOutputStream = new ByteArrayOutputStream();
+                objectOutput = new ObjectOutputStream(this.byteOutputStream);
+                objectInput = new ObjectInputStream(this.fileInput);
+            } catch (IOException r) {
+                throw new PersistenceException(ExceptionType.ConnectionNotAvailable, r.getMessage());
+            }
+    }
 
     /**
      * 
@@ -91,7 +126,15 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
         } else { // es gibt keine zu schließende Verbindung
                  // nicht in der Augabenstellung erwähnt
         }
+        //Alda: Schließen, um Speicher zu sparen
     }
+    /*
+    ObjectOutputStream: Obejekte persistieren/abspreichern
+    ObjectInputStream Objekte persistieren/lesen
+    
+    */
+
+
 
     @Override
     /**

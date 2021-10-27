@@ -14,9 +14,15 @@ public class Container {
     private PersistenceStrategy<Member> strategy = null;
     private static Container instance = null;
 
+   
     private Container() {
         // default-Konstruktor überschrieben
         // Verwendung des singleton-Pattern
+
+        // alda: falsche Lösung wäre eine if-Abfage (created == false) im Konstruktor, da dort
+        // immer ein Objekt erzeugt wird.
+        // man kann Erstellung abbrechen, jedoch wurde das Obejekt im
+        // Konstruktor erzeugt
     }
 
     public void setStrategy(PersistenceStrategy<Member> strategy) {
@@ -69,7 +75,7 @@ public class Container {
 
         strategy.openConnection();
         strategy.save(inhalt);
-        strategy.closeConnection();
+        strategy.closeConnection(); //alda hat nicht geschlossen
     }
 
     public void load() throws PersistenceException {
