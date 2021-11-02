@@ -142,4 +142,27 @@ public class Container {
     public static void developmentReset() {
         instance = null;
     }
+    public void merge(){
+        List<Member> strategyLoad = null;
+        try {
+        strategyLoad = strategy.load();
+        } catch (PersistenceException e1) {
+            e1.printStackTrace();
+        }
+
+        for (Member member : strategyLoad) {
+           try {
+            this.addMember(member);
+        } catch (ContainerException e) {
+            e.printStackTrace();
+        } 
+        }
+    }
+    public void force(){
+        try {
+            this.load();
+        } catch (PersistenceException e) {
+            e.printStackTrace();
+        }
+    }
 }

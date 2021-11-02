@@ -7,8 +7,8 @@ import org.hbrs.se.ws21.uebung4.persistence.PersistenceException;
 
 public class Client {
     Scanner suche = new Scanner(System.in);
-    
-    public int konsole() throws PersistenceException{
+
+    public int konsole(Container speicher) throws PersistenceException{
         String tmp = suche.next();
         while(suche.hasNext()){
         if(tmp.equals("help")){
@@ -30,14 +30,15 @@ public class Client {
             Container.getInstance().store();
         }
         if (tmp.equals("load")) {
+            String parameter = suche.next();
             try{
-            if(suche.next().equals("merge")){
-
+            if(parameter.equals("merge")){
+                speicher.merge();
             }else{
-
+                speicher.force();
             }
             }catch(IllegalArgumentException e){
-                throw new IllegalArgumentException("Sie haben einen falschen Parameter angegeben.");
+                System.out.println("Sie haben einen falschen Parameter angegeben.");
             }
         }
 

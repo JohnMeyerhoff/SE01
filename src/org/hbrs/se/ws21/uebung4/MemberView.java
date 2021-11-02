@@ -30,8 +30,6 @@ public class MemberView {
         Collections.sort(liste, new MemberComparator());
         for (Member x : liste) {
             System.out.println(x.toString());
-            // alda:
-            System.out.println("ID: " + x.getID());
         }
     }
 }
