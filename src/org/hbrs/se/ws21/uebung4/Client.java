@@ -43,7 +43,7 @@ public class Client {
 
         if (tmp.equals("dump")) {
             MemberView a = new MemberView();
-             a.dumpSorted(Container.getInstance().getCurrentListCopy()))
+             a.dumpSorted(Container.getInstance().getCurrentListCopy());
         }
         
         System.out.println("Sie haben keine der gegebenen Befehle benutzt. "+ "\n"+ 
