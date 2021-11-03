@@ -17,4 +17,14 @@ alle Umsetzungen welche auf Code innerhalb des Konstruktors aufbauen sind keine 
 nach dem Singleton-Pattern, da der Konstruktor für das Funktionieren des Codes bereits
 aufgerufen worden sein muss.
 
+## Single Responsibility
+Jede Klasse hat genau eine Verantwortung, siehe Antipatterns (godclass).
+
+
+# Antipatterns
+Antipatterns sind Muster die zuverlässig zu Miserfolg führen.
+## God class
+Ein häufiges antipattern is das einlagern vieler Funktionalitäten in eine einzige
+Klasse. Dies ist nicht übersichtlich und hat nicht den Qualitätsaspekt der Wartbarkeit.
+
 
