@@ -23,7 +23,6 @@ public class MemberView {
             // 1,2,3,4
             }
     }
-    
 
     public void dumpSorted(List<Member> liste){
         int i = 0;
