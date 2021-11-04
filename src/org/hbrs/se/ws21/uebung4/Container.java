@@ -9,9 +9,9 @@ import org.hbrs.se.ws21.uebung4.persistence.PersistenceException;
 import org.hbrs.se.ws21.uebung4.persistence.PersistenceException.ExceptionType;
 import org.hbrs.se.ws21.uebung4.persistence.PersistenceStrategy;
 
-public class Container {
-    private List<Member> inhalt = new ArrayList<>();
-    private PersistenceStrategy<Member> strategy = null;
+public class Container<T extends Member> {
+    private List<T> inhalt = new ArrayList<>();
+    private PersistenceStrategy<T> strategy = null;
     private static Container instance = null;
 
    
@@ -25,7 +25,7 @@ public class Container {
         // Konstruktor erzeugt
     }
 
-    public void setStrategy(PersistenceStrategy<Member> strategy) {
+    public void setStrategy(PersistenceStrategy<T> strategy) {
         if(this.strategy!=null){
             try {
                 this.strategy.closeConnection();
@@ -64,17 +64,17 @@ public class Container {
         return instance;
     }
 
-    public List<Member> getCurrentList() {
+    public List<T> getCurrentList() {
         return this.inhalt;
     }
 
-    public List<Member> getCurrentListCopy() {
+    public List<T> getCurrentListCopy() {
         /**
          * In the current implementation, this method returns a copy of the current
          * list.
          */
-        List<Member> result = new ArrayList<>();
-        for (Member member : this.inhalt) {
+        List<T> result = new ArrayList<>();
+        for (T member : this.inhalt) {
             result.add(member);
         }
         return result;
@@ -100,9 +100,9 @@ public class Container {
         strategy.closeConnection();
     }
 
-    public void addMember(Member neu) throws ContainerException {
+    public void addMember(T neu) throws ContainerException {
         boolean found = false;
-        for (Member m : inhalt) {
+        for (T m : inhalt) {
             if (m.getID().equals(neu.getID())) {
                 found = true;
             }
@@ -118,7 +118,7 @@ public class Container {
         if (this.size() == 0) {
             return "nothing to delete";
         }
-        for (Member m : inhalt) {
+        for (T m : inhalt) {
             if (m.getID().equals(id)) {
                 inhalt.remove(m);
                 return "deleted";
@@ -143,14 +143,14 @@ public class Container {
         instance = null;
     }
     public void merge(){
-        List<Member> strategyLoad = null;
+        List<T> strategyLoad = null;
         try {
         strategyLoad = strategy.load();
         } catch (PersistenceException e1) {
             e1.printStackTrace();
         }
 
-        for (Member member : strategyLoad) {
+        for (T member : strategyLoad) {
            try {
             this.addMember(member);
         } catch (ContainerException e) {

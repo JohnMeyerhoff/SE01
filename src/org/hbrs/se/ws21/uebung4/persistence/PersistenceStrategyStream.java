@@ -15,7 +15,7 @@ import java.util.List;
 import org.hbrs.se.ws21.uebung4.Member;
 import org.hbrs.se.ws21.uebung4.persistence.PersistenceException.ExceptionType;
 
-public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
+public class PersistenceStrategyStream<T extends Member> implements PersistenceStrategy<T> {
 
     // URL of file, in which the objects are stored
     private String location = "objects.ser"; //Name der Datei
@@ -140,7 +140,7 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
     /**
      * Method for saving a list of Member-objects to a disk (HDD)
      */
-    public void save(List<Member> containerInhalt) throws PersistenceException {
+    public void save(List<T> containerInhalt) throws PersistenceException {
         if (connected) {
             try {
                 //Es muss mehr überschrieben werden!
@@ -157,10 +157,10 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Member> load() throws PersistenceException {
+    public List<T> load() throws PersistenceException {
         if (connected) {
             try {
-                List<Member> result = (List<Member>) objectInput.readObject();
+                List<T> result = (List<T>) objectInput.readObject();
                 return result;
             } catch (IOException | ClassNotFoundException e) {
                 throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getMessage());

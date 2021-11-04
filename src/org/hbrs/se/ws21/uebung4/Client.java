@@ -9,8 +9,9 @@ public class Client {
     Scanner suche = new Scanner(System.in);
 
     public int konsole(Container speicher) throws PersistenceException{
-        String tmp = suche.next();
+        String tmp;
         while(suche.hasNext()){
+        tmp = suche.next();
         if(tmp.equals("help")){
             System.out.println(
             "Mögliche Befehle für Sie sind: "+ "\n" + 
@@ -46,14 +47,40 @@ public class Client {
             MemberView a = new MemberView();
              a.dumpSorted(Container.getInstance().getCurrentListCopy());
         }
-        
+
+        //bergeunzung der zeichen noch ggf. anpassen!
+        if(tmp.equals("enter")){ 
+
+            System.out.println("Bitte geben Sie ihren Vornamen ein. ");
+            String vorname = suche.next();
+ 
+            System.out.println("Bitte geben Sie ihren Nachname ein. ");
+            String name = suche.next();
+
+            for (int i = 0; i < 10; i++) {
+                //evtl noch nach Symbolen überprüfen!!
+                if (name.contains(""+i)|| vorname.contains(""+i)){
+                    System.out.println("Ungültige Eingabe für Ihren Vor- bzw. Nachname.\nBitte versuchen Sie es nochmal.");
+                    break; //damit if-statement abbricht - neuer Verscuh im nächsten Schleifendurchlauf
+                }
+            }
+
+            System.out.println("Bitte geben Sie ihre Rolle ein. ");
+            String rolle = suche.next();
+
+            System.out.println("Bitte geben Sie ihre Abteilung ein. ");
+            String abteilung = suche.next();
+        }
+        if(tmp.equals("search")){
+         
+        }
+
+
         System.out.println("Sie haben keine der gegebenen Befehle benutzt. "+ "\n"+ 
         "Geben Sie 'help' als Befehl ein, um alle Möglichkeiten zu sehen.");
-        
-        
-        
-        
+         
         }
         return 5; //Eingabe beendet ohne exit
     }
+
 }

@@ -11,6 +11,9 @@ public class Main {
         Container maincontainer = Container.getInstance();
         maincontainer.setStrategy(new PersistenceStrategyStream());
         Client cl = new Client();
-        
+
+
+        //tabellarische Form 
+
     }
 }

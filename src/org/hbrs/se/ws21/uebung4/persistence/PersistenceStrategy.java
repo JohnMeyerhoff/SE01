@@ -2,6 +2,7 @@ package org.hbrs.se.ws21.uebung4.persistence;
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 //und Johannes Meyerhoff bearbeitet worden.
 
+import java.lang.reflect.Member;
 import java.util.List;
 
 /**
@@ -17,9 +18,9 @@ import java.util.List;
  *
  * @param <E>
  */
-public interface PersistenceStrategy<E> {
+public interface PersistenceStrategy<T extends org.hbrs.se.ws21.uebung4.Member> {
     public void openConnection() throws PersistenceException;
-    public List<E> load() throws PersistenceException;
-    public void save(List<E> member) throws PersistenceException;
+    public List<T> load() throws PersistenceException;
+    public void save(List<T> member) throws PersistenceException;
     public void closeConnection() throws PersistenceException;
 }
