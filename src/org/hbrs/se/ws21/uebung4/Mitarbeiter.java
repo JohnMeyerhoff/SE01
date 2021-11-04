@@ -7,13 +7,37 @@ public class Mitarbeiter implements org.hbrs.se.ws21.uebung4.Member {
     public Mitarbeiter() {
         this.internalID = uniqueCounter++;
     }
-
+    private String vorname;
+    private String name; 
+    private String rolle;
+    private String abteilung;
+    private String expertise;
     private Integer internalID;
 
     @Override
     public Integer getID() {
         return this.internalID;
     }
+    
+    @Override
+    public Integer getID() {
+        return this.internalID;
+    }
+    @Override
+    public Integer getID() {
+        return this.internalID;
+    }
+
+    @Override
+    public Integer getID() {
+        return this.internalID;
+    }
+    @Override
+    public Integer getID() {
+        return this.internalID;
+    }
+
+
 
     @Override
     public String toString() {
