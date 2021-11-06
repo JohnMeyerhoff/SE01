@@ -26,6 +26,7 @@ import org.hbrs.se.ws21.uebung3.persistence.PersistenceStrategyStream;
 /**
  * TODO UMSCHREIBEN AUF MITARBEITER
  */
+
 public class ContainerTest {
     Container     c1;
     static Member m1;
@@ -74,6 +75,8 @@ public class ContainerTest {
         c1.setStrategy(stream);
         PersistenceException exception = assertThrows(PersistenceException.class, () -> c1.load());
         assertEquals("failDirectory (No such file or directory)", exception.getMessage());
+        //auf Windows: "failDirectory (The system cannot find the file specified)"
+
     }
 
     // falsch/
