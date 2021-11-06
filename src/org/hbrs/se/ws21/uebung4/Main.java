@@ -8,9 +8,10 @@ import org.hbrs.se.ws21.uebung4.persistence.PersistenceStrategyStream;
 public class Main {
 
     public static void main(String[] args) {
-        Container maincontainer = Container.getInstance();
+        Container<Mitarbeiter> maincontainer = Container<Mitarbeiter>.getInstance();
         maincontainer.setStrategy(new PersistenceStrategyStream());
         Client cl = new Client();
+
 
 
         //tabellarische Form 

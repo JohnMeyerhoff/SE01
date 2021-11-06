@@ -66,13 +66,13 @@ public class Client {
                 String abteilung = suche.next();
                 
                 Expertise a = new Expertise();
-                for (int i = 1; i < 4; i++) {
-                    if (i == 3) {
+                for (int i = 0; i < 3; i++) {
+                    if (i == 2) {
                         System.out.println(
                                 "Dies ist Ihr letzter Eintrag als Fähigkeit, da Sie hier nur 3 Ihrer besten Fähigkeiten angeben können. ");
                     }
                     System.out.println(
-                            "Bitte geben Sie Ihre Fähigkeit der Expertise in einem Wort an.  \n  Wenn Sie keine weitere Fähigkeit haben, dann geben sie bitte '-' ein.");
+                            "Bitte geben Sie Ihre Fähigkeit oder Expertise in einem Wort an.  \n  Wenn Sie keine weitere Fähigkeit haben, dann geben sie bitte '-' ein.");
                     String faehigkeit = suche.next();
                     if (faehigkeit.equals("-")) {
                         break;

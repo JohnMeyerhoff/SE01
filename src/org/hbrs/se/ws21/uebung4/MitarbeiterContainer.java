@@ -9,24 +9,24 @@ import org.hbrs.se.ws21.uebung4.persistence.PersistenceException;
 import org.hbrs.se.ws21.uebung4.persistence.PersistenceException.ExceptionType;
 import org.hbrs.se.ws21.uebung4.persistence.PersistenceStrategy;
 
-public class Container<T extends Member> {
-    private List<T> inhalt = new ArrayList<>();
-    private PersistenceStrategy<T> strategy = null;
-    private static Container instance;
+public class MitarbeiterContainer{
+    private List<Mitarbeiter> inhalt = new ArrayList<>();
+    private PersistenceStrategy<Mitarbeiter> strategy = null;
+    private static MitarbeiterContainer instance;
 
-   
-    private Container() {
+    private MitarbeiterContainer() {
         // default-Konstruktor überschrieben
         // Verwendung des singleton-Pattern
 
-        // alda: falsche Lösung wäre eine if-Abfage (created == false) im Konstruktor, da dort
+        // alda: falsche Lösung wäre eine if-Abfage (created == false) im Konstruktor,
+        // da dort
         // immer ein Objekt erzeugt wird.
         // man kann Erstellung abbrechen, jedoch wurde das Obejekt im
         // Konstruktor erzeugt
     }
 
-    public void setStrategy(PersistenceStrategy<T> strategy) {
-        if(this.strategy!=null){
+    public void setStrategy(PersistenceStrategy<Mitarbeiter> strategy) {
+        if (this.strategy != null) {
             try {
                 this.strategy.closeConnection();
             } catch (PersistenceException e) {
@@ -41,24 +41,24 @@ public class Container<T extends Member> {
         }
     }
 
-    public static <T extends Member> Container<T> getInstance() {
+    public static MitarbeiterContainer getInstance() {
         if (instance == null) {
-            instance = new Container<T>();
+            instance = new MitarbeiterContainer();
         }
         return instance;
     }
 
-    public List<T> getCurrentList() {
+    public List<Mitarbeiter> getCurrentList() {
         return this.inhalt;
     }
 
-    public List<T> getCurrentListCopy() {
+    public List<Mitarbeiter> getCurrentListCopy() {
         /**
          * In the current implementation, this method returns a copy of the current
          * list.
          */
-        List<T> result = new ArrayList<>();
-        for (T member : this.inhalt) {
+        List<Mitarbeiter> result = new ArrayList<>();
+        for (Mitarbeiter member : this.inhalt) {
             result.add(member);
         }
         return result;
@@ -71,7 +71,7 @@ public class Container<T extends Member> {
 
         strategy.openConnection();
         strategy.save(inhalt);
-        strategy.closeConnection(); //alda hat nicht geschlossen
+        strategy.closeConnection(); // alda hat nicht geschlossen
     }
 
     public void load() throws PersistenceException {
@@ -84,9 +84,9 @@ public class Container<T extends Member> {
         strategy.closeConnection();
     }
 
-    public void addMember(T neu) throws ContainerException {
+    public void addMember(Mitarbeiter neu) throws ContainerException {
         boolean found = false;
-        for (T m : inhalt) {
+        for (Mitarbeiter m : inhalt) {
             if (m.getID().equals(neu.getID())) {
                 found = true;
             }
@@ -102,7 +102,7 @@ public class Container<T extends Member> {
         if (this.size() == 0) {
             return "nothing to delete";
         }
-        for (T m : inhalt) {
+        for (Mitarbeiter m : inhalt) {
             if (m.getID().equals(id)) {
                 inhalt.remove(m);
                 return "deleted";
@@ -126,23 +126,25 @@ public class Container<T extends Member> {
     public static void developmentReset() {
         instance = null;
     }
-    public void merge(){
-        List<T> strategyLoad = null;
+
+    public void merge() {
+        List<Mitarbeiter> strategyLoad = null;
         try {
-        strategyLoad = strategy.load();
+            strategyLoad = strategy.load();
         } catch (PersistenceException e1) {
             e1.printStackTrace();
         }
 
-        for (T member : strategyLoad) {
-           try {
-            this.addMember(member);
-        } catch (ContainerException e) {
-            e.printStackTrace();
-        } 
+        for (Mitarbeiter member : strategyLoad) {
+            try {
+                this.addMember(member);
+            } catch (ContainerException e) {
+                e.printStackTrace();
+            }
         }
     }
-    public void force(){
+
+    public void force() {
         try {
             this.load();
         } catch (PersistenceException e) {
