@@ -70,6 +70,9 @@ public class Client {
 
             System.out.println("Bitte geben Sie ihre Abteilung ein. ");
             String abteilung = suche.next();
+
+            System.out.println("Bitte geben Sie ihre Expertise(n) ein. ");
+            String expertisen = suche.next();
         }
         if(tmp.equals("search")){
          
