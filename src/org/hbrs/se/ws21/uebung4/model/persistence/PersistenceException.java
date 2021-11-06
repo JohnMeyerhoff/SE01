@@ -1,4 +1,4 @@
-package org.hbrs.se.ws21.uebung4.persistence;
+package org.hbrs.se.ws21.uebung4.model.persistence;
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 //und Johannes Meyerhoff bearbeitet worden.
 

@@ -1,12 +1,13 @@
 package org.hbrs.se.ws21.uebung4.view;
 
-import org.hbrs.se.ws21.uebung4.Container;
-import org.hbrs.se.ws21.uebung4.ContainerException;
-import org.hbrs.se.ws21.uebung4.Mitarbeiter;
+import org.hbrs.se.ws21.uebung4.model.MitarbeiterContainer;
+import org.hbrs.se.ws21.uebung4.controller.ContainerException;
+import org.hbrs.se.ws21.uebung4.model.Expertise;
+import org.hbrs.se.ws21.uebung4.model.Mitarbeiter;
 
 public class TabellenAusgabe {
 
-    public void tabelle(Container<Mitarbeiter> a){
+    public void tabelle(MitarbeiterContainer a){
         System.out.println("Vorname\t\t\t\tName\t\t\t\tAbteilung\t\t\t\tRolle\t\t\t\tExpertisen");
         for (Mitarbeiter m : a.getCurrentList()) {
             System.out.print(m.getVorname()+"\t\t\t\t");
@@ -20,14 +21,16 @@ public class TabellenAusgabe {
 
     }
     
-    public void tabelle(Container<Mitarbeiter> a, String exp) {
+    public void tabelle(MitarbeiterContainer a, String exp) {
         
     }
 
     public static void main(String[] args) {
-        Container<Mitarbeiter> a = Container.getInstance();
+        MitarbeiterContainer a = MitarbeiterContainer.getInstance();
         try {
-            a.addMember(new Mitarbeiter("Lisa", "Franz", "AB", "ABB", "BB"));
+            Expertise x = new Expertise();
+            x.putFaehigkeitLvl("reinkacheln", 1);
+            a.addMember(new Mitarbeiter("Lisa", "Franz", "AB", "ABB", x));
         } catch (ContainerException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

@@ -1,4 +1,4 @@
-package org.hbrs.se.ws21.uebung4;
+package org.hbrs.se.ws21.uebung4.model;
 
 import java.io.Serializable;
 import java.util.HashMap;

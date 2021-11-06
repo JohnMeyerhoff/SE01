@@ -1,4 +1,4 @@
-package org.hbrs.se.ws21.uebung4;
+package org.hbrs.se.ws21.uebung4.view;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -6,6 +6,8 @@ import java.util.Comparator;
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 //und Johannes Meyerhoff bearbeitet worden.
 import java.util.List;
+
+import org.hbrs.se.ws21.uebung4.model.Member;
 
 public class MemberView {
 

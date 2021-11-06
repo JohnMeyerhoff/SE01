@@ -1,4 +1,4 @@
-package org.hbrs.se.ws21.uebung4.persistence;
+package org.hbrs.se.ws21.uebung4.model.persistence;
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 //und Johannes Meyerhoff bearbeitet worden.
 
@@ -12,8 +12,8 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hbrs.se.ws21.uebung4.Member;
-import org.hbrs.se.ws21.uebung4.persistence.PersistenceException.ExceptionType;
+import org.hbrs.se.ws21.uebung4.model.Member;
+import org.hbrs.se.ws21.uebung4.model.persistence.PersistenceException.ExceptionType;
 
 public class PersistenceStrategyStream<T extends Member> implements PersistenceStrategy<T> {
 

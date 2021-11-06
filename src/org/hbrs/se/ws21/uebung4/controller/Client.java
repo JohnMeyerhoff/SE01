@@ -1,10 +1,14 @@
-package org.hbrs.se.ws21.uebung4;
+package org.hbrs.se.ws21.uebung4.controller;
 
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 //und Johannes Meyerhoff bearbeitet worden.
 import java.util.Scanner;
 
-import org.hbrs.se.ws21.uebung4.persistence.PersistenceException;
+import org.hbrs.se.ws21.uebung4.model.Expertise;
+import org.hbrs.se.ws21.uebung4.model.Mitarbeiter;
+import org.hbrs.se.ws21.uebung4.model.MitarbeiterContainer;
+import org.hbrs.se.ws21.uebung4.model.persistence.PersistenceException;
+import org.hbrs.se.ws21.uebung4.view.MemberView;
 
 public class Client {
     Scanner suche = new Scanner(System.in);

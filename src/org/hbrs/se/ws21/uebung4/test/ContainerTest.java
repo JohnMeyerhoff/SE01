@@ -22,6 +22,10 @@ import org.hbrs.se.ws21.uebung3.persistence.PersistenceException;
 import org.hbrs.se.ws21.uebung3.persistence.PersistenceStrategyMongoDB;
 import org.hbrs.se.ws21.uebung3.persistence.PersistenceStrategyStream;
 
+
+/**
+ * TODO UMSCHREIBEN AUF MITARBEITER
+ */
 public class ContainerTest {
     Container     c1;
     static Member m1;
