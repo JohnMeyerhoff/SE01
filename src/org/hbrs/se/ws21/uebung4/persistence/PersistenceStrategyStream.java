@@ -12,7 +12,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hbrs.se.ws21.uebung4.Member;
+import org.hbrs.se.ws21.uebung4.model.Member;
 import org.hbrs.se.ws21.uebung4.persistence.PersistenceException.ExceptionType;
 
 public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
