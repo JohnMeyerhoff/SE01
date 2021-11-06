@@ -24,7 +24,7 @@ public class MemberView {
             }
     }
 
-    public void dumpSorted(List<Member> liste){
+    public void dumpSorted(List<? extends Member> liste){
         int i = 0;
         Collections.sort(liste, new MemberComparator());
         for (Member x : liste) {

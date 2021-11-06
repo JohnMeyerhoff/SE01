@@ -10,15 +10,14 @@ public class Mitarbeiter implements org.hbrs.se.ws21.uebung4.Member {
     private Expertise expertise;
     private Integer internalID;
 
-    public Mitarbeiter() {
-        this.internalID = uniqueCounter++;
-    }
+ 
 
-    public Mitarbeiter(String vorname, String name, String rolle, String abteilung, Expertise exp) {
+    public Mitarbeiter(String vorname, String name, String rolle, String abteilung, Expertise expertise) {
+        this.internalID = uniqueCounter++;
         this.name = name;
         this.rolle = rolle;
         this.abteilung = abteilung;
-        this.expertise = exp;
+        this.expertise = expertise;
         this.vorname = vorname;
     }
 
@@ -77,7 +76,7 @@ public class Mitarbeiter implements org.hbrs.se.ws21.uebung4.Member {
 
     @Override
     public String toString() {
-        return "Member (ID = " + getID() + ")";
+        return "Member (ID = " + this.getID() + ")";
     }
 
 }

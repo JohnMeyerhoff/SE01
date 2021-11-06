@@ -8,7 +8,7 @@ import org.hbrs.se.ws21.uebung4.persistence.PersistenceException;
 
 public class Client {
     Scanner suche = new Scanner(System.in);
-    public int konsole(Container<Mitarbeiter> speicher) throws PersistenceException {
+    public int konsole(MitarbeiterContainer speicher) throws PersistenceException {
         String tmp;
         while (suche.hasNext()) {
             tmp = suche.next();
@@ -21,7 +21,7 @@ public class Client {
                 return 0;
             }
             if (tmp.equals("store")) {
-                Container.getInstance().store();
+                MitarbeiterContainer.getInstance().store();
             }
             if (tmp.equals("load")) {
                 String parameter = suche.next();
@@ -38,7 +38,7 @@ public class Client {
 
             if (tmp.equals("dump")) {
                 MemberView a = new MemberView();
-                a.dumpSorted(Container.getInstance().getCurrentListCopy());
+                a.dumpSorted(MitarbeiterContainer.getInstance().getCurrentListCopy());
             }
 
             // bergeunzung der zeichen noch ggf. anpassen!
