@@ -5,6 +5,7 @@ import java.util.List;
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 //und Johannes Meyerhoff bearbeitet worden.
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import org.hbrs.se.ws21.uebung4.model.Expertise;
 import org.hbrs.se.ws21.uebung4.model.Mitarbeiter;
@@ -133,15 +134,11 @@ public class Client {
                 validcommand = true;
                 System.out.println("Bitte geben Sie eine von Ihnen gesuchte Expertise an. ");
                 String fertigkeit = suche.next();
-                List<Mitarbeiter> unfilteredMitarbeiterListe = speicher.getCurrentList();
-                List<Mitarbeiter> filteredMitarbeiterListe = new ArrayList<>();
-                for (Mitarbeiter mitarbeiter : unfilteredMitarbeiterListe) {
-                    if (mitarbeiter.getExpertise().getErfahrungen().containsKey(fertigkeit)) {
-                        filteredMitarbeiterListe.add(mitarbeiter);
-                    }
-                }
-                a.dumpSorted(filteredMitarbeiterListe);
-
+                
+                List<Mitarbeiter> cl = speicher.getCurrentListCopy();
+                List<Mitarbeiter> x = cl.stream().filter(ma -> ma.getExpertise().getErfahrungen().containsKey(fertigkeit))
+                    .collect(Collectors.toList());
+                    a.dumpSorted(x);
             }
 
             if (!validcommand) {
