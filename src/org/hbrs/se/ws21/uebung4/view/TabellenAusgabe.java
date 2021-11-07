@@ -31,12 +31,13 @@ public class TabellenAusgabe {
             Expertise x = new Expertise();
             x.putFaehigkeitLvl("reinkacheln", 1);
             a.addMember(new Mitarbeiter("Lisa", "Franz", "AB", "ABB", x));
+            a.addMember(new Mitarbeiter("Lisa", "Franz", "AB", "ABB", x));
         } catch (ContainerException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        TabellenAusgabe b = new TabellenAusgabe();
-        b.tabelle(a);
+        MemberView f = new MemberView();
+        f.dumpSorted(a.getCurrentListCopy());
     }
 }
     
