@@ -27,8 +27,10 @@ public class TabellenAusgabe {
 
     public static void main(String[] args) {
         MitarbeiterContainer a = MitarbeiterContainer.getInstance();
-        try {
             Expertise x = new Expertise();
+             MemberView f = new MemberView();
+             f.dumpSorted(a.getCurrentListCopy());
+        try {
             x.putFaehigkeitLvl("reinkacheln", 1);
             a.addMember(new Mitarbeiter("Lisa", "Franz", "AB", "ABB", x));
             a.addMember(new Mitarbeiter("Lisa", "Franz", "AB", "ABB", x));
@@ -36,7 +38,7 @@ public class TabellenAusgabe {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        MemberView f = new MemberView();
+       
         f.dumpSorted(a.getCurrentListCopy());
     }
 }
