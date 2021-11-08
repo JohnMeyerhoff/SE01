@@ -1,7 +1,7 @@
 package org.hbrs.se.ws21.uebung4.controller;
 
 import org.hbrs.se.ws21.uebung4.model.MitarbeiterContainer;
-import org.hbrs.se.ws21.uebung4.model.persistence.PersistenceException;
+import org.hbrs.se.ws21.uebung4.model.exception.PersistenceException;
 import org.hbrs.se.ws21.uebung4.model.persistence.PersistenceStrategyStream;
 
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic

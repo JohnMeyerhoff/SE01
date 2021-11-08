@@ -2,15 +2,15 @@ package org.hbrs.se.ws21.uebung4.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-//Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
-//und Johannes Meyerhoff bearbeitet worden.
+// Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
+// und Johannes Meyerhoff bearbeitet worden.
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
 import org.hbrs.se.ws21.uebung4.model.Expertise;
 import org.hbrs.se.ws21.uebung4.model.Mitarbeiter;
 import org.hbrs.se.ws21.uebung4.model.MitarbeiterContainer;
-import org.hbrs.se.ws21.uebung4.model.persistence.PersistenceException;
+import org.hbrs.se.ws21.uebung4.model.exception.PersistenceException;
 import org.hbrs.se.ws21.uebung4.view.MemberView;
 
 public class Client {
@@ -26,8 +26,9 @@ public class Client {
             tmp = suche.next();
             if (tmp.equals("help")) {
                 validcommand = true;
-                System.out.println("Mögliche Befehle für Sie sind: " + "\n" + "enter" + "\n" + "store" + "\n" + "load"
-                        + "\n" + "dump" + "\n" + "search" + "\n" + "exit" + "\n" + "help" + "\n");
+                System.out.println("Mögliche Befehle für Sie sind: " + "\n" + "enter" + "\n"
+                        + "store" + "\n" + "load" + "\n" + "dump" + "\n" + "search" + "\n" + "exit"
+                        + "\n" + "help" + "\n");
             }
             if (tmp.equals("exit")) {
                 validcommand = true;
@@ -79,7 +80,8 @@ public class Client {
                     if (name.contains("" + i) || vorname.contains("" + i)) {
                         System.out.println(
                                 "Ungültige Eingabe für Ihren Vor- bzw. Nachname.\nBitte versuchen Sie es nochmal.");
-                        break; // damit if-statement abbricht - neuer Verscuh im nächsten Schleifendurchlauf
+                        break; // damit if-statement abbricht - neuer Verscuh im nächsten
+                               // Schleifendurchlauf
                     }
                 }
 
@@ -108,7 +110,8 @@ public class Client {
                         try {
                             int lvl = suche.nextInt();
                             if (lvl < 1 || lvl > 3) {
-                                System.out.println("Falsche Eingabe. Sie können nur Level von 1 bis 3 angeben.");
+                                System.out.println(
+                                        "Falsche Eingabe. Sie können nur Level von 1 bis 3 angeben.");
                                 gelesen = false;
                                 continue;
                             }
@@ -134,11 +137,14 @@ public class Client {
                 validcommand = true;
                 System.out.println("Bitte geben Sie eine von Ihnen gesuchte Expertise an. ");
                 String fertigkeit = suche.next();
-                
+
                 List<Mitarbeiter> cl = speicher.getCurrentListCopy();
-                List<Mitarbeiter> x = cl.stream().filter(ma -> ma.getExpertise().getErfahrungen().containsKey(fertigkeit))
-                    .collect(Collectors.toList());
-                    a.dumpSorted(x);
+                List<Mitarbeiter> x = cl.stream()
+                        .filter(ma -> ma.getExpertise().getErfahrungen().containsKey(fertigkeit))
+                        .collect(Collectors.toList());
+
+                System.out.println("Folgende Mitarbeiter haben die Expertise "+fertigkeit+":\n");
+                a.dumpSearched(x, fertigkeit);
             }
 
             if (!validcommand) {

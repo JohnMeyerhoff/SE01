@@ -27,6 +27,9 @@ public class Expertise implements Serializable{
     public HashMap<String,Integer> getErfahrungen(){
         return this.expertisen;
     }
+    public HashMap<Integer,String> getBezeichner(){
+        return this.levelBezeichner;
+    }
 
     public String getExpertiseLevel(Integer lvl) {
         // getOrDefault: erste Komponente wie bei get() und zweite falls key nicht

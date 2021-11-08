@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hbrs.se.ws21.uebung4.controller.ContainerException;
-import org.hbrs.se.ws21.uebung4.model.persistence.PersistenceException;
+import org.hbrs.se.ws21.uebung4.model.exception.PersistenceException;
+import org.hbrs.se.ws21.uebung4.model.exception.PersistenceException.ExceptionType;
 import org.hbrs.se.ws21.uebung4.model.persistence.PersistenceStrategy;
-import org.hbrs.se.ws21.uebung4.model.persistence.PersistenceException.ExceptionType;
 
 public class MitarbeiterContainer{
     private List<Mitarbeiter> inhalt = new ArrayList<>();

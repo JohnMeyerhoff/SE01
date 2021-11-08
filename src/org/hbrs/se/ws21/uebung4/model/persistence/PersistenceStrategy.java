@@ -5,6 +5,8 @@ package org.hbrs.se.ws21.uebung4.model.persistence;
 import java.lang.reflect.Member;
 import java.util.List;
 
+import org.hbrs.se.ws21.uebung4.model.exception.PersistenceException;
+
 /**
  * Interface for defining basic methods for a persistence mechanism
  * Each concrete algorithm (i.e. strategy) must implement this method

@@ -3,10 +3,12 @@ package org.hbrs.se.ws21.uebung4.view;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 //und Johannes Meyerhoff bearbeitet worden.
 import java.util.List;
 
+import org.hbrs.se.ws21.uebung4.model.Expertise;
 import org.hbrs.se.ws21.uebung4.model.Member;
 import org.hbrs.se.ws21.uebung4.model.Mitarbeiter;
 
@@ -57,6 +59,46 @@ public class MemberView {
                  ma.getName(), 
                  ma.getAbteilung(),
                  ma.getRolle(),
+                 };
+            i++;
+        }
+        return table;
+
+    }
+
+    public void dumpSearched(List<Mitarbeiter> x, String fertigkeit) {
+        Collections.sort(x, new MemberComparator());
+        String[][] tmp = listToStringarrayWithExpertise(x,fertigkeit);
+        TablePrinter printer = new TablePrinter(tmp.length,tmp[0].length);
+        printer.setTable(tmp, 40);
+        printer.print(System.out);
+
+    }
+
+
+    private String[][] listToStringarrayWithExpertise(List<? extends Mitarbeiter> liste,String fertigkeit) {
+        int i = 1;
+        String[][] table = new String[liste.size()+1][6];
+        table[0] = new String[] {
+            "ID",
+            "Vorname",
+            "Nachname", 
+            "Abteilung",
+            "Rolle",
+            "Erfahrungsgrad",
+            };
+        /**
+         * EXPERTISEN WERDEN HIER ENTFERNT BZW NICHT BEACHTET.
+         */
+        HashMap<Integer, String> labels = new Expertise().getBezeichner();
+        for (Mitarbeiter ma : liste) {
+            table[i] = new String[] {
+                 "" + ma.getID(),
+                 ma.getVorname(),
+                 ma.getName(), 
+                 ma.getAbteilung(),
+                 ma.getRolle(),
+                 labels.getOrDefault(ma.getExpertise().getErfahrungen().getOrDefault(fertigkeit, 0), "keine")                 
                  };
             i++;
         }

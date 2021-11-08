@@ -5,7 +5,8 @@ package org.hbrs.se.ws21.uebung4.model.persistence;
 import java.util.List;
 
 import org.hbrs.se.ws21.uebung4.model.Member;
-import org.hbrs.se.ws21.uebung4.model.persistence.PersistenceException.ExceptionType;
+import org.hbrs.se.ws21.uebung4.model.exception.PersistenceException;
+import org.hbrs.se.ws21.uebung4.model.exception.PersistenceException.ExceptionType;
 
 public class PersistenceStrategyMongoDB implements PersistenceStrategy<Member> {
 
