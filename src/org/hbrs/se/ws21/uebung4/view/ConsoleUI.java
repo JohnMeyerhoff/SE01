@@ -86,7 +86,7 @@ public class ConsoleUI {
 	public String textonlyDialogue(Scanner input,String label) {
 		
         out.println("Bitte geben Sie "+label+" ein. ");
-        Pattern p = Pattern.compile("[^a-zA-Z ]", Pattern.CASE_INSENSITIVE);
+        Pattern p = Pattern.compile("[^a-z ]", Pattern.CASE_INSENSITIVE);
         while(input.hasNext()){
             String tmp = input.next();
             Matcher m = p.matcher(tmp);
