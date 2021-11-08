@@ -32,7 +32,7 @@ public class ConsoleTest {
         PrintStream ps = new PrintStream(os);
         ConsoleUI ui = new ConsoleUI(ps);
         ui.displayExpertiseFound("fertigkeit");
-        assertEquals("Folgende Mitarbeiter haben die Expertise fertigkeit:\n\n".trim(),os.toString().trim());
+        assertEquals("Folgende Mitarbeiter haben die Expertise fertigkeit:".trim(),os.toString().trim());
     }
 
     @Test
@@ -42,8 +42,7 @@ public class ConsoleTest {
         ConsoleUI ui = new ConsoleUI(ps);
         Scanner a = new Scanner("drucken\n");
         assertEquals("drucken", ui.searchDialogue(a));
-        assertEquals("Bitte geben Sie eine von Ihnen gesuchte Expertise an. \n".trim(),os.toString().trim());
-
+        assertEquals("Bitte geben Sie eine von Ihnen gesuchte Expertise an.".trim(),os.toString().trim());
     }
 
     @Test

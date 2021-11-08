@@ -18,8 +18,9 @@ import org.hbrs.se.ws21.uebung4.view.MemberView;
 
 public class Client {
 
-    public int konsole(MitarbeiterContainer speicher,Scanner eingabe, PrintStream outstream) throws PersistenceException {
-        
+    public int konsole(MitarbeiterContainer speicher, Scanner eingabe, PrintStream outstream)
+            throws PersistenceException {
+
         String tmp;
         MemberView a = new MemberView();
         ConsoleUI ui = new ConsoleUI(outstream);
@@ -30,7 +31,7 @@ public class Client {
             tmp = eingabe.next();
             if (tmp.equals("exit")) {
                 ui.displayGoodBye();
-                eingabe.close();
+                eingabe.close(); // Schliessen des Scanners
                 return 0;
             }
 
@@ -44,22 +45,21 @@ public class Client {
                 MitarbeiterContainer.getInstance().store();
             }
 
-            
             if (tmp.equals("dump")) {
                 validcommand = true;
                 if (speicher.size() == 0) {
                     ui.displayNothingFoundTable();
                 } else {
-                    outstream.println("Bitte geben sie den namen einer Abteilung an (* für alle).");
-                    String abteilungsfilter = eingabe.next();
-                    if(abteilungsfilter.equals("*")){
+                    //outstream.println("Bitte geben sie den namen einer Abteilung an (* für alle).");
+                    String abteilungsfilter = ui.textonlyDialogue(eingabe, "den Abteilungsnamen (* für alle)");
+                    if (abteilungsfilter.equals("*")) {
                         a.dumpSorted(MitarbeiterContainer.getInstance().getCurrentListCopy());
-                    }else{
+                    } else {
                         a.dumpAbteilung(MitarbeiterContainer.getInstance().getCurrentListCopy(), abteilungsfilter);
                     }
                 }
             }
-            
+
             if (tmp.equals("load")) {
                 validcommand = true;
                 String parameter = ui.loadDialogue(eingabe);
@@ -79,10 +79,10 @@ public class Client {
             // bergeunzung der zeichen noch ggf. anpassen!
             if (tmp.equals("enter")) {
                 validcommand = true;
-                String vorname = ui.textonlyDialogue(eingabe,"ihren Vornamen");
-                String name =  ui.textonlyDialogue(eingabe,"ihren Nachnamen");
-                String rolle = ui.textonlyDialogue(eingabe,"ihre Rolle");
-                String abteilung = ui.textonlyDialogue(eingabe,"ihre Abteilung");
+                String vorname = ui.textonlyDialogue(eingabe, "ihren Vornamen");
+                String name = ui.textonlyDialogue(eingabe, "ihren Nachnamen");
+                String rolle = ui.textonlyDialogue(eingabe, "ihre Rolle");
+                String abteilung = ui.textonlyDialogue(eingabe, "ihre Abteilung");
                 Expertise ax = new Expertise();
                 for (int i = 0; i < 3; i++) {
                     if (i == 2) {
@@ -102,8 +102,7 @@ public class Client {
                         try {
                             int lvl = eingabe.nextInt();
                             if (lvl < 1 || lvl > 3) {
-                                System.out.println(
-                                        "Falsche Eingabe. Sie können nur Level von 1 bis 3 angeben.");
+                                System.out.println("Falsche Eingabe. Sie können nur Level von 1 bis 3 angeben.");
                                 gelesen = false;
                                 continue;
                             }
@@ -129,8 +128,7 @@ public class Client {
                 validcommand = true;
                 String fertigkeit = ui.searchDialogue(eingabe);
                 List<Mitarbeiter> x = speicher.getCurrentListCopy().stream()
-                        .filter(ma -> ma.getExpertise().getErfahrungen().containsKey(fertigkeit))
-                        .toList();
+                        .filter(ma -> ma.getExpertise().getErfahrungen().containsKey(fertigkeit)).toList();
                 if (x.isEmpty()) {
                     ui.displayExpertiseNotFound();
                 } else {
@@ -139,6 +137,11 @@ public class Client {
                 a.dumpSearched(x, fertigkeit);
             }
 
+            /**
+             * Validcommand setzt sich zu beginn jedes Commands Neu auf False, und innerhalb
+             * der einzelnen Befehle Auf true. Die InvalidCommandMessage wird nur ausgegeben
+             * wenn !FALSE == True also validcommand == false
+             */
             if (!validcommand) {
                 ui.displayInvalidCommandMessage();
             }
