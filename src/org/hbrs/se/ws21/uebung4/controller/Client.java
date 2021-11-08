@@ -1,5 +1,6 @@
 package org.hbrs.se.ws21.uebung4.controller;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
@@ -17,19 +18,19 @@ import org.hbrs.se.ws21.uebung4.view.MemberView;
 
 public class Client {
 
-    public int konsole(MitarbeiterContainer speicher) throws PersistenceException {
-        Scanner suche = new Scanner(System.in);
+    public int konsole(MitarbeiterContainer speicher,Scanner eingabe, PrintStream outstream) throws PersistenceException {
+        
         String tmp;
         MemberView a = new MemberView();
-        ConsoleUI ui = new ConsoleUI(System.out);
+        ConsoleUI ui = new ConsoleUI(outstream);
         ui.displayWelcomeMessage();
 
-        while (suche.hasNext()) {
+        while (eingabe.hasNext()) {
             boolean validcommand = false;
-            tmp = suche.next();
+            tmp = eingabe.next();
             if (tmp.equals("exit")) {
                 ui.displayGoodBye();
-                suche.close();
+                eingabe.close();
                 return 0;
             }
 
@@ -49,13 +50,19 @@ public class Client {
                 if (speicher.size() == 0) {
                     ui.displayNothingFoundTable();
                 } else {
-                    a.dumpSorted(MitarbeiterContainer.getInstance().getCurrentListCopy());
+                    outstream.println("Bitte geben sie den namen einer Abteilung an (* für alle).");
+                    String abteilungsfilter = eingabe.next();
+                    if(abteilungsfilter.equals("*")){
+                        a.dumpSorted(MitarbeiterContainer.getInstance().getCurrentListCopy());
+                    }else{
+                        a.dumpAbteilung(MitarbeiterContainer.getInstance().getCurrentListCopy(), abteilungsfilter);
+                    }
                 }
             }
             
             if (tmp.equals("load")) {
                 validcommand = true;
-                String parameter = ui.loadDialogue(suche);
+                String parameter = ui.loadDialogue(eingabe);
                 try {
                     if (parameter.equals("merge")) {
                         speicher.merge();
@@ -72,10 +79,10 @@ public class Client {
             // bergeunzung der zeichen noch ggf. anpassen!
             if (tmp.equals("enter")) {
                 validcommand = true;
-                String vorname = ui.textonlyDialogue(suche,"ihren Vornamen");
-                String name =  ui.textonlyDialogue(suche,"ihren Nachnamen");
-                String rolle = ui.textonlyDialogue(suche,"ihre Rolle");
-                String abteilung = ui.textonlyDialogue(suche,"ihre Abteilung");
+                String vorname = ui.textonlyDialogue(eingabe,"ihren Vornamen");
+                String name =  ui.textonlyDialogue(eingabe,"ihren Nachnamen");
+                String rolle = ui.textonlyDialogue(eingabe,"ihre Rolle");
+                String abteilung = ui.textonlyDialogue(eingabe,"ihre Abteilung");
                 Expertise ax = new Expertise();
                 for (int i = 0; i < 3; i++) {
                     if (i == 2) {
@@ -84,7 +91,7 @@ public class Client {
                     }
                     System.out.println(
                             "Bitte geben Sie Ihre Fähigkeit oder Expertise in einem Wort an.  \n  Wenn Sie keine weitere Fähigkeit haben, dann geben sie bitte '-' ein.");
-                    String faehigkeit = suche.next();
+                    String faehigkeit = eingabe.next();
                     if (faehigkeit.equals("-")) {
                         break;
                     }
@@ -93,7 +100,7 @@ public class Client {
                     boolean gelesen = false;
                     while (!gelesen) {
                         try {
-                            int lvl = suche.nextInt();
+                            int lvl = eingabe.nextInt();
                             if (lvl < 1 || lvl > 3) {
                                 System.out.println(
                                         "Falsche Eingabe. Sie können nur Level von 1 bis 3 angeben.");
@@ -121,10 +128,10 @@ public class Client {
             if (tmp.equals("search")) {
                 validcommand = true;
 
-                String fertigkeit = ui.searchDialogue(suche);
+                String fertigkeit = ui.searchDialogue(eingabe);
                 List<Mitarbeiter> x = speicher.getCurrentListCopy().stream()
                         .filter(ma -> ma.getExpertise().getErfahrungen().containsKey(fertigkeit))
-                        .collect(Collectors.toList());
+                        .toList();
                 if (x.isEmpty()) {
                     ui.displayExpertiseNotFound();
                 } else {
