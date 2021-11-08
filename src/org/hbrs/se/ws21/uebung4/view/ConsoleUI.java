@@ -64,7 +64,7 @@ public class ConsoleUI {
     }
 
     public String searchDialogue(Scanner suche) {
-        out.println("Bitte geben Sie eine von Ihnen gesuchte Expertise an. ");     
+        out.println("Bitte geben Sie eine von Ihnen gesuchte Expertise an.");     
         return suche.next();
     }
 
@@ -84,7 +84,6 @@ public class ConsoleUI {
      * @return
      */
 	public String textonlyDialogue(Scanner input,String label) {
-		
         out.println("Bitte geben Sie "+label+" ein. ");
         Pattern p = Pattern.compile("[^a-z ]", Pattern.CASE_INSENSITIVE);
         while(input.hasNext()){

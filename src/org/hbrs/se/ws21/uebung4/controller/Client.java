@@ -127,7 +127,6 @@ public class Client {
             }
             if (tmp.equals("search")) {
                 validcommand = true;
-
                 String fertigkeit = ui.searchDialogue(eingabe);
                 List<Mitarbeiter> x = speicher.getCurrentListCopy().stream()
                         .filter(ma -> ma.getExpertise().getErfahrungen().containsKey(fertigkeit))
