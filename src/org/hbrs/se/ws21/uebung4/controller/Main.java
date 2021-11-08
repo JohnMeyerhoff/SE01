@@ -16,12 +16,7 @@ public class Main {
         try {
             cl.konsole(maincontainer);
         } catch (PersistenceException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-
-        //tabellarische Form 
-
     }
 }

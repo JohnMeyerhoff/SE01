@@ -6,8 +6,11 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Scanner;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,17 +20,17 @@ import org.hbrs.se.ws21.uebung4.model.exception.ContainerException;
 import org.hbrs.se.ws21.uebung4.model.exception.PersistenceException;
 import org.hbrs.se.ws21.uebung4.model.persistence.PersistenceStrategyMongoDB;
 import org.hbrs.se.ws21.uebung4.model.persistence.PersistenceStrategyStream;
+import org.hbrs.se.ws21.uebung4.view.ConsoleUI;
 import org.hbrs.se.ws21.uebung4.model.MitarbeiterContainer;
 import org.hbrs.se.ws21.uebung4.model.Expertise;
 import org.hbrs.se.ws21.uebung4.model.Mitarbeiter;
-
 
 /**
  * TODO UMSCHREIBEN AUF MITARBEITER
  */
 
 public class MitarbeiterContainerTest {
-    MitarbeiterContainer     c1;
+    MitarbeiterContainer c1;
     static Mitarbeiter m1;
     static Mitarbeiter m2;
     static Mitarbeiter m3;
@@ -49,9 +52,9 @@ public class MitarbeiterContainerTest {
         c.putFaehigkeitLvl(STRICKEN, 2);
         c.putFaehigkeitLvl("Java", 2);
         c.putFaehigkeitLvl("Linux", 2);
-        m1 = new Mitarbeiter("Artin","Mueller","Teamleiter","Design",a);
-        m2 = new Mitarbeiter("Martin","Mayerr","Abteilungsleiter","Design",b);
-        m3 = new Mitarbeiter("Wilhelm","Mertens","Teamleiter","Engineering",c);
+        m1 = new Mitarbeiter("Artin", "Mueller", "Teamleiter", "Design", a);
+        m2 = new Mitarbeiter("Martin", "Mayerr", "Abteilungsleiter", "Design", b);
+        m3 = new Mitarbeiter("Wilhelm", "Mertens", "Teamleiter", "Engineering", c);
     }
 
     @BeforeEach
@@ -89,7 +92,7 @@ public class MitarbeiterContainerTest {
         c1.setStrategy(stream);
         PersistenceException exception = assertThrows(PersistenceException.class, () -> c1.load());
         assertEquals("failDirectory (No such file or directory)", exception.getMessage());
-        //auf Windows: "failDirectory (The system cannot find the file specified)"
+        // auf Windows: "failDirectory (The system cannot find the file specified)"
 
     }
 
@@ -166,10 +169,8 @@ public class MitarbeiterContainerTest {
         c1.setStrategy(new PersistenceStrategyStream<>());
         assertDoesNotThrow(() -> c1.addMember(m1));
         assertEquals(1, c1.size());
-        ContainerException exception = assertThrows(ContainerException.class,
-                () -> c1.addMember(m1));
-        assertEquals("Das Member-Objekt mit der ID " + m1.getID() + " ist bereits vorhanden!",
-                exception.getMessage());
+        ContainerException exception = assertThrows(ContainerException.class, () -> c1.addMember(m1));
+        assertEquals("Das Member-Objekt mit der ID " + m1.getID() + " ist bereits vorhanden!", exception.getMessage());
         c1.deleteMember(m1.getID());
     }
 
@@ -204,4 +205,22 @@ public class MitarbeiterContainerTest {
         // of deleteMember does not use exceptions
     }
 
+    @Test
+    public void konsoleTest() {
+
+        c1 = MitarbeiterContainer.getInstance();
+        c1.setStrategy(new PersistenceStrategyStream<>());
+        
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(os);
+        ConsoleUI ui = new ConsoleUI(ps);
+
+        Scanner a = new Scanner("drucken\n");
+        assertEquals("drucken", ui.searchDialogue(a));
+
+        String ergebnis = os.toString();
+       
+        assertEquals("Bitte geben Sie eine von Ihnen gesuchte Expertise an. \n".toLowerCase(), ergebnis.toLowerCase());
+    
+    }
 }
