@@ -206,21 +206,56 @@ public class MitarbeiterContainerTest {
     }
 
     @Test
-    public void konsoleTest() {
-
+    public void consoleSearchTest() {
         c1 = MitarbeiterContainer.getInstance();
         c1.setStrategy(new PersistenceStrategyStream<>());
-        
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(os);
         ConsoleUI ui = new ConsoleUI(ps);
-
         Scanner a = new Scanner("drucken\n");
         assertEquals("drucken", ui.searchDialogue(a));
+        assertEquals("Bitte geben Sie eine von Ihnen gesuchte Expertise an. \n".toLowerCase(),
+                os.toString().toLowerCase());
 
-        String ergebnis = os.toString();
-       
-        assertEquals("Bitte geben Sie eine von Ihnen gesuchte Expertise an. \n".toLowerCase(), ergebnis.toLowerCase());
-    
+    }
+
+    @Test
+    public void consoleDumpTest() {
+        c1 = MitarbeiterContainer.getInstance();
+        c1.setStrategy(new PersistenceStrategyStream<>());
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(os);
+        ConsoleUI ui = new ConsoleUI(ps);
+        ui.displayExpertiseFound("fertigkeit");
+        assertEquals("Folgende Mitarbeiter haben die Expertise fertigkeit:\n\n".toLowerCase(),
+                os.toString().toLowerCase());
+    }
+
+    @Test
+    public void consoleExitTest() {
+        c1 = MitarbeiterContainer.getInstance();
+        c1.setStrategy(new PersistenceStrategyStream<>());
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(os);
+        ConsoleUI ui = new ConsoleUI(ps);
+        Scanner a = new Scanner("drucken\n");
+        assertEquals("drucken", ui.searchDialogue(a));
+        assertEquals("Bitte geben Sie eine von Ihnen gesuchte Expertise an. \n".toLowerCase(),
+                os.toString().toLowerCase());
+
+    }
+
+    @Test
+    public void consoleTextonlyTest() {
+        c1 = MitarbeiterContainer.getInstance();
+        c1.setStrategy(new PersistenceStrategyStream<>());
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(os);
+        ConsoleUI ui = new ConsoleUI(ps);
+        Scanner a = new Scanner("drucken\n");
+        assertEquals("drucken", ui.searchDialogue(a));
+        assertEquals("Bitte geben Sie eine von Ihnen gesuchte Expertise an. \n".toLowerCase(),
+                os.toString().toLowerCase());
+
     }
 }
