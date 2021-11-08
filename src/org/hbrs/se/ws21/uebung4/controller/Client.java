@@ -15,7 +15,7 @@ import org.hbrs.se.ws21.uebung4.view.ConsoleUI;
 import org.hbrs.se.ws21.uebung4.view.MemberView;
 
 public class Client {
-    
+
     public int konsole(MitarbeiterContainer speicher) throws PersistenceException {
         Scanner suche = new Scanner(System.in);
         String tmp;
@@ -26,39 +26,23 @@ public class Client {
         while (suche.hasNext()) {
             boolean validcommand = false;
             tmp = suche.next();
-            if (tmp.equals("help")) {
-                validcommand = true;
-                ui.displayHelpMessage();
-            }
             if (tmp.equals("exit")) {
                 ui.displayGoodBye();
                 suche.close();
                 return 0;
             }
+
+            if (tmp.equals("help")) {
+                validcommand = true;
+                ui.displayHelpMessage();
+            }
+
             if (tmp.equals("store")) {
                 validcommand = true;
                 MitarbeiterContainer.getInstance().store();
             }
-            if (tmp.equals("load")) {
-                validcommand = true;
-                String parameter = ui.loadDialogue(suche);
 
-                boolean loadsuccess = true;
-                try {
-                    if (parameter.equals("merge")) {
-                        speicher.merge();
-                    } else {
-                        speicher.force();
-                    }
-                } catch (Exception e) {
-                    loadsuccess = false;
-                    System.out.println("Sie haben einen falschen Parameter angegeben.");
-                }
-                if (loadsuccess) {
-                    ui.displayLoadSucessMessage();
-                }
-            }
-
+            
             if (tmp.equals("dump")) {
                 validcommand = true;
                 if (speicher.size() == 0) {
@@ -67,33 +51,30 @@ public class Client {
                     a.dumpSorted(MitarbeiterContainer.getInstance().getCurrentListCopy());
                 }
             }
-
+            
+            if (tmp.equals("load")) {
+                validcommand = true;
+                String parameter = ui.loadDialogue(suche);
+                try {
+                    if (parameter.equals("merge")) {
+                        speicher.merge();
+                    } else {
+                        speicher.force();
+                    }
+                    // We do not need a boolean because an exception
+                    // in merge() would skip this line.
+                    ui.displayLoadSucessMessage();
+                } catch (Exception e) {
+                    ui.displayLoadFailureMessage(e);
+                }
+            }
             // bergeunzung der zeichen noch ggf. anpassen!
             if (tmp.equals("enter")) {
                 validcommand = true;
-
-                System.out.println("Bitte geben Sie ihren Vornamen ein. ");
-                String vorname = suche.next();
-
-                System.out.println("Bitte geben Sie ihren Nachname ein. ");
-                String name = suche.next();
-
-                for (int i = 0; i < 10; i++) {
-                    // evtl noch nach Symbolen überprüfen!!
-                    if (name.contains("" + i) || vorname.contains("" + i)) {
-                        System.out.println(
-                                "Ungültige Eingabe für Ihren Vor- bzw. Nachname.\nBitte versuchen Sie es nochmal.");
-                        break; // damit if-statement abbricht - neuer Verscuh im nächsten
-                               // Schleifendurchlauf
-                    }
-                }
-
-                System.out.println("Bitte geben Sie ihre Rolle ein. ");
-                String rolle = suche.next();
-
-                System.out.println("Bitte geben Sie ihre Abteilung ein. ");
-                String abteilung = suche.next();
-
+                String vorname = ui.textonlyDialogue(suche,"ihren Vornamen");
+                String name =  ui.textonlyDialogue(suche,"ihren Nachnamen");
+                String rolle = ui.textonlyDialogue(suche,"ihre Rolle");
+                String abteilung = ui.textonlyDialogue(suche,"ihre Abteilung");
                 Expertise ax = new Expertise();
                 for (int i = 0; i < 3; i++) {
                     if (i == 2) {
@@ -138,8 +119,8 @@ public class Client {
             }
             if (tmp.equals("search")) {
                 validcommand = true;
-                System.out.println("Bitte geben Sie eine von Ihnen gesuchte Expertise an. ");
-                String fertigkeit = suche.next();
+
+                String fertigkeit = ui.searchDialogue(suche);
                 List<Mitarbeiter> x = speicher.getCurrentListCopy().stream()
                         .filter(ma -> ma.getExpertise().getErfahrungen().containsKey(fertigkeit))
                         .collect(Collectors.toList());

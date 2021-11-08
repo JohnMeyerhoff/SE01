@@ -2,6 +2,8 @@ package org.hbrs.se.ws21.uebung4.view;
 
 import java.io.PrintStream;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ConsoleUI {
     PrintStream out;
@@ -50,7 +52,51 @@ public class ConsoleUI {
 
     public String loadDialogue(Scanner input) {
         out.println("Bitte angeben, ob mit merge oder force geladen wird.");
-        return input.next();
+        while(input.hasNext()){
+            String tmp = input.next();
+            if (tmp.equalsIgnoreCase("merge")|| tmp.equalsIgnoreCase("force")){
+                return tmp;
+            }else{
+                out.println("Bitte geben sie hier nur 'merge' oder 'force' ein.");
+            }
+        }
+        return "force";
     }
+
+    public String searchDialogue(Scanner suche) {
+        out.println("Bitte geben Sie eine von Ihnen gesuchte Expertise an. ");     
+        return suche.next();
+    }
+
+    public void displayLoadFailureMessage(Exception e) {
+        /**
+         * TODO: e instanceof zum verbessern der präzision
+         */
+        out.println("Das laden war nicht erfolgreich.");
+    }
+
+    /**
+     * 
+     * @param input
+     * @param label takes the label to
+     * be placed in the format of
+     * __Bitte geben Sie "+label+" ein.__
+     * @return
+     */
+	public String textonlyDialogue(Scanner input,String label) {
+		
+        out.println("Bitte geben Sie "+label+" ein. ");
+        Pattern p = Pattern.compile("[^a-z ]", Pattern.CASE_INSENSITIVE);
+        while(input.hasNext()){
+            String tmp = input.next();
+            Matcher m = p.matcher(tmp);
+            if (m.find()){
+                out.println("Bitte geben sie hier nur Buchstaben ein.");
+            }else{
+                return tmp;
+            }
+        }
+        return "Fehler";
+	}
 
 }
