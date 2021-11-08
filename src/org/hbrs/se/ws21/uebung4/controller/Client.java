@@ -11,28 +11,28 @@ import org.hbrs.se.ws21.uebung4.model.Expertise;
 import org.hbrs.se.ws21.uebung4.model.Mitarbeiter;
 import org.hbrs.se.ws21.uebung4.model.MitarbeiterContainer;
 import org.hbrs.se.ws21.uebung4.model.exception.PersistenceException;
+import org.hbrs.se.ws21.uebung4.view.ConsoleUI;
 import org.hbrs.se.ws21.uebung4.view.MemberView;
 
 public class Client {
-    Scanner suche = new Scanner(System.in);
-
+    
     public int konsole(MitarbeiterContainer speicher) throws PersistenceException {
+        Scanner suche = new Scanner(System.in);
         String tmp;
         MemberView a = new MemberView();
-        System.out.println(
-                "Willkommen im Sprint-Tool von Klara und John, \nmit dem Befehl help erhalten Sie eine Übersicht.\n>");
+        ConsoleUI ui = new ConsoleUI(System.out);
+        ui.displayWelcomeMessage();
+
         while (suche.hasNext()) {
             boolean validcommand = false;
             tmp = suche.next();
             if (tmp.equals("help")) {
                 validcommand = true;
-                System.out.println("Mögliche Befehle für Sie sind: " + "\n" + "enter" + "\n"
-                        + "store" + "\n" + "load" + "\n" + "dump" + "\n" + "search" + "\n" + "exit"
-                        + "\n" + "help" + "\n");
+                ui.displayHelpMessage();
             }
             if (tmp.equals("exit")) {
-                validcommand = true;
-                System.out.println("Auf Wiedersehen");
+                ui.displayGoodBye();
+                suche.close();
                 return 0;
             }
             if (tmp.equals("store")) {
@@ -41,8 +41,8 @@ public class Client {
             }
             if (tmp.equals("load")) {
                 validcommand = true;
-                System.out.println("Bitte angeben, ob mit merge oder force geladen wird.");
-                String parameter = suche.next();
+                String parameter = ui.loadDialogue(suche);
+
                 boolean loadsuccess = true;
                 try {
                     if (parameter.equals("merge")) {
@@ -55,14 +55,17 @@ public class Client {
                     System.out.println("Sie haben einen falschen Parameter angegeben.");
                 }
                 if (loadsuccess) {
-                    System.out.println("Erfolgreich geladen.");
+                    ui.displayLoadSucessMessage();
                 }
             }
 
             if (tmp.equals("dump")) {
                 validcommand = true;
-
-                a.dumpSorted(MitarbeiterContainer.getInstance().getCurrentListCopy());
+                if (speicher.size() == 0) {
+                    ui.displayNothingFoundTable();
+                } else {
+                    a.dumpSorted(MitarbeiterContainer.getInstance().getCurrentListCopy());
+                }
             }
 
             // bergeunzung der zeichen noch ggf. anpassen!
@@ -94,8 +97,8 @@ public class Client {
                 Expertise ax = new Expertise();
                 for (int i = 0; i < 3; i++) {
                     if (i == 2) {
-                        System.out.println(
-                                "Dies ist Ihr letzter Eintrag als Fähigkeit, da Sie hier nur 3 Ihrer besten Fähigkeiten angeben können. ");
+                        System.out.println("Dies ist Ihr letzter Eintrag als "
+                                + "Fähigkeit, da Sie hier nur 3 Ihrer besten Fähigkeiten angeben können. ");
                     }
                     System.out.println(
                             "Bitte geben Sie Ihre Fähigkeit oder Expertise in einem Wort an.  \n  Wenn Sie keine weitere Fähigkeit haben, dann geben sie bitte '-' ein.");
@@ -137,19 +140,19 @@ public class Client {
                 validcommand = true;
                 System.out.println("Bitte geben Sie eine von Ihnen gesuchte Expertise an. ");
                 String fertigkeit = suche.next();
-
-                List<Mitarbeiter> cl = speicher.getCurrentListCopy();
-                List<Mitarbeiter> x = cl.stream()
+                List<Mitarbeiter> x = speicher.getCurrentListCopy().stream()
                         .filter(ma -> ma.getExpertise().getErfahrungen().containsKey(fertigkeit))
                         .collect(Collectors.toList());
-
-                System.out.println("Folgende Mitarbeiter haben die Expertise "+fertigkeit+":\n");
+                if (x.isEmpty()) {
+                    ui.displayExpertiseNotFound();
+                } else {
+                    ui.displayExpertiseFound(fertigkeit);
+                }
                 a.dumpSearched(x, fertigkeit);
             }
 
             if (!validcommand) {
-                System.out.println("Sie haben keine der gegebenen Befehle benutzt. " + "\n"
-                        + "Geben Sie 'help' als Befehl ein, um alle Möglichkeiten zu sehen.");
+                ui.displayInvalidCommandMessage();
             }
 
         }
