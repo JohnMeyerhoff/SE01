@@ -1,7 +1,7 @@
 package org.hbrs.se.ws21.uebung4.view;
 
 import org.hbrs.se.ws21.uebung4.model.MitarbeiterContainer;
-import org.hbrs.se.ws21.uebung4.controller.ContainerException;
+import org.hbrs.se.ws21.uebung4.model.exception.ContainerException;
 import org.hbrs.se.ws21.uebung4.model.Expertise;
 import org.hbrs.se.ws21.uebung4.model.Mitarbeiter;
 

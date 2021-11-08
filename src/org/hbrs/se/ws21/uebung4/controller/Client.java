@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import org.hbrs.se.ws21.uebung4.model.Expertise;
 import org.hbrs.se.ws21.uebung4.model.Mitarbeiter;
 import org.hbrs.se.ws21.uebung4.model.MitarbeiterContainer;
+import org.hbrs.se.ws21.uebung4.model.exception.ContainerException;
 import org.hbrs.se.ws21.uebung4.model.exception.PersistenceException;
 import org.hbrs.se.ws21.uebung4.view.ConsoleUI;
 import org.hbrs.se.ws21.uebung4.view.MemberView;

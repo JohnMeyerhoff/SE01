@@ -13,41 +13,55 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import org.hbrs.se.ws21.uebung3.ContainerException;
-import org.hbrs.se.ws21.uebung3.Container;
-import org.hbrs.se.ws21.uebung3.ExampleMember;
-import org.hbrs.se.ws21.uebung3.Member;
-import org.hbrs.se.ws21.uebung3.MemberView;
-import org.hbrs.se.ws21.uebung3.persistence.PersistenceException;
-import org.hbrs.se.ws21.uebung3.persistence.PersistenceStrategyMongoDB;
-import org.hbrs.se.ws21.uebung3.persistence.PersistenceStrategyStream;
+import org.hbrs.se.ws21.uebung4.model.exception.ContainerException;
+import org.hbrs.se.ws21.uebung4.model.exception.PersistenceException;
+import org.hbrs.se.ws21.uebung4.model.persistence.PersistenceStrategyMongoDB;
+import org.hbrs.se.ws21.uebung4.model.persistence.PersistenceStrategyStream;
+import org.hbrs.se.ws21.uebung4.model.MitarbeiterContainer;
+import org.hbrs.se.ws21.uebung4.model.Expertise;
+import org.hbrs.se.ws21.uebung4.model.Mitarbeiter;
 
 
 /**
  * TODO UMSCHREIBEN AUF MITARBEITER
  */
 
-public class ContainerTest {
-    Container     c1;
-    static Member m1;
-    static Member m2;
-    static Member m3;
+public class MitarbeiterContainerTest {
+    MitarbeiterContainer     c1;
+    static Mitarbeiter m1;
+    static Mitarbeiter m2;
+    static Mitarbeiter m3;
+    static final String STRICKEN = "Stricken";
 
     @BeforeAll
     public static void initialize() {
-        m1 = new ExampleMember();
-        m2 = new ExampleMember();
-        m3 = new ExampleMember();
+        Expertise a = new Expertise();
+        Expertise b = new Expertise();
+        Expertise c = new Expertise();
+        a.putFaehigkeitLvl(STRICKEN, 1);
+        a.putFaehigkeitLvl("Gehen", 2);
+        a.putFaehigkeitLvl("Sitzen", 3);
+
+        b.putFaehigkeitLvl(STRICKEN, 2);
+        b.putFaehigkeitLvl("Leiden", 3);
+        b.putFaehigkeitLvl("Programmieren", 1);
+
+        c.putFaehigkeitLvl(STRICKEN, 2);
+        c.putFaehigkeitLvl("Java", 2);
+        c.putFaehigkeitLvl("Linux", 2);
+        m1 = new Mitarbeiter("Artin","Mueller","Teamleiter","Design",a);
+        m2 = new Mitarbeiter("Martin","Mayerr","Abteilungsleiter","Design",b);
+        m3 = new Mitarbeiter("Wilhelm","Mertens","Teamleiter","Engineering",c);
     }
 
     @BeforeEach
     public void destroy() {
-        Container.developmentReset();
+        MitarbeiterContainer.developmentReset();
     }
 
     @Test
     public void noStrategy() {
-        c1 = Container.getInstance();
+        c1 = MitarbeiterContainer.getInstance();
         assertEquals(0, c1.size());
         assertDoesNotThrow(() -> c1.addMember(m1));
         assertEquals(1, c1.size());
@@ -57,7 +71,7 @@ public class ContainerTest {
 
     @Test
     public void mongoDBTest() {
-        c1 = Container.getInstance();
+        c1 = MitarbeiterContainer.getInstance();
         c1.setStrategy(new PersistenceStrategyMongoDB());
         assertEquals(0, c1.size());
         assertDoesNotThrow(() -> c1.addMember(m1));
@@ -68,8 +82,8 @@ public class ContainerTest {
 
     @Test
     public void wrongLocation() {
-        c1 = Container.getInstance();
-        PersistenceStrategyStream stream = new PersistenceStrategyStream();
+        c1 = MitarbeiterContainer.getInstance();
+        PersistenceStrategyStream<Mitarbeiter> stream = new PersistenceStrategyStream<>();
         String loc = "failDirectory/";
         stream.setLocation(loc);
         c1.setStrategy(stream);
@@ -83,8 +97,8 @@ public class ContainerTest {
     @Test
     public void einspeichernTest() {
 
-        c1 = Container.getInstance();
-        c1.setStrategy(new PersistenceStrategyStream());
+        c1 = MitarbeiterContainer.getInstance();
+        c1.setStrategy(new PersistenceStrategyStream<>());
         assertEquals(0, c1.size());
         assertDoesNotThrow(() -> c1.addMember(m1));
         assertEquals(1, c1.size());
@@ -148,8 +162,8 @@ public class ContainerTest {
 
     @Test
     public void exceptionTest() {
-        c1 = Container.getInstance();
-        c1.setStrategy(new PersistenceStrategyStream());
+        c1 = MitarbeiterContainer.getInstance();
+        c1.setStrategy(new PersistenceStrategyStream<>());
         assertDoesNotThrow(() -> c1.addMember(m1));
         assertEquals(1, c1.size());
         ContainerException exception = assertThrows(ContainerException.class,
@@ -161,8 +175,8 @@ public class ContainerTest {
 
     @Test
     public void getCurrentTest() {
-        c1 = Container.getInstance();
-        c1.setStrategy(new PersistenceStrategyStream());
+        c1 = MitarbeiterContainer.getInstance();
+        c1.setStrategy(new PersistenceStrategyStream<>());
         assertDoesNotThrow(() -> c1.addMember(m1));
         assertEquals(c1.size(), c1.getCurrentList().size());
         assertDoesNotThrow(() -> c1.addMember(m2));
@@ -170,15 +184,15 @@ public class ContainerTest {
         assertDoesNotThrow(() -> c1.addMember(m3));
         assertEquals(c1.size(), c1.getCurrentList().size());
         assertEquals(3, c1.getCurrentList().size());
-        List<Member> a = c1.getCurrentList();
-        List<Member> b = c1.getCurrentListCopy();
+        List<Mitarbeiter> a = c1.getCurrentList();
+        List<Mitarbeiter> b = c1.getCurrentListCopy();
         assertEquals(a.size(), b.size());
-        Iterator<Member> aIterator = a.iterator();
-        for (Member bElement : b) {
+        Iterator<Mitarbeiter> aIterator = a.iterator();
+        for (Mitarbeiter bElement : b) {
             assertEquals(bElement, aIterator.next());
         }
 
-        for (Member deletionID : b) {
+        for (Mitarbeiter deletionID : b) {
             assertEquals("deleted", c1.deleteMember(deletionID.getID()));
             if (c1.size() > 0) {
                 assertEquals("unchanged", c1.deleteMember(deletionID.getID()));
