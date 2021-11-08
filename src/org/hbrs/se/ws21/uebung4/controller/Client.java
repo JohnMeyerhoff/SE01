@@ -50,7 +50,6 @@ public class Client {
                 if (speicher.size() == 0) {
                     ui.displayNothingFoundTable();
                 } else {
-                    //outstream.println("Bitte geben sie den namen einer Abteilung an (* für alle).");
                     String abteilungsfilter = ui.textonlyDialogue(eingabe, "den Abteilungsnamen (* für alle)");
                     if (abteilungsfilter.equals("*")) {
                         a.dumpSorted(MitarbeiterContainer.getInstance().getCurrentListCopy());
