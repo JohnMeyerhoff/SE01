@@ -19,7 +19,7 @@ public class ConsoleUI {
 
     public void displayHelpMessage() {
         out.println("Mögliche Befehle für Sie sind: \nenter \nstore \nload"
-                + "\ndump \nsearch \nexit \nhelp \n");
+                + "\ndump \nsearch \nexit \nhelp");
     }
 
     public void displayGoodBye() {

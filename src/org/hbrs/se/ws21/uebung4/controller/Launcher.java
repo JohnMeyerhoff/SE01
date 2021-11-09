@@ -14,7 +14,6 @@ public class Launcher {
         MitarbeiterContainer maincontainer = MitarbeiterContainer.getInstance();
         maincontainer.setStrategy(new PersistenceStrategyStream<>());
         Client cl = new Client();
-
         try {
             cl.konsole(maincontainer, new Scanner(System.in), System.out);
         } catch (PersistenceException e) {
