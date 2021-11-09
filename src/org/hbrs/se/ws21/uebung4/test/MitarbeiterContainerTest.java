@@ -20,7 +20,6 @@ import org.hbrs.se.ws21.uebung4.model.exception.ContainerException;
 import org.hbrs.se.ws21.uebung4.model.exception.PersistenceException;
 import org.hbrs.se.ws21.uebung4.model.persistence.PersistenceStrategyMongoDB;
 import org.hbrs.se.ws21.uebung4.model.persistence.PersistenceStrategyStream;
-import org.hbrs.se.ws21.uebung4.view.ConsoleUI;
 import org.hbrs.se.ws21.uebung4.model.MitarbeiterContainer;
 import org.hbrs.se.ws21.uebung4.model.Expertise;
 import org.hbrs.se.ws21.uebung4.model.Mitarbeiter;

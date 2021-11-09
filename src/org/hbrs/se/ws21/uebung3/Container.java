@@ -30,14 +30,14 @@ public class Container {
             try {
                 this.strategy.closeConnection();
             } catch (PersistenceException e) {
-                System.out.println("Could not close connection");
+                System.err.println("Could not close connection");
             }
         }
         this.strategy = strategy;
         try {
             strategy.openConnection();
         } catch (PersistenceException e) {
-            System.out.println("Could not open connection");
+            System.err.println("Could not open connection");
         }
     }
 
