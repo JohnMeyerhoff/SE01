@@ -53,6 +53,8 @@ public class Client {
                     String abteilungsfilter = ui.textonlyDialogue(eingabe,
                             "den Abteilungsnamen (* für alle)");
                     // * Gibt die Mitarbeiter aller Abteilungen ungefiltert zurück.
+
+                    //nochmal besprechen:
                     if (abteilungsfilter.equals("*")) {
                         a.dumpSorted(
                                 MitarbeiterContainer.getInstance().getCurrentListCopy());
@@ -87,7 +89,7 @@ public class Client {
                 String name = ui.textonlyDialogue(eingabe, "ihren Nachnamen");
                 String rolle = ui.textonlyDialogue(eingabe, "ihre Rolle");
                 String abteilung = ui.textonlyDialogue(eingabe, "ihre Abteilung");
-                Expertise ax = new Expertise();
+                Expertise ax = new Expertise(); 
                 for (int i = 0; i < 3; i++) {
                     if (i == 2) {
                         System.out.println("Dies ist Ihr letzter Eintrag als "
@@ -134,7 +136,7 @@ public class Client {
                 a.dumpSearched(x, fertigkeit);
             }
 
-            /**
+            /** 
              * Validcommand setzt sich zu beginn jedes Commands Neu auf False, und
              * innerhalb der einzelnen Befehle Auf true. Die InvalidCommandMessage wird
              * nur ausgegeben wenn !FALSE == True also validcommand == false
