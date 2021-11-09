@@ -1,7 +1,9 @@
 package org.hbrs.se.ws21.uebung4.controller;
 
 public class JavaVersionHelper {
-
+    /**
+     * Not needed at the moment.
+     */
     private JavaVersionHelper() {
 
     }

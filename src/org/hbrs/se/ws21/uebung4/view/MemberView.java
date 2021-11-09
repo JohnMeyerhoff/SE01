@@ -49,8 +49,8 @@ public class MemberView {
          * EXPERTISEN WERDEN HIER ENTFERNT BZW NICHT BEACHTET.
          */
         for (Mitarbeiter ma : liste) {
-            table[i] = new String[] { "" + ma.getID(), ma.getVorname(), ma.getName(), ma.getAbteilung(),
-                    ma.getRolle(), };
+            table[i] = new String[] { "" + ma.getID(), ma.getVorname(), ma.getName(),
+                    ma.getAbteilung(), ma.getRolle(), };
             i++;
         }
         return table;
@@ -66,17 +66,21 @@ public class MemberView {
 
     }
 
-    private String[][] listToStringarrayWithExpertise(List<? extends Mitarbeiter> liste, String fertigkeit) {
+    private String[][] listToStringarrayWithExpertise(List<? extends Mitarbeiter> liste,
+            String fertigkeit) {
         int i = 1;
         String[][] table = new String[liste.size() + 1][6];
-        table[0] = new String[] { "ID", "Vorname", "Nachname", "Abteilung", "Rolle", "Erfahrungsgrad", };
+        table[0] = new String[] { "ID", "Vorname", "Nachname", "Abteilung", "Rolle",
+                "Erfahrungsgrad", };
         /**
          * EXPERTISEN WERDEN HIER ENTFERNT BZW NICHT BEACHTET.
          */
         HashMap<Integer, String> labels = new Expertise().getBezeichner();
         for (Mitarbeiter ma : liste) {
-            table[i] = new String[] { "" + ma.getID(), ma.getVorname(), ma.getName(), ma.getAbteilung(), ma.getRolle(),
-                    labels.getOrDefault(ma.getExpertise().getErfahrungen().getOrDefault(fertigkeit, 0), "keine") };
+            table[i] = new String[] { "" + ma.getID(), ma.getVorname(), ma.getName(),
+                    ma.getAbteilung(), ma.getRolle(),
+                    labels.getOrDefault(ma.getExpertise().getErfahrungen()
+                            .getOrDefault(fertigkeit, 0), "keine") };
             i++;
         }
         return table;
@@ -85,15 +89,9 @@ public class MemberView {
 
     public void dumpAbteilung(List<Mitarbeiter> x, String abteilungsfilter) {
         Collections.sort(x, new MemberComparator());
-        List<Mitarbeiter> y;
-        if (JavaVersionHelper.getVersion() < 16) {
-            // toList is supported since V16
-            y = x.stream().filter(ma -> ma.getAbteilung().equalsIgnoreCase(abteilungsfilter))
-                    .collect(Collectors.toList());
-        } else {
-            y = x.stream().filter(ma -> ma.getAbteilung().equalsIgnoreCase(abteilungsfilter)).toList();
-        }
-
+        List<Mitarbeiter> y = x.stream()
+                .filter(ma -> ma.getAbteilung().equalsIgnoreCase(abteilungsfilter))
+                .toList();
         String[][] tmp = listToStringarray(y);
         TablePrinter printer = new TablePrinter(tmp.length, tmp[0].length);
         printer.setTable(tmp, 40);
