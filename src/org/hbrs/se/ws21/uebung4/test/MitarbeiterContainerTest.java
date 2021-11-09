@@ -6,11 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Scanner;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
