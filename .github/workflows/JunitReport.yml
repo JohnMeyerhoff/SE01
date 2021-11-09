@@ -6,13 +6,11 @@ on:
     - 'src/**'
     - '.github/workflows/JunitReport.yml'
 
-
 jobs:
   build:
     name: Build and Run Junit Reporting Tool
     runs-on: ubuntu-latest
     steps:
-      - name: Get Java
       - uses: actions/setup-java@v2
         with:
           distribution: 'temurin' 
