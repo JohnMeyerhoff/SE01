@@ -106,13 +106,12 @@ public class Client {
                     }
                     System.out.println(
                             "Welches Level besitzen Sie in dieser Fähigkeit? + \n +Bitte geben Sie das Level als Zahl zwischen 1 bis 3 an. +\n+ 1 wäre Beginner, 2 wäre Experte und 3 wäre Top-Performer.");
-                    int lvl = 0;
+                    int lvl = eingabe.nextInt();
                     while (lvl < 1 || lvl > 3) {
-                        lvl = eingabe.nextInt();
-                        if (lvl < 1 || lvl > 3) {
-                            System.out.println(
-                                    "Falsche Eingabe. Sie können nur Level von 1 bis 3 angeben.");
-                        }
+                        System.out.println(
+                            "Falsche Eingabe. Sie können nur Level von 1 bis 3 angeben.");
+                            lvl = eingabe.nextInt();
+                        
                     }
                     ax.putFaehigkeitLvl(faehigkeit, lvl);
                 }
@@ -122,7 +121,6 @@ public class Client {
                     speicher.addMember(x);
                 } catch (ContainerException e) {
                     outstream.println("Abspeichern Fehlgeschlagen.");
-                    // e.printStackTrace();
                 }
             }
             if (tmp.equals("search")) {

@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.Iterator;
 import java.util.List;
@@ -22,6 +23,7 @@ import org.hbrs.se.ws21.uebung4.model.persistence.PersistenceStrategyMongoDB;
 import org.hbrs.se.ws21.uebung4.model.persistence.PersistenceStrategyStream;
 import org.hbrs.se.ws21.uebung4.view.ConsoleUI;
 import org.hbrs.se.ws21.uebung4.model.MitarbeiterContainer;
+import org.hbrs.se.ws21.uebung4.controller.Client;
 import org.hbrs.se.ws21.uebung4.model.Expertise;
 import org.hbrs.se.ws21.uebung4.model.Mitarbeiter;
 
@@ -59,4 +61,20 @@ public class ClientTest {
         MitarbeiterContainer.developmentReset();
     }
 
+    @Test
+    public void enterTest(){
+        c1 = MitarbeiterContainer.getInstance();
+        Scanner sc = new Scanner("enter Klara Golubovic pferd arrri skill 1 skill 2 skill 3 dump");
+        Client neu = new Client();
+
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(os);
+        try {
+            neu.konsole(c1, sc, ps);
+        } catch (PersistenceException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
 }
