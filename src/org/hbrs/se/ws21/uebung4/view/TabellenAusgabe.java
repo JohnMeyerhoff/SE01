@@ -1,5 +1,8 @@
 package org.hbrs.se.ws21.uebung4.view;
 
+// Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
+// und Johannes Meyerhoff bearbeitet worden.
+
 import org.hbrs.se.ws21.uebung4.model.MitarbeiterContainer;
 import org.hbrs.se.ws21.uebung4.model.exception.ContainerException;
 import org.hbrs.se.ws21.uebung4.model.Expertise;

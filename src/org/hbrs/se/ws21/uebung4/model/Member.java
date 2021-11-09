@@ -4,8 +4,6 @@ package org.hbrs.se.ws21.uebung4.model;
 //und Johannes Meyerhoff bearbeitet worden.
 import java.io.Serializable;
 
-//Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
-//und Johannes Meyerhoff bearbeitet worden.
 public interface Member extends Serializable {
     // ID ist über einen Konstruktor einer abgeleiteten Klasse
     // explizit außerhalb der Container-Klasse zu belegen
