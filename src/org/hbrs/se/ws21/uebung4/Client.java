@@ -107,7 +107,7 @@ public class Client {
                 }
             }            
             if (tmp.equals("search")) {
-
+                speicher.getCurrentList();
             }
 
             System.out.println("Sie haben keine der gegebenen Befehle benutzt. " + "\n"

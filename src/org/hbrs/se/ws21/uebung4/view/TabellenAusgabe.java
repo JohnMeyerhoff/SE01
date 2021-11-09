@@ -27,7 +27,7 @@ public class TabellenAusgabe {
     public static void main(String[] args) {
         Container<Mitarbeiter> a = Container.getInstance();
         try {
-            a.addMember(new Mitarbeiter("Lisa", "Franz", "AB", "ABB", "BB"));
+            a.addMember(new Mitarbeiter());
         } catch (ContainerException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
