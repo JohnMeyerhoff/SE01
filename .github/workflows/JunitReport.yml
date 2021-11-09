@@ -12,6 +12,11 @@ jobs:
     name: Build and Run Junit Reporting Tool
     runs-on: ubuntu-latest
     steps:
+      - name: Get Java
+      - uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin' 
+          java-version: '17'
       - name: JUNIT Test Report Tool
         uses: JohnMeyerhoff/JunitAnnotations@v1.0.0
         with:
