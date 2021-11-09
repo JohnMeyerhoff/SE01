@@ -111,8 +111,8 @@ public class Client {
                 try {
                     speicher.addMember(x);
                 } catch (ContainerException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
+                    outstream.println("Abspeichern Fehlgeschlagen.");
+                    //e.printStackTrace();
                 }
             }
             if (tmp.equals("search")) {
