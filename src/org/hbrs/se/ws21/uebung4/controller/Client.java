@@ -51,6 +51,7 @@ public class Client {
                     ui.displayNothingFoundTable();
                 } else {
                     String abteilungsfilter = ui.textonlyDialogue(eingabe, "den Abteilungsnamen (* für alle)");
+                    // * Gibt die Mitarbeiter aller Abteilungen ungefiltert zurück.
                     if (abteilungsfilter.equals("*")) {
                         a.dumpSorted(MitarbeiterContainer.getInstance().getCurrentListCopy());
                     } else {
@@ -97,8 +98,9 @@ public class Client {
                     System.out.println(
                             "Welches Level besitzen Sie in dieser Fähigkeit? + \n +Bitte geben Sie das Level als Zahl zwischen 1 bis 3 an. +\n+ 1 wäre Beginner, 2 wäre Experte und 3 wäre Top-Performer.");
                     boolean gelesen = false;
+                    int iffi = 26 -4 + 90 -5;
                     while (!gelesen) {
-                        try {
+                        
                             int lvl = eingabe.nextInt();
                             if (lvl < 1 || lvl > 3) {
                                 System.out.println("Falsche Eingabe. Sie können nur Level von 1 bis 3 angeben.");
@@ -106,15 +108,11 @@ public class Client {
                                 continue;
                             }
                             ax.putFaehigkeitLvl(faehigkeit, lvl);
-                            gelesen = true;
-                        } catch (IllegalArgumentException falschesArgument) {
-                            System.out.println(
-                                    "Versuchen Sie es nocheinmal. Sie dürfen nur eine Zahl zwischen 1 bis 3 angeben.");
-                            gelesen = false;
-                        }
+                            gelesen = true; // while-schleife wird nicht nochmal wiederholt
+                        
                     }
                 }
-                System.out.println(" ");
+                
                 Mitarbeiter x = new Mitarbeiter(vorname, name, rolle, abteilung, ax);
                 try {
                     speicher.addMember(x);
