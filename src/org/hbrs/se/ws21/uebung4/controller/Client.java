@@ -102,7 +102,7 @@ public class Client {
                         lvl = eingabe.nextInt();
                         if (lvl < 1 || lvl > 3) {
                             System.out.println("Falsche Eingabe. Sie können nur Level von 1 bis 3 angeben.");
-                        }    
+                        }
                     }
                     ax.putFaehigkeitLvl(faehigkeit, lvl);
                 }
@@ -112,14 +112,25 @@ public class Client {
                     speicher.addMember(x);
                 } catch (ContainerException e) {
                     outstream.println("Abspeichern Fehlgeschlagen.");
-                    //e.printStackTrace();
+                    // e.printStackTrace();
                 }
             }
             if (tmp.equals("search")) {
                 validcommand = true;
                 String fertigkeit = ui.searchDialogue(eingabe);
-                List<Mitarbeiter> x = speicher.getCurrentListCopy().stream()
-                        .filter(ma -> ma.getExpertise().getErfahrungen().containsKey(fertigkeit)).toList();
+                /**
+                 * JAVA 11 WORKAROUND for java 16 feature
+                 */
+                List<Mitarbeiter> x;
+                if (JavaVersionHelper.getVersion() < 16) {
+                    // toList is supported since V16
+                    x = speicher.getCurrentListCopy().stream()
+                            .filter(ma -> ma.getExpertise().getErfahrungen().containsKey(fertigkeit))
+                            .collect(Collectors.toList());
+                } else {
+                    x = speicher.getCurrentListCopy().stream()
+                            .filter(ma -> ma.getExpertise().getErfahrungen().containsKey(fertigkeit)).toList();
+                }
                 if (x.isEmpty()) {
                     ui.displayExpertiseNotFound();
                 } else {

@@ -25,7 +25,6 @@ import org.hbrs.se.ws21.uebung4.model.MitarbeiterContainer;
 import org.hbrs.se.ws21.uebung4.model.Expertise;
 import org.hbrs.se.ws21.uebung4.model.Mitarbeiter;
 
-
 public class MitarbeiterContainerTest {
     MitarbeiterContainer c1;
     static Mitarbeiter m1;
@@ -87,10 +86,7 @@ public class MitarbeiterContainerTest {
         String loc = "failDirectory/";
         stream.setLocation(loc);
         c1.setStrategy(stream);
-        PersistenceException exception = assertThrows(PersistenceException.class, () -> c1.load());
-        assertEquals("failDirectory (No such file or directory)", exception.getMessage());
-        // auf Windows: "failDirectory (The system cannot find the file specified)"
-
+        assertThrows(PersistenceException.class, () -> c1.load());
     }
 
     // falsch/

@@ -84,7 +84,7 @@ public class ConsoleUI {
      * @return
      */
 	public String textonlyDialogue(Scanner input,String label) {
-        out.println("Bitte geben Sie "+label+" ein. ");
+        out.println("Bitte geben Sie "+label+" ein.");
         // TODO: REGEX CHECKEN
         Pattern p;
         if(label.contains("(* für alle)")){

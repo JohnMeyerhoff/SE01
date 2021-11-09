@@ -68,9 +68,7 @@ public class ContainerTest {
         String loc = "failDirectory/";
         stream.setLocation(loc);
         c1.setStrategy(stream);
-        PersistenceException exception = assertThrows(PersistenceException.class, () -> c1.load());
-        assertEquals("failDirectory (No such file or directory)", exception.getMessage());
-        //auf Windows : "failDirectory (The system cannot find the file specified)"
+        assertThrows(PersistenceException.class, () -> c1.load());
     }
 
     // falsch/

@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.hbrs.se.ws21.uebung4.controller.JavaVersionHelper;
 import org.hbrs.se.ws21.uebung4.model.Expertise;
 import org.hbrs.se.ws21.uebung4.model.Member;
 import org.hbrs.se.ws21.uebung4.model.Mitarbeiter;
@@ -84,7 +85,15 @@ public class MemberView {
 
     public void dumpAbteilung(List<Mitarbeiter> x, String abteilungsfilter) {
         Collections.sort(x, new MemberComparator());
-        List<Mitarbeiter> y = x.stream().filter(ma -> ma.getAbteilung().equalsIgnoreCase(abteilungsfilter)).toList();
+        List<Mitarbeiter> y;
+        if (JavaVersionHelper.getVersion() < 16) {
+            // toList is supported since V16
+            y = x.stream().filter(ma -> ma.getAbteilung().equalsIgnoreCase(abteilungsfilter))
+                    .collect(Collectors.toList());
+        } else {
+            y = x.stream().filter(ma -> ma.getAbteilung().equalsIgnoreCase(abteilungsfilter)).toList();
+        }
+
         String[][] tmp = listToStringarray(y);
         TablePrinter printer = new TablePrinter(tmp.length, tmp[0].length);
         printer.setTable(tmp, 40);
