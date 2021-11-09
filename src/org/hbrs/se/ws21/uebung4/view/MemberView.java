@@ -1,5 +1,8 @@
 package org.hbrs.se.ws21.uebung4.view;
 
+// Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
+// und Johannes Meyerhoff bearbeitet worden.
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
