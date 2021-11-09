@@ -7,7 +7,7 @@ public class TablePrinter {
 	private int[] rowHeights;
 	private int[] colWidths;
 	private int rows;
-	private int cols; 
+	private int cols;
 
 	public TablePrinter(int rows, int cols) {
 		this.rows = rows;
@@ -32,22 +32,22 @@ public class TablePrinter {
 	}
 
 	public void setTable(String[][] table) {
-		for(int row = 0; row < rows; row++) {
+		for (int row = 0; row < rows; row++) {
 			setRow(row, table[row]);
 		}
 	}
 
 	public void setTable(String[][] table, int maxCellWidth, int splitMargin) {
-		for(int row = 0; row < rows; row++) {
-			for(int col = 0; col < cols; col++) {
+		for (int row = 0; row < rows; row++) {
+			for (int col = 0; col < cols; col++) {
 				String rest = table[row][col];
 				String wrapped = "";
 
-				while(rest.length() > maxCellWidth) {
+				while (rest.length() > maxCellWidth) {
 					int splitIdx = rest.lastIndexOf(' ', maxCellWidth);
 					String line;
 
-					if(splitIdx < maxCellWidth - splitMargin) {
+					if (splitIdx < maxCellWidth - splitMargin) {
 						line = rest.substring(0, maxCellWidth);
 						rest = rest.substring(maxCellWidth);
 					} else {
@@ -99,7 +99,8 @@ public class TablePrinter {
 
 			for (int line = 0; line < rowHeights[row]; line++) {
 				for (int col = 0; col < cols; col++) {
-					out.printf("|%-" + colWidths[col] + "s", line < table[row][col].length ? table[row][col][line] : "");
+					out.printf("|%-" + colWidths[col] + "s",
+							line < table[row][col].length ? table[row][col][line] : "");
 				}
 				out.println('|');
 			}
@@ -109,13 +110,17 @@ public class TablePrinter {
 	}
 
 	public static void main(String[] args) {
-		String[][] table = new String[][]{{"id", "First Name", "Last Name", "Age", "Profile"},
-				{"1", "John", "Johnson", "45", "My name is John Johnson. My id is 1. My age is 45."},
-				{"2", "Tom", "", "35", "My name is Tom. My id is 2. My age is 35."},
-				{"3", "Rose", "Johnson Johnson Johnson Johnson Johnson Johnson Johnson Johnson Johnson Johnson", "22",
-						"My name is Rose Johnson. My id is 3. My age is 22."},
-				{"4", "Jimmy", "Kimmel", "", "My name is Jimmy Kimmel. My id is 4. My age is not specified. "
-						+ "I am the host of the late night show. I am not a fan of Matt Damon. "}};
+		String[][] table = new String[][] {
+				{ "id", "First Name", "Last Name", "Age", "Profile" },
+				{ "1", "John", "Johnson", "45",
+						"My name is John Johnson. My id is 1. My age is 45." },
+				{ "2", "Tom", "", "35", "My name is Tom. My id is 2. My age is 35." },
+				{ "3", "Rose",
+						"Johnson Johnson Johnson Johnson Johnson Johnson Johnson Johnson Johnson Johnson",
+						"22", "My name is Rose Johnson. My id is 3. My age is 22." },
+				{ "4", "Jimmy", "Kimmel", "",
+						"My name is Jimmy Kimmel. My id is 4. My age is not specified. "
+								+ "I am the host of the late night show. I am not a fan of Matt Damon. " } };
 
 		TablePrinter printer = new TablePrinter(table.length, table[0].length);
 		printer.setTable(table, 40);

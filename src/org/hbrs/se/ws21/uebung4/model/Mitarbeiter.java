@@ -11,9 +11,8 @@ public class Mitarbeiter implements org.hbrs.se.ws21.uebung4.model.Member {
     private Expertise expertise;
     private Integer internalID;
 
- 
-
-    public Mitarbeiter(String vorname, String name, String rolle, String abteilung, Expertise expertise) {
+    public Mitarbeiter(String vorname, String name, String rolle, String abteilung,
+            Expertise expertise) {
         this.internalID = uniqueCounter++;
         this.name = name;
         this.rolle = rolle;
@@ -69,7 +68,7 @@ public class Mitarbeiter implements org.hbrs.se.ws21.uebung4.model.Member {
     public void setInternalID(Integer internalID) {
         this.internalID = internalID;
     }
-    
+
     @Override
     public Integer getID() {
         return this.internalID;

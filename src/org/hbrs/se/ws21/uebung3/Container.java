@@ -14,19 +14,19 @@ public class Container {
     private PersistenceStrategy<Member> strategy = null;
     private static Container instance = null;
 
-   
     private Container() {
         // default-Konstruktor überschrieben
         // Verwendung des singleton-Pattern
 
-        // alda: falsche Lösung wäre eine if-Abfage (created == false) im Konstruktor, da dort
+        // alda: falsche Lösung wäre eine if-Abfage (created == false) im Konstruktor,
+        // da dort
         // immer ein Objekt erzeugt wird.
         // man kann Erstellung abbrechen, jedoch wurde das Obejekt im
         // Konstruktor erzeugt
     }
 
     public void setStrategy(PersistenceStrategy<Member> strategy) {
-        if(this.strategy!=null){
+        if (this.strategy != null) {
             try {
                 this.strategy.closeConnection();
             } catch (PersistenceException e) {
@@ -53,7 +53,7 @@ public class Container {
     public static Container getInstanceAlda() {
         // Vorteil: Instanzuerung des Bedarf(!). Lazy
         // Nachteil: Thread-safe? Nein (ohne synchronized)
-        //Thread-Safe: eine Komponente gleichzeitig von verschiedenen Programmbereichen
+        // Thread-Safe: eine Komponente gleichzeitig von verschiedenen Programmbereichen
         // mehrfach ausgeführt werden kann, ohne dass diese sich gegenseitig behindern.
         synchronized (lock) { // kritischer Code
             if (instance == null) {
@@ -82,17 +82,19 @@ public class Container {
 
     public void store() throws PersistenceException {
         if (strategy == null) {
-            throw new PersistenceException(ExceptionType.NoStrategyIsSet, "Es gibt keine Strategie zum abspeichern.");
+            throw new PersistenceException(ExceptionType.NoStrategyIsSet,
+                    "Es gibt keine Strategie zum abspeichern.");
         }
 
         strategy.openConnection();
         strategy.save(inhalt);
-        strategy.closeConnection(); //alda hat nicht geschlossen
+        strategy.closeConnection(); // alda hat nicht geschlossen
     }
 
     public void load() throws PersistenceException {
         if (strategy == null) {
-            throw new PersistenceException(ExceptionType.NoStrategyIsSet, "Es gibt keine Strategie zum abspeichern.");
+            throw new PersistenceException(ExceptionType.NoStrategyIsSet,
+                    "Es gibt keine Strategie zum abspeichern.");
         }
 
         strategy.openConnection();
@@ -108,7 +110,8 @@ public class Container {
             }
         }
         if (found) {
-            throw new ContainerException("Das Member-Objekt mit der ID " + neu.getID() + " ist bereits vorhanden!");
+            throw new ContainerException("Das Member-Objekt mit der ID " + neu.getID()
+                    + " ist bereits vorhanden!");
         } else {
             inhalt.add(neu);
         }

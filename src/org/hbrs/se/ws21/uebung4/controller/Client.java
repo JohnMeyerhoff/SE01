@@ -18,8 +18,8 @@ import org.hbrs.se.ws21.uebung4.view.MemberView;
 
 public class Client {
 
-    public int konsole(MitarbeiterContainer speicher, Scanner eingabe, PrintStream outstream)
-            throws PersistenceException {
+    public int konsole(MitarbeiterContainer speicher, Scanner eingabe,
+            PrintStream outstream) throws PersistenceException {
 
         String tmp;
         MemberView a = new MemberView();
@@ -50,12 +50,16 @@ public class Client {
                 if (speicher.size() == 0) {
                     ui.displayNothingFoundTable();
                 } else {
-                    String abteilungsfilter = ui.textonlyDialogue(eingabe, "den Abteilungsnamen (* für alle)");
+                    String abteilungsfilter = ui.textonlyDialogue(eingabe,
+                            "den Abteilungsnamen (* für alle)");
                     // * Gibt die Mitarbeiter aller Abteilungen ungefiltert zurück.
                     if (abteilungsfilter.equals("*")) {
-                        a.dumpSorted(MitarbeiterContainer.getInstance().getCurrentListCopy());
+                        a.dumpSorted(
+                                MitarbeiterContainer.getInstance().getCurrentListCopy());
                     } else {
-                        a.dumpAbteilung(MitarbeiterContainer.getInstance().getCurrentListCopy(), abteilungsfilter);
+                        a.dumpAbteilung(
+                                MitarbeiterContainer.getInstance().getCurrentListCopy(),
+                                abteilungsfilter);
                     }
                 }
             }
@@ -101,7 +105,8 @@ public class Client {
                     while (lvl < 1 || lvl > 3) {
                         lvl = eingabe.nextInt();
                         if (lvl < 1 || lvl > 3) {
-                            System.out.println("Falsche Eingabe. Sie können nur Level von 1 bis 3 angeben.");
+                            System.out.println(
+                                    "Falsche Eingabe. Sie können nur Level von 1 bis 3 angeben.");
                         }
                     }
                     ax.putFaehigkeitLvl(faehigkeit, lvl);
@@ -118,8 +123,9 @@ public class Client {
             if (tmp.equals("search")) {
                 validcommand = true;
                 String fertigkeit = ui.searchDialogue(eingabe);
-                List<Mitarbeiter> x = speicher.getCurrentListCopy().stream()
-                        .filter(ma -> ma.getExpertise().getErfahrungen().containsKey(fertigkeit)).toList();
+                List<Mitarbeiter> x = speicher.getCurrentListCopy().stream().filter(
+                        ma -> ma.getExpertise().getErfahrungen().containsKey(fertigkeit))
+                        .toList();
                 if (x.isEmpty()) {
                     ui.displayExpertiseNotFound();
                 } else {
@@ -129,9 +135,9 @@ public class Client {
             }
 
             /**
-             * Validcommand setzt sich zu beginn jedes Commands Neu auf False, und innerhalb
-             * der einzelnen Befehle Auf true. Die InvalidCommandMessage wird nur ausgegeben
-             * wenn !FALSE == True also validcommand == false
+             * Validcommand setzt sich zu beginn jedes Commands Neu auf False, und
+             * innerhalb der einzelnen Befehle Auf true. Die InvalidCommandMessage wird
+             * nur ausgegeben wenn !FALSE == True also validcommand == false
              */
             if (!validcommand) {
                 ui.displayInvalidCommandMessage();

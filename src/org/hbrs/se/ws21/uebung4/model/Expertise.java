@@ -3,7 +3,7 @@ package org.hbrs.se.ws21.uebung4.model;
 import java.io.Serializable;
 import java.util.HashMap;
 
-public class Expertise implements Serializable{
+public class Expertise implements Serializable {
     HashMap<String, Integer> expertisen;
     HashMap<Integer, String> levelBezeichner;
     // integer (key) ist unser Level
@@ -24,17 +24,20 @@ public class Expertise implements Serializable{
     public void putFaehigkeitLvl(String faehigkeit, Integer l) {
         this.expertisen.put(faehigkeit, l);
     }
-    public HashMap<String,Integer> getErfahrungen(){
+
+    public HashMap<String, Integer> getErfahrungen() {
         return this.expertisen;
     }
-    public HashMap<Integer,String> getBezeichner(){
+
+    public HashMap<Integer, String> getBezeichner() {
         return this.levelBezeichner;
     }
 
     public String getExpertiseLevel(Integer lvl) {
         // getOrDefault: erste Komponente wie bei get() und zweite falls key nicht
         // exisitert
-        return levelBezeichner.getOrDefault(lvl, "Das Level" + lvl + "ist nicht vorhandeln.");
+        return levelBezeichner.getOrDefault(lvl,
+                "Das Level" + lvl + "ist nicht vorhandeln.");
     }
 
 }

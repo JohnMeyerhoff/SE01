@@ -1,5 +1,6 @@
 package org.hbrs.se.ws21.uebung3.persistence;
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
+
 //und Johannes Meyerhoff bearbeitet worden.
 
 import java.io.ByteArrayOutputStream;
@@ -18,7 +19,7 @@ import org.hbrs.se.ws21.uebung3.persistence.PersistenceException.ExceptionType;
 public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
 
     // URL of file, in which the objects are stored
-    private String location = "objects.ser"; //Name der Datei
+    private String location = "objects.ser"; // Name der Datei
     private FileInputStream fileInput;
     private ObjectInputStream objectInput;
     private ObjectOutputStream objectOutput;
@@ -44,9 +45,10 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
         if (!connected) { // es besteht noch keine Verbindung
             try {
                 File file = new File(location);
-                if (!file.exists()&& !location.endsWith("/")) {
+                if (!file.exists() && !location.endsWith("/")) {
                     file.createNewFile();
-                    ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
+                    ObjectOutputStream oos = new ObjectOutputStream(
+                            new FileOutputStream(file));
                     oos.writeObject(new ArrayList<>());
                     oos.close();
                 }
@@ -55,47 +57,51 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
                 objectOutput = new ObjectOutputStream(this.byteOutputStream);
                 objectInput = new ObjectInputStream(this.fileInput);
             } catch (IOException r) {
-                throw new PersistenceException(ExceptionType.ConnectionNotAvailable, r.getMessage());
+                throw new PersistenceException(ExceptionType.ConnectionNotAvailable,
+                        r.getMessage());
             }
             connected = true;
         } else {
             // nicht in der Aufgabenstellung vorgegeben
         }
     }
-    
+
     public void openConnectionAlda() throws PersistenceException {
         // CONNECTED besagt ob eine verbindung besteht
-        //sollte oben:
-        //FileInputStream fis;
-        //FileOutputStream fos;
-            try {
-                File file = new File(location);
-                if (!file.exists() && !location.endsWith("/")) {
-                   //fos = new FileInputStream(location);
-                  // fis = new FileInputStream(location);
-                }
-                fileInput = new FileInputStream(location);
-                byteOutputStream = new ByteArrayOutputStream();
-                objectOutput = new ObjectOutputStream(this.byteOutputStream);
-                objectInput = new ObjectInputStream(this.fileInput);
-            } catch (IOException r) {
-                throw new PersistenceException(ExceptionType.ConnectionNotAvailable, r.getMessage());
+        // sollte oben:
+        // FileInputStream fis;
+        // FileOutputStream fos;
+        try {
+            File file = new File(location);
+            if (!file.exists() && !location.endsWith("/")) {
+                // fos = new FileInputStream(location);
+                // fis = new FileInputStream(location);
             }
-            try {
-                File file = new File(location);
-                if (!file.exists() && !location.endsWith("/")) {
-                    file.createNewFile();
-                    ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
-                    oos.writeObject(new ArrayList<>());
-                    oos.close();
-                }
-                fileInput = new FileInputStream(location);
-                byteOutputStream = new ByteArrayOutputStream();
-                objectOutput = new ObjectOutputStream(this.byteOutputStream);
-                objectInput = new ObjectInputStream(this.fileInput);
-            } catch (IOException r) {
-                throw new PersistenceException(ExceptionType.ConnectionNotAvailable, r.getMessage());
+            fileInput = new FileInputStream(location);
+            byteOutputStream = new ByteArrayOutputStream();
+            objectOutput = new ObjectOutputStream(this.byteOutputStream);
+            objectInput = new ObjectInputStream(this.fileInput);
+        } catch (IOException r) {
+            throw new PersistenceException(ExceptionType.ConnectionNotAvailable,
+                    r.getMessage());
+        }
+        try {
+            File file = new File(location);
+            if (!file.exists() && !location.endsWith("/")) {
+                file.createNewFile();
+                ObjectOutputStream oos = new ObjectOutputStream(
+                        new FileOutputStream(file));
+                oos.writeObject(new ArrayList<>());
+                oos.close();
             }
+            fileInput = new FileInputStream(location);
+            byteOutputStream = new ByteArrayOutputStream();
+            objectOutput = new ObjectOutputStream(this.byteOutputStream);
+            objectInput = new ObjectInputStream(this.fileInput);
+        } catch (IOException r) {
+            throw new PersistenceException(ExceptionType.ConnectionNotAvailable,
+                    r.getMessage());
+        }
     }
 
     /**
@@ -120,21 +126,20 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
                 byteOutputStream.flush();
                 byteOutputStream.close();
             } catch (IOException e) {
-                throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getMessage());
+                throw new PersistenceException(ExceptionType.ConnectionNotAvailable,
+                        e.getMessage());
             }
             connected = false;
         } else { // es gibt keine zu schließende Verbindung
                  // nicht in der Augabenstellung erwähnt
         }
-        //Alda: Schließen, um Speicher zu sparen
+        // Alda: Schließen, um Speicher zu sparen
     }
     /*
-    ObjectOutputStream: Obejekte persistieren/abspreichern
-    ObjectInputStream Objekte persistieren/lesen
-    
-    */
-
-
+     * ObjectOutputStream: Obejekte persistieren/abspreichern ObjectInputStream
+     * Objekte persistieren/lesen
+     * 
+     */
 
     @Override
     /**
@@ -143,14 +148,15 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
     public void save(List<Member> containerInhalt) throws PersistenceException {
         if (connected) {
             try {
-                //Es muss mehr überschrieben werden!
+                // Es muss mehr überschrieben werden!
                 objectOutput.writeObject(containerInhalt);
                 objectOutput.flush();
                 FileOutputStream fos = new FileOutputStream(location);
                 fos.write(byteOutputStream.toByteArray());
                 fos.close();
             } catch (IOException e) {
-                throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getMessage());
+                throw new PersistenceException(ExceptionType.ConnectionNotAvailable,
+                        e.getMessage());
             }
         }
     }
@@ -163,7 +169,8 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
                 List<Member> result = (List<Member>) objectInput.readObject();
                 return result;
             } catch (IOException | ClassNotFoundException e) {
-                throw new PersistenceException(ExceptionType.ConnectionNotAvailable, e.getMessage());
+                throw new PersistenceException(ExceptionType.ConnectionNotAvailable,
+                        e.getMessage());
                 // throw new IllegalArgumentException(e.getMessage());
             }
         }

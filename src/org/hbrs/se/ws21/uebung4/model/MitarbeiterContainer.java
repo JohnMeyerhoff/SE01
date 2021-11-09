@@ -10,7 +10,7 @@ import org.hbrs.se.ws21.uebung4.model.exception.PersistenceException;
 import org.hbrs.se.ws21.uebung4.model.exception.PersistenceException.ExceptionType;
 import org.hbrs.se.ws21.uebung4.model.persistence.PersistenceStrategy;
 
-public class MitarbeiterContainer{
+public class MitarbeiterContainer {
     private List<Mitarbeiter> inhalt = new ArrayList<>();
     private PersistenceStrategy<Mitarbeiter> strategy = null;
     private static MitarbeiterContainer instance;
@@ -67,7 +67,8 @@ public class MitarbeiterContainer{
 
     public void store() throws PersistenceException {
         if (strategy == null) {
-            throw new PersistenceException(ExceptionType.NoStrategyIsSet, "Es gibt keine Strategie zum abspeichern.");
+            throw new PersistenceException(ExceptionType.NoStrategyIsSet,
+                    "Es gibt keine Strategie zum abspeichern.");
         }
 
         strategy.openConnection();
@@ -77,7 +78,8 @@ public class MitarbeiterContainer{
 
     public void load() throws PersistenceException {
         if (strategy == null) {
-            throw new PersistenceException(ExceptionType.NoStrategyIsSet, "Es gibt keine Strategie zum abspeichern.");
+            throw new PersistenceException(ExceptionType.NoStrategyIsSet,
+                    "Es gibt keine Strategie zum abspeichern.");
         }
 
         strategy.openConnection();
@@ -93,7 +95,8 @@ public class MitarbeiterContainer{
             }
         }
         if (found) {
-            throw new ContainerException("Das Member-Objekt mit der ID " + neu.getID() + " ist bereits vorhanden!");
+            throw new ContainerException("Das Member-Objekt mit der ID " + neu.getID()
+                    + " ist bereits vorhanden!");
         } else {
             inhalt.add(neu);
         }

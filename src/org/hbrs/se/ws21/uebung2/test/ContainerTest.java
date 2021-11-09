@@ -1,4 +1,5 @@
 package org.hbrs.se.ws21.uebung2.test;
+
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 //und Johannes Meyerhoff bearbeitet worden.
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -55,13 +56,16 @@ public class ContainerTest {
         assertEquals(3, c1.size());
 
     }
-    
+
     @Test
-    public void exceptionTest(){
+    public void exceptionTest() {
         assertDoesNotThrow(() -> c1.addMember(m1));
         assertEquals(1, c1.size());
-        ContainerException exception = assertThrows(ContainerException.class, () -> c1.addMember(m1));
-        assertEquals("Das Member-Objekt mit der ID "+m1.getID()+" ist bereits vorhanden!", exception.getMessage());
+        ContainerException exception = assertThrows(ContainerException.class,
+                () -> c1.addMember(m1));
+        assertEquals(
+                "Das Member-Objekt mit der ID " + m1.getID() + " ist bereits vorhanden!",
+                exception.getMessage());
         try {
             c1.addMember(m1);
         } catch (ContainerException e) {

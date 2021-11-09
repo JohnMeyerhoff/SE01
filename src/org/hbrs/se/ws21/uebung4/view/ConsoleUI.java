@@ -52,11 +52,11 @@ public class ConsoleUI {
 
     public String loadDialogue(Scanner input) {
         out.println("Bitte angeben, ob mit merge oder force geladen wird.");
-        while(input.hasNext()){
+        while (input.hasNext()) {
             String tmp = input.next();
-            if (tmp.equalsIgnoreCase("merge")|| tmp.equalsIgnoreCase("force")){
+            if (tmp.equalsIgnoreCase("merge") || tmp.equalsIgnoreCase("force")) {
                 return tmp;
-            }else{
+            } else {
                 out.println("Bitte geben sie hier nur 'merge' oder 'force' ein.");
             }
         }
@@ -64,7 +64,7 @@ public class ConsoleUI {
     }
 
     public String searchDialogue(Scanner suche) {
-        out.println("Bitte geben Sie eine von Ihnen gesuchte Expertise an.");     
+        out.println("Bitte geben Sie eine von Ihnen gesuchte Expertise an.");
         return suche.next();
     }
 
@@ -78,30 +78,29 @@ public class ConsoleUI {
     /**
      * 
      * @param input
-     * @param label takes the label to
-     * be placed in the format of
-     * __Bitte geben Sie "+label+" ein.__
+     * @param label takes the label to be placed in the format of __Bitte geben Sie
+     *              "+label+" ein.__
      * @return
      */
-	public String textonlyDialogue(Scanner input,String label) {
-        out.println("Bitte geben Sie "+label+" ein.");
+    public String textonlyDialogue(Scanner input, String label) {
+        out.println("Bitte geben Sie " + label + " ein.");
         // TODO: REGEX CHECKEN
         Pattern p;
-        if(label.contains("(* für alle)")){
+        if (label.contains("(* für alle)")) {
             p = Pattern.compile("[^a-z* ]", Pattern.CASE_INSENSITIVE);
-        }else{
+        } else {
             p = Pattern.compile("[^a-z ]", Pattern.CASE_INSENSITIVE);
         }
-        while(input.hasNext()){
+        while (input.hasNext()) {
             String tmp = input.next();
             Matcher m = p.matcher(tmp);
-            if (m.find()){
+            if (m.find()) {
                 out.println("Bitte geben sie hier nur Buchstaben ein.");
-            }else{
+            } else {
                 return tmp;
             }
         }
         return "Fehler";
-	}
+    }
 
 }

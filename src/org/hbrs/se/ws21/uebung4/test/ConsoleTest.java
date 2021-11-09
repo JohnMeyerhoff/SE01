@@ -21,7 +21,8 @@ public class ConsoleTest {
         ConsoleUI ui = new ConsoleUI(ps);
         Scanner a = new Scanner("drucken\n");
         assertEquals("drucken", ui.searchDialogue(a));
-        assertEquals("Bitte geben Sie eine von Ihnen gesuchte Expertise an.".trim(), os.toString().trim());
+        assertEquals("Bitte geben Sie eine von Ihnen gesuchte Expertise an.".trim(),
+                os.toString().trim());
     }
 
     @Test
@@ -30,7 +31,8 @@ public class ConsoleTest {
         PrintStream ps = new PrintStream(os);
         ConsoleUI ui = new ConsoleUI(ps);
         ui.displayExpertiseFound("fertigkeit");
-        assertEquals("Folgende Mitarbeiter haben die Expertise fertigkeit:".trim(), os.toString().trim());
+        assertEquals("Folgende Mitarbeiter haben die Expertise fertigkeit:".trim(),
+                os.toString().trim());
     }
 
     @Test
@@ -40,7 +42,8 @@ public class ConsoleTest {
         ConsoleUI ui = new ConsoleUI(ps);
         Scanner a = new Scanner("drucken\n");
         assertEquals("drucken", ui.searchDialogue(a));
-        assertEquals("Bitte geben Sie eine von Ihnen gesuchte Expertise an.".trim(), os.toString().trim());
+        assertEquals("Bitte geben Sie eine von Ihnen gesuchte Expertise an.".trim(),
+                os.toString().trim());
     }
 
     @Test
@@ -69,6 +72,7 @@ public class ConsoleTest {
         Scanner a = new Scanner("*\n");
         String x = ui.textonlyDialogue(a, "den Abteilungsnamen (* für alle)");
         assertEquals("*", x);
-        assertEquals("Bitte geben Sie den Abteilungsnamen (* für alle) ein.\n".trim(), os.toString().trim());
+        assertEquals("Bitte geben Sie den Abteilungsnamen (* für alle) ein.\n".trim(),
+                os.toString().trim());
     }
 }

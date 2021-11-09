@@ -23,7 +23,7 @@ import org.hbrs.se.ws21.uebung3.persistence.PersistenceStrategyMongoDB;
 import org.hbrs.se.ws21.uebung3.persistence.PersistenceStrategyStream;
 
 public class ContainerTest {
-    Container     c1;
+    Container c1;
     static Member m1;
     static Member m2;
     static Member m3;
@@ -46,7 +46,8 @@ public class ContainerTest {
         assertEquals(0, c1.size());
         assertDoesNotThrow(() -> c1.addMember(m1));
         assertEquals(1, c1.size());
-        PersistenceException exception = assertThrows(PersistenceException.class, () -> c1.store());
+        PersistenceException exception = assertThrows(PersistenceException.class,
+                () -> c1.store());
         assertEquals("Es gibt keine Strategie zum abspeichern.", exception.getMessage());
     }
 
@@ -57,7 +58,8 @@ public class ContainerTest {
         assertEquals(0, c1.size());
         assertDoesNotThrow(() -> c1.addMember(m1));
         assertEquals(1, c1.size());
-        PersistenceException exception = assertThrows(PersistenceException.class, () -> c1.store());
+        PersistenceException exception = assertThrows(PersistenceException.class,
+                () -> c1.store());
         assertEquals("Not implemented!", exception.getMessage());
     }
 
@@ -146,7 +148,8 @@ public class ContainerTest {
         assertEquals(1, c1.size());
         ContainerException exception = assertThrows(ContainerException.class,
                 () -> c1.addMember(m1));
-        assertEquals("Das Member-Objekt mit der ID " + m1.getID() + " ist bereits vorhanden!",
+        assertEquals(
+                "Das Member-Objekt mit der ID " + m1.getID() + " ist bereits vorhanden!",
                 exception.getMessage());
         c1.deleteMember(m1.getID());
     }

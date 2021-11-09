@@ -4,11 +4,9 @@ package org.hbrs.se.ws21.uebung2;
 //und Johannes Meyerhoff bearbeitet worden.
 import java.util.ArrayList;
 
-
-
 public class Container {
     ArrayList<Member> inhalt = new ArrayList<>();
-    
+
     public void addMember(Member neu) throws ContainerException {
         boolean found = false;
         for (Member m : inhalt) {
@@ -16,9 +14,10 @@ public class Container {
                 found = true;
             }
         }
-        if(found){
-            throw new ContainerException("Das Member-Objekt mit der ID " + neu.getID() +" ist bereits vorhanden!");
-        }else{
+        if (found) {
+            throw new ContainerException("Das Member-Objekt mit der ID " + neu.getID()
+                    + " ist bereits vorhanden!");
+        } else {
             inhalt.add(neu);
         }
     }

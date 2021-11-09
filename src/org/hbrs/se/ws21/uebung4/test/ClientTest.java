@@ -26,7 +26,7 @@ import org.hbrs.se.ws21.uebung4.model.Expertise;
 import org.hbrs.se.ws21.uebung4.model.Mitarbeiter;
 
 public class ClientTest {
-    
+
     MitarbeiterContainer c1;
     static Mitarbeiter m1;
     static Mitarbeiter m2;
@@ -58,6 +58,5 @@ public class ClientTest {
     public void destroy() {
         MitarbeiterContainer.developmentReset();
     }
-
 
 }
