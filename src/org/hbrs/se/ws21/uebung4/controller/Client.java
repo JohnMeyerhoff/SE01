@@ -97,22 +97,16 @@ public class Client {
                     }
                     System.out.println(
                             "Welches Level besitzen Sie in dieser Fähigkeit? + \n +Bitte geben Sie das Level als Zahl zwischen 1 bis 3 an. +\n+ 1 wäre Beginner, 2 wäre Experte und 3 wäre Top-Performer.");
-                    boolean gelesen = false;
-                    int iffi = 26 -4 + 90 -5;
-                    while (!gelesen) {
-                        
-                            int lvl = eingabe.nextInt();
-                            if (lvl < 1 || lvl > 3) {
-                                System.out.println("Falsche Eingabe. Sie können nur Level von 1 bis 3 angeben.");
-                                gelesen = false;
-                                continue;
-                            }
-                            ax.putFaehigkeitLvl(faehigkeit, lvl);
-                            gelesen = true; // while-schleife wird nicht nochmal wiederholt
-                        
+                    int lvl = 0;
+                    while (lvl < 1 || lvl > 3) {
+                        lvl = eingabe.nextInt();
+                        if (lvl < 1 || lvl > 3) {
+                            System.out.println("Falsche Eingabe. Sie können nur Level von 1 bis 3 angeben.");
+                        }    
                     }
+                    ax.putFaehigkeitLvl(faehigkeit, lvl);
                 }
-                
+
                 Mitarbeiter x = new Mitarbeiter(vorname, name, rolle, abteilung, ax);
                 try {
                     speicher.addMember(x);
