@@ -4,6 +4,12 @@ zu lösen. Ein Pattern ist also sozusagen ein Rezept für eine Lösung.
 Im diesem Dokument erkläre ich einige Patterns welche in der Vorlesung relevant sind.
 ## Factory Method Pattern
 Bekannt aus: Übung 1
+Die Vorteile der Factory Method sind ähnlich, wie die Vorteile von Interfaces.
+Dies liegt daran, dass die Factory sich wie eine Schnittstelle zum erstellen von
+Instanzen einer Klasse verhält.
+Das Auslagern der Komplexität auf eine Factory verhindert Fehlerhafte Parametrisierung der Konstruktoren.
+Die Entwickler können sich darauf verlassen, dass alle erstellten Instanzen einer Klasse
+zuverlässig einheitlich erstellt wurden.
 ## Singleton Pattern
 Bekannt aus: Übung 2
 Die Instanz einer Klasse wird nicht über den Konstruktor erstellt.
