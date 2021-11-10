@@ -16,13 +16,25 @@ public class ConsoleUI {
     }
 
     public void displayWelcomeMessage() {
-        out.println("Willkommen im Sprint-Tool von Klara und John,"
-                + " \nmit dem Befehl help erhalten Sie eine Übersicht.\n>");
+        String message = """
+        Willkommen im Sprint-Tool von Klara und John,
+        mit dem Befehl help erhalten Sie eine Übersicht.
+        >
+        """;
+        out.print(message);
     }
 
     public void displayHelpMessage() {
-        out.println("Mögliche Befehle für Sie sind: \nenter \nstore \nload"
-                + "\ndump \nsearch \nexit \nhelp");
+        out.print("""
+        Mögliche Befehle für Sie sind:
+        enter 
+        store 
+        load
+        dump 
+        search 
+        exit 
+        help
+        """);
     }
 
     public void displayGoodBye() {
@@ -87,7 +99,6 @@ public class ConsoleUI {
      */
     public String textonlyDialogue(Scanner input, String label) {
         out.println("Bitte geben Sie " + label + " ein.");
-        // TODO: REGEX CHECKEN
         Pattern p;
         if (label.contains("(* für alle)")) {
             p = Pattern.compile("[^a-z* ]", Pattern.CASE_INSENSITIVE);
