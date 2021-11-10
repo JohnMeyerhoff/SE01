@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ConsoleUI {
-    PrintStream out;
+    private PrintStream out;
 
     public ConsoleUI(PrintStream out) {
         this.out = out;

@@ -1,5 +1,7 @@
 package org.hbrs.se.ws21.uebung4.view;
 
+import java.io.PrintStream;
+
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
 // und Johannes Meyerhoff bearbeitet worden.
 
@@ -19,13 +21,16 @@ import org.hbrs.se.ws21.uebung4.model.Mitarbeiter;
 
 public class MemberView {
 
-    public void dump(List<Member> liste) {
-        for (Member x : liste) {
-            System.out.println(x.toString());
-            // alda:
-            System.out.println("ID: " + x.getID());
-        }
+    private PrintStream out;
+
+    public MemberView() {
+        this(System.out);
     }
+
+    public MemberView(PrintStream out) {
+        this.out = out;
+    }
+    
 
     private class MemberComparator implements Comparator<Member> {
         public int compare(Member s1, Member s2) {
@@ -40,7 +45,7 @@ public class MemberView {
         String[][] tmp = listToStringarray(liste);
         TablePrinter printer = new TablePrinter(tmp.length, tmp[0].length);
         printer.setTable(tmp, 40);
-        printer.print(System.out);
+        printer.print(out);
 
     }
 
@@ -65,7 +70,7 @@ public class MemberView {
         String[][] tmp = listToStringarrayWithExpertise(x, fertigkeit);
         TablePrinter printer = new TablePrinter(tmp.length, tmp[0].length);
         printer.setTable(tmp, 40);
-        printer.print(System.out);
+        printer.print(out);
 
     }
 
@@ -98,7 +103,7 @@ public class MemberView {
         String[][] tmp = listToStringarray(y);
         TablePrinter printer = new TablePrinter(tmp.length, tmp[0].length);
         printer.setTable(tmp, 40);
-        printer.print(System.out);
+        printer.print(out);
 
     }
 }

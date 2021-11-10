@@ -25,7 +25,7 @@ public class Client {
             PrintStream outstream) throws PersistenceException {
 
         String tmp;
-        MemberView a = new MemberView();
+        MemberView a = new MemberView(outstream);
         ConsoleUI ui = new ConsoleUI(outstream);
         ui.displayWelcomeMessage();
 
@@ -95,20 +95,20 @@ public class Client {
                 Expertise ax = new Expertise(); 
                 for (int i = 0; i < 3; i++) {
                     if (i == 2) {
-                        System.out.println("Dies ist Ihr letzter Eintrag als "
+                        outstream.println("Dies ist Ihr letzter Eintrag als "
                                 + "Fähigkeit, da Sie hier nur 3 Ihrer besten Fähigkeiten angeben können. ");
                     }
-                    System.out.println(
+                    outstream.println(
                             "Bitte geben Sie Ihre Fähigkeit oder Expertise in einem Wort an.  \n  Wenn Sie keine weitere Fähigkeit haben, dann geben sie bitte '-' ein.");
                     String faehigkeit = eingabe.next();
                     if (faehigkeit.equals("-")) {
                         break;
                     }
-                    System.out.println(
+                    outstream.println(
                             "Welches Level besitzen Sie in dieser Fähigkeit? + \n +Bitte geben Sie das Level als Zahl zwischen 1 bis 3 an. +\n+ 1 wäre Beginner, 2 wäre Experte und 3 wäre Top-Performer.");
                     int lvl = eingabe.nextInt();
                     while (lvl < 1 || lvl > 3) {
-                        System.out.println(
+                        outstream.println(
                             "Falsche Eingabe. Sie können nur Level von 1 bis 3 angeben.");
                             lvl = eingabe.nextInt();
                         
