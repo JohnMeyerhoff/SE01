@@ -26,6 +26,11 @@ aufgerufen worden sein muss.
 ## Single Responsibility
 Jede Klasse hat genau eine Verantwortung, siehe Antipatterns (godclass).
 
+## Command Pattern
+Es gibt eine Hashmap, welche mit Schlüsseln (Integer oder String) auf instanzen einer
+Command-Klasse aufschlüsselt. Diese Commands können dann abhängig vom User-Input ausgeführt
+werden.
+Commands können mit execute ausgeführt und mit undo rückgängig gemacht werden.
 
 # Antipatterns
 Antipatterns sind Muster die zuverlässig zu Miserfolg führen.
