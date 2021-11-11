@@ -1,4 +1,4 @@
-package org.hbrs.se.ws21.command.controller;
+package org.hbrs.se.ws21.command.controller.commands;
 
 import org.hbrs.se.ws21.command.view.ConsoleUI;
 import java.io.PrintStream;

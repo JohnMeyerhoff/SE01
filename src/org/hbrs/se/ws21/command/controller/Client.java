@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+import org.hbrs.se.ws21.command.controller.commands.Command;
+import org.hbrs.se.ws21.command.controller.commands.Help;
 import org.hbrs.se.ws21.command.model.Expertise;
 import org.hbrs.se.ws21.command.model.Mitarbeiter;
 import org.hbrs.se.ws21.command.model.MitarbeiterContainer;
