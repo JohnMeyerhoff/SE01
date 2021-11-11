@@ -2,7 +2,7 @@ package org.hbrs.se.ws21.uebung3;
 
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 //und Johannes Meyerhoff bearbeitet worden.
-public class ExampleMember implements org.hbrs.se.ws21.uebung3.Member {
+public class ExampleMember implements Member {
     private static int uniqueCounter = 0;
 
     public ExampleMember() {

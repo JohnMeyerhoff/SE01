@@ -2,7 +2,7 @@ package org.hbrs.se.ws21.command.model;
 
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 //und Johannes Meyerhoff bearbeitet worden.
-public class Mitarbeiter implements org.hbrs.se.ws21.uebung4.model.Member {
+public class Mitarbeiter implements Member {
     private static int uniqueCounter = 0;
     private String vorname;
     private String name;

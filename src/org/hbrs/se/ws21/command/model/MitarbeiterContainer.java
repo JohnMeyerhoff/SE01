@@ -5,7 +5,7 @@ package org.hbrs.se.ws21.command.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import org.hbrs.se.ws21.uebung4.model.Mitarbeiter;
 import org.hbrs.se.ws21.command.model.exception.ContainerException;
 import org.hbrs.se.ws21.command.model.exception.PersistenceException;
 import org.hbrs.se.ws21.command.model.exception.PersistenceException.ExceptionType;

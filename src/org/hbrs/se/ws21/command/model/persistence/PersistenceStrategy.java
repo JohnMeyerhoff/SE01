@@ -2,9 +2,9 @@ package org.hbrs.se.ws21.command.model.persistence;
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 //und Johannes Meyerhoff bearbeitet worden.
 
-import java.lang.reflect.Member;
 import java.util.List;
 
+import org.hbrs.se.ws21.command.model.Member;
 import org.hbrs.se.ws21.command.model.exception.PersistenceException;
 
 /**
@@ -18,7 +18,7 @@ import org.hbrs.se.ws21.command.model.exception.PersistenceException;
  *
  * @param <E>
  */
-public interface PersistenceStrategy<T extends org.hbrs.se.ws21.uebung4.model.Member> {
+public interface PersistenceStrategy<T extends Member> {
     public void openConnection() throws PersistenceException;
 
     public List<T> load() throws PersistenceException;
