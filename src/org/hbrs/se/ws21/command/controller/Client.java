@@ -47,7 +47,7 @@ public class Client {
     }
 
     public int konsole(MitarbeiterContainer speicher, Scanner eingabe,
-            PrintStream outstream) throws PersistenceException {
+            PrintStream outstream) {
 
         String tmp;
         MemberView a = new MemberView(outstream);
@@ -63,27 +63,7 @@ public class Client {
             }
 
 
-            if (tmp.equals("dump")) {
-                // TODO: Streams beheben in commands
-                if (speicher.size() == 0) {
-                    ui.displayNothingFoundTable();
-                } else {
-                    String abteilungsfilter = ui.textonlyDialogue(eingabe,
-                            "den Abteilungsnamen (* für alle)");
-                    // * Gibt die Mitarbeiter aller Abteilungen ungefiltert zurück.
-
-                    //nochmal besprechen:
-                    if (abteilungsfilter.equals("*")) {
-                        a.dumpSorted(
-                                MitarbeiterContainer.getInstance().getCurrentListCopy());
-                    } else {
-                        a.dumpAbteilung(
-                                MitarbeiterContainer.getInstance().getCurrentListCopy(),
-                                abteilungsfilter);
-                    }
-                }
-            }
-
+            
             if (tmp.equals("load")) {
                 // TODO: Streams beheben in commands
                 String parameter = ui.loadDialogue(eingabe);

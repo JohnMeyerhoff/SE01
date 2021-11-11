@@ -9,16 +9,13 @@ import org.hbrs.se.ws21.command.model.MitarbeiterContainer;
 import org.hbrs.se.ws21.command.model.exception.PersistenceException;
 import org.hbrs.se.ws21.command.model.persistence.PersistenceStrategyStream;
 
-public class Launcher { //main
+public class Launcher { // main
 
     public static void main(String[] args) {
         MitarbeiterContainer maincontainer = MitarbeiterContainer.getInstance();
         maincontainer.setStrategy(new PersistenceStrategyStream<>());
         Client cl = new Client();
-        try {
-            cl.konsole(maincontainer, new Scanner(System.in), System.out);
-        } catch (PersistenceException e) {
-            e.printStackTrace();
-        }
+        cl.konsole(maincontainer, new Scanner(System.in), System.out);
+
     }
 }

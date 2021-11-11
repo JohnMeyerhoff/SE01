@@ -5,7 +5,7 @@ import java.io.PrintStream;
 public abstract class ConsoleCommand implements Command {
 
         protected PrintStream outstream;
-
+        
         protected ConsoleCommand() {
             this(System.out);
         }
