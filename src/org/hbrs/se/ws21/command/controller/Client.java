@@ -40,7 +40,8 @@ public class Client {
 
             if (tmp.equals("help")) {
                 validcommand = true;
-                ui.displayHelpMessage();
+                Command x = new Help(outstream);
+                x.execute();
             }
 
             if (tmp.equals("store")) {
