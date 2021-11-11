@@ -5,14 +5,17 @@ package org.hbrs.se.ws21.command.controller;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
 // und Johannes Meyerhoff bearbeitet worden.
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 import org.hbrs.se.ws21.command.controller.commands.Command;
 import org.hbrs.se.ws21.command.controller.commands.Help;
+import org.hbrs.se.ws21.command.controller.commands.Store;
+import org.hbrs.se.ws21.command.controller.commands.WrongCommand;
 import org.hbrs.se.ws21.command.model.Expertise;
 import org.hbrs.se.ws21.command.model.Mitarbeiter;
 import org.hbrs.se.ws21.command.model.MitarbeiterContainer;
@@ -22,6 +25,26 @@ import org.hbrs.se.ws21.command.view.ConsoleUI;
 import org.hbrs.se.ws21.command.view.MemberView;
 
 public class Client {
+    Map<String,Command> executables;
+    Command defaultCommand;
+    public Client(){
+       this(getDefaultExecutableMap(), new WrongCommand());
+    }
+
+    private static Map<String, Command> getDefaultExecutableMap() {
+        HashMap<String,Command> defaultExecutables = new HashMap<>();
+        defaultExecutables.put("help", new Help(System.out));
+        defaultExecutables.put("store", new Store(System.out));
+        return defaultExecutables;
+    }
+
+    public Client(Map<String,Command> customExecutables){
+        this(customExecutables,new WrongCommand(System.out));    
+    }
+    public Client(Map<String, Command> customExecutables, WrongCommand wrongCommand) {
+        this.executables = customExecutables;
+        this.defaultCommand = wrongCommand;
+    }
 
     public int konsole(MitarbeiterContainer speicher, Scanner eingabe,
             PrintStream outstream) throws PersistenceException {
@@ -30,29 +53,18 @@ public class Client {
         MemberView a = new MemberView(outstream);
         ConsoleUI ui = new ConsoleUI(outstream);
         ui.displayWelcomeMessage();
-
+        
         while (eingabe.hasNext()) {
-            boolean validcommand = false;
             tmp = eingabe.next();
+            this.executables.getOrDefault(tmp, this.defaultCommand).execute();
             if (tmp.equals("exit")) {
-                ui.displayGoodBye();
                 eingabe.close(); // Schliessen des Scanners
                 return 0;
             }
 
-            if (tmp.equals("help")) {
-                validcommand = true;
-                Command x = new Help(outstream);
-                x.execute();
-            }
-
-            if (tmp.equals("store")) {
-                validcommand = true;
-                MitarbeiterContainer.getInstance().store();
-            }
 
             if (tmp.equals("dump")) {
-                validcommand = true;
+                // TODO: Streams beheben in commands
                 if (speicher.size() == 0) {
                     ui.displayNothingFoundTable();
                 } else {
@@ -73,7 +85,7 @@ public class Client {
             }
 
             if (tmp.equals("load")) {
-                validcommand = true;
+                // TODO: Streams beheben in commands
                 String parameter = ui.loadDialogue(eingabe);
                 try {
                     if (parameter.equals("merge")) {
@@ -90,7 +102,7 @@ public class Client {
             }
             // bergeunzung der zeichen noch ggf. anpassen!
             if (tmp.equals("enter")) {
-                validcommand = true;
+                // TODO: Streams beheben in commands
                 String vorname = ui.textonlyDialogue(eingabe, "ihren Vornamen");
                 String name = ui.textonlyDialogue(eingabe, "ihren Nachnamen");
                 String rolle = ui.textonlyDialogue(eingabe, "ihre Rolle");
@@ -127,7 +139,7 @@ public class Client {
                 }
             }
             if (tmp.equals("search")) {
-                validcommand = true;
+                // TODO: Streams beheben in commands
                 String fertigkeit = ui.searchDialogue(eingabe);
                 List<Mitarbeiter> x = speicher.getCurrentListCopy().stream().filter(
                         ma -> ma.getExpertise().getErfahrungen().containsKey(fertigkeit))
@@ -140,14 +152,7 @@ public class Client {
                 a.dumpSearched(x, fertigkeit);
             }
 
-            /** 
-             * Validcommand setzt sich zu beginn jedes Commands Neu auf False, und
-             * innerhalb der einzelnen Befehle Auf true. Die InvalidCommandMessage wird
-             * nur ausgegeben wenn !FALSE == True also validcommand == false
-             */
-            if (!validcommand) {
-                ui.displayInvalidCommandMessage();
-            }
+            
 
         }
         return 5; // Eingabe beendet ohne exit
