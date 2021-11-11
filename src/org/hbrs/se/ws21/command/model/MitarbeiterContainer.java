@@ -1,4 +1,4 @@
-package org.hbrs.se.ws21.uebung4.model;
+package org.hbrs.se.ws21.command.model;
 
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 //und Johannes Meyerhoff bearbeitet worden.
@@ -6,10 +6,10 @@ package org.hbrs.se.ws21.uebung4.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hbrs.se.ws21.uebung4.model.exception.ContainerException;
-import org.hbrs.se.ws21.uebung4.model.exception.PersistenceException;
-import org.hbrs.se.ws21.uebung4.model.exception.PersistenceException.ExceptionType;
-import org.hbrs.se.ws21.uebung4.model.persistence.PersistenceStrategy;
+import org.hbrs.se.ws21.command.model.exception.ContainerException;
+import org.hbrs.se.ws21.command.model.exception.PersistenceException;
+import org.hbrs.se.ws21.command.model.exception.PersistenceException.ExceptionType;
+import org.hbrs.se.ws21.command.model.persistence.PersistenceStrategy;
 
 public class MitarbeiterContainer {
     private List<Mitarbeiter> inhalt = new ArrayList<>();

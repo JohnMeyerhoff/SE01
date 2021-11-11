@@ -1,4 +1,4 @@
-package org.hbrs.se.ws21.uebung4.model.exception;
+package org.hbrs.se.ws21.command.model.exception;
 
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 //und Johannes Meyerhoff bearbeitet worden.

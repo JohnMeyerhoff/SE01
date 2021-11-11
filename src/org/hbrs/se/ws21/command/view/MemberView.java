@@ -1,4 +1,4 @@
-package org.hbrs.se.ws21.uebung4.view;
+package org.hbrs.se.ws21.command.view;
 
 import java.io.PrintStream;
 
@@ -14,10 +14,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.hbrs.se.ws21.uebung4.controller.JavaVersionHelper;
-import org.hbrs.se.ws21.uebung4.model.Expertise;
-import org.hbrs.se.ws21.uebung4.model.Member;
-import org.hbrs.se.ws21.uebung4.model.Mitarbeiter;
+import org.hbrs.se.ws21.command.controller.JavaVersionHelper;
+import org.hbrs.se.ws21.command.model.Expertise;
+import org.hbrs.se.ws21.command.model.Member;
+import org.hbrs.se.ws21.command.model.Mitarbeiter;
 
 public class MemberView {
 

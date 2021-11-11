@@ -1,11 +1,11 @@
-package org.hbrs.se.ws21.uebung4.model.persistence;
+package org.hbrs.se.ws21.command.model.persistence;
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 //und Johannes Meyerhoff bearbeitet worden.
 
 import java.lang.reflect.Member;
 import java.util.List;
 
-import org.hbrs.se.ws21.uebung4.model.exception.PersistenceException;
+import org.hbrs.se.ws21.command.model.exception.PersistenceException;
 
 /**
  * Interface for defining basic methods for a persistence mechanism Each

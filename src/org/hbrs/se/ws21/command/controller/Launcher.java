@@ -1,13 +1,13 @@
-package org.hbrs.se.ws21.uebung4.controller;
+package org.hbrs.se.ws21.command.controller;
 
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
 // und Johannes Meyerhoff bearbeitet worden.
 
 import java.util.Scanner;
 
-import org.hbrs.se.ws21.uebung4.model.MitarbeiterContainer;
-import org.hbrs.se.ws21.uebung4.model.exception.PersistenceException;
-import org.hbrs.se.ws21.uebung4.model.persistence.PersistenceStrategyStream;
+import org.hbrs.se.ws21.command.model.MitarbeiterContainer;
+import org.hbrs.se.ws21.command.model.exception.PersistenceException;
+import org.hbrs.se.ws21.command.model.persistence.PersistenceStrategyStream;
 
 public class Launcher { //main
 

@@ -1,4 +1,4 @@
-package org.hbrs.se.ws21.uebung4.test;
+package org.hbrs.se.ws21.command.test;
 
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
 // und Johannes Meyerhoff bearbeitet worden.
@@ -13,13 +13,13 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import org.hbrs.se.ws21.uebung4.model.exception.ContainerException;
-import org.hbrs.se.ws21.uebung4.model.exception.PersistenceException;
-import org.hbrs.se.ws21.uebung4.model.persistence.PersistenceStrategyMongoDB;
-import org.hbrs.se.ws21.uebung4.model.persistence.PersistenceStrategyStream;
-import org.hbrs.se.ws21.uebung4.model.MitarbeiterContainer;
-import org.hbrs.se.ws21.uebung4.model.Expertise;
-import org.hbrs.se.ws21.uebung4.model.Mitarbeiter;
+import org.hbrs.se.ws21.command.model.exception.ContainerException;
+import org.hbrs.se.ws21.command.model.exception.PersistenceException;
+import org.hbrs.se.ws21.command.model.persistence.PersistenceStrategyMongoDB;
+import org.hbrs.se.ws21.command.model.persistence.PersistenceStrategyStream;
+import org.hbrs.se.ws21.command.model.MitarbeiterContainer;
+import org.hbrs.se.ws21.command.model.Expertise;
+import org.hbrs.se.ws21.command.model.Mitarbeiter;
 
 public class MitarbeiterContainerTest {
     MitarbeiterContainer c1;

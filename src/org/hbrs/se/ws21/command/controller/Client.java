@@ -1,4 +1,4 @@
-package org.hbrs.se.ws21.uebung4.controller;
+package org.hbrs.se.ws21.command.controller;
 
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
 // und Johannes Meyerhoff bearbeitet worden.
@@ -11,13 +11,13 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import org.hbrs.se.ws21.uebung4.model.Expertise;
-import org.hbrs.se.ws21.uebung4.model.Mitarbeiter;
-import org.hbrs.se.ws21.uebung4.model.MitarbeiterContainer;
-import org.hbrs.se.ws21.uebung4.model.exception.ContainerException;
-import org.hbrs.se.ws21.uebung4.model.exception.PersistenceException;
-import org.hbrs.se.ws21.uebung4.view.ConsoleUI;
-import org.hbrs.se.ws21.uebung4.view.MemberView;
+import org.hbrs.se.ws21.command.model.Expertise;
+import org.hbrs.se.ws21.command.model.Mitarbeiter;
+import org.hbrs.se.ws21.command.model.MitarbeiterContainer;
+import org.hbrs.se.ws21.command.model.exception.ContainerException;
+import org.hbrs.se.ws21.command.model.exception.PersistenceException;
+import org.hbrs.se.ws21.command.view.ConsoleUI;
+import org.hbrs.se.ws21.command.view.MemberView;
 
 public class Client {
 

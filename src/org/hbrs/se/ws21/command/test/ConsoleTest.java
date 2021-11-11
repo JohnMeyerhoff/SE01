@@ -1,4 +1,4 @@
-package org.hbrs.se.ws21.uebung4.test;
+package org.hbrs.se.ws21.command.test;
 
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
 // und Johannes Meyerhoff bearbeitet worden.
@@ -10,7 +10,7 @@ import java.util.Scanner;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.hbrs.se.ws21.uebung4.view.ConsoleUI;
+import org.hbrs.se.ws21.command.view.ConsoleUI;
 
 public class ConsoleTest {
 

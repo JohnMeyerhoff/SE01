@@ -1,12 +1,12 @@
-package org.hbrs.se.ws21.uebung4.view;
+package org.hbrs.se.ws21.command.view;
 
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
 // und Johannes Meyerhoff bearbeitet worden.
 
-import org.hbrs.se.ws21.uebung4.model.MitarbeiterContainer;
-import org.hbrs.se.ws21.uebung4.model.exception.ContainerException;
-import org.hbrs.se.ws21.uebung4.model.Expertise;
-import org.hbrs.se.ws21.uebung4.model.Mitarbeiter;
+import org.hbrs.se.ws21.command.model.MitarbeiterContainer;
+import org.hbrs.se.ws21.command.model.exception.ContainerException;
+import org.hbrs.se.ws21.command.model.Expertise;
+import org.hbrs.se.ws21.command.model.Mitarbeiter;
 
 public class TabellenAusgabe {
     private static final String TABS = "\t\t\t\t";
