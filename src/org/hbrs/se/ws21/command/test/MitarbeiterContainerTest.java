@@ -87,10 +87,9 @@ public class MitarbeiterContainerTest {
         assertThrows(PersistenceException.class, () -> c1.load());
     }
 
-    // falsch/
+    
     @Test
     public void einspeichernTest() {
-
         c1 = MitarbeiterContainer.getInstance();
         c1.setStrategy(new PersistenceStrategyStream<>());
         assertEquals(0, c1.size());
