@@ -17,6 +17,7 @@ import org.hbrs.se.ws21.command.controller.commands.Command;
 import org.hbrs.se.ws21.command.controller.commands.Enter;
 import org.hbrs.se.ws21.command.controller.commands.Help;
 import org.hbrs.se.ws21.command.controller.commands.Load;
+import org.hbrs.se.ws21.command.controller.commands.Search;
 import org.hbrs.se.ws21.command.controller.commands.Store;
 import org.hbrs.se.ws21.command.controller.commands.WrongCommand;
 import org.hbrs.se.ws21.command.model.Expertise;
@@ -43,6 +44,7 @@ public class Client {
             entry("help", new Help(outstream)),
             entry("load", new Load(outstream, eingabe, speicher)),
             entry("enter", new Enter(outstream, eingabe, speicher)),
+            entry("search", new Search(outstream, eingabe, speicher)),
             entry("store", new Store(outstream))
             );
     }
@@ -50,41 +52,19 @@ public class Client {
     public int konsole() {
 
         String tmp;
-        MemberView a = new MemberView(outstream);
+        
         ConsoleUI ui = new ConsoleUI(outstream);
         ui.displayWelcomeMessage();
 
         while (eingabe.hasNext()) {
             tmp = eingabe.next();
-            this.executables.getOrDefault(tmp, this.defaultCommand).execute();
-
-
-
-
-
             
             if (tmp.equals("exit")) {
                 eingabe.close(); // Schliessen des Scanners
                 return 0;
             }
-
-            
-            // bergeunzung der zeichen noch ggf. anpassen!
-            
-            if (tmp.equals("search")) {
-                // TODO: Streams beheben in commands
-                String fertigkeit = ui.searchDialogue(eingabe);
-                List<Mitarbeiter> x = speicher.getCurrentListCopy().stream()
-                        .filter(ma -> ma.getExpertise().getErfahrungen().containsKey(fertigkeit)).toList();
-                if (x.isEmpty()) {
-                    ui.displayExpertiseNotFound();
-                } else {
-                    ui.displayExpertiseFound(fertigkeit);
-                }
-                a.dumpSearched(x, fertigkeit);
-            }
-
-        }
+            this.executables.getOrDefault(tmp, this.defaultCommand).execute();
+        } 
         return 5; // Eingabe beendet ohne exit
     }
 
