@@ -14,7 +14,9 @@ import java.util.Scanner;
 import static java.util.Map.entry;
 
 import org.hbrs.se.ws21.command.controller.commands.Command;
+import org.hbrs.se.ws21.command.controller.commands.Enter;
 import org.hbrs.se.ws21.command.controller.commands.Help;
+import org.hbrs.se.ws21.command.controller.commands.Load;
 import org.hbrs.se.ws21.command.controller.commands.Store;
 import org.hbrs.se.ws21.command.controller.commands.WrongCommand;
 import org.hbrs.se.ws21.command.model.Expertise;
@@ -39,6 +41,8 @@ public class Client {
         this.defaultCommand = new WrongCommand(this.outstream);
         this.executables = Map.ofEntries(
             entry("help", new Help(outstream)),
+            entry("load", new Load(outstream, eingabe, speicher)),
+            entry("enter", new Enter(outstream, eingabe, speicher)),
             entry("store", new Store(outstream))
             );
     }
@@ -64,59 +68,9 @@ public class Client {
                 return 0;
             }
 
-            if (tmp.equals("load")) {
-                // TODO: Streams beheben in commands
-                String parameter = ui.loadDialogue(eingabe);
-                try {
-                    if (parameter.equals("merge")) {
-                        speicher.merge();
-                    } else {
-                        speicher.force();
-                    }
-                    // We do not need a boolean because an exception
-                    // in merge() would skip this line.
-                    ui.displayLoadSucessMessage();
-                } catch (Exception e) {
-                    ui.displayLoadFailureMessage(e);
-                }
-            }
+            
             // bergeunzung der zeichen noch ggf. anpassen!
-            if (tmp.equals("enter")) {
-                // TODO: Streams beheben in commands
-                String vorname = ui.textonlyDialogue(eingabe, "ihren Vornamen");
-                String name = ui.textonlyDialogue(eingabe, "ihren Nachnamen");
-                String rolle = ui.textonlyDialogue(eingabe, "ihre Rolle");
-                String abteilung = ui.textonlyDialogue(eingabe, "ihre Abteilung");
-                Expertise ax = new Expertise();
-                for (int i = 0; i < 3; i++) {
-                    if (i == 2) {
-                        outstream.println("Dies ist Ihr letzter Eintrag als "
-                                + "Fähigkeit, da Sie hier nur 3 Ihrer besten Fähigkeiten angeben können. ");
-                    }
-                    outstream.println(
-                            "Bitte geben Sie Ihre Fähigkeit oder Expertise in einem Wort an.  \n  Wenn Sie keine weitere Fähigkeit haben, dann geben sie bitte '-' ein.");
-                    String faehigkeit = eingabe.next();
-                    if (faehigkeit.equals("-")) {
-                        break;
-                    }
-                    outstream.println(
-                            "Welches Level besitzen Sie in dieser Fähigkeit? + \n +Bitte geben Sie das Level als Zahl zwischen 1 bis 3 an. +\n+ 1 wäre Beginner, 2 wäre Experte und 3 wäre Top-Performer.");
-                    int lvl = eingabe.nextInt();
-                    while (lvl < 1 || lvl > 3) {
-                        outstream.println("Falsche Eingabe. Sie können nur Level von 1 bis 3 angeben.");
-                        lvl = eingabe.nextInt();
-
-                    }
-                    ax.putFaehigkeitLvl(faehigkeit, lvl);
-                }
-
-                Mitarbeiter x = new Mitarbeiter(vorname, name, rolle, abteilung, ax);
-                try {
-                    speicher.addMember(x);
-                } catch (ContainerException e) {
-                    outstream.println("Abspeichern Fehlgeschlagen.");
-                }
-            }
+            
             if (tmp.equals("search")) {
                 // TODO: Streams beheben in commands
                 String fertigkeit = ui.searchDialogue(eingabe);
