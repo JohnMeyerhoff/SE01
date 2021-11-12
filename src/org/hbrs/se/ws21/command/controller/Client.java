@@ -11,6 +11,7 @@ import java.util.Map;
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
 // und Johannes Meyerhoff bearbeitet worden.
 import java.util.Scanner;
+import static java.util.Map.entry;
 
 import org.hbrs.se.ws21.command.controller.commands.Command;
 import org.hbrs.se.ws21.command.controller.commands.Help;
@@ -25,35 +26,27 @@ import org.hbrs.se.ws21.command.view.ConsoleUI;
 import org.hbrs.se.ws21.command.view.MemberView;
 
 public class Client {
-    Map<String,Command> executables;
     Command defaultCommand;
-    public Client(){
-       this(getDefaultExecutableMap(), new WrongCommand());
+    private MitarbeiterContainer speicher;
+    private Scanner eingabe;
+    private PrintStream outstream;
+    private Map<String, Command> executables;
+
+    public Client(MitarbeiterContainer speicher, Scanner eingabe, PrintStream outstream) {
+        this.speicher = speicher;
+        this.eingabe = eingabe;
+        this.outstream = outstream;
+        this.defaultCommand = new WrongCommand(this.outstream);
+        this.executables = Map.ofEntries(entry("help", new Help(outstream)), entry("store", new Store(outstream)));
     }
 
-    private static Map<String, Command> getDefaultExecutableMap() {
-        HashMap<String,Command> defaultExecutables = new HashMap<>();
-        defaultExecutables.put("help", new Help(System.out));
-        defaultExecutables.put("store", new Store(System.out));
-        return defaultExecutables;
-    }
-
-    public Client(Map<String,Command> customExecutables){
-        this(customExecutables,new WrongCommand(System.out));    
-    }
-    public Client(Map<String, Command> customExecutables, WrongCommand wrongCommand) {
-        this.executables = customExecutables;
-        this.defaultCommand = wrongCommand;
-    }
-
-    public int konsole(MitarbeiterContainer speicher, Scanner eingabe,
-            PrintStream outstream) {
+    public int konsole() {
 
         String tmp;
         MemberView a = new MemberView(outstream);
         ConsoleUI ui = new ConsoleUI(outstream);
         ui.displayWelcomeMessage();
-        
+
         while (eingabe.hasNext()) {
             tmp = eingabe.next();
             this.executables.getOrDefault(tmp, this.defaultCommand).execute();
@@ -62,8 +55,6 @@ public class Client {
                 return 0;
             }
 
-
-            
             if (tmp.equals("load")) {
                 // TODO: Streams beheben in commands
                 String parameter = ui.loadDialogue(eingabe);
@@ -87,7 +78,7 @@ public class Client {
                 String name = ui.textonlyDialogue(eingabe, "ihren Nachnamen");
                 String rolle = ui.textonlyDialogue(eingabe, "ihre Rolle");
                 String abteilung = ui.textonlyDialogue(eingabe, "ihre Abteilung");
-                Expertise ax = new Expertise(); 
+                Expertise ax = new Expertise();
                 for (int i = 0; i < 3; i++) {
                     if (i == 2) {
                         outstream.println("Dies ist Ihr letzter Eintrag als "
@@ -103,10 +94,9 @@ public class Client {
                             "Welches Level besitzen Sie in dieser Fähigkeit? + \n +Bitte geben Sie das Level als Zahl zwischen 1 bis 3 an. +\n+ 1 wäre Beginner, 2 wäre Experte und 3 wäre Top-Performer.");
                     int lvl = eingabe.nextInt();
                     while (lvl < 1 || lvl > 3) {
-                        outstream.println(
-                            "Falsche Eingabe. Sie können nur Level von 1 bis 3 angeben.");
-                            lvl = eingabe.nextInt();
-                        
+                        outstream.println("Falsche Eingabe. Sie können nur Level von 1 bis 3 angeben.");
+                        lvl = eingabe.nextInt();
+
                     }
                     ax.putFaehigkeitLvl(faehigkeit, lvl);
                 }
@@ -121,9 +111,8 @@ public class Client {
             if (tmp.equals("search")) {
                 // TODO: Streams beheben in commands
                 String fertigkeit = ui.searchDialogue(eingabe);
-                List<Mitarbeiter> x = speicher.getCurrentListCopy().stream().filter(
-                        ma -> ma.getExpertise().getErfahrungen().containsKey(fertigkeit))
-                        .toList();
+                List<Mitarbeiter> x = speicher.getCurrentListCopy().stream()
+                        .filter(ma -> ma.getExpertise().getErfahrungen().containsKey(fertigkeit)).toList();
                 if (x.isEmpty()) {
                     ui.displayExpertiseNotFound();
                 } else {
@@ -131,8 +120,6 @@ public class Client {
                 }
                 a.dumpSearched(x, fertigkeit);
             }
-
-            
 
         }
         return 5; // Eingabe beendet ohne exit
