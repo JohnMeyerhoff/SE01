@@ -15,7 +15,22 @@ public class Load extends ConsoleCommand {
 
     @Override
     public void execute() {
-        new ConsoleUI(super.outstream).displayWelcomeMessage();
-    }
+            // TODO: Streams beheben in commands
+            String parameter = new ConsoleUI(super.outstream).loadDialogue(eingabe);
+            try {
+                if (parameter.equals("merge")) {
+                    speicher.merge();
+                } else {
+                    speicher.force();
+                }
+                // We do not need a boolean because an exception
+                // in merge() would skip this line.
+                new ConsoleUI(super.outstream).displayLoadSucessMessage();
+            } catch (Exception e) {
+                new ConsoleUI(super.outstream).displayLoadFailureMessage(e);
+            }
+        }
+
+    
 
 }
