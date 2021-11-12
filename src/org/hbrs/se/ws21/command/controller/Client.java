@@ -37,7 +37,10 @@ public class Client {
         this.eingabe = eingabe;
         this.outstream = outstream;
         this.defaultCommand = new WrongCommand(this.outstream);
-        this.executables = Map.ofEntries(entry("help", new Help(outstream)), entry("store", new Store(outstream)));
+        this.executables = Map.ofEntries(
+            entry("help", new Help(outstream)),
+            entry("store", new Store(outstream))
+            );
     }
 
     public int konsole() {
@@ -50,6 +53,12 @@ public class Client {
         while (eingabe.hasNext()) {
             tmp = eingabe.next();
             this.executables.getOrDefault(tmp, this.defaultCommand).execute();
+
+
+
+
+
+            
             if (tmp.equals("exit")) {
                 eingabe.close(); // Schliessen des Scanners
                 return 0;
