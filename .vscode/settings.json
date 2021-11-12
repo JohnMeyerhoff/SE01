@@ -1,19 +1,19 @@
 {
     "favorites.resources": [
         {
-            "filePath": "src/org/hbrs/se/ws21/uebung3/test/ContainerTest.java",
-            "group": "Default"
-        },
-        {
-            "filePath": "src/org/hbrs/se/ws21/uebung3/Container.java",
-            "group": "Default"
-        },
-        {
-            "filePath": "src/org/hbrs/se/ws21/uebung3/persistence/PersistenceStrategyStream.java",
-            "group": "Default"
-        },
-        {
             "filePath": "src/testJunit.sh",
+            "group": "Default"
+        },
+        {
+            "filePath": "src\\org\\hbrs\\se\\ws21\\command\\controller\\Client.java",
+            "group": "Default"
+        },
+        {
+            "filePath": "src\\org\\hbrs\\se\\ws21\\command\\controller\\Launcher.java",
+            "group": "Default"
+        },
+        {
+            "filePath": "src\\org\\hbrs\\se\\ws21\\command\\controller\\commands",
             "group": "Default"
         }
     ],
