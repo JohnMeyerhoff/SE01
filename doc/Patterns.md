@@ -31,6 +31,12 @@ Es gibt eine Hashmap, welche mit Schlüsseln (Integer oder String) auf instanzen
 Command-Klasse aufschlüsselt. Diese Commands können dann abhängig vom User-Input ausgeführt
 werden.
 Commands können mit execute ausgeführt und mit undo rückgängig gemacht werden.
+### Umsetzen des command Pattern
+Bestehenden Code kann man in vier Schritten zu einem Command umwandeln:
+- `Command` Interface mit `execute()` Methode erstellen
+- `Command` Interface in konkreter Klasse implementieren
+- Bestehenden Code in die `execute()` Implementierung dieser Klasse verschieben
+- Zur Verwendung `new Command().execute()` ausführen
 
 # Antipatterns
 Antipatterns sind Muster die zuverlässig zu Miserfolg führen.
