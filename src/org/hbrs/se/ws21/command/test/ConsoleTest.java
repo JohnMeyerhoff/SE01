@@ -51,29 +51,29 @@ public class ConsoleTest {
         ui.displayLoadFailureMessage(new Exception("TEST"));
 
         String expected = """
-        Willkommen im Sprint-Tool von Klara und John,
-        mit dem Befehl help erhalten Sie eine Übersicht.
-        >
-        Mögliche Befehle für Sie sind:
-        enter 
-        store
-        load
-        dump
-        search
-        exit
-        help  
-        Auf Wiedersehen   
-        +--------------------------+
-        |Keine Mitarbeiter Gefunden|
-        +--------------------------+
-        Erfolgreich geladen.
-        Leider wurden keine Mitarbeiter mit dieser Expertise gefunden.
-        Folgende Mitarbeiter haben die Expertise TESTSTRING:
-        
-        Ihre Eingabe war kein gültiger Befehl.
-        Sie können 'help' als Befehl eingeben, um alle Möglichkeiten zu sehen.
-        Das laden war nicht erfolgreich.
-        """;
+                Willkommen im Sprint-Tool von Klara und John,
+                mit dem Befehl help erhalten Sie eine Übersicht.
+                >
+                Mögliche Befehle für Sie sind:
+                enter
+                store
+                load
+                dump
+                search
+                exit
+                help
+                Auf Wiedersehen
+                +--------------------------+
+                |Keine Mitarbeiter Gefunden|
+                +--------------------------+
+                Erfolgreich geladen.
+                Leider wurden keine Mitarbeiter mit dieser Expertise gefunden.
+                Folgende Mitarbeiter haben die Expertise TESTSTRING:
+
+                Ihre Eingabe war kein gültiger Befehl.
+                Sie können 'help' als Befehl eingeben, um alle Möglichkeiten zu sehen.
+                Das laden war nicht erfolgreich.
+                """;
         String[] lines = os.toString().split("\n");
         String[] expectedlines = expected.split("\n");
         int i = 0;

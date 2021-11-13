@@ -40,31 +40,29 @@ public class Client {
         this.eingabe = eingabe;
         this.outstream = outstream;
         this.defaultCommand = new WrongCommand(this.outstream);
-        this.executables = Map.ofEntries(
-            entry("help", new Help(outstream)),
-            entry("load", new Load(outstream, eingabe, speicher)),
-            entry("enter", new Enter(outstream, eingabe, speicher)),
-            entry("search", new Search(outstream, eingabe, speicher)),
-            entry("store", new Store(outstream))
-            );
+        this.executables = Map.ofEntries(entry("help", new Help(outstream)),
+                entry("load", new Load(outstream, eingabe, speicher)),
+                entry("enter", new Enter(outstream, eingabe, speicher)),
+                entry("search", new Search(outstream, eingabe, speicher)),
+                entry("store", new Store(outstream)));
     }
 
     public int konsole() {
 
         String tmp;
-        
+
         ConsoleUI ui = new ConsoleUI(outstream);
         ui.displayWelcomeMessage();
 
         while (eingabe.hasNext()) {
             tmp = eingabe.next();
-            
+
             if (tmp.equals("exit")) {
                 eingabe.close(); // Schliessen des Scanners
                 return 0;
             }
             this.executables.getOrDefault(tmp, this.defaultCommand).execute();
-        } 
+        }
         return 5; // Eingabe beendet ohne exit
     }
 

@@ -20,7 +20,7 @@ public class Store extends ConsoleCommand {
         try {
             MitarbeiterContainer.getInstance().store();
         } catch (PersistenceException e) {
-           this.outstream.println("Es ist Fehler beim Speichern aufgetreten.");
+            this.outstream.println("Es ist Fehler beim Speichern aufgetreten.");
         }
     }
 

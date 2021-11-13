@@ -87,7 +87,6 @@ public class MitarbeiterContainerTest {
         assertThrows(PersistenceException.class, () -> c1.load());
     }
 
-    
     @Test
     public void einspeichernTest() {
         c1 = MitarbeiterContainer.getInstance();
@@ -116,7 +115,7 @@ public class MitarbeiterContainerTest {
         assertEquals(2, c1.size());
         assertDoesNotThrow(() -> c1.addMember(m3));
         assertEquals(3, c1.size());
-        
+
         assertDoesNotThrow(() -> c1.store());
         // empty the list
         assertDoesNotThrow(() -> c1.deleteMember(m3.getID()));

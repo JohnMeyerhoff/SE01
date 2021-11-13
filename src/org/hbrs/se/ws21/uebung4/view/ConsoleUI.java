@@ -17,24 +17,24 @@ public class ConsoleUI {
 
     public void displayWelcomeMessage() {
         String message = """
-        Willkommen im Sprint-Tool von Klara und John,
-        mit dem Befehl help erhalten Sie eine Übersicht.
-        >
-        """;
+                Willkommen im Sprint-Tool von Klara und John,
+                mit dem Befehl help erhalten Sie eine Übersicht.
+                >
+                """;
         out.print(message);
     }
 
     public void displayHelpMessage() {
         out.print("""
-        Mögliche Befehle für Sie sind:
-        enter 
-        store 
-        load
-        dump 
-        search 
-        exit 
-        help
-        """);
+                Mögliche Befehle für Sie sind:
+                enter
+                store
+                load
+                dump
+                search
+                exit
+                help
+                """);
     }
 
     public void displayGoodBye() {

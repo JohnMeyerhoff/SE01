@@ -64,7 +64,8 @@ public class ClientTest {
     @Test
     public void enterTest() {
         c1 = MitarbeiterContainer.getInstance();
-        Scanner sc = new Scanner("enter Klara Golubovic pferd arrri skill 1 skill 2 skill 3 dump * store");
+        Scanner sc = new Scanner(
+                "enter Klara Golubovic pferd arrri skill 1 skill 2 skill 3 dump * store");
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(os);
         Client neu = new Client(c1, sc, ps);

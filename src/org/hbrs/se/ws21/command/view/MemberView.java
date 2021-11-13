@@ -30,7 +30,6 @@ public class MemberView {
     public MemberView(PrintStream out) {
         this.out = out;
     }
-    
 
     private class MemberComparator implements Comparator<Member> {
         public int compare(Member s1, Member s2) {

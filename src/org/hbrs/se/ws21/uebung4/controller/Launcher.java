@@ -9,7 +9,7 @@ import org.hbrs.se.ws21.uebung4.model.MitarbeiterContainer;
 import org.hbrs.se.ws21.uebung4.model.exception.PersistenceException;
 import org.hbrs.se.ws21.uebung4.model.persistence.PersistenceStrategyStream;
 
-public class Launcher { //main
+public class Launcher { // main
 
     public static void main(String[] args) {
         MitarbeiterContainer maincontainer = MitarbeiterContainer.getInstance();

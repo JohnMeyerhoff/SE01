@@ -8,14 +8,15 @@ import org.hbrs.se.ws21.command.view.ConsoleUI;
 
 public class Load extends ContainerCommand {
     public Load() {
-            this(System.out,new Scanner(System.in), MitarbeiterContainer.getInstance());
-        }
+        this(System.out, new Scanner(System.in), MitarbeiterContainer.getInstance());
+    }
 
-    public Load(PrintStream outstream, Scanner instream, MitarbeiterContainer mitarbeiterContainer) {
-            this.outstream = outstream;
-            this.input = instream;
-            this.speicher = mitarbeiterContainer;
-        }
+    public Load(PrintStream outstream, Scanner instream,
+            MitarbeiterContainer mitarbeiterContainer) {
+        this.outstream = outstream;
+        this.input = instream;
+        this.speicher = mitarbeiterContainer;
+    }
 
     @Override
     public void execute() {

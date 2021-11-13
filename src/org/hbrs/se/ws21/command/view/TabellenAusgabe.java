@@ -10,8 +10,10 @@ import org.hbrs.se.ws21.command.model.Mitarbeiter;
 
 public class TabellenAusgabe {
     private static final String TABS = "\t\t\t\t";
+
     public void tabelle(MitarbeiterContainer a) {
-        System.out.println("Vorname\t\t\t\tName\t\t\t\tAbteilung\t\t\t\tRolle\t\t\t\tExpertisen");
+        System.out.println(
+                "Vorname\t\t\t\tName\t\t\t\tAbteilung\t\t\t\tRolle\t\t\t\tExpertisen");
         for (Mitarbeiter m : a.getCurrentList()) {
             System.out.print(m.getVorname() + TABS);
             System.out.print(m.getName() + TABS);
