@@ -2,8 +2,11 @@
     "recommendations": [
         "sonarsource.sonarlint-vscode",
         "vscjava.vscode-java-pack",
-        "ms-vscode.atom-keybindings",
         "yzhang.markdown-all-in-one",
-        "jbockle.jbockle-format-files"
+        "jbockle.jbockle-format-files",
+        "ban.spellright",
+        "esbenp.prettier-vscode",
+        "visualstudioexptteam.vscodeintellicode",
+        "vscode-icons-team.vscode-icons"
     ]
 }

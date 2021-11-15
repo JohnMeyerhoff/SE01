@@ -10,5 +10,14 @@
         }
     ],
     "java.format.settings.url": ".vscode/java-formatter.xml",
-    "favorites.sortOrder": "DESC"
+    "favorites.sortOrder": "DESC",
+    "spellright.language": [
+        "en",
+        "de"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext"
+    ]
 }
