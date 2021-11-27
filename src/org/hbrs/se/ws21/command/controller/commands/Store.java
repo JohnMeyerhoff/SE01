@@ -4,7 +4,6 @@ import java.io.PrintStream;
 
 import org.hbrs.se.ws21.command.model.MitarbeiterContainer;
 import org.hbrs.se.ws21.command.model.exception.PersistenceException;
-import org.hbrs.se.ws21.command.view.ConsoleUI;
 
 public class Store extends ConsoleCommand {
     public Store() {

@@ -1,20 +1,14 @@
 package org.hbrs.se.ws21.command.view;
 
-import java.io.PrintStream;
-
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
 // und Johannes Meyerhoff bearbeitet worden.
 
-import java.util.Collection;
+import java.io.PrintStream;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-//Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
-//und Johannes Meyerhoff bearbeitet worden.
 import java.util.List;
-import java.util.stream.Collectors;
 
-import org.hbrs.se.ws21.command.controller.JavaVersionHelper;
 import org.hbrs.se.ws21.command.model.Expertise;
 import org.hbrs.se.ws21.command.model.Member;
 import org.hbrs.se.ws21.command.model.Mitarbeiter;

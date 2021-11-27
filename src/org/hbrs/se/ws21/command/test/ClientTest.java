@@ -7,21 +7,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
 import java.io.PrintStream;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Scanner;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import org.hbrs.se.ws21.command.model.exception.ContainerException;
-import org.hbrs.se.ws21.command.model.exception.PersistenceException;
-import org.hbrs.se.ws21.command.model.persistence.PersistenceStrategyMongoDB;
-import org.hbrs.se.ws21.command.model.persistence.PersistenceStrategyStream;
-import org.hbrs.se.ws21.command.view.ConsoleUI;
 import org.hbrs.se.ws21.command.model.MitarbeiterContainer;
 import org.hbrs.se.ws21.command.controller.Client;
 import org.hbrs.se.ws21.command.model.Expertise;

@@ -3,7 +3,6 @@ package org.hbrs.se.ws21.uebung4.model.persistence;
 
 //und Johannes Meyerhoff bearbeitet worden.
 
-import java.lang.reflect.Member;
 import java.util.List;
 
 import org.hbrs.se.ws21.uebung4.model.exception.PersistenceException;

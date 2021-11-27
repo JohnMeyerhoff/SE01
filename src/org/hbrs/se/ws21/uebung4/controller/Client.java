@@ -4,12 +4,8 @@ package org.hbrs.se.ws21.uebung4.controller;
 // und Johannes Meyerhoff bearbeitet worden.
 
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.List;
-// Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
-// und Johannes Meyerhoff bearbeitet worden.
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 import org.hbrs.se.ws21.uebung4.model.Expertise;
 import org.hbrs.se.ws21.uebung4.model.Mitarbeiter;

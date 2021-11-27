@@ -1,6 +1,5 @@
 package org.hbrs.se.ws21.command.controller.commands;
 
-import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 

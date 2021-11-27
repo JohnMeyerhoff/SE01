@@ -1,6 +1,5 @@
 package org.hbrs.se.ws21.uebung3;
 
-import org.hbrs.se.ws21.uebung3.persistence.PersistenceException;
 import org.hbrs.se.ws21.uebung3.persistence.PersistenceStrategyStream;
 
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic

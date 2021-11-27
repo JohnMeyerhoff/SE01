@@ -6,7 +6,6 @@ package org.hbrs.se.ws21.command.controller;
 import java.util.Scanner;
 
 import org.hbrs.se.ws21.command.model.MitarbeiterContainer;
-import org.hbrs.se.ws21.command.model.exception.PersistenceException;
 import org.hbrs.se.ws21.command.model.persistence.PersistenceStrategyStream;
 
 public class Launcher { // main

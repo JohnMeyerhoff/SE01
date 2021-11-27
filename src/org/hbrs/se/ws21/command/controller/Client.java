@@ -4,9 +4,6 @@ package org.hbrs.se.ws21.command.controller;
 // und Johannes Meyerhoff bearbeitet worden.
 
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
 // und Johannes Meyerhoff bearbeitet worden.
@@ -20,13 +17,8 @@ import org.hbrs.se.ws21.command.controller.commands.Load;
 import org.hbrs.se.ws21.command.controller.commands.Search;
 import org.hbrs.se.ws21.command.controller.commands.Store;
 import org.hbrs.se.ws21.command.controller.commands.WrongCommand;
-import org.hbrs.se.ws21.command.model.Expertise;
-import org.hbrs.se.ws21.command.model.Mitarbeiter;
 import org.hbrs.se.ws21.command.model.MitarbeiterContainer;
-import org.hbrs.se.ws21.command.model.exception.ContainerException;
-import org.hbrs.se.ws21.command.model.exception.PersistenceException;
 import org.hbrs.se.ws21.command.view.ConsoleUI;
-import org.hbrs.se.ws21.command.view.MemberView;
 
 public class Client {
     Command defaultCommand;
@@ -41,9 +33,9 @@ public class Client {
         this.outstream = outstream;
         this.defaultCommand = new WrongCommand(this.outstream);
         this.executables = Map.ofEntries(entry("help", new Help(outstream)),
-                entry("load", new Load(outstream, eingabe, speicher)),
-                entry("enter", new Enter(outstream, eingabe, speicher)),
-                entry("search", new Search(outstream, eingabe, speicher)),
+                entry("load", new Load(outstream, eingabe, this.speicher)),
+                entry("enter", new Enter(outstream, eingabe, this.speicher)),
+                entry("search", new Search(outstream, eingabe, this.speicher)),
                 entry("store", new Store(outstream)));
     }
 
