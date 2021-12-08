@@ -9,7 +9,7 @@ public class WeirdStringFinder {
 
 
     public String findemalbitte( int i,int dimension) {
-        String[] content = wsl.getTheStuffInside()[dimension]; // THE ONLY DIFFERENCE
+        String[] content = wsl.getTheStuffInside()[dimension];
         for (String string : content) {
             if(string!=null && string.length()==i){
                 return "AFFEHALLO"+string;

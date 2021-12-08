@@ -14,7 +14,7 @@ public class WeirdToNormalStringFinder implements PerfectStringFinder {
     @Override
     public String find( int i) {
         String zuLang= new WeirdStringFinder(wsl).findemalbitte(i, 0);
-        return zuLang.substring(7);
+        return zuLang.substring(9);//length of AFFEHALLO skipped
     }
     
 }
