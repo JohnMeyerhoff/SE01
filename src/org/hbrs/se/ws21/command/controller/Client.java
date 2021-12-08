@@ -37,6 +37,15 @@ public class Client {
                 entry("enter", new Enter(outstream, eingabe, this.speicher)),
                 entry("search", new Search(outstream, eingabe, this.speicher)),
                 entry("store", new Store(outstream)));
+
+        /*Alternative:
+        new HashMap<>();
+        executables.put("help", new Help(outstream));
+        executables.put("load", new Load(outstream, eingabe, this.speicher));
+        executables.put("enter", new Enter(outstream, eingabe, this.speicher));
+        executables.put("search", new Search(outstream, eingabe, this.speicher));
+        executables.put("store", new Store(outstream));
+        */
     }
 
     public int konsole() {
