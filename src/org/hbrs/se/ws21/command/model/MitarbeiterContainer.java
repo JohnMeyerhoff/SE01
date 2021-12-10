@@ -68,7 +68,7 @@ public class MitarbeiterContainer {
     public void store() throws PersistenceException {
         if (strategy == null) {
             throw new PersistenceException(ExceptionType.NoStrategyIsSet,
-                    "Es gibt keine Strategie zum abspeichern.");
+                    "Es gibt keine FALSCHE MESSAGE Strategie zum abspeichern.");
         }
 
         strategy.openConnection();
