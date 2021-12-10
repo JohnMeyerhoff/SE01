@@ -16,6 +16,6 @@ jobs:
           distribution: 'temurin' 
           java-version: '17'
       - name: JUNIT Test Report Tool
-        uses: JohnMeyerhoff/JunitAnnotations@v1.1.0
+        uses: JohnMeyerhoff/JunitAnnotations@v1.2.0
         with:
           source_dir: './src'
