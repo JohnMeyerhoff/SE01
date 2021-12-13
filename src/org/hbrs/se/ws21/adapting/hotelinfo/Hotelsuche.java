@@ -1,5 +1,6 @@
 package org.hbrs.se.ws21.adapting.hotelinfo;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import org.hbrs.se.ws21.adapting.adapter.Adapter;
@@ -18,9 +19,14 @@ public class Hotelsuche {
         int price = sc.nextInt();
 
         Suchauftrag x = new Suchauftrag(price);
-       
+        ArrayList<Suchergebnis> sel = new ArrayList<>();
         for (Formatvorgaben hotel : quellen) {
-            hotel.suche(x);
+            sel.add(hotel.suche(x));
+        }
+
+        System.out.println("Folgende Hotels haben wir gefunden:");
+        for (Suchergebnis se : sel) {
+            System.out.println(se);
         }
     }
     

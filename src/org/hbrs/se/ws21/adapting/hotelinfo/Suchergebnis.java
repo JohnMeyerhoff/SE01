@@ -19,4 +19,10 @@ public class Suchergebnis {
     public String getName() {
         return this.hotelname;
     }
+
+    @Override
+    public String toString(){
+        return "Hotel "+ hotelname + ", Preis: " + preis+ " Euro je nacht";
+    }
+
 }
