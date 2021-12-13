@@ -7,5 +7,5 @@ public class EchterReiseanbieter implements Reiseanbieter {
         // Inhalt ist nicht relevant
         return new QueryResult();
     }
-    
+
 }

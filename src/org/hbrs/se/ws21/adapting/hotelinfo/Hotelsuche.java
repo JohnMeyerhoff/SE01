@@ -7,13 +7,15 @@ import org.hbrs.se.ws21.adapting.adapter.Adapter;
 
 public class Hotelsuche {
     Formatvorgaben[] quellen;
+
     public Hotelsuche(Adapter adapter) {
-        this.quellen = new Formatvorgaben[]{adapter};
+        this.quellen = new Formatvorgaben[] { adapter };
     }
+
     // Speichert Referenzen auf Instanzen,
     // welche die Methode Suche(Suchauftrag): Suchergebnis
     // bereitstellen.
-    public void console(Scanner sc){
+    public void console(Scanner sc) {
 
         System.out.println("Bitte geben sie einen Preis an");
         int price = sc.nextInt();
@@ -29,5 +31,5 @@ public class Hotelsuche {
             System.out.println(se);
         }
     }
-    
+
 }
