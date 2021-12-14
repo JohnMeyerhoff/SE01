@@ -13,19 +13,20 @@ public class Adapter implements Formatvorgaben {
 
     @Override
     public Suchergebnis suche(Suchauftrag sa) {
-        QueryObject o = concreteIN(sa); // speichtert die Daten des Auftrags in dem Format
-                                        // des Reisenabieters
-        QueryResult e = extern.execute(o); // sendet5 eine für den Reiseanbieter gültige
-                                           // Abfrage
-        return concreteOUT(e); // kovertierte Rückgabe in unserem Format
+        QueryObject o = concreteIN(sa); 
+        // formatiert den Auftrag in dem Format des Reisenabieters
+        QueryResult e = extern.execute(o); 
+        // sendet eine für den Reiseanbieter gültige Anfrage
+        return concreteOUT(e); 
+        // kovertiert die Rückgabe des RA in unser Format
     }
 
-    private QueryObject concreteIN(Suchauftrag s1) {
+    private QueryObject concreteIN(Suchauftrag auftrag) {
         // Inhalt dieser Methode für uns nicht wichtig
         return new QueryObject();
     }
 
-    private Suchergebnis concreteOUT(QueryResult s2) {
+    private Suchergebnis concreteOUT(QueryResult ergebnis) {
         // Inhalt dieser Methode für uns nicht wichtig
         return new Suchergebnis(5, " ");
     }
