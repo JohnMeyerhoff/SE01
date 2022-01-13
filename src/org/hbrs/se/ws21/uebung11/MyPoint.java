@@ -34,7 +34,11 @@ public class MyPoint implements Comparable<MyPoint> {
     }
 
     public MyPoint getHalfwayPoint(MyPoint upperRight) {
-        return new MyPoint((this.x+upperRight.x) /2, (this.y + upperRight.y) / 2);
+        return new MyPoint((this.x + upperRight.x) / 2, (this.y + upperRight.y) / 2);
+    }
+
+    public double getAreaFrom(MyPoint lowerLeft) {
+        return ((this.x - lowerLeft.x) * (this.y - lowerLeft.y));
     }
 
 }

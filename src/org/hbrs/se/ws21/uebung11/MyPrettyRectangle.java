@@ -27,4 +27,8 @@ public class MyPrettyRectangle {
         return lowerLeft.getHalfwayPoint(upperRight);
     }
 
+    public double getArea() {
+        return upperRight.getAreaFrom(lowerLeft);
+    }
+
 }

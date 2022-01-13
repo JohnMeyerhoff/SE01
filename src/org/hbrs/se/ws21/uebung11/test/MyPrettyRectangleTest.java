@@ -105,7 +105,11 @@ public class MyPrettyRectangleTest {
         // http://stackoverflow.com/questions/7554281/junit-assertions-make-the-assertion-between-floats
         //
         // [ihr Code]
-
+        //Error in expected value shows delta is working
+        assertEquals(6.00000007, left.getArea(), 0.0001);
+        assertEquals(1.0, middle.getArea(), 0.0001);
+        assertEquals(12.000, right.getArea(), 0.0001);
+        assertEquals(3.0, somewhere.getArea(), 0.0001);
     }
 
     /*
