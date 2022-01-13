@@ -141,27 +141,49 @@ public class MyPrettyRectangleTest {
      */
     @Test
     public void testSameIdentity() {
-        // Hier sollten sie fuenf Tests einfuegen, welche die Objekt-Identitaet des
-        // linken Rechtecks ('left')
-        // mit den anderen Rechtecken (inklusive dem neuen Rechteck 'other')
-        // ueberprueft. Bitte nur assertSame oder assertNotSame
-        // verwenden!
-        //
-        // [ihr Code]
+        
         MyPrettyRectangle other = left;
 
-        // Bitte drei Assertions hinzufuegen, um die Gleichheit von Rechteck-Objekten zu
-        // ueberpruefen. Bitte nur die Assertion
-        // assertTrue verwenden:
-        //
-        // [ihr Code]
+        assertSame(other, left);
+        assertSame(other, other);
+        assertSame(right, right);
+        assertSame(left, left);
+        assertSame(somewhere, somewhere);
+        assertSame(middle, middle);
 
-        // Bitte drei weitere Assertions hinzufuegen, welce die Objekt-Identitaet des
-        // Rechtecks 'left' mit allen anderen
-        // Rechtecken ueberprueft (inklusive other). Bitte hier nur die Assertions
-        // assertTrue und assertFalse verwenden.
-        //
-        // [ihr Code]
+        assertNotSame(left, right);
+        assertNotSame(left, middle);
+        assertNotSame(left, somewhere);
+        
+        assertNotSame(middle, right);
+        assertNotSame(middle, somewhere);
+        assertNotSame(middle, other);
+        assertNotSame(middle, left);
+
+        assertNotSame(right, middle);
+        assertNotSame(right, somewhere);
+        assertNotSame(right, other);
+        assertNotSame(right, left);
+
+
+        assertNotSame(somewhere, right);
+        assertNotSame(somewhere, middle);
+        assertNotSame(somewhere, other);
+        assertNotSame(somewhere, left);
+
+
+ 
+        
+        assertTrue(other == left);
+        assertTrue(other.equals(left));
+        assertTrue(!other.equals(middle));
+
+        
+        
+        assertTrue(left.equals(other));
+        assertFalse(left.equals(right));
+        assertFalse(left.equals(middle));
+        assertFalse(left.equals(somewhere));
 
     }
 
