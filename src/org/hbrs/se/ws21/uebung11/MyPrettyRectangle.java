@@ -28,7 +28,7 @@ public class MyPrettyRectangle {
     }
 
     public double getArea() {
-        return upperRight.getAreaFrom(lowerLeft);
+        return Math.abs(upperRight.getAreaFrom(lowerLeft));
     }
 
 }
