@@ -31,4 +31,8 @@ public class MyPrettyRectangle {
         return Math.abs(upperRight.getAreaFrom(lowerLeft));
     }
 
+    public double getPerimeter() {
+        return Math.abs(upperRight.getperimeterFrom(lowerLeft));
+    }
+
 }

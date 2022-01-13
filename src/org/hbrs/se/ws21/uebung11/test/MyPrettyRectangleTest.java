@@ -120,7 +120,10 @@ public class MyPrettyRectangleTest {
      */
     @Test
     public void testGetPerimeter() {
-
+        assertEquals(10.0, left.getPerimeter(),0.0001);
+        assertEquals(4.0, middle.getPerimeter(), 0.0001);
+        assertEquals(14.000, right.getPerimeter(), 0.0001);
+        assertEquals(8.0, somewhere.getPerimeter(), 0.0001);
         // Hier sollten sie weitere Tests einfuegen, welche die errechneten Umfaenge der
         // beiden Rechtecke
         // mit den tatsaechlichen Werten vergleicht.
@@ -179,7 +182,7 @@ public class MyPrettyRectangleTest {
         assertTrue(!other.equals(middle));
 
         
-        
+
         assertTrue(left.equals(other));
         assertFalse(left.equals(right));
         assertFalse(left.equals(middle));
