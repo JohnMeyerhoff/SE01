@@ -1,4 +1,4 @@
-package org.hbrs.se.ws21.uebung11;
+package org.hbrs.se.ws21.uebung12;
 
 public class MyPoint implements Comparable<MyPoint> {
 

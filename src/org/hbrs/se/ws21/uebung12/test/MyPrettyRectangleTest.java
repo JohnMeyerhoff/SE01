@@ -1,11 +1,11 @@
-package org.hbrs.se.ws21.uebung11.test;
+package org.hbrs.se.ws21.uebung12.test;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.hbrs.se.ws21.uebung11.MyPoint;
-import org.hbrs.se.ws21.uebung11.MyPrettyRectangle;
+import org.hbrs.se.ws21.uebung12.MyPoint;
+import org.hbrs.se.ws21.uebung12.MyPrettyRectangle;
 
 public class MyPrettyRectangleTest {
 
