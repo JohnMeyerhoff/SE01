@@ -54,7 +54,6 @@ public class MyPrettyRectangleTest {
      * (Ergebnis: boolean Wert)
      * 
      */
-    
     @Test
     public void testContains() {
         // Erste Tests, um die Korrektheit der Methode contains() zu ueberpruefen
@@ -211,22 +210,24 @@ public class MyPrettyRectangleTest {
         //
         // [ihr Code]
         MyPrettyRectangle bounding = BoundingBoxFactory.surroundMultiple(rect);
-        assertNotEquals(null, bounding);
         // Testen sie zudem, ob ueberhaupt ein Objekt zurueckgegeben wird, d.h. der
         // Rueckgabe-Wert ungleich NULL ist
         //
         // [ihr Code]
+        assertNotEquals(null, bounding);
 
         // Test, ob ein leeres Array ein "Null-Rectangle" (vier mal die Koordinaten 0)
         // zurueckliefert:
         //
         // [ihr Code]
-
+        MyPrettyRectangle[] emptyRect = {};
+        assertEquals(null, BoundingBoxFactory.surroundMultiple(emptyRect));
         // Test, ob die Übergabe eines NULL-Werts erfolgreich abgefangen wurde
         // (Rueckgabe == NULL!)
         //
         // [ihr Code]
-
+        MyPrettyRectangle[] nulledRect = null;
+        assertEquals(null, BoundingBoxFactory.surroundMultiple(nulledRect));
     }
 
 }

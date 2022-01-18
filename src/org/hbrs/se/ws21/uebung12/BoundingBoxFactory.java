@@ -7,7 +7,7 @@ public class BoundingBoxFactory {
     }
 
     public static MyPrettyRectangle surroundMultiple(MyPrettyRectangle[] rect) {
-        if (rect.length == 0) {
+        if (rect == null || rect.length == 0) {
             return null; // Wrong call
         }
         double absoluteBottom;
