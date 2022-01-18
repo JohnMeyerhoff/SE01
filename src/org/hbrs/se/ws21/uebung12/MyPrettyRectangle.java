@@ -35,4 +35,20 @@ public class MyPrettyRectangle {
         return Math.abs(upperRight.getperimeterFrom(lowerLeft));
     }
 
+    public double getBottom() {
+        return this.lowerLeft.getY();
+    }
+
+    public double getLeft() {
+        return this.lowerLeft.getX();
+    }
+
+    public double getTop() {
+        return this.upperRight.getX();
+    }
+
+    public double getRight() {
+        return this.upperRight.getX();
+    }
+
 }

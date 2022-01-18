@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.hbrs.se.ws21.uebung12.BoundingBoxFactory;
 import org.hbrs.se.ws21.uebung12.MyPoint;
 import org.hbrs.se.ws21.uebung12.MyPrettyRectangle;
 
@@ -214,7 +215,8 @@ public class MyPrettyRectangleTest {
         // implementieren.
         //
         // [ihr Code]
-
+        MyPrettyRectangle bounding = BoundingBoxFactory.surroundMultiple(rect);
+        assertNotEquals(null, bounding);
         // Testen sie zudem, ob ueberhaupt ein Objekt zurueckgegeben wird, d.h. der
         // Rueckgabe-Wert ungleich NULL ist
         //

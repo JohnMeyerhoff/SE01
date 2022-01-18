@@ -45,4 +45,12 @@ public class MyPoint implements Comparable<MyPoint> {
         return (((this.x - lowerLeft.x) + (this.y - lowerLeft.y) )* 2);
     }
 
+    public double getY() {
+        return this.y;
+    }
+
+    public double getX() {
+        return this.x;
+    }
+
 }
