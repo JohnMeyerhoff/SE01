@@ -1,4 +1,4 @@
-package org.hbrs.se.ws21.uebung12;
+package org.hbrs.se.ws21.uebung11;
 
 public class BoundingBoxFactory {
 
