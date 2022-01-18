@@ -15,11 +15,11 @@ public class TestClient {
 	@Test
 	public void empty() {
 		ComplexDocument rootFolder = new ComplexDocument();
-		assertEquals( 0 , rootFolder.getSizeInBytes() );
+		assertEquals(0, rootFolder.getSizeInBytes());
 	}
 
 	@Test
-	public void clientExample(){
+	public void clientExample() {
 		ComplexDocument doc0 = new ComplexDocument();
 		doc0.setID(1);
 		Document doc2 = new TextDocument("Die Klausur im Fach SE findet bald statt!", TextDocument.Encoding.UTF8);
@@ -43,24 +43,23 @@ public class TestClient {
 		assertEquals(300, doc5.getSizeInBytes());
 	}
 
-
 	@Test
 	public void clientSmallerExample() {
-		
+
 		ComplexDocument doc3 = new ComplexDocument();
 		Document doc4 = new GraficDocument("localhost:8080");
 		Document doc5 = new TextDocument("Software Engineering I ist eine Vorlesung in den Studiengaengen BIS und BCS",
-		TextDocument.Encoding.UTF32);
+				TextDocument.Encoding.UTF32);
 
-		//Es existiert kein Zwang zum direkten setzen der ID.
+		// Es existiert kein Zwang zum direkten setzen der ID.
 		doc3.setID(1);
 		doc4.setID(2);
 		doc5.setID(3);
-		
-		//Struktur:
+
+		// Struktur:
 		doc3.add(doc5);
 		doc3.add(doc4);
-		//Doc 4 und doc 5 sind jetzt im Complex doc in der liste
+		// Doc 4 und doc 5 sind jetzt im Complex doc in der liste
 		assertEquals(1500, doc3.getSizeInBytes());
 	}
 

@@ -25,16 +25,16 @@ public class MyPrettyRectangleTest {
     @BeforeEach
     public void setUp() throws Exception {
         //
-        //     +-----------+   +---+
-		//     |         r |   | s |
-		// +---+---+---+   |   |   |
-		// | l |   | m |   |   |   |
-		// |   |   +---+   |   |   |
-		// |   |       |   |   |   |
-		// +---+-------+   |   +---+
-		//     |           |
-		//     +-----------+
-		//
+        // +-----------+ +---+
+        // | r | | s |
+        // +---+---+---+ | | |
+        // | l | | m | | | |
+        // | | +---+ | | |
+        // | | | | | |
+        // +---+-------+ | +---+
+        // | |
+        // +-----------+
+        //
         // Annahme: 1 Einheit = 1cm
         // MyPrettyRectangle-Konstruktor: MyPrettyRectangle(x1,y1,x2,y2)
         // x1,y1: Punkt links unten
@@ -54,6 +54,7 @@ public class MyPrettyRectangleTest {
      * (Ergebnis: boolean Wert)
      * 
      */
+    
     @Test
     public void testContains() {
         // Erste Tests, um die Korrektheit der Methode contains() zu ueberpruefen
@@ -106,7 +107,7 @@ public class MyPrettyRectangleTest {
         // http://stackoverflow.com/questions/7554281/junit-assertions-make-the-assertion-between-floats
         //
         // [ihr Code]
-        //Error in expected value shows delta is working
+        // Error in expected value shows delta is working
         assertEquals(6.00000007, left.getArea(), 0.0001);
         assertEquals(1.0, middle.getArea(), 0.0001);
         assertEquals(12.000, right.getArea(), 0.0001);
@@ -121,7 +122,7 @@ public class MyPrettyRectangleTest {
      */
     @Test
     public void testGetPerimeter() {
-        assertEquals(10.0, left.getPerimeter(),0.0001);
+        assertEquals(10.0, left.getPerimeter(), 0.0001);
         assertEquals(4.0, middle.getPerimeter(), 0.0001);
         assertEquals(14.000, right.getPerimeter(), 0.0001);
         assertEquals(8.0, somewhere.getPerimeter(), 0.0001);
@@ -145,7 +146,7 @@ public class MyPrettyRectangleTest {
      */
     @Test
     public void testSameIdentity() {
-        
+
         MyPrettyRectangle other = left;
 
         assertSame(other, left);
@@ -158,7 +159,7 @@ public class MyPrettyRectangleTest {
         assertNotSame(left, right);
         assertNotSame(left, middle);
         assertNotSame(left, somewhere);
-        
+
         assertNotSame(middle, right);
         assertNotSame(middle, somewhere);
         assertNotSame(middle, other);
@@ -169,20 +170,14 @@ public class MyPrettyRectangleTest {
         assertNotSame(right, other);
         assertNotSame(right, left);
 
-
         assertNotSame(somewhere, right);
         assertNotSame(somewhere, middle);
         assertNotSame(somewhere, other);
         assertNotSame(somewhere, left);
 
-
- 
-        
         assertTrue(other == left);
         assertTrue(other.equals(left));
         assertTrue(!other.equals(middle));
-
-        
 
         assertTrue(left.equals(other));
         assertFalse(left.equals(right));

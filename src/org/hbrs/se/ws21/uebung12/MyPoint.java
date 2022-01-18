@@ -42,7 +42,7 @@ public class MyPoint implements Comparable<MyPoint> {
     }
 
     public double getperimeterFrom(MyPoint lowerLeft) {
-        return (((this.x - lowerLeft.x) + (this.y - lowerLeft.y) )* 2);
+        return (((this.x - lowerLeft.x) + (this.y - lowerLeft.y)) * 2);
     }
 
     public double getY() {

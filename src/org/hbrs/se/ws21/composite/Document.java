@@ -4,6 +4,8 @@ package org.hbrs.se.ws21.composite;
 // und Johannes Meyerhoff bearbeitet worden.
 public interface Document {
 	public boolean setID(int id);
+
 	public int getID();
+
 	public int getSizeInBytes();
 }

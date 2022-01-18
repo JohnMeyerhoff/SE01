@@ -10,7 +10,7 @@ public abstract class GeneralDocument implements Document {
 	public boolean setID(int id) {
 		this.id = id;
 		return true;
-		//TODO: Check for collisions?
+		// TODO: Check for collisions?
 	}
 
 	@Override

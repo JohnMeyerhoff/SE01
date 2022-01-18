@@ -13,7 +13,7 @@ public class TextDocument extends GeneralDocument {
 				return "UTF-8";
 			}
 		},
-		UTF16{
+		UTF16 {
 			@Override
 			public String toString() {
 				return "UTF-16";
