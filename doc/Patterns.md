@@ -39,7 +39,7 @@ Bestehenden Code kann man in vier Schritten zu einem Command umwandeln:
 - Zur Verwendung `new Command().execute()` ausführen
 
 # Antipatterns
-Antipatterns sind Muster die zuverlässig zu Miserfolg führen.
+Antipatterns sind Muster die zuverlässig zu Misserfolg führen.
 ## God class
 Ein häufiges antipattern is das einlagern vieler Funktionalitäten in eine einzige
 Klasse. Dies ist nicht übersichtlich und hat nicht den Qualitätsaspekt der Wartbarkeit.
