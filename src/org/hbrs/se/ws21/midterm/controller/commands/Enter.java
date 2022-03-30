@@ -24,6 +24,26 @@ public class Enter extends ContainerCommand {
 
     @Override
     public void execute() {
+        String in = input.next();
+        if (in.equals("new")) {
+            in = input.next();
+        if(in.equals("mitarbeiter")){
+            this.readNewMitarbeiter();
+        }else{
+            this.readNewSprint();
+        }
+        }
+    }
+
+    private void readNewSprint() {
+        ConsoleUI ui = new ConsoleUI(outstream);
+        String sName = ui.textonlyDialogue(input, "den Sprintnamen");
+        outstream.println(
+                "Sprint "+sName+": ");
+
+    }
+
+    private void readNewMitarbeiter() {
         ConsoleUI ui = new ConsoleUI(outstream);
         String vorname = ui.textonlyDialogue(input, "ihren Vornamen");
         String name = ui.textonlyDialogue(input, "ihren Nachnamen");

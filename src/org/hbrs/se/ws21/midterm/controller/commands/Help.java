@@ -15,7 +15,7 @@ public class Help extends ConsoleCommand {
 
     @Override
     public void execute() {
-        new ConsoleUI(super.outstream).displayWelcomeMessage();
+        new ConsoleUI(super.outstream).displayHelpMessage();
     }
 
 }
