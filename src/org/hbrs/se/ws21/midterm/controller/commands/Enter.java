@@ -1,12 +1,16 @@
 package org.hbrs.se.ws21.midterm.controller.commands;
 
 import java.io.PrintStream;
+import java.sql.Date;
 import java.util.Scanner;
 
 import org.hbrs.se.ws21.midterm.model.Expertise;
 import org.hbrs.se.ws21.midterm.model.Mitarbeiter;
 import org.hbrs.se.ws21.midterm.model.MitarbeiterContainer;
+import org.hbrs.se.ws21.midterm.model.Sprint;
+import org.hbrs.se.ws21.midterm.model.SprintContainer;
 import org.hbrs.se.ws21.midterm.model.exception.ContainerException;
+import org.hbrs.se.ws21.midterm.model.exception.PersistenceException;
 import org.hbrs.se.ws21.midterm.view.ConsoleUI;
 
 public class Enter extends ContainerCommand {
@@ -37,10 +41,52 @@ public class Enter extends ContainerCommand {
 
     private void readNewSprint() {
         ConsoleUI ui = new ConsoleUI(outstream);
-        String sName = ui.textonlyDialogue(input, "den Sprintnamen");
+        String sName = ui.textAndDigitsOnlyDialogue(input, "den Sprintnamen");
         outstream.println(
                 "Sprint "+sName+": ");
+        String spStartDate = null;
+        String spEndDate = null;
+        ui.displayExpertiseOrDateInputPrompt(sName);
+        String in = input.next();
+        while(!in.equals("store")){
 
+            //CASE ENTER START
+            if (in.equals("enter")) {
+                in = input.next();
+                if (in.equals("expertise")) {
+                    // NEW EXP
+                } else  if (in.equals("start")) {
+                    spStartDate = input.next();
+                    in = input.next();
+                    continue;
+                } else if (in.equals("end")) {
+                    spEndDate = input.next();
+                    in = input.next();
+                    continue;
+                } 
+                
+            }else if(in.equals("delete")){
+                in = input.next();
+                if(in.equals("start")){
+                    spStartDate = null;
+                }
+                if (in.equals("end")) {
+                    spEndDate = null;
+                }
+            }
+            in = input.next();
+        }
+        Sprint sp = new Sprint(spStartDate,spEndDate);
+        SprintContainer spc = SprintContainer.getInstance();
+        try {
+            spc.addMember(sp);
+            spc.store();
+        } catch (ContainerException |  PersistenceException e) {
+            e.printStackTrace();
+        }
+        
+
+        //Store the sprint at last.
     }
 
     private void readNewMitarbeiter() {

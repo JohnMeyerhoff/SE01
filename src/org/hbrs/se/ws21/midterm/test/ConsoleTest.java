@@ -52,9 +52,9 @@ public class ConsoleTest {
 
         String expected = """
                 Willkommen im Sprint-Tool von Klara und John,
-                mit dem Befehl help erhalten Sie eine Übersicht.
-                >
-                Mögliche Befehle für Sie sind:
+                Das Tool wurde für die SoGutWieKeinPlan GmbH entwickelt.
+                Mit dem Befehl help erhalten Sie eine Übersicht.
+                >Mögliche Befehle für Sie sind:
                 enter
                 store
                 load

@@ -55,6 +55,14 @@ public class ConsoleUI {
         out.println("Leider wurden keine Mitarbeiter mit dieser Expertise gefunden.");
     }
 
+    public void displayExpertiseOrDateInputPrompt(String unnecessarysprintname) {
+        out.println("Please enter the expertises and dates with further commands.");
+        out.println("Allowed commands:");
+        out.println("enter (expertise || start || end)");
+        out.println("delete (start || end)");
+        out.println("store "+unnecessarysprintname);
+    }
+
     public void displayExpertiseFound(String fertigkeit) {
         out.println("Folgende Mitarbeiter haben die Expertise " + fertigkeit + ":\n");
 
@@ -110,6 +118,33 @@ public class ConsoleUI {
             Matcher m = p.matcher(tmp);
             if (m.find()) {
                 out.println("Bitte geben sie hier nur Buchstaben ein.");
+            } else {
+                return tmp;
+            }
+        }
+        return "Fehler";
+    }
+
+    /**
+     * 
+     * @param input
+     * @param label takes the label to be placed in the format of __Bitte geben Sie
+     *              "+label+" ein.__
+     * @return
+     */
+    public String textAndDigitsOnlyDialogue(Scanner input, String label) {
+        out.println("Bitte geben Sie " + label + " ein.");
+        Pattern p;
+        if (label.contains("(* für alle)")) {
+            p = Pattern.compile("[^a-z0-9* ]", Pattern.CASE_INSENSITIVE);
+        } else {
+            p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+        }
+        while (input.hasNext()) {
+            String tmp = input.next();
+            Matcher m = p.matcher(tmp);
+            if (m.find()) {
+                out.println("Bitte geben sie hier nur Buchstaben oder Zahlen ein.");
             } else {
                 return tmp;
             }
