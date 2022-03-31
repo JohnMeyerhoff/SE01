@@ -14,19 +14,19 @@ public class Date implements Serializable {
 
     private static void validateYear(int year) {
         if (year <= -500) {
-            throw new IllegalArgumentException("ungueltiger Wert fuer Jahr: " + year);
+            throw new IllegalArgumentException("Ungültiger Wert für Jahr: " + year);
         }
     }
 
     private static void validateMonth(int month) {
         if (month < 1 || 12 < month) {
-            throw new IllegalArgumentException("ungueltiger Wert fuer Monat: " + month);
+            throw new IllegalArgumentException("Ungültiger Wert für Monat: " + month);
         }
     }
 
     private static void validateDate(int year, int month, int day) {
         if (day < 1 || daysInMonth(year, month) < day) {
-            throw new IllegalArgumentException("ungueltiger Wert fuer Tag: " + day);
+            throw new IllegalArgumentException("Ungültiger Wert für Tag: " + day);
         }
     }
 
@@ -35,7 +35,7 @@ public class Date implements Serializable {
     public static void setFormatRF(String order) {
         if (!(order.equals("jmt") || order.equals("tmj") || order.equals("mtj"))) {
             throw new IllegalArgumentException(
-                    "ungueltiger Wert fuer Format-Reihenfolge: \"" + order + "\"");
+                    "Ungültiger Wert für Format-Reihenfolge: \"" + order + "\"");
         }
 
         Date.order = order;
@@ -68,7 +68,7 @@ public class Date implements Serializable {
         }
 
         throw new IllegalArgumentException(
-                "ungueltiger Wert fuer Monat: \"" + monat + "\"");
+                "Ungültiger Wert für Monat: \"" + monat + "\"");
     }
 
     // -------------------------------------------------------------------------------------------------

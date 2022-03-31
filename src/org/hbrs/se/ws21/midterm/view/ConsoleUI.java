@@ -8,7 +8,11 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.hbrs.se.ws21.midterm.model.Date;
+import org.hbrs.se.ws21.midterm.util.Dateconverter;
+
 public class ConsoleUI {
+    private static final Date errordate = new Date(0, 1, 1);
     private PrintStream out;
 
     public ConsoleUI(PrintStream out) {
@@ -60,7 +64,7 @@ public class ConsoleUI {
         out.println("Allowed commands:");
         out.println("enter (expertise || start || end)");
         out.println("delete (start || end)");
-        out.println("store "+unnecessarysprintname);
+        out.println("store " + unnecessarysprintname);
     }
 
     public void displayExpertiseFound(String fertigkeit) {
@@ -150,6 +154,38 @@ public class ConsoleUI {
             }
         }
         return "Fehler";
+    }
+
+    /**
+     * 
+     * @param input
+     * @param label takes the label to be placed in the format of __Bitte geben Sie
+     *              "+label+" ein.__
+     * @return
+     */
+    public Date dateOnlyDialogue(Scanner input, String label) {
+        out.println("Bitte geben Sie " + label + " ein.");
+        Pattern p;
+        p = Pattern.compile("[^[.]0-9 ]", Pattern.CASE_INSENSITIVE);
+        while (input.hasNext()) {
+            String tmp = input.next();
+            Matcher m = p.matcher(tmp);
+            if (m.find()) {
+                out.println("Bitte geben sie hier ein Datum im Format DD.MM.YYYY ein.");
+            } else {
+                Date x = null;
+                try {
+                    x = new Dateconverter().fromString(tmp);
+                    return x;
+                } catch (IllegalArgumentException e) {
+                    out.println(
+                            "Bitte geben sie hier ein (GÜLTIGES) Datum im Format DD.MM.YYYY ein.");
+                    out.println(e.getMessage());
+                }
+
+            }
+        }
+        return new Date(errordate);
     }
 
 }

@@ -1,9 +1,9 @@
 package org.hbrs.se.ws21.midterm.controller.commands;
 
 import java.io.PrintStream;
-import java.sql.Date;
 import java.util.Scanner;
 
+import org.hbrs.se.ws21.midterm.model.Date;
 import org.hbrs.se.ws21.midterm.model.Expertise;
 import org.hbrs.se.ws21.midterm.model.Mitarbeiter;
 import org.hbrs.se.ws21.midterm.model.MitarbeiterContainer;
@@ -44,8 +44,8 @@ public class Enter extends ContainerCommand {
         String sName = ui.textAndDigitsOnlyDialogue(input, "den Sprintnamen");
         outstream.println(
                 "Sprint "+sName+": ");
-        String spStartDate = null;
-        String spEndDate = null;
+        Date spStartDate = null;
+        Date spEndDate = null;
         ui.displayExpertiseOrDateInputPrompt(sName);
         String in = input.next();
         while(!in.equals("store")){
@@ -56,15 +56,14 @@ public class Enter extends ContainerCommand {
                 if (in.equals("expertise")) {
                     // NEW EXP
                 } else  if (in.equals("start")) {
-                    spStartDate = input.next();
-                    in = input.next();
-                    continue;
+                    spStartDate = ui.dateOnlyDialogue(input,"das Datum des Sprint-Starts");
+                    
                 } else if (in.equals("end")) {
-                    spEndDate = input.next();
-                    in = input.next();
-                    continue;
+                    spEndDate = ui.dateOnlyDialogue(input, "das Datum des Sprint-Endes");
+                   
                 } 
-                
+                in = input.next();
+                continue;
             }else if(in.equals("delete")){
                 in = input.next();
                 if(in.equals("start")){
