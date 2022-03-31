@@ -23,8 +23,6 @@ public class ConsoleUI {
         String message = """
                 Willkommen im Sprint-Tool von Klara und John,
                 Das Tool wurde für die SoGutWieKeinPlan GmbH entwickelt.
-                Es ist aktuell unter Entwicklung auf GitHub unter:
-                https://github.com/JohnMeyerhoff/SE01/tree/master/src/org/hbrs/se/ws21/midterm
                 Mit dem Befehl help erhalten Sie eine Übersicht.
                 >""";
         out.print(message);
