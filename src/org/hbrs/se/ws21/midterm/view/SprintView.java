@@ -46,19 +46,19 @@ public class SprintView {
     private String[][] listToStringarray(List<? extends Sprint> liste) {
         int i = 1;
         String[][] table = new String[liste.size() + 1][5];
-        table[0] = new String[] { "ID", "Vorname", "Nachname", "Abteilung", "Rolle", };
+        table[0] = new String[] { "ID", "Start", "Ende" };
         /**
          * EXPERTISEN WERDEN HIER ENTFERNT BZW NICHT BEACHTET.
          */
         for (Sprint ma : liste) {
             table[i] = new String[] { "" + ma.getID(),
                     String.valueOf(ma.getStart().tag())
-                            + String.valueOf(ma.getStart().monat())
-                            + String.valueOf(ma.getStart().jahr()),
+                            + "." + String.valueOf(ma.getStart().monat())
+                            + "." + String.valueOf(ma.getStart().jahr()),
 
                     String.valueOf(ma.getStart().tag())
-                            + String.valueOf(ma.getStart().monat())
-                            + String.valueOf(ma.getStart().jahr()) };
+                            + "." + String.valueOf(ma.getStart().monat())
+                            + "." + String.valueOf(ma.getStart().jahr()) };
             i++;
         }
         return table;
@@ -95,5 +95,4 @@ public class SprintView {
 
     }
 
-   
 }

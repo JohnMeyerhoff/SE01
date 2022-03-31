@@ -188,4 +188,9 @@ public class ConsoleUI {
         return new Date(errordate);
     }
 
+    public void promptWaitingForUserInput() {
+
+        out.print("\nAwaiting top level command\n>");
+    }
+
 }

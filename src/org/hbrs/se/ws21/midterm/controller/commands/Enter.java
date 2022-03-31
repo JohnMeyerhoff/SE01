@@ -30,8 +30,10 @@ public class Enter extends ContainerCommand {
 
     @Override
     public void execute() {
+        outstream.print("To enter something new please type 'new'.\n>");
         String in = input.next();
         if (in.equals("new")) {
+            outstream.print("Choose between mitarbeiter and sprint:\n>");
             in = input.next();
         if(in.equals("mitarbeiter")){
             this.readNewMitarbeiter();
@@ -51,7 +53,11 @@ public class Enter extends ContainerCommand {
         ui.displayExpertiseOrDateInputPrompt(sName);
         String in = input.next();
         while(!in.equals("store")){
-
+            if(spEndDate == null || spStartDate == null){
+                outstream.print("Bitte daran denken vor dem Speichern Start und Ende anzugeben.\n>");
+            }else{
+                outstream.print("Sie können weitere Expertisen eingeben.\n>");
+            }
             //CASE ENTER START
             if (in.equals("enter")) {
                 in = input.next();
@@ -70,9 +76,11 @@ public class Enter extends ContainerCommand {
                 in = input.next();
                 if(in.equals("start")){
                     spStartDate = null;
+                    outstream.println("Start gelöscht");
                 }
                 if (in.equals("end")) {
                     spEndDate = null;
+                    outstream.println("Start gelöscht");
                 }
             }
             in = input.next();
@@ -89,8 +97,6 @@ public class Enter extends ContainerCommand {
             e.printStackTrace();
         }
         
-
-        //Store the sprint at last.
     }
 
     private void readNewMitarbeiter() {
