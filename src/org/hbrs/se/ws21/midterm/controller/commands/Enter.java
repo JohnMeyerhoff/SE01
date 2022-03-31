@@ -12,6 +12,8 @@ import org.hbrs.se.ws21.midterm.model.SprintContainer;
 import org.hbrs.se.ws21.midterm.model.exception.ContainerException;
 import org.hbrs.se.ws21.midterm.model.exception.PersistenceException;
 import org.hbrs.se.ws21.midterm.view.ConsoleUI;
+import org.hbrs.se.ws21.midterm.view.MemberView;
+import org.hbrs.se.ws21.midterm.view.SprintView;
 
 public class Enter extends ContainerCommand {
     public Enter() {
@@ -80,6 +82,9 @@ public class Enter extends ContainerCommand {
         try {
             spc.addMember(sp);
             spc.store();
+            outstream.println("Your sprint has been stored successfully. Summary:");
+            new SprintView().dumpSorted(SprintContainer.getInstance().getCurrentList());
+            outstream.println();
         } catch (ContainerException |  PersistenceException e) {
             e.printStackTrace();
         }
