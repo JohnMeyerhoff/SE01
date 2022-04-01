@@ -7,6 +7,7 @@ import java.io.PrintStream;
 
 import java.util.Scanner;
 
+import org.hbrs.se.ws21.midterm.model.Mitarbeiter;
 import org.hbrs.se.ws21.midterm.model.MitarbeiterContainer;
 import org.hbrs.se.ws21.midterm.model.Sprint;
 import org.hbrs.se.ws21.midterm.model.SprintContainer;
@@ -17,9 +18,13 @@ public class Launcher {
     @SuppressWarnings({ "java:S125", "java:S106" })
     public static void main(String[] args) {
         MitarbeiterContainer maincontainer = MitarbeiterContainer.getInstance();
-        maincontainer.setStrategy(new PersistenceStrategyStream<>());
+        PersistenceStrategyStream<Mitarbeiter> mStrat = new PersistenceStrategyStream<>();
+        mStrat.setLocation("mitarbeiter.ser");
+        maincontainer.setStrategy(mStrat);
         SprintContainer sc = SprintContainer.getInstance();
-        sc.setStrategy(new PersistenceStrategyStream<>());
+        PersistenceStrategyStream<Sprint> spStrat = new PersistenceStrategyStream<>();
+        spStrat.setLocation("sprints.ser");
+        sc.setStrategy(spStrat);
         // testMethod();
         Client cl = new Client(maincontainer, new Scanner(System.in), System.out);
         cl.konsole();

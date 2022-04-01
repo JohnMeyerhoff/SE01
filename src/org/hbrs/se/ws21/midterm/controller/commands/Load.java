@@ -25,7 +25,7 @@ public class Load extends ContainerCommand {
         // TODO: Streams beheben in commands
         String parameter = new ConsoleUI(super.outstream).loadDialogue(input);
         try {
-            //SprintContainer.getInstance().setStrategy(new PersistenceStrategyStream<>());
+            SprintContainer.getInstance().setStrategy(new PersistenceStrategyStream<>());
             SprintContainer.getInstance().load();
             if (parameter.equals("merge")) {
                 speicher.merge();

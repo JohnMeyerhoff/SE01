@@ -99,7 +99,7 @@ public class ConsoleUI {
         /**
          * TODO: e instanceof zum verbessern der präzision
          */
-        out.println("Das laden war nicht erfolgreich.");
+        out.println("Das laden war nicht erfolgreich. Art des Fehlers: "+e.getClass() + "\n" + e.getMessage());
     }
 
     /**
