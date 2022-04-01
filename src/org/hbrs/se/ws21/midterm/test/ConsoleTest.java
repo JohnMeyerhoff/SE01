@@ -50,6 +50,8 @@ public class ConsoleTest {
         ui.displayInvalidCommandMessage();
         ui.displayLoadFailureMessage(new Exception("TEST"));
 
+        ui.displayLoadFailureMessage(new ClassCastException("CCE MESSAGE"));
+
         String expected = """
                 Willkommen im Sprint-Tool von Klara und John,
                 Das Tool wurde für die SoGutWieKeinPlan GmbH entwickelt.
@@ -73,6 +75,9 @@ public class ConsoleTest {
                 Ihre Eingabe war kein gültiger Befehl.
                 Sie können 'help' als Befehl eingeben, um alle Möglichkeiten zu sehen.
                 Das laden war nicht erfolgreich.
+                Das laden war nicht erfolgreich.
+                Folgender Klassen-Ladefehler ist aufgetreten:
+                CCE MESSAGE
                 """;
         String[] lines = os.toString().split("\n");
         String[] expectedlines = expected.split("\n");

@@ -12,6 +12,8 @@ import org.hbrs.se.ws21.midterm.model.Date;
 import org.hbrs.se.ws21.midterm.util.Dateconverter;
 
 public class ConsoleUI {
+    private static final String EIN = " ein.";
+    private static final String BITTE_GEBEN_SIE = "Bitte geben Sie ";
     private static final Date errordate = new Date(0, 1, 1);
     private PrintStream out;
 
@@ -62,9 +64,10 @@ public class ConsoleUI {
     public void displayExpertiseOrDateInputPrompt(String unnecessarysprintname) {
         out.println("Please enter the expertises and dates with further commands.");
         out.println("Allowed commands:");
-        out.println("enter (expertise || start || end)");
-        out.println("delete (start || end)");
-        out.println("store " + unnecessarysprintname);
+        out.println(">enter (expertise || start || end)");
+        out.println(">delete (start || end)");
+        out.println(">store " + unnecessarysprintname);
+        out.println();
     }
 
     public void displayExpertiseFound(String fertigkeit) {
@@ -96,11 +99,10 @@ public class ConsoleUI {
     }
 
     public void displayLoadFailureMessage(Exception e) {
-        /**
-         * TODO: e instanceof zum verbessern der präzision
-         */
         out.println("Das laden war nicht erfolgreich.");
-        //for further debugging Art des Fehlers: "+e.getClass() + "\n" + e.getMessage()
+        if(e instanceof ClassCastException cce){
+            out.println("Folgender Klassen-Ladefehler ist aufgetreten:\n"+ cce.getMessage());
+        }
     }
 
     /**
@@ -111,7 +113,7 @@ public class ConsoleUI {
      * @return
      */
     public String textonlyDialogue(Scanner input, String label) {
-        out.println("Bitte geben Sie " + label + " ein.");
+        out.println(BITTE_GEBEN_SIE + label + EIN);
         Pattern p;
         if (label.contains("(* für alle)")) {
             p = Pattern.compile("[^a-z* ]", Pattern.CASE_INSENSITIVE);
@@ -138,7 +140,7 @@ public class ConsoleUI {
      * @return
      */
     public String textAndDigitsOnlyDialogue(Scanner input, String label) {
-        out.println("Bitte geben Sie " + label + " ein.");
+        out.println(BITTE_GEBEN_SIE + label + EIN);
         Pattern p;
         if (label.contains("(* für alle)")) {
             p = Pattern.compile("[^a-z0-9* ]", Pattern.CASE_INSENSITIVE);
@@ -165,7 +167,7 @@ public class ConsoleUI {
      * @return
      */
     public Date dateOnlyDialogue(Scanner input, String label) {
-        out.println("Bitte geben Sie " + label + " ein.");
+        out.println(BITTE_GEBEN_SIE + label + EIN);
         Pattern p;
         p = Pattern.compile("[^[.]0-9 ]", Pattern.CASE_INSENSITIVE);
         while (input.hasNext()) {
