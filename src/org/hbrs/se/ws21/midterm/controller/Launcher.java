@@ -11,6 +11,7 @@ import org.hbrs.se.ws21.midterm.model.Mitarbeiter;
 import org.hbrs.se.ws21.midterm.model.MitarbeiterContainer;
 import org.hbrs.se.ws21.midterm.model.Sprint;
 import org.hbrs.se.ws21.midterm.model.SprintContainer;
+import org.hbrs.se.ws21.midterm.model.persistence.FilestreamFactory;
 import org.hbrs.se.ws21.midterm.model.persistence.PersistenceStrategyStream;
 
 public class Launcher {
@@ -18,12 +19,10 @@ public class Launcher {
     @SuppressWarnings({ "java:S125", "java:S106" })
     public static void main(String[] args) {
         MitarbeiterContainer maincontainer = MitarbeiterContainer.getInstance();
-        PersistenceStrategyStream<Mitarbeiter> mStrat = new PersistenceStrategyStream<>();
-        mStrat.setLocation("mitarbeiter.ser");
+        PersistenceStrategyStream<Mitarbeiter> mStrat = new FilestreamFactory<Mitarbeiter>().createFileSaveStrategy("mitarbeiter");
         maincontainer.setStrategy(mStrat);
         SprintContainer sc = SprintContainer.getInstance();
-        PersistenceStrategyStream<Sprint> spStrat = new PersistenceStrategyStream<>();
-        spStrat.setLocation("sprints.ser");
+        PersistenceStrategyStream<Sprint> spStrat = new FilestreamFactory<Sprint>().createFileSaveStrategy("sprint");
         sc.setStrategy(spStrat);
         // testMethod();
         Client cl = new Client(maincontainer, new Scanner(System.in), System.out);
