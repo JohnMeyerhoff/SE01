@@ -19,10 +19,10 @@ public class Launcher {
     @SuppressWarnings({ "java:S125", "java:S106" })
     public static void main(String[] args) {
         MitarbeiterContainer maincontainer = MitarbeiterContainer.getInstance();
-        PersistenceStrategyStream<Mitarbeiter> mStrat = new FilestreamFactory<Mitarbeiter>().createFileSaveStrategy("mitarbeiter");
+        PersistenceStrategyStream<Mitarbeiter> mStrat = FilestreamFactory.<Mitarbeiter>createFileSaveStrategy("mitarbeiter");
         maincontainer.setStrategy(mStrat);
         SprintContainer sc = SprintContainer.getInstance();
-        PersistenceStrategyStream<Sprint> spStrat = new FilestreamFactory<Sprint>().createFileSaveStrategy("sprint");
+        PersistenceStrategyStream<Sprint> spStrat = FilestreamFactory.<Sprint>createFileSaveStrategy("sprint");
         sc.setStrategy(spStrat);
         // testMethod();
         Client cl = new Client(maincontainer, new Scanner(System.in), System.out);

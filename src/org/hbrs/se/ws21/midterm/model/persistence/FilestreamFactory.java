@@ -2,9 +2,9 @@ package org.hbrs.se.ws21.midterm.model.persistence;
 
 import org.hbrs.se.ws21.midterm.model.Member;
 
-public class FilestreamFactory<T extends Member> {
+public class FilestreamFactory {
     
-    public PersistenceStrategyStream<T> createFileSaveStrategy(String filename) {
+    public static <T extends Member> PersistenceStrategyStream<T> createFileSaveStrategy(String filename) {
         PersistenceStrategyStream<T> spStrat = new PersistenceStrategyStream<>();
         spStrat.setLocation(filename+".ser");
         return spStrat;
