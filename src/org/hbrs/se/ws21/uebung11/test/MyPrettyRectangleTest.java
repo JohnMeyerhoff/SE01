@@ -17,8 +17,7 @@ public class MyPrettyRectangleTest {
 
     /*
      * Set-Up Methode ("BeforeEach"), die fuer alle Test-Methoden die Rechtecke
-     * gemaeß der Skizze definiert.
-     * Wird vor jeder Test-Methode ausgefuehrt.
+     * gemaeß der Skizze definiert. Wird vor jeder Test-Methode ausgefuehrt.
      *
      */
     //
@@ -49,9 +48,8 @@ public class MyPrettyRectangleTest {
 
     /*
      * Methode zum Testen einer Methode der Klasse MyPrettyRectangle, welche prueft,
-     * ob ein Rechteck
-     * ein anderes Rechteck vollstaendig enthaelt.
-     * (Ergebnis: boolean Wert)
+     * ob ein Rechteck ein anderes Rechteck vollstaendig enthaelt. (Ergebnis:
+     * boolean Wert)
      * 
      */
     @Test
@@ -64,8 +62,8 @@ public class MyPrettyRectangleTest {
 
     /*
      * Methode zum Testen einer Methode der Kasse MyPrettyRectangle, welche den
-     * Mittelpunkt eines Rechtecks berechnet
-     * (Ergebnis: ein Punkt in einem Koordinatensystem)
+     * Mittelpunkt eines Rechtecks berechnet (Ergebnis: ein Punkt in einem
+     * Koordinatensystem)
      * 
      */
     @Test
@@ -85,16 +83,15 @@ public class MyPrettyRectangleTest {
         // [ihr Code]
         // TODO: ADD VALUES
         /*
-         * assertEquals(new MyPoint(1.5, 2.0), right.getCenter());
-         * assertEquals(new MyPoint(1.5, 2.0), middle.getCenter());
-         * assertEquals(new MyPoint(1.5, 2.0), somewhere.getCenter());
+         * assertEquals(new MyPoint(1.5, 2.0), right.getCenter()); assertEquals(new
+         * MyPoint(1.5, 2.0), middle.getCenter()); assertEquals(new MyPoint(1.5, 2.0),
+         * somewhere.getCenter());
          */
     }
 
     /*
      * Methode zum Testen einer Methode der Klasse MyPrettyRectangle, welche die
-     * Flaeche eines Rechtecks berechnet
-     * (Ergebnis: Wert in Quadratzentimeter, cm2)
+     * Flaeche eines Rechtecks berechnet (Ergebnis: Wert in Quadratzentimeter, cm2)
      * 
      */
 
@@ -120,8 +117,7 @@ public class MyPrettyRectangleTest {
 
     /*
      * Methode zum Testen einer Methode der Klasse MyPrettyRectangle, welche den
-     * Umfang eines Rechtecks berechnet
-     * (Ergebnis: Wert in Zentimeter, cm)
+     * Umfang eines Rechtecks berechnet (Ergebnis: Wert in Zentimeter, cm)
      * 
      */
     @Test
@@ -192,13 +188,12 @@ public class MyPrettyRectangleTest {
 
     /*
      * Methode zum Testen einer statischen Methode einer weiteren Klasse
-     * BoundingBoxFactory, die auf Basis eines Arrays von
-     * Rechtecken eine Bounding Box berechnet und zurueckliefert.
+     * BoundingBoxFactory, die auf Basis eines Arrays von Rechtecken eine Bounding
+     * Box berechnet und zurueckliefert.
      * 
      * Definition Bounding Box: Eine Bounding Box (deutsch: minimal umgebendes
-     * Rechteck, MUR) bezeichnet das
-     * kleinstmoegliche achsenparallele Rechteck, das eine vorgegebene Menge von
-     * Rechtecken umschliesst.
+     * Rechteck, MUR) bezeichnet das kleinstmoegliche achsenparallele Rechteck, das
+     * eine vorgegebene Menge von Rechtecken umschliesst.
      * 
      */
     @Test
