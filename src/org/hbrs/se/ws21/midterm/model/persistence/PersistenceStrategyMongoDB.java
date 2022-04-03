@@ -14,26 +14,22 @@ public class PersistenceStrategyMongoDB implements PersistenceStrategy<Mitarbeit
 
     @Override
     public void openConnection() throws PersistenceException {
-        throw new PersistenceException(ExceptionType.ImplementationNotAvailable,
-                NIMPL);
+        throw new PersistenceException(ExceptionType.ImplementationNotAvailable, NIMPL);
     }
 
     @Override
     public void closeConnection() throws PersistenceException {
-        throw new PersistenceException(ExceptionType.ImplementationNotAvailable,
-                NIMPL);
+        throw new PersistenceException(ExceptionType.ImplementationNotAvailable, NIMPL);
     }
 
     @Override
     public void save(List<Mitarbeiter> member) throws PersistenceException {
-        throw new PersistenceException(ExceptionType.ImplementationNotAvailable,
-                NIMPL);
+        throw new PersistenceException(ExceptionType.ImplementationNotAvailable, NIMPL);
 
     }
 
     @Override
     public List<Mitarbeiter> load() throws PersistenceException {
-        throw new PersistenceException(ExceptionType.ImplementationNotAvailable,
-                NIMPL);
+        throw new PersistenceException(ExceptionType.ImplementationNotAvailable, NIMPL);
     }
 }

@@ -35,46 +35,47 @@ public class Enter extends ContainerCommand {
         if (in.equals("new")) {
             outstream.print("Choose between mitarbeiter and sprint:\n>");
             in = input.next();
-        if(in.equals("mitarbeiter")){
-            this.readNewMitarbeiter();
-        }else{
-            this.readNewSprint();
-        }
+            if (in.equals("mitarbeiter")) {
+                this.readNewMitarbeiter();
+            } else {
+                this.readNewSprint();
+            }
         }
     }
 
     private void readNewSprint() {
         ConsoleUI ui = new ConsoleUI(outstream);
         String sName = ui.textAndDigitsOnlyDialogue(input, "den Sprintnamen");
-        outstream.println(
-                "Sprint "+sName+": ");
+        outstream.println("Sprint " + sName + ": ");
         Date spStartDate = null;
         Date spEndDate = null;
         ui.displayExpertiseOrDateInputPrompt(sName);
         String in = input.next();
-        while(!in.equals("store")){
-            if(spEndDate == null || spStartDate == null){
-                outstream.print("Bitte daran denken vor dem Speichern Start und Ende anzugeben.\n>");
-            }else{
+        while (!in.equals("store")) {
+            if (spEndDate == null || spStartDate == null) {
+                outstream.print(
+                        "Bitte daran denken vor dem Speichern Start und Ende anzugeben.\n>");
+            } else {
                 outstream.print("Sie können weitere Expertisen eingeben.\n>");
             }
-            //CASE ENTER START
+            // CASE ENTER START
             if (in.equals("enter")) {
                 in = input.next();
                 if (in.equals("expertise")) {
                     // NEW EXP
-                } else  if (in.equals("start")) {
-                    spStartDate = ui.dateOnlyDialogue(input,"das Datum des Sprint-Starts");
-                    
+                } else if (in.equals("start")) {
+                    spStartDate = ui.dateOnlyDialogue(input,
+                            "das Datum des Sprint-Starts");
+
                 } else if (in.equals("end")) {
                     spEndDate = ui.dateOnlyDialogue(input, "das Datum des Sprint-Endes");
-                   
-                } 
+
+                }
                 in = input.next();
                 continue;
-            }else if(in.equals("delete")){
+            } else if (in.equals("delete")) {
                 in = input.next();
-                if(in.equals("start")){
+                if (in.equals("start")) {
                     spStartDate = null;
                     outstream.println("Start gelöscht");
                 }
@@ -85,7 +86,7 @@ public class Enter extends ContainerCommand {
             }
             in = input.next();
         }
-        Sprint sp = new Sprint(spStartDate,spEndDate);
+        Sprint sp = new Sprint(spStartDate, spEndDate);
         SprintContainer spc = SprintContainer.getInstance();
         try {
             spc.addMember(sp);
@@ -93,10 +94,10 @@ public class Enter extends ContainerCommand {
             outstream.println("Your sprint has been stored successfully. Summary:");
             new SprintView().dumpSorted(SprintContainer.getInstance().getCurrentList());
             outstream.println();
-        } catch (ContainerException |  PersistenceException e) {
+        } catch (ContainerException | PersistenceException e) {
             e.printStackTrace();
         }
-        
+
     }
 
     private void readNewMitarbeiter() {

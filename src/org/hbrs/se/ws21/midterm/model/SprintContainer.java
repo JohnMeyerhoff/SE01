@@ -13,9 +13,9 @@ import org.hbrs.se.ws21.midterm.model.persistence.PersistenceStrategy;
 public class SprintContainer {
 
     /*
-    This is currently mostly a copy of the MitarbeiterContainer class
-
-    */
+     * This is currently mostly a copy of the MitarbeiterContainer class
+     * 
+     */
     private List<Sprint> inhalt = new ArrayList<>();
     private PersistenceStrategy<Sprint> strategy = null;
     private static SprintContainer instance;

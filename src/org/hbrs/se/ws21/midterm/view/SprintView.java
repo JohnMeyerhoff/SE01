@@ -52,13 +52,13 @@ public class SprintView {
          */
         for (Sprint ma : liste) {
             table[i] = new String[] { "" + ma.getID(),
-                    String.valueOf(ma.getStart().tag())
-                            + "." + String.valueOf(ma.getStart().monat())
-                            + "." + String.valueOf(ma.getStart().jahr()),
+                    String.valueOf(ma.getStart().tag()) + "."
+                            + String.valueOf(ma.getStart().monat()) + "."
+                            + String.valueOf(ma.getStart().jahr()),
 
-                    String.valueOf(ma.getStart().tag())
-                            + "." + String.valueOf(ma.getStart().monat())
-                            + "." + String.valueOf(ma.getStart().jahr()) };
+                    String.valueOf(ma.getStart().tag()) + "."
+                            + String.valueOf(ma.getStart().monat()) + "."
+                            + String.valueOf(ma.getStart().jahr()) };
             i++;
         }
         return table;

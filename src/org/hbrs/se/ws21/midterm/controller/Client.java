@@ -38,8 +38,7 @@ public class Client {
                 entry("load", new Load(outstream, eingabe, this.speicher)),
                 entry("enter", new Enter(outstream, eingabe, this.speicher)),
                 entry("search", new Search(outstream, eingabe, this.speicher)),
-                entry("show", new Show(outstream)),
-                entry("store", new Store(outstream)));
+                entry("show", new Show(outstream)), entry("store", new Store(outstream)));
     }
 
     public int konsole() {
@@ -51,7 +50,7 @@ public class Client {
 
         while (eingabe.hasNext()) {
             tmp = eingabe.next();
-            
+
             if (tmp.equals("exit")) {
                 eingabe.close(); // Schliessen des Scanners
                 return 0;

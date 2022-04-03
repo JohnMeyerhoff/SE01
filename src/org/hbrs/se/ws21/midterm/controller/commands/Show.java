@@ -8,9 +8,9 @@ import org.hbrs.se.ws21.midterm.view.SprintView;
 
 public class Show extends ConsoleCommand {
 
-    public Show(PrintStream outstream ) {
+    public Show(PrintStream outstream) {
         this.outstream = outstream;
-        
+
     }
 
     @Override
@@ -22,9 +22,9 @@ public class Show extends ConsoleCommand {
         if (speicher.size() == 0) {
             ui.displayNothingFoundTable();
         } else {
-                new SprintView().dumpSorted(
-                        SprintContainer.getInstance().getCurrentListCopy());
-            
+            new SprintView()
+                    .dumpSorted(SprintContainer.getInstance().getCurrentListCopy());
+
         }
 
     }

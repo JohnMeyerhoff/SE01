@@ -25,10 +25,10 @@ public class Launcher {
     @SuppressWarnings({ "java:S125", "java:S106" })
     public static void main(String[] args) {
         MitarbeiterContainer maincontainer = MitarbeiterContainer.getInstance();
-        //Singleton storage and management of Mitarbeiter instances
+        // Singleton storage and management of Mitarbeiter instances
         PersistenceStrategyStream<Mitarbeiter> mStrat = FilestreamFactory
                 .<Mitarbeiter>createFileSaveStrategy("mitarbeiter");
-        //The factory method produces a generic (Mitarbeiter) FilestreamStrategy
+        // The factory method produces a generic (Mitarbeiter) FilestreamStrategy
         maincontainer.setStrategy(mStrat);
         SprintContainer sc = SprintContainer.getInstance();
         PersistenceStrategyStream<Sprint> spStrat = FilestreamFactory
@@ -36,8 +36,8 @@ public class Launcher {
         sc.setStrategy(spStrat);
         // testMethod();
         Client cl = new Client(maincontainer, new Scanner(System.in), System.out);
-        //The client cl is using the default console input and output, this could be
-        //changed to use files instead
+        // The client cl is using the default console input and output, this could be
+        // changed to use files instead
         cl.konsole();
 
     }

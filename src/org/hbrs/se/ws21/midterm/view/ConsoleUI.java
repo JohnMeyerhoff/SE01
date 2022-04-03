@@ -100,8 +100,9 @@ public class ConsoleUI {
 
     public void displayLoadFailureMessage(Exception e) {
         out.println("Das laden war nicht erfolgreich.");
-        if(e instanceof ClassCastException cce){
-            out.println("Folgender Klassen-Ladefehler ist aufgetreten:\n"+ cce.getMessage());
+        if (e instanceof ClassCastException cce) {
+            out.println(
+                    "Folgender Klassen-Ladefehler ist aufgetreten:\n" + cce.getMessage());
         }
     }
 
