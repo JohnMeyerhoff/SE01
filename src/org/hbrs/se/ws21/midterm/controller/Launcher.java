@@ -14,18 +14,30 @@ import org.hbrs.se.ws21.midterm.model.SprintContainer;
 import org.hbrs.se.ws21.midterm.model.persistence.FilestreamFactory;
 import org.hbrs.se.ws21.midterm.model.persistence.PersistenceStrategyStream;
 
+/*
+This class is used for launching the console application with the existing files "mitarbeiter.ser" and "sprint.ser" .
+The console opens in its default state and accepts any text input.
+After the console closes the application is closed as well.
+*/
+
 public class Launcher {
 
     @SuppressWarnings({ "java:S125", "java:S106" })
     public static void main(String[] args) {
         MitarbeiterContainer maincontainer = MitarbeiterContainer.getInstance();
-        PersistenceStrategyStream<Mitarbeiter> mStrat = FilestreamFactory.<Mitarbeiter>createFileSaveStrategy("mitarbeiter");
+        //Singleton storage and management of Mitarbeiter instances
+        PersistenceStrategyStream<Mitarbeiter> mStrat = FilestreamFactory
+                .<Mitarbeiter>createFileSaveStrategy("mitarbeiter");
+        //The factory method produces a generic (Mitarbeiter) FilestreamStrategy
         maincontainer.setStrategy(mStrat);
         SprintContainer sc = SprintContainer.getInstance();
-        PersistenceStrategyStream<Sprint> spStrat = FilestreamFactory.<Sprint>createFileSaveStrategy("sprint");
+        PersistenceStrategyStream<Sprint> spStrat = FilestreamFactory
+                .<Sprint>createFileSaveStrategy("sprint");
         sc.setStrategy(spStrat);
         // testMethod();
         Client cl = new Client(maincontainer, new Scanner(System.in), System.out);
+        //The client cl is using the default console input and output, this could be
+        //changed to use files instead
         cl.konsole();
 
     }

@@ -11,6 +11,11 @@ import org.hbrs.se.ws21.midterm.model.exception.PersistenceException.ExceptionTy
 import org.hbrs.se.ws21.midterm.model.persistence.PersistenceStrategy;
 
 public class SprintContainer {
+
+    /*
+    This is currently mostly a copy of the MitarbeiterContainer class
+
+    */
     private List<Sprint> inhalt = new ArrayList<>();
     private PersistenceStrategy<Sprint> strategy = null;
     private static SprintContainer instance;
@@ -19,11 +24,6 @@ public class SprintContainer {
         // default-Konstruktor überschrieben
         // Verwendung des singleton-Pattern
 
-        // alda: falsche Lösung wäre eine if-Abfage (created == false) im Konstruktor,
-        // da dort
-        // immer ein Objekt erzeugt wird.
-        // man kann Erstellung abbrechen, jedoch wurde das Obejekt im
-        // Konstruktor erzeugt
     }
 
     public void setStrategy(PersistenceStrategy<Sprint> strategy) {

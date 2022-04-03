@@ -25,11 +25,12 @@ public class Sprint implements Member{
         return this.id;
     }
 
-    
+    //basic getter without a corresponding setter
     public Date getStart() {
         return this.start;
     }
 
+    // basic getter without a corresponding setter
     public Date getEnd() {
         return this.end;
     }
