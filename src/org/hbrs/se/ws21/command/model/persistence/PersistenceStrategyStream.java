@@ -27,12 +27,8 @@ public class PersistenceStrategyStream<T extends Member>
     private ObjectOutputStream objectOutput;
     private boolean connected = false;
     private ByteArrayOutputStream byteOutputStream;
-    // Backdoor method used only for testing purposes, if the location should be
-    // changed in a Unit-Test
-    // Example: Location is a directory (Streams do not like directories, so try
-    // this out ;-)!
 
-    public void setLocation(String loc) {
+    void setLocation(String loc) {
         this.location = loc;
     }
 

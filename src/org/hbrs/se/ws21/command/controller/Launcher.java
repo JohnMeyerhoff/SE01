@@ -8,7 +8,7 @@ import java.util.Scanner;
 import org.hbrs.se.ws21.command.model.MitarbeiterContainer;
 import org.hbrs.se.ws21.command.model.persistence.PersistenceStrategyStream;
 
-public class Launcher { // main
+public class Launcher { 
 
     public static void main(String[] args) {
         MitarbeiterContainer maincontainer = MitarbeiterContainer.getInstance();

@@ -29,7 +29,7 @@ public class Load extends ContainerCommand {
                 speicher.force();
             }
             // We do not need a boolean because an exception
-            // in merge() would skip this line.
+            // in merge() or force() would skip this line.
             new ConsoleUI(super.outstream).displayLoadSucessMessage();
         } catch (Exception e) {
             new ConsoleUI(super.outstream).displayLoadFailureMessage(e);

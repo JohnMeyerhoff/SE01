@@ -20,8 +20,7 @@ public class MitarbeiterContainer {
         // Verwendung des singleton-Pattern
 
         // alda: falsche Lösung wäre eine if-Abfage (created == false) im Konstruktor,
-        // da dort
-        // immer ein Objekt erzeugt wird.
+        // da dort immer ein Objekt erzeugt wird.
         // man kann Erstellung abbrechen, jedoch wurde das Obejekt im
         // Konstruktor erzeugt
     }
@@ -73,7 +72,7 @@ public class MitarbeiterContainer {
 
         strategy.openConnection();
         strategy.save(inhalt);
-        strategy.closeConnection(); // alda hat nicht geschlossen
+        strategy.closeConnection(); 
     }
 
     public void load() throws PersistenceException {

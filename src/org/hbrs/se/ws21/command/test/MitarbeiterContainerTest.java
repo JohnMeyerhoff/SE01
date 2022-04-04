@@ -77,15 +77,6 @@ public class MitarbeiterContainerTest {
         assertEquals("Not implemented!", exception.getMessage());
     }
 
-    @Test
-    public void wrongLocation() {
-        c1 = MitarbeiterContainer.getInstance();
-        PersistenceStrategyStream<Mitarbeiter> stream = new PersistenceStrategyStream<>();
-        String loc = "failDirectory/";
-        stream.setLocation(loc);
-        c1.setStrategy(stream);
-        assertThrows(PersistenceException.class, () -> c1.load());
-    }
 
     @Test
     public void einspeichernTest() {

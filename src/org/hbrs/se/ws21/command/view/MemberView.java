@@ -28,8 +28,6 @@ public class MemberView {
     private class MemberComparator implements Comparator<Member> {
         public int compare(Member s1, Member s2) {
             return s1.getID().compareTo(s2.getID());
-            // s1 = 34 s2 = 2
-            // 1,2,3,4
         }
     }
 

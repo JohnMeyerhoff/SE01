@@ -4,6 +4,7 @@ package org.hbrs.se.ws21.command.model;
 //und Johannes Meyerhoff bearbeitet worden.
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Expertise implements Serializable {
     HashMap<String, Integer> expertisen;
@@ -12,7 +13,7 @@ public class Expertise implements Serializable {
     // String (value) ist unsere Bezeichnung (zb Java)
 
     // falls wir keine Angaben bekommen, gehen wir davorn aus
-    // dass der Benutzer nix kann
+    // dass der Mitarbeiter einen leeren expertisensatz hat und nichts kann
     public Expertise() {
         expertisen = new HashMap<>();
         levelBezeichner = new HashMap<>();
@@ -22,12 +23,11 @@ public class Expertise implements Serializable {
 
     }
 
-    // Kunde gibt uns nur Level
     public void putFaehigkeitLvl(String faehigkeit, Integer l) {
         this.expertisen.put(faehigkeit, l);
     }
 
-    public HashMap<String, Integer> getErfahrungen() {
+    public Map<String, Integer> getErfahrungen() {
         return this.expertisen;
     }
 
@@ -36,8 +36,8 @@ public class Expertise implements Serializable {
     }
 
     public String getExpertiseLevel(Integer lvl) {
-        // getOrDefault: erste Komponente wie bei get() und zweite falls key nicht
-        // exisitert
+        // getOrDefault: erstes Argument der KEY wie bei get() und zweites Argument
+        // der gleiche typ wie der RÜCKGABETYP von get() falls key nicht "aufschlüsselt"
         return levelBezeichner.getOrDefault(lvl,
                 "Das Level" + lvl + "ist nicht vorhandeln.");
     }
