@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 import org.hbrs.se.ws21.midterm.model.MitarbeiterContainer;
 import org.hbrs.se.ws21.midterm.model.SprintContainer;
-import org.hbrs.se.ws21.midterm.model.persistence.PersistenceStrategyStream;
 import org.hbrs.se.ws21.midterm.view.ConsoleUI;
 
 public class Load extends ContainerCommand {

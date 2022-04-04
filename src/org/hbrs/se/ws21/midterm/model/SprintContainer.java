@@ -67,7 +67,7 @@ public class SprintContainer {
 
     public void store() throws PersistenceException {
         if (strategy == null) {
-            throw new PersistenceException(ExceptionType.NoStrategyIsSet,
+            throw new PersistenceException(ExceptionType.NOSTRATEGYISSET,
                     "Es gibt keine Strategie zum abspeichern.");
         }
 
@@ -78,7 +78,7 @@ public class SprintContainer {
 
     public void load() throws PersistenceException {
         if (strategy == null) {
-            throw new PersistenceException(ExceptionType.NoStrategyIsSet,
+            throw new PersistenceException(ExceptionType.NOSTRATEGYISSET,
                     "Es gibt keine Strategie zum abspeichern.");
         }
 

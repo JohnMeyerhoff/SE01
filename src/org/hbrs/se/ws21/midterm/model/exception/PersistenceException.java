@@ -5,7 +5,7 @@ package org.hbrs.se.ws21.midterm.model.exception;
 
 public class PersistenceException extends Exception {
 
-    private ExceptionType exceptionType;
+    private final ExceptionType exceptionType;
 
     public ExceptionType getExceptionTypeType() {
         return this.exceptionType;
@@ -27,6 +27,6 @@ public class PersistenceException extends Exception {
      * client
      */
     public enum ExceptionType {
-        ImplementationNotAvailable, ConnectionNotAvailable, NoStrategyIsSet
+        IMPLEMENTATIONNOTAVAILABLE, CONNECTIONNOTAVAILABLE, NOSTRATEGYISSET
     }
 }
