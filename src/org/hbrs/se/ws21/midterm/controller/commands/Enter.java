@@ -86,7 +86,7 @@ public class Enter extends ContainerCommand {
             }
             in = input.next();
         }
-        Sprint sp = new Sprint(spStartDate, spEndDate);
+        Sprint sp = new Sprint(spStartDate, spEndDate, sName);
         SprintContainer spc = SprintContainer.getInstance();
         try {
             spc.addMember(sp);

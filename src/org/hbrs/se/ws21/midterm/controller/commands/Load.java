@@ -22,18 +22,24 @@ public class Load extends ContainerCommand {
 
     @Override
     public void execute() {
-        // TODO: Streams beheben in commands
+        // The loading method uses the already set strategies of the singleton
+        // instances.
+        // the constructor could be updated to make sure there is a reference of the
+        // container type
+        // this reference would also have to be not null to make sure whoever creates
+        // the loadcommand has access
+        // to an existing container and therefore could set its strategies.
         String parameter = new ConsoleUI(super.outstream).loadDialogue(input);
         try {
-            SprintContainer.getInstance().setStrategy(new PersistenceStrategyStream<>());
-            SprintContainer.getInstance().load();
             if (parameter.equals("merge")) {
+                SprintContainer.getInstance().merge();
                 speicher.merge();
             } else {
+                SprintContainer.getInstance().force();
                 speicher.force();
             }
             // We do not need a boolean because an exception
-            // in merge() would skip this line.
+            // in merge() or force()would skip this line.
             new ConsoleUI(super.outstream).displayLoadSucessMessage();
         } catch (Exception e) {
             new ConsoleUI(super.outstream).displayLoadFailureMessage(e);
