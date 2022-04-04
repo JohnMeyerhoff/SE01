@@ -20,7 +20,6 @@ public class Enter extends ContainerCommand {
         this.input = instream;
         this.speicher = mitarbeiterContainer;
     }
-    // okay:)
 
     @Override
     public void execute() {

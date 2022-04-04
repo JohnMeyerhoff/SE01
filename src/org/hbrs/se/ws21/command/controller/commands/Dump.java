@@ -26,8 +26,6 @@ public class Dump extends ConsoleInputCommand {
             String abteilungsfilter = ui.textonlyDialogue(input,
                     "den Abteilungsnamen (* für alle)");
             // * Gibt die Mitarbeiter aller Abteilungen ungefiltert zurück.
-
-            // nochmal besprechen:
             if (abteilungsfilter.equals("*")) {
                 new MemberView().dumpSorted(
                         MitarbeiterContainer.getInstance().getCurrentListCopy());
