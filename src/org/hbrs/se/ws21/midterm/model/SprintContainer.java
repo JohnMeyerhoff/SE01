@@ -3,9 +3,8 @@ package org.hbrs.se.ws21.midterm.model;
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 //und Johannes Meyerhoff bearbeitet worden.
 
-public class SprintContainer extends Container<Sprint>{
+public class SprintContainer extends Container<Sprint> {
 
-   
     private static SprintContainer instance;
 
     private SprintContainer() {

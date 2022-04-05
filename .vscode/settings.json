@@ -15,6 +15,10 @@
         {
             "filePath": "src/org/hbrs/se/ws21/midterm/controller/Launcher.java",
             "group": "Default"
+        },
+        {
+            "filePath": "doc/midTerm.drawio",
+            "group": "Default"
         }
     ],
     "java.format.settings.url": ".vscode/java-formatter.xml",

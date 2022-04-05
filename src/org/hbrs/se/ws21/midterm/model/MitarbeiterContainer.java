@@ -12,6 +12,7 @@ public class MitarbeiterContainer extends Container<Mitarbeiter> {
         }
         return instance;
     }
+
     private MitarbeiterContainer() {
         // default-Konstruktor überschrieben
         // Verwendung des singleton-Pattern

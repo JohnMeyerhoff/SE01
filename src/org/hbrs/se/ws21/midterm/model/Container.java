@@ -101,7 +101,6 @@ public abstract class Container<T extends Member> {
         // welche sich jederzeit ändern könnten
     }
 
-
     public int size() {
         return inhalt.size();
         // gegebene Methode von ArrayList

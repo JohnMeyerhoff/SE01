@@ -46,7 +46,6 @@ public class Launcher {
     private static void testMethod() {
         PrintStream out = System.out;
         out.println();
-
         Sprint sp = new Sprint("28.02.1999", "28.04.1997", "SprintTest05");
         SprintContainer spc = SprintContainer.getInstance();
 

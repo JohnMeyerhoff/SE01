@@ -1,6 +1,5 @@
 package org.hbrs.se.ws21.midterm.util;
 
-
 import org.hbrs.se.ws21.midterm.model.Date;
 
 public class Dateconverter {
