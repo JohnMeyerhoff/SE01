@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import org.hbrs.se.ws21.midterm.model.MitarbeiterContainer;
 import org.hbrs.se.ws21.midterm.view.ConsoleUI;
-import org.hbrs.se.ws21.midterm.view.MemberView;
+import org.hbrs.se.ws21.midterm.view.MitarbeiterView;
 
 public class Dump extends ConsoleInputCommand {
 
@@ -29,10 +29,10 @@ public class Dump extends ConsoleInputCommand {
 
             // nochmal besprechen:
             if (abteilungsfilter.equals("*")) {
-                new MemberView().dumpSorted(
+                new MitarbeiterView().dumpSorted(
                         MitarbeiterContainer.getInstance().getCurrentListCopy());
             } else {
-                new MemberView().dumpAbteilung(
+                new MitarbeiterView().dumpAbteilung(
                         MitarbeiterContainer.getInstance().getCurrentListCopy(),
                         abteilungsfilter);
             }
