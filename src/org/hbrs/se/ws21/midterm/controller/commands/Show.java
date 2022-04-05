@@ -6,11 +6,10 @@ import org.hbrs.se.ws21.midterm.model.SprintContainer;
 import org.hbrs.se.ws21.midterm.view.ConsoleUI;
 import org.hbrs.se.ws21.midterm.view.SprintView;
 
-public class Show extends ConsoleCommand {
+public class Show extends ContainerCommand {
 
     public Show(PrintStream outstream) {
         this.outstream = outstream;
-
     }
 
     @Override
