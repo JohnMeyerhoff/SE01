@@ -24,18 +24,18 @@ public class Launcher {
 
     @SuppressWarnings({ "java:S125", "java:S106" })
     public static void main(String[] args) {
-        MitarbeiterContainer maincontainer = MitarbeiterContainer.getInstance();
+        MitarbeiterContainer mitarbeiterContainer = MitarbeiterContainer.getInstance();
         // Singleton storage and management of Mitarbeiter instances
-        PersistenceStrategyStream<Mitarbeiter> mStrat = FilestreamFactory
+        PersistenceStrategyStream<Mitarbeiter> mitarbeiterStrategy = FilestreamFactory
                 .<Mitarbeiter>createFileSaveStrategy("mitarbeiter");
         // The factory method produces a generic (Mitarbeiter) FilestreamStrategy
-        maincontainer.setStrategy(mStrat);
+        mitarbeiterContainer.setStrategy(mitarbeiterStrategy);
         SprintContainer sc = SprintContainer.getInstance();
-        PersistenceStrategyStream<Sprint> spStrat = FilestreamFactory
+        PersistenceStrategyStream<Sprint> sprintStrategy = FilestreamFactory
                 .<Sprint>createFileSaveStrategy("sprint");
-        sc.setStrategy(spStrat);
+        sc.setStrategy(sprintStrategy);
         // testMethod();
-        Client cl = new Client(maincontainer, new Scanner(System.in), System.out);
+        Client cl = new Client(mitarbeiterContainer, new Scanner(System.in), System.out);
         // The client cl is using the default console input and output, this could be
         // changed to use files instead
         cl.konsole();
