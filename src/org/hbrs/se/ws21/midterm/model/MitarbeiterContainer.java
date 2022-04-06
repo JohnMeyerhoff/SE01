@@ -1,7 +1,7 @@
 package org.hbrs.se.ws21.midterm.model;
 
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
-//und Johannes Meyerhoff bearbeitet worden.
+//und John Meyerhoff bearbeitet worden.
 
 public class MitarbeiterContainer extends Container<Mitarbeiter> {
     private static MitarbeiterContainer instance;

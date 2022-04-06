@@ -1,7 +1,6 @@
 package org.hbrs.se.ws21.midterm.model.persistence;
-//Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
-
-//und Johannes Meyerhoff bearbeitet worden.
+//Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
+//und John Meyerhoff bearbeitet worden.
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

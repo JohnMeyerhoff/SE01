@@ -81,24 +81,18 @@ public abstract class Container<T extends org.hbrs.se.ws21.midterm.model.Member>
         }
     }
 
-    public String deleteMember(Integer id) {
+    public int deleteMember(Integer id) {
         if (this.size() == 0) {
-            return "nothing to delete";
+            return -1;
         }
         for (T m : inhalt) {
             if (m.getID().equals(id)) {
                 inhalt.remove(m);
-                return "deleted";
+                return 1;
             }
         }
-        return "unchanged";
-        // Welche Nachteileergeben sich aus ihrer Sicht
-        // für ein solchen Fehler-handling
-        // gegenüber einer Lösung mit Exceptions?
-        // Return codes sollten keine Strings sein.
-        // Bool wäre als return code okay, hier sind es jetzt
-        // drei Werte zwischen denen entschieden werden muss,
-        // welche sich jederzeit ändern könnten
+        return 0;
+        
     }
 
     public int size() {

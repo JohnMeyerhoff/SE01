@@ -2,7 +2,7 @@ package org.hbrs.se.ws21.midterm.model;
 
 
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
-//und Johannes Meyerhoff bearbeitet worden.
+//und John Meyerhoff bearbeitet worden.
 public class Mitarbeiter implements org.hbrs.se.ws21.midterm.model.Member {
     private static int uniqueCounter = 0;
     private String vorname;

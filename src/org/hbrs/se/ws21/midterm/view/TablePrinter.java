@@ -1,7 +1,7 @@
 package org.hbrs.se.ws21.midterm.view;
 
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
-// und Johannes Meyerhoff bearbeitet worden.
+// und John Meyerhoff bearbeitet worden.
 
 import java.io.PrintStream;
 

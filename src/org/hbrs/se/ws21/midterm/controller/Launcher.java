@@ -3,7 +3,7 @@ package org.hbrs.se.ws21.midterm.controller;
 import java.io.PrintStream;
 
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
-// und Johannes Meyerhoff bearbeitet worden.
+// und John Meyerhoff bearbeitet worden.
 
 import java.util.Scanner;
 

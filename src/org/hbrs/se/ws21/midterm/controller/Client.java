@@ -1,12 +1,10 @@
 package org.hbrs.se.ws21.midterm.controller;
 
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
-// und Johannes Meyerhoff bearbeitet worden.
+// und John Meyerhoff bearbeitet worden.
 
 import java.io.PrintStream;
 import java.util.Map;
-// Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
-// und Johannes Meyerhoff bearbeitet worden.
 import java.util.Scanner;
 import static java.util.Map.entry;
 

@@ -1,7 +1,7 @@
 package org.hbrs.se.ws21.midterm.view;
 
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
-// und Johannes Meyerhoff bearbeitet worden.
+// und John Meyerhoff bearbeitet worden.
 
 import org.hbrs.se.ws21.midterm.model.MitarbeiterContainer;
 import org.hbrs.se.ws21.midterm.model.exception.ContainerException;

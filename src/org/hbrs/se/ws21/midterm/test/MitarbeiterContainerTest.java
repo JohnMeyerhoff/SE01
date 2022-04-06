@@ -1,7 +1,7 @@
 package org.hbrs.se.ws21.midterm.test;
 
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
-// und Johannes Meyerhoff bearbeitet worden.
+// und John Meyerhoff bearbeitet worden.
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -184,11 +184,11 @@ public class MitarbeiterContainerTest {
         }
 
         for (Mitarbeiter deletionID : b) {
-            assertEquals("deleted", c1.deleteMember(deletionID.getID()));
+            assertEquals(1, c1.deleteMember(deletionID.getID()));
             if (c1.size() > 0) {
-                assertEquals("unchanged", c1.deleteMember(deletionID.getID()));
+                assertEquals(0, c1.deleteMember(deletionID.getID()));
             } else {
-                assertEquals("nothing to delete", c1.deleteMember(m1.getID()));
+                assertEquals(-1, c1.deleteMember(m1.getID()));
             }
         }
         // This test looks bad because the implementation
