@@ -10,20 +10,20 @@ import org.hbrs.se.ws21.midterm.view.MitarbeiterView;
 public class Dump extends ConsoleInputCommand {
 
     public Dump(PrintStream outstream, Scanner instream) {
-        this.outstream = outstream;
-        this.input = instream;
+        super.outstream = outstream;
+        super.input = instream;
     }
 
     @Override
     public void execute() {
 
-        ConsoleUI ui = new ConsoleUI(outstream);
+        ConsoleUI ui = new ConsoleUI(super.outstream);
         MitarbeiterContainer speicher = MitarbeiterContainer.getInstance();
         // TODO: Streams beheben in commands
         if (speicher.size() == 0) {
             ui.displayNothingFoundTable();
         } else {
-            String abteilungsfilter = ui.textonlyDialogue(input,
+            String abteilungsfilter = ui.textonlyDialogue(super.input,
                     "den Abteilungsnamen (* für alle)");
             // * Gibt die Mitarbeiter aller Abteilungen ungefiltert zurück.
 

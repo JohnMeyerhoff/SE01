@@ -13,7 +13,7 @@ import org.hbrs.se.ws21.midterm.model.Expertise;
 import org.hbrs.se.ws21.midterm.model.Member;
 import org.hbrs.se.ws21.midterm.model.Mitarbeiter;
 
-public class MemberView<T extends Member> {
+public class MemberView<T extends org.hbrs.se.ws21.midterm.model.Member> {
 
     protected PrintStream out;
 

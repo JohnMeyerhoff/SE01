@@ -2,7 +2,7 @@ package org.hbrs.se.ws21.midterm.model;
 
 import org.hbrs.se.ws21.midterm.util.Dateconverter;
 
-public class Sprint implements Member {
+public class Sprint implements org.hbrs.se.ws21.midterm.model.Member {
     private static int counter = 0;
     private int id = -1;
     private Date start;

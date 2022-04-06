@@ -1,5 +1,5 @@
 package org.hbrs.se.ws21.midterm.model;
-
+import org.hbrs.se.ws21.midterm.model.Member;
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 //und Johannes Meyerhoff bearbeitet worden.
 

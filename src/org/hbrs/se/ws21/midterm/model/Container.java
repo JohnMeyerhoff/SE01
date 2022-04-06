@@ -7,7 +7,7 @@ import org.hbrs.se.ws21.midterm.model.persistence.PersistenceStrategy;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Container<T extends Member> {
+public abstract class Container<T extends org.hbrs.se.ws21.midterm.model.Member> {
     List<T> inhalt = new ArrayList<>();
 
     protected PersistenceStrategy<T> strategy = null;

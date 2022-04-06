@@ -19,7 +19,7 @@ import org.hbrs.se.ws21.midterm.model.exception.PersistenceException;
  *
  * @param <E>
  */
-public interface PersistenceStrategy<T extends Member> {
+public interface PersistenceStrategy<T extends org.hbrs.se.ws21.midterm.model.Member> {
     public void openConnection() throws PersistenceException;
 
     public List<T> load() throws PersistenceException;

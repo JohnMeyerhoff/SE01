@@ -59,7 +59,7 @@ public class PersistenceStrategyStream<T extends Member>
                 objectOutput = new ObjectOutputStream(this.byteOutputStream);
                 objectInput = new ObjectInputStream(this.fileInput);
             } catch (IOException r) {
-                throw new PersistenceException(ExceptionType.ConnectionNotAvailable,
+                throw new PersistenceException(ExceptionType.CONNECTIONNOTAVAILABLE,
                         r.getMessage());
             }
             connected = true;
@@ -84,7 +84,7 @@ public class PersistenceStrategyStream<T extends Member>
             objectOutput = new ObjectOutputStream(this.byteOutputStream);
             objectInput = new ObjectInputStream(this.fileInput);
         } catch (IOException r) {
-            throw new PersistenceException(ExceptionType.ConnectionNotAvailable,
+            throw new PersistenceException(ExceptionType.CONNECTIONNOTAVAILABLE,
                     r.getMessage());
         }
         try {
@@ -101,7 +101,7 @@ public class PersistenceStrategyStream<T extends Member>
             objectOutput = new ObjectOutputStream(this.byteOutputStream);
             objectInput = new ObjectInputStream(this.fileInput);
         } catch (IOException r) {
-            throw new PersistenceException(ExceptionType.ConnectionNotAvailable,
+            throw new PersistenceException(ExceptionType.CONNECTIONNOTAVAILABLE,
                     r.getMessage());
         }
     }
@@ -128,7 +128,7 @@ public class PersistenceStrategyStream<T extends Member>
                 byteOutputStream.flush();
                 byteOutputStream.close();
             } catch (IOException e) {
-                throw new PersistenceException(ExceptionType.ConnectionNotAvailable,
+                throw new PersistenceException(ExceptionType.CONNECTIONNOTAVAILABLE,
                         e.getMessage());
             }
             connected = false;
@@ -157,7 +157,7 @@ public class PersistenceStrategyStream<T extends Member>
                 fos.write(byteOutputStream.toByteArray());
                 fos.close();
             } catch (IOException e) {
-                throw new PersistenceException(ExceptionType.ConnectionNotAvailable,
+                throw new PersistenceException(ExceptionType.CONNECTIONNOTAVAILABLE,
                         e.getMessage());
             }
         }
@@ -171,7 +171,7 @@ public class PersistenceStrategyStream<T extends Member>
                 List<T> result = (List<T>) objectInput.readObject();
                 return result;
             } catch (IOException | ClassNotFoundException e) {
-                throw new PersistenceException(ExceptionType.ConnectionNotAvailable,
+                throw new PersistenceException(ExceptionType.CONNECTIONNOTAVAILABLE,
                         e.getMessage());
                 // throw new IllegalArgumentException(e.getMessage());
             }
