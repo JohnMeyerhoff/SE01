@@ -197,4 +197,11 @@ public class ConsoleUI {
         out.print("\nAwaiting top level command\n>");
     }
 
+    public void displayNothingFoundTable(String string) {
+        TablePrinter printer = new TablePrinter(1,1);
+        printer.setTable(new String[][]{{string}}, 40);
+        printer.print(out);
+    
+    }
+
 }
