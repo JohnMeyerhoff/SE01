@@ -199,9 +199,8 @@ public class ConsoleUI {
 
     public void displayNothingFoundTable(String string) {
         TablePrinter printer = new TablePrinter(1,1);
-        printer.setTable(new String[][]{{string}}, 40);
+        printer.setTable(new String[][]{{" Keine "+ string+ "gefunden."}}, 40);
         printer.print(out);
-    
     }
 
 }
