@@ -26,3 +26,4 @@ src/reports/TEST-junit-jupiter.xml
 src/reports/*.xml
 src/reports/TEST-junit-jupiter.xml
 *.xml
+.idea/misc.xml
