@@ -40,7 +40,6 @@ public class SprintView {
         TablePrinter printer = new TablePrinter(tmp.length, tmp[0].length);
         printer.setTable(tmp, 40);
         printer.print(out);
-
     }
 
     private String[][] listToStringarray(List<? extends Sprint> liste) {
