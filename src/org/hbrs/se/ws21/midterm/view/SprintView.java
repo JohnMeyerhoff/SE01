@@ -14,7 +14,7 @@ import org.hbrs.se.ws21.midterm.model.Member;
 import org.hbrs.se.ws21.midterm.model.Mitarbeiter;
 import org.hbrs.se.ws21.midterm.model.Sprint;
 
-public class SprintView {
+public class SprintView extends MemberView<Sprint>{
 
     private PrintStream out;
 
@@ -34,6 +34,7 @@ public class SprintView {
         }
     }
 
+    @Override
     public void dumpSorted(List<? extends Sprint> liste) {
         Collections.sort(liste, new SprintComparator());
         String[][] tmp = listToStringarray(liste);
@@ -42,7 +43,8 @@ public class SprintView {
         printer.print(out);
     }
 
-    private String[][] listToStringarray(List<? extends Sprint> liste) {
+    @Override
+    protected String[][] listToStringarray(List<? extends Sprint> liste) {
         int i = 1;
         String[][] table = new String[liste.size() + 1][5];
         table[0] = new String[] { "ID", "Name", "Start", "Ende" };
@@ -62,34 +64,7 @@ public class SprintView {
 
     }
 
-    public void dumpSearched(List<Mitarbeiter> x, String fertigkeit) {
-        Collections.sort(x, new SprintComparator());
-        String[][] tmp = listToStringarrayWithExpertise(x, fertigkeit);
-        TablePrinter printer = new TablePrinter(tmp.length, tmp[0].length);
-        printer.setTable(tmp, 40);
-        printer.print(out);
+   
 
-    }
-
-    private String[][] listToStringarrayWithExpertise(List<? extends Mitarbeiter> liste,
-            String fertigkeit) {
-        int i = 1;
-        String[][] table = new String[liste.size() + 1][6];
-        table[0] = new String[] { "ID", "Vorname", "Nachname", "Abteilung", "Rolle",
-                "Erfahrungsgrad", };
-        /**
-         * EXPERTISEN WERDEN HIER ENTFERNT BZW NICHT BEACHTET.
-         */
-        HashMap<Integer, String> labels = new Expertise().getBezeichner();
-        for (Mitarbeiter ma : liste) {
-            table[i] = new String[] { "" + ma.getID(), ma.getVorname(), ma.getName(),
-                    ma.getAbteilung(), ma.getRolle(),
-                    labels.getOrDefault(ma.getExpertise().getErfahrungen()
-                            .getOrDefault(fertigkeit, 0), "keine") };
-            i++;
-        }
-        return table;
-
-    }
 
 }

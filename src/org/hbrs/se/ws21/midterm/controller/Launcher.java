@@ -50,7 +50,9 @@ public class Launcher {
                 "HTML5", 3, "KaffeTrinken", 1);
         Loading l2 = new Loading("Anna", "Baum", "Planer", "Verwaltung", "Java8", 3,
                 "HTML5", 3, "KaffeTrinken", 1);
-        String loaded = Loading.sprintCreationString("sprint42", "1.4.2022", "30.4.2022","Java8", 3,
+        String loaded = Loading.sprintCreationString("sprint42", "1.4.2022", "30.4.2022", "Java8", 3,
+                "HTML5", 3);
+        loaded += Loading.sprintCreationString("sprint45", "1.1.2022", "30.8.2022", "Java8", 3,
                 "HTML5", 3);
         loaded += l1.toInputString();
         loaded += l2.toInputString();

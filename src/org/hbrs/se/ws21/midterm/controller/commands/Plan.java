@@ -7,6 +7,7 @@ import org.hbrs.se.ws21.midterm.model.MitarbeiterContainer;
 import org.hbrs.se.ws21.midterm.model.Sprint;
 import org.hbrs.se.ws21.midterm.model.SprintContainer;
 import org.hbrs.se.ws21.midterm.view.ConsoleUI;
+import org.hbrs.se.ws21.midterm.view.ExpertiseView;
 import org.hbrs.se.ws21.midterm.view.MitarbeiterView;
 import org.hbrs.se.ws21.midterm.view.SprintView;
 import org.hbrs.se.ws21.midterm.view.TablePrinter;
@@ -56,30 +57,24 @@ public class Plan extends ContainerCommand {
             new SprintView().dumpSorted(onesprint);
             singleSprint = onesprint.get(0);
             ui.vspace(2);
-            Set<String> expReq = singleSprint.getExpertise().keySet();
-            if(expReq.isEmpty()){
+            String[] expReq = singleSprint.getExpertise().keySet().toArray(new String[0]);
+            if (expReq.length == 0) {
                 outstream.println("Keine Expertise erfordert.");
-            }else{
-                outstream.println("Benötigte Expertisen:");
-                
-                String[][] tmp = new String[][] {expReq.toArray(new String[0])};
-                TablePrinter printer = new TablePrinter(expReq.size(), 0);
-                //ToDo: fix printing
-                printer.setTable(tmp, 40);
-                printer.print(outstream);
+            } else {
+                new ExpertiseView().dumpSorted(singleSprint.getExpertise(), outstream);
+                ui.vspace(2);
             }
             if (mitarbeiter.size() == 0) {
                 ui.displayNothingFoundTable("Mitarbeiter ");
             } else {
-                
 
-                    Mitarbeiter[] ma = mitarbeiter.getCurrentListCopy()
-                            .toArray(new Mitarbeiter[0]);
-                    MitarbeiterView mv = new MitarbeiterView(outstream);
-                    double[] matchness = this.sprintMatch
-                            .sprintAndMitarbeiter(singleSprint, ma);
-                    mv.dumpMatched(ma, matchness);
-                
+                Mitarbeiter[] ma = mitarbeiter.getCurrentListCopy()
+                        .toArray(new Mitarbeiter[0]);
+                MitarbeiterView mv = new MitarbeiterView(outstream);
+                double[] matchness = this.sprintMatch
+                        .sprintAndMitarbeiter(singleSprint, ma);
+                mv.dumpMatched(ma, matchness);
+
             }
         }
     }
