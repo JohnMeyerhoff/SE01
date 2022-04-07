@@ -28,6 +28,14 @@ public abstract class Container<T extends org.hbrs.se.ws21.midterm.model.Member>
         }
     }
 
+    public int getMaximumID(){
+        int ret = 0;
+        for (T t : inhalt) {
+            ret = Math.max(ret,t.getID());
+        }
+        return ret;
+    }
+    
     public List<T> getCurrentList() {
         return this.inhalt;
     }

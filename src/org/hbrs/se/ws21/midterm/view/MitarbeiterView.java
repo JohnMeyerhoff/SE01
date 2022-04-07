@@ -99,7 +99,7 @@ public class MitarbeiterView extends MemberView<Mitarbeiter>{
         /**
          * EXPERTISEN WERDEN HIER ENTFERNT BZW NICHT BEACHTET.
          */
-        HashMap<Integer, String> labels = new Expertise().getBezeichner();
+        
         for (Mitarbeiter ma : liste) {
             table[i] = new String[] { "" + ma.getID(), ma.getVorname(), ma.getName(),
                     ma.getAbteilung(), ma.getRolle(),

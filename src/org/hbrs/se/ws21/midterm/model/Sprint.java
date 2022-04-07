@@ -32,7 +32,10 @@ public class Sprint implements org.hbrs.se.ws21.midterm.model.Member {
 
     // See comment above.
     public Sprint(Date s, Date e, String sprintname) {
-        this.id = counter++;
+        
+         this.id = Math.max(counter, SprintContainer.getInstance().getMaximumID())
+                        + 1;
+        Sprint.counter = this.id;               
         this.start = s;
         this.end = e;
         this.visibleName = sprintname;
@@ -40,7 +43,9 @@ public class Sprint implements org.hbrs.se.ws21.midterm.model.Member {
     }// See comment above.
 
     public Sprint(Date s, Date e, String sprintname,Expertise exp) {
-        this.id = counter++;
+        
+        this.id = Math.max(counter, SprintContainer.getInstance().getMaximumID()) + 1;
+        Sprint.counter = this.id;
         this.start = s;
         this.end = e;
         this.visibleName = sprintname;
