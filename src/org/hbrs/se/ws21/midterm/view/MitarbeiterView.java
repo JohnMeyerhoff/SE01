@@ -81,6 +81,35 @@ public class MitarbeiterView extends MemberView<Mitarbeiter>{
 
     }
 
+
+    public void dumpMatched(Mitarbeiter[] liste, double[] match) {
+       
+        String[][] tmp = listToStringarrayWithMatch( liste, match);
+        TablePrinter printer = new TablePrinter(tmp.length, tmp[0].length);
+        printer.setTable(tmp, 40);
+        printer.print(out);
+
+    }
+    public String[][] listToStringarrayWithMatch(Mitarbeiter[] liste,
+            double[] match) {
+        int i = 1;
+        String[][] table = new String[liste.length + 1][6];
+        table[0] = new String[] { "ID", "Vorname", "Nachname", "Abteilung", "Rolle",
+                "Übereinstimmungsgrad", };
+        /**
+         * EXPERTISEN WERDEN HIER ENTFERNT BZW NICHT BEACHTET.
+         */
+        HashMap<Integer, String> labels = new Expertise().getBezeichner();
+        for (Mitarbeiter ma : liste) {
+            table[i] = new String[] { "" + ma.getID(), ma.getVorname(), ma.getName(),
+                    ma.getAbteilung(), ma.getRolle(),
+                    ""+match[i-1]};
+            i++;
+        }
+        return table;
+
+    }
+
     public void dumpAbteilung(List<Mitarbeiter> x, String abteilungsfilter) {
         Collections.sort(x, new MemberComparator());
         List<Mitarbeiter> y = x.stream()

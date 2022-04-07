@@ -34,32 +34,43 @@ public class Plan extends ContainerCommand {
     public void execute() {
         ConsoleUI ui = new ConsoleUI(outstream);
         SprintContainer sprints = SprintContainer.getInstance();
-        String sName = ui.textAndDigitsOnlyDialogue(input, "den Sprintnamen");
-        MitarbeiterContainer mitarbeiter = speicher != null ? speicher
+        
+        MitarbeiterContainer mitarbeiter = (speicher != null) ? speicher
                 : MitarbeiterContainer.getInstance();
-
+        String sName = ui.textAndDigitsOnlyDialogue(input, "den Sprintnamen");
         List<Sprint> onesprint = new ArrayList<>();
         for (Sprint iterable_element : sprints.getCurrentList()) {
             if (iterable_element.getVisibleNameESIN().equals(sName)) {
                 onesprint.add(iterable_element);
             }
         }
+        Sprint singleSprint = null;
         if (onesprint.isEmpty()) {
             ui.displayNothingFoundTable("Sprints");
+            outstream.println("Geben sie show ein, um sich die verfügbaren Sprints anzeigen zu lassen.");
         } else {
             new SprintView().dumpSorted(onesprint);
+            singleSprint = onesprint.get(0);
+            
+            
+            
+            
+            
+            
+            
+            if (mitarbeiter.size() == 0) {
+                ui.displayNothingFoundTable("Mitarbeiter");
+            } else {
+                new MitarbeiterView().dumpSorted(mitarbeiter.getCurrentListCopy());
+                
+            }
+            if(singleSprint != null){
+                
+                Mitarbeiter[] ma = mitarbeiter.getCurrentListCopy().toArray(new Mitarbeiter[0]);
+                MitarbeiterView mv = new MitarbeiterView(outstream);
+                double[] matchness = this.sprintMatch.sprintAndMitarbeiter(singleSprint, ma);
+                mv.dumpMatched(ma, matchness);
+            }
         }
-
-
-        if (mitarbeiter.size() == 0) {
-            ui.displayNothingFoundTable("Mitarbeiter");
-        } else {
-            new MitarbeiterView().dumpSorted(mitarbeiter.getCurrentListCopy());
-
-        }
-        
-        Mitarbeiter[] ma = mitarbeiter.getCurrentListCopy().toArray(new Mitarbeiter[0]);
-        System.out.println(this.sprintMatch.sprintAndMitarbeiter(onesprint.get(0), ma));
-
     }
 }
