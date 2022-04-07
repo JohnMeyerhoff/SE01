@@ -104,7 +104,7 @@ public class MitarbeiterView extends MemberView<Mitarbeiter>{
         for (Mitarbeiter ma : liste) {
             table[i] = new String[] { "" + ma.getID(), ma.getVorname(), ma.getName(),
                     ma.getAbteilung(), ma.getRolle(),
-                    ""+match[i-1]};
+                    " "+(int) Math.round(match[i - 1] * 100.0)+" %"};
             i++;
         }
         return table;
