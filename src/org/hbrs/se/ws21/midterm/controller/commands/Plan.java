@@ -26,7 +26,8 @@ public class Plan extends ContainerCommand {
     public Plan(PrintStream outstream, Scanner eingabe, MitarbeiterContainer speicher, Match m) {
         super.outstream = outstream;
         super.input = eingabe;
-        super.speicher = speicher;
+        this.speicher = (speicher != null) ? speicher
+                : MitarbeiterContainer.getInstance();
         this.sprintMatch = m;
     }
 
@@ -35,8 +36,7 @@ public class Plan extends ContainerCommand {
         ConsoleUI ui = new ConsoleUI(outstream);
         SprintContainer sprints = SprintContainer.getInstance();
         
-        MitarbeiterContainer mitarbeiter = (speicher != null) ? speicher
-                : MitarbeiterContainer.getInstance();
+        MitarbeiterContainer mitarbeiter = speicher;
         String sName = ui.textAndDigitsOnlyDialogue(input, "den Sprintnamen");
         List<Sprint> onesprint = new ArrayList<>();
         for (Sprint iterable_element : sprints.getCurrentList()) {
@@ -46,7 +46,7 @@ public class Plan extends ContainerCommand {
         }
         Sprint singleSprint = null;
         if (onesprint.isEmpty()) {
-            ui.displayNothingFoundTable("Sprints");
+            ui.displayNothingFoundTable("Sprints ");
             outstream.println("Geben sie show ein, um sich die verfügbaren Sprints anzeigen zu lassen.");
         } else {
             new SprintView().dumpSorted(onesprint);
@@ -54,12 +54,8 @@ public class Plan extends ContainerCommand {
             
             
             
-            
-            
-            
-            
             if (mitarbeiter.size() == 0) {
-                ui.displayNothingFoundTable("Mitarbeiter");
+                ui.displayNothingFoundTable("Mitarbeiter ");
             } else {
                 new MitarbeiterView().dumpSorted(mitarbeiter.getCurrentListCopy());
                 

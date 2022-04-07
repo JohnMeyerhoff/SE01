@@ -16,7 +16,8 @@ public class Load extends ContainerCommand {
             MitarbeiterContainer mitarbeiterContainer) {
         this.outstream = outstream;
         this.input = instream;
-        this.speicher = mitarbeiterContainer;
+        this.speicher = (mitarbeiterContainer != null) ? mitarbeiterContainer
+                : MitarbeiterContainer.getInstance();
     }
 
     @Override
