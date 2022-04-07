@@ -1,6 +1,7 @@
 package org.hbrs.se.ws21.midterm.controller.commands;
 
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -8,6 +9,7 @@ import org.hbrs.se.ws21.midterm.model.Mitarbeiter;
 import org.hbrs.se.ws21.midterm.model.MitarbeiterContainer;
 import org.hbrs.se.ws21.midterm.view.ConsoleUI;
 import org.hbrs.se.ws21.midterm.view.MemberView;
+import org.hbrs.se.ws21.midterm.view.MitarbeiterView;
 
 public class Search extends ContainerCommand {
     public Search() {
@@ -24,7 +26,7 @@ public class Search extends ContainerCommand {
     @Override
     public void execute() {
         // TODO: Streams beheben in commands
-        MemberView a = new MemberView(outstream);
+        MitarbeiterView a = new MitarbeiterView(outstream);
         ConsoleUI ui = new ConsoleUI(outstream);
         String fertigkeit = ui.searchDialogue(input);
         List<Mitarbeiter> x = speicher.getCurrentListCopy().stream()
@@ -35,7 +37,7 @@ public class Search extends ContainerCommand {
         } else {
             ui.displayExpertiseFound(fertigkeit);
         }
-        a.dumpSearched(x, fertigkeit);
+        a.dumpSearched(new ArrayList<>(x), fertigkeit); //New Arraylist because List would not be modifiable.
     }
 
 }

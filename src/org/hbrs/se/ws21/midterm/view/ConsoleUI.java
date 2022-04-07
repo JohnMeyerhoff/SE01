@@ -94,7 +94,7 @@ public class ConsoleUI {
     }
 
     public String searchDialogue(Scanner suche) {
-        out.println("Bitte geben Sie eine von Ihnen gesuchte Expertise an.");
+        out.println("Bitte geben Sie eine von Ihnen gesuchte Expertise an. (Case-sensitive)");
         return suche.next();
     }
 
@@ -201,6 +201,10 @@ public class ConsoleUI {
         TablePrinter printer = new TablePrinter(1,1);
         printer.setTable(new String[][]{{" Keine "+ string+ "gefunden."}}, 40);
         printer.print(out);
+    }
+
+    public void vspace(int i) {
+        out.print(""+"\n".repeat(i));
     }
 
 }

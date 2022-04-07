@@ -88,4 +88,6 @@ public class MemberView<T extends org.hbrs.se.ws21.midterm.model.Member> {
     }
 
     
+
+    
 }

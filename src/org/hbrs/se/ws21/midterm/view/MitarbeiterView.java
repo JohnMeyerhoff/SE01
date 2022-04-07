@@ -50,6 +50,7 @@ public class MitarbeiterView extends MemberView<Mitarbeiter>{
         return table;
     }
 
+    @Override
     public void dumpSearched(List<Mitarbeiter> x, String fertigkeit) {
         Collections.sort(x, new MemberComparator());
         String[][] tmp = listToStringarrayWithExpertise(x, fertigkeit);
