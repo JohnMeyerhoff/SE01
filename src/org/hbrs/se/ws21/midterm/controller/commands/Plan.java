@@ -1,5 +1,8 @@
 package org.hbrs.se.ws21.midterm.controller.commands;
 
+import org.hbrs.se.ws21.midterm.controller.ExpertenHeuristik;
+import org.hbrs.se.ws21.midterm.controller.Match;
+import org.hbrs.se.ws21.midterm.model.Mitarbeiter;
 import org.hbrs.se.ws21.midterm.model.MitarbeiterContainer;
 import org.hbrs.se.ws21.midterm.model.Sprint;
 import org.hbrs.se.ws21.midterm.model.SprintContainer;
@@ -14,10 +17,17 @@ import java.util.Scanner;
 
 public class Plan extends ContainerCommand {
 
+    private Match sprintMatch;
+    
     public Plan(PrintStream outstream, Scanner eingabe, MitarbeiterContainer speicher) {
+        this(outstream, eingabe, speicher, new Match(new ExpertenHeuristik()));
+    }
+
+    public Plan(PrintStream outstream, Scanner eingabe, MitarbeiterContainer speicher, Match m) {
         super.outstream = outstream;
         super.input = eingabe;
         super.speicher = speicher;
+        this.sprintMatch = m;
     }
 
     @Override
@@ -47,6 +57,9 @@ public class Plan extends ContainerCommand {
             new MitarbeiterView().dumpSorted(mitarbeiter.getCurrentListCopy());
 
         }
+        
+        Mitarbeiter[] ma = mitarbeiter.getCurrentListCopy().toArray(new Mitarbeiter[0]);
+        System.out.println(this.sprintMatch.sprintAndMitarbeiter(onesprint.get(0), ma));
 
     }
 }

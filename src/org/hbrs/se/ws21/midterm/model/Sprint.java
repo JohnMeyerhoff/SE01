@@ -1,5 +1,7 @@
 package org.hbrs.se.ws21.midterm.model;
 
+import java.util.HashMap;
+
 import org.hbrs.se.ws21.midterm.util.Dateconverter;
 
 public class Sprint implements org.hbrs.se.ws21.midterm.model.Member {
@@ -8,6 +10,7 @@ public class Sprint implements org.hbrs.se.ws21.midterm.model.Member {
     private Date start;
     private Date end;
     private String visibleName;
+    private Expertise expertise;
 
     // package private - not every class needs to be able to set Sprintnames (if
     // any)
@@ -33,6 +36,15 @@ public class Sprint implements org.hbrs.se.ws21.midterm.model.Member {
         this.start = s;
         this.end = e;
         this.visibleName = sprintname;
+        this.expertise = new Expertise();
+    }// See comment above.
+
+    public Sprint(Date s, Date e, String sprintname,Expertise exp) {
+        this.id = counter++;
+        this.start = s;
+        this.end = e;
+        this.visibleName = sprintname;
+        this.expertise = exp;
     }
 
     @Override
@@ -69,6 +81,10 @@ public class Sprint implements org.hbrs.se.ws21.midterm.model.Member {
             return "----";
         }
         return visibleName;
+    }
+
+    public HashMap<String, Integer> getExpertise() {
+        return this.expertise.getErfahrungen();
     }
 
 }

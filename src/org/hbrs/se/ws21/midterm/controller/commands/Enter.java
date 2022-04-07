@@ -49,6 +49,7 @@ public class Enter extends ContainerCommand {
         Date spEndDate = null;
         ui.displayExpertiseOrDateInputPrompt(sName);
         String in = input.next();
+        Expertise expertise = new Expertise();
         while (!in.equals("store")) {
             if (spEndDate == null || spStartDate == null) {
                 outstream.print(
@@ -60,7 +61,8 @@ public class Enter extends ContainerCommand {
             if (in.equals("enter")) {
                 in = input.next();
                 if (in.equals("expertise")) {
-                    // NEW EXP
+                    expertise.putFaehigkeitLvl(
+                            ui.textAndDigitsOnlyDialogue(input, "die Expertise"), 3);
                 } else if (in.equals("start")) {
                     spStartDate = ui.dateOnlyDialogue(input,
                             "das Datum des Sprint-Starts");
@@ -84,7 +86,7 @@ public class Enter extends ContainerCommand {
             }
             in = input.next();
         }
-        Sprint sp = new Sprint(spStartDate, spEndDate, sName);
+        Sprint sp = new Sprint(spStartDate, spEndDate, sName, expertise);
         SprintContainer spc = SprintContainer.getInstance();
         try {
             spc.addMember(sp);
