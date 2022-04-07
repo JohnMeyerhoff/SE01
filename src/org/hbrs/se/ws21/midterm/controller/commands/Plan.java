@@ -9,11 +9,13 @@ import org.hbrs.se.ws21.midterm.model.SprintContainer;
 import org.hbrs.se.ws21.midterm.view.ConsoleUI;
 import org.hbrs.se.ws21.midterm.view.MitarbeiterView;
 import org.hbrs.se.ws21.midterm.view.SprintView;
+import org.hbrs.se.ws21.midterm.view.TablePrinter;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Plan extends ContainerCommand {
 
@@ -54,11 +56,22 @@ public class Plan extends ContainerCommand {
             new SprintView().dumpSorted(onesprint);
             singleSprint = onesprint.get(0);
             ui.vspace(2);
+            Set<String> expReq = singleSprint.getExpertise().keySet();
+            if(expReq.isEmpty()){
+                outstream.println("Keine Expertise erfordert.");
+            }else{
+                outstream.println("Benötigte Expertisen:");
+                
+                String[][] tmp = new String[][] {expReq.toArray(new String[0])};
+                TablePrinter printer = new TablePrinter(expReq.size(), 0);
+                //ToDo: fix printing
+                printer.setTable(tmp, 40);
+                printer.print(outstream);
+            }
             if (mitarbeiter.size() == 0) {
                 ui.displayNothingFoundTable("Mitarbeiter ");
             } else {
                 
-                if (singleSprint != null) {
 
                     Mitarbeiter[] ma = mitarbeiter.getCurrentListCopy()
                             .toArray(new Mitarbeiter[0]);
@@ -66,7 +79,7 @@ public class Plan extends ContainerCommand {
                     double[] matchness = this.sprintMatch
                             .sprintAndMitarbeiter(singleSprint, ma);
                     mv.dumpMatched(ma, matchness);
-                }
+                
             }
         }
     }
