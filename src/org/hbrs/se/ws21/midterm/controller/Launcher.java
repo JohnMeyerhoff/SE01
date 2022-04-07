@@ -1,5 +1,6 @@
 package org.hbrs.se.ws21.midterm.controller;
 
+import java.io.OutputStream;
 import java.io.PrintStream;
 
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
@@ -12,6 +13,7 @@ import org.hbrs.se.ws21.midterm.model.MitarbeiterContainer;
 import org.hbrs.se.ws21.midterm.model.Sprint;
 import org.hbrs.se.ws21.midterm.model.SprintContainer;
 import org.hbrs.se.ws21.midterm.model.persistence.FilestreamFactory;
+import org.hbrs.se.ws21.midterm.model.persistence.Loading;
 import org.hbrs.se.ws21.midterm.model.persistence.PersistenceStrategyStream;
 
 /*
@@ -35,11 +37,25 @@ public class Launcher {
                 .<Sprint>createFileSaveStrategy("sprint");
         sc.setStrategy(sprintStrategy);
         // testMethod();
+        enableDemoState();
         Client cl = new Client(mitarbeiterContainer, new Scanner(System.in), System.out);
         // The client cl is using the default console input and output, this could be
         // changed to use files instead
         cl.konsole();
 
+    }
+
+    private static void enableDemoState() {
+        Loading l1 = new Loading("Martin", "Mueller", "Planer", "Verwaltung", "Java11", 3,
+                "HTML5", 3, "KaffeTrinken", 1);
+        Loading l2 = new Loading("Anna", "Baum", "Planer", "Verwaltung", "Java8", 3,
+                "HTML5", 3, "KaffeTrinken", 1);
+        String loaded = l1.toInputString();
+        loaded += l2.toInputString();
+        loaded += Loading.saveAndQuit();
+        Client cltmp = new Client(MitarbeiterContainer.getInstance(), new Scanner(loaded),
+                new PrintStream(OutputStream.nullOutputStream()));
+        cltmp.konsole();
     }
 
     @SuppressWarnings({ "unused", "java:S106" })
