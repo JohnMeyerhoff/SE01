@@ -18,12 +18,13 @@ import java.util.Scanner;
 public class Plan extends ContainerCommand {
 
     private Match sprintMatch;
-    
+
     public Plan(PrintStream outstream, Scanner eingabe, MitarbeiterContainer speicher) {
         this(outstream, eingabe, speicher, new Match(new ExpertenHeuristik()));
     }
 
-    public Plan(PrintStream outstream, Scanner eingabe, MitarbeiterContainer speicher, Match m) {
+    public Plan(PrintStream outstream, Scanner eingabe, MitarbeiterContainer speicher,
+            Match m) {
         super.outstream = outstream;
         super.input = eingabe;
         this.speicher = (speicher != null) ? speicher
@@ -35,7 +36,7 @@ public class Plan extends ContainerCommand {
     public void execute() {
         ConsoleUI ui = new ConsoleUI(outstream);
         SprintContainer sprints = SprintContainer.getInstance();
-        
+
         MitarbeiterContainer mitarbeiter = speicher;
         String sName = ui.textAndDigitsOnlyDialogue(input, "den Sprintnamen");
         List<Sprint> onesprint = new ArrayList<>();
@@ -47,25 +48,25 @@ public class Plan extends ContainerCommand {
         Sprint singleSprint = null;
         if (onesprint.isEmpty()) {
             ui.displayNothingFoundTable("Sprints ");
-            outstream.println("Geben sie show ein, um sich die verfügbaren Sprints anzeigen zu lassen.");
+            outstream.println(
+                    "Geben sie show ein, um sich die verfügbaren Sprints anzeigen zu lassen.");
         } else {
             new SprintView().dumpSorted(onesprint);
             singleSprint = onesprint.get(0);
-            
-            
-            
+            ui.vspace(2);
             if (mitarbeiter.size() == 0) {
                 ui.displayNothingFoundTable("Mitarbeiter ");
             } else {
-                new MitarbeiterView().dumpSorted(mitarbeiter.getCurrentListCopy());
                 
-            }
-            if(singleSprint != null){
-                
-                Mitarbeiter[] ma = mitarbeiter.getCurrentListCopy().toArray(new Mitarbeiter[0]);
-                MitarbeiterView mv = new MitarbeiterView(outstream);
-                double[] matchness = this.sprintMatch.sprintAndMitarbeiter(singleSprint, ma);
-                mv.dumpMatched(ma, matchness);
+                if (singleSprint != null) {
+
+                    Mitarbeiter[] ma = mitarbeiter.getCurrentListCopy()
+                            .toArray(new Mitarbeiter[0]);
+                    MitarbeiterView mv = new MitarbeiterView(outstream);
+                    double[] matchness = this.sprintMatch
+                            .sprintAndMitarbeiter(singleSprint, ma);
+                    mv.dumpMatched(ma, matchness);
+                }
             }
         }
     }

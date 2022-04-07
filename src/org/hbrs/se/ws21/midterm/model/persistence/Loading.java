@@ -2,6 +2,7 @@ package org.hbrs.se.ws21.midterm.model.persistence;
 
 public class Loading {
 
+    private static final String WQ = "store exit\n"; //Write and Quit
     private final String vorname;
     private final String nachname;
     private final String rolle;
@@ -36,7 +37,10 @@ public class Loading {
     }
 
     public static String saveAndQuit() {
-        return "store exit\n";
+        return WQ;
     }
 
+    public static String sprintCreationString(String name, String startDateString, String endDateString){
+        return "enter new sprint "+ name + " enter start " + startDateString + " enter end " +endDateString +" store\n";
+    }
 }

@@ -93,7 +93,7 @@ public class Enter extends ContainerCommand {
             spc.addMember(sp);
             spc.store();
             outstream.println("Your sprint has been stored successfully. Summary:");
-            new SprintView().dumpSorted(SprintContainer.getInstance().getCurrentList());
+            new SprintView(this.outstream).dumpSorted(SprintContainer.getInstance().getCurrentList());//Important use of this.outstream
             outstream.println();
         } catch (ContainerException | PersistenceException e) {
             e.printStackTrace();
