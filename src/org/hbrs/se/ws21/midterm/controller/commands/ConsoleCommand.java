@@ -6,6 +6,7 @@ public abstract class ConsoleCommand implements Command {
 
     protected PrintStream outstream;
 
+    @SuppressWarnings({ "java:S106" })
     protected ConsoleCommand() {
         this(System.out);
     }

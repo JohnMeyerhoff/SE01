@@ -15,8 +15,7 @@ import org.hbrs.se.ws21.midterm.model.Mitarbeiter;
 
 public class MitarbeiterView extends MemberView<Mitarbeiter>{
 
-    private PrintStream out;
-
+    @SuppressWarnings({ "java:S106" })
     public MitarbeiterView() {
         this(System.out);
     }

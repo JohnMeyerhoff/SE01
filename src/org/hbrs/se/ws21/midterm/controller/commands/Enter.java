@@ -15,6 +15,7 @@ import org.hbrs.se.ws21.midterm.view.ConsoleUI;
 import org.hbrs.se.ws21.midterm.view.SprintView;
 
 public class Enter extends ContainerCommand {
+    @SuppressWarnings({ "java:S106" })
     public Enter() {
         this(System.out, new Scanner(System.in), MitarbeiterContainer.getInstance());
     }

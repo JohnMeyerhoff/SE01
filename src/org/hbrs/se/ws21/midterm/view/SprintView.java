@@ -6,18 +6,14 @@ package org.hbrs.se.ws21.midterm.view;
 import java.io.PrintStream;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 
-import org.hbrs.se.ws21.midterm.model.Expertise;
 import org.hbrs.se.ws21.midterm.model.Member;
-import org.hbrs.se.ws21.midterm.model.Mitarbeiter;
 import org.hbrs.se.ws21.midterm.model.Sprint;
 
 public class SprintView extends MemberView<Sprint>{
 
-    private PrintStream out;
-
+    @SuppressWarnings({ "java:S106" })
     public SprintView() {
         this(System.out);
     }

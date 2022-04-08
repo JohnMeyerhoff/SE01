@@ -8,10 +8,10 @@ import java.util.Scanner;
 import org.hbrs.se.ws21.midterm.model.Mitarbeiter;
 import org.hbrs.se.ws21.midterm.model.MitarbeiterContainer;
 import org.hbrs.se.ws21.midterm.view.ConsoleUI;
-import org.hbrs.se.ws21.midterm.view.MemberView;
 import org.hbrs.se.ws21.midterm.view.MitarbeiterView;
 
 public class Search extends ContainerCommand {
+    @SuppressWarnings({ "java:S106" })
     public Search() {
         this(System.out, new Scanner(System.in), MitarbeiterContainer.getInstance());
     }

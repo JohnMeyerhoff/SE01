@@ -8,6 +8,7 @@ import org.hbrs.se.ws21.midterm.model.SprintContainer;
 import org.hbrs.se.ws21.midterm.view.ConsoleUI;
 
 public class Load extends ContainerCommand {
+    @SuppressWarnings({ "java:S106" })
     public Load() {
         this(System.out, new Scanner(System.in), MitarbeiterContainer.getInstance());
     }

@@ -6,6 +6,7 @@ import org.hbrs.se.ws21.midterm.model.MitarbeiterContainer;
 import org.hbrs.se.ws21.midterm.model.exception.PersistenceException;
 
 public class Store extends ConsoleCommand {
+    @SuppressWarnings({ "java:S106" })
     public Store() {
         this(System.out);
     }

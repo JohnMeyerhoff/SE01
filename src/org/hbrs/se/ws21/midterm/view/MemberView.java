@@ -17,6 +17,7 @@ public class MemberView<T extends org.hbrs.se.ws21.midterm.model.Member> {
 
     protected PrintStream out;
 
+    @SuppressWarnings({ "java:S106" })
     public MemberView() {
         this(System.out);
     }

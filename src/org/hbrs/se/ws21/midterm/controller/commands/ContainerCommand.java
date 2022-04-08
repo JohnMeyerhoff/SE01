@@ -10,6 +10,7 @@ public abstract class ContainerCommand implements Command {
     protected Scanner input;
     protected MitarbeiterContainer speicher; // singleton
 
+    @SuppressWarnings({ "java:S106" })
     protected ContainerCommand() {
         this(System.out, new Scanner(System.in), MitarbeiterContainer.getInstance());
     }
