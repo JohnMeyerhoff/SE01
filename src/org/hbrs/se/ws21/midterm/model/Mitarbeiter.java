@@ -1,6 +1,5 @@
 package org.hbrs.se.ws21.midterm.model;
 
-
 //Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 //und John Meyerhoff bearbeitet worden.
 public class Mitarbeiter implements org.hbrs.se.ws21.midterm.model.Member {

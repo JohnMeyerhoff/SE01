@@ -5,16 +5,16 @@ import org.hbrs.se.ws21.midterm.model.Sprint;
 
 public class Match {
     private Heuristik heuristik;
-    
-    protected void setHeuristik(Heuristik h){
+
+    protected void setHeuristik(Heuristik h) {
         this.heuristik = h;
     }
 
-    public Match(Heuristik h){
+    public Match(Heuristik h) {
         this.heuristik = h;
     }
 
-    public double[] sprintAndMitarbeiter(Sprint sprint,Mitarbeiter[] mitarbeiter){
+    public double[] sprintAndMitarbeiter(Sprint sprint, Mitarbeiter[] mitarbeiter) {
         return heuristik.sprintAndMitarbeiter(sprint, mitarbeiter);
     }
 }

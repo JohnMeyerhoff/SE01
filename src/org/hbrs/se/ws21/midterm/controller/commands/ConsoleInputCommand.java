@@ -8,7 +8,7 @@ public abstract class ConsoleInputCommand implements Command {
     protected PrintStream outstream;
     protected Scanner input;
 
-    @SuppressWarnings({"java:S106" })
+    @SuppressWarnings({ "java:S106" })
     protected ConsoleInputCommand() {
         this(System.out, new Scanner(System.in));
     }

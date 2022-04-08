@@ -11,7 +11,7 @@ import java.util.List;
 import org.hbrs.se.ws21.midterm.model.Member;
 import org.hbrs.se.ws21.midterm.model.Sprint;
 
-public class SprintView extends MemberView<Sprint>{
+public class SprintView extends MemberView<Sprint> {
 
     @SuppressWarnings({ "java:S106" })
     public SprintView() {
@@ -59,8 +59,5 @@ public class SprintView extends MemberView<Sprint>{
         return table;
 
     }
-
-   
-
 
 }

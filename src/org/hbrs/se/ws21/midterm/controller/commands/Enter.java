@@ -27,7 +27,7 @@ public class Enter extends ContainerCommand {
         this.speicher = (mitarbeiterContainer != null) ? mitarbeiterContainer
                 : MitarbeiterContainer.getInstance();
     }
-    
+
     @Override
     public void execute() {
         outstream.print("To enter something new please type 'new'.\n>");
@@ -94,7 +94,10 @@ public class Enter extends ContainerCommand {
             spc.addMember(sp);
             spc.store();
             outstream.println("Your sprint has been stored successfully. Summary:");
-            new SprintView(this.outstream).dumpSorted(SprintContainer.getInstance().getCurrentList());//Important use of this.outstream
+            new SprintView(this.outstream)
+                    .dumpSorted(SprintContainer.getInstance().getCurrentList());// Important
+                                                                                // use of
+                                                                                // this.outstream
             outstream.println();
         } catch (ContainerException | PersistenceException e) {
             e.printStackTrace();

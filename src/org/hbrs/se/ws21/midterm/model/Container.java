@@ -28,14 +28,14 @@ public abstract class Container<T extends org.hbrs.se.ws21.midterm.model.Member>
         }
     }
 
-    public int getMaximumID(){
+    public int getMaximumID() {
         int ret = 0;
         for (T t : inhalt) {
-            ret = Math.max(ret,t.getID());
+            ret = Math.max(ret, t.getID());
         }
         return ret;
     }
-    
+
     public List<T> getCurrentList() {
         return this.inhalt;
     }
@@ -54,7 +54,8 @@ public abstract class Container<T extends org.hbrs.se.ws21.midterm.model.Member>
 
     public void store() throws PersistenceException {
         if (strategy == null) {
-            throw new PersistenceException(PersistenceException.ExceptionType.NOSTRATEGYISSET,
+            throw new PersistenceException(
+                    PersistenceException.ExceptionType.NOSTRATEGYISSET,
                     "Es gibt keine Strategie zum abspeichern.");
         }
 
@@ -65,7 +66,8 @@ public abstract class Container<T extends org.hbrs.se.ws21.midterm.model.Member>
 
     public void load() throws PersistenceException {
         if (strategy == null) {
-            throw new PersistenceException(PersistenceException.ExceptionType.NOSTRATEGYISSET,
+            throw new PersistenceException(
+                    PersistenceException.ExceptionType.NOSTRATEGYISSET,
                     "Es gibt keine Strategie zum abspeichern.");
         }
 
@@ -100,7 +102,7 @@ public abstract class Container<T extends org.hbrs.se.ws21.midterm.model.Member>
             }
         }
         return 0;
-        
+
     }
 
     public int size() {

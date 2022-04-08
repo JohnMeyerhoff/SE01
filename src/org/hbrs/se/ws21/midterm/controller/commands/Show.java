@@ -25,16 +25,14 @@ public class Show extends ContainerCommand {
         if (sprints.size() == 0) {
             ui.displayNothingFoundTable("Sprints ");
         } else {
-            new SprintView()
-                    .dumpSorted(sprints.getCurrentListCopy());
+            new SprintView().dumpSorted(sprints.getCurrentListCopy());
 
         }
         ui.vspace(2);
         if (mitarbeiter.size() == 0) {
             ui.displayNothingFoundTable("Mitarbeietr ");
         } else {
-            new MitarbeiterView()
-                    .dumpSorted(mitarbeiter.getCurrentListCopy());
+            new MitarbeiterView().dumpSorted(mitarbeiter.getCurrentListCopy());
 
         }
 

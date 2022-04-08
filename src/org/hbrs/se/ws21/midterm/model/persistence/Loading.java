@@ -50,10 +50,8 @@ public class Loading {
             String endDateString, String expertiseI, int expertiseLevelI,
             String expertiseII, int expertiseLevelII) {
         return "enter new sprint " + name + " enter start " + startDateString
-                + " enter end " + endDateString +
-                 " enter expertise " + expertiseI + " "
-                + expertiseLevelI + 
-                " enter expertise " + expertiseII + " "
+                + " enter end " + endDateString + " enter expertise " + expertiseI + " "
+                + expertiseLevelI + " enter expertise " + expertiseII + " "
                 + expertiseLevelII + " store\n";
 
     }

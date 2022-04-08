@@ -51,7 +51,7 @@ public class MemberView<T extends org.hbrs.se.ws21.midterm.model.Member> {
          * EXPERTISEN WERDEN HIER ENTFERNT BZW NICHT BEACHTET.
          */
         for (T ma : liste) {
-            table[i] = new String[] { "" + ma.getID() ,};
+            table[i] = new String[] { "" + ma.getID(), };
             i++;
         }
         return table;
@@ -88,7 +88,4 @@ public class MemberView<T extends org.hbrs.se.ws21.midterm.model.Member> {
 
     }
 
-    
-
-    
 }

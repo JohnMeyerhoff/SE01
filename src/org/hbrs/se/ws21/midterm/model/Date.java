@@ -88,15 +88,15 @@ public class Date implements Serializable {
         validateMonth(m);
 
         switch (m) {
-            case 2:
-                return istSchaltjahr(j) ? 29 : 28;
-            case 4:
-            case 6:
-            case 9:
-            case 11:
-                return 30;
-            default:
-                return 31;
+        case 2:
+            return istSchaltjahr(j) ? 29 : 28;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            return 30;
+        default:
+            return 31;
         }
     }
 
@@ -146,15 +146,15 @@ public class Date implements Serializable {
         }
 
         switch (order) {
-            case "jmt":
-                return String.join(sep, y, m, d); // y + sep + m + sep + d
-            case "tmj":
-                return String.join(sep, d, m, y);
-            case "mtj":
-                return String.join(sep, m, d, y);
-            default:
-                assert false : order;
-                return "";
+        case "jmt":
+            return String.join(sep, y, m, d); // y + sep + m + sep + d
+        case "tmj":
+            return String.join(sep, d, m, y);
+        case "mtj":
+            return String.join(sep, m, d, y);
+        default:
+            assert false : order;
+            return "";
         }
     }
 

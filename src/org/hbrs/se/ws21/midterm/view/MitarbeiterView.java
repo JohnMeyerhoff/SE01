@@ -13,7 +13,7 @@ import org.hbrs.se.ws21.midterm.model.Expertise;
 import org.hbrs.se.ws21.midterm.model.Member;
 import org.hbrs.se.ws21.midterm.model.Mitarbeiter;
 
-public class MitarbeiterView extends MemberView<Mitarbeiter>{
+public class MitarbeiterView extends MemberView<Mitarbeiter> {
 
     @SuppressWarnings({ "java:S106" })
     public MitarbeiterView() {
@@ -31,7 +31,6 @@ public class MitarbeiterView extends MemberView<Mitarbeiter>{
             // 1,2,3,4
         }
     }
-
 
     @Override
     protected String[][] listToStringarray(List<? extends Mitarbeiter> liste) {
@@ -81,17 +80,16 @@ public class MitarbeiterView extends MemberView<Mitarbeiter>{
 
     }
 
-
     public void dumpMatched(Mitarbeiter[] liste, double[] match) {
-       
-        String[][] tmp = listToStringarrayWithMatch( liste, match);
+
+        String[][] tmp = listToStringarrayWithMatch(liste, match);
         TablePrinter printer = new TablePrinter(tmp.length, tmp[0].length);
         printer.setTable(tmp, 40);
         printer.print(out);
 
     }
-    public String[][] listToStringarrayWithMatch(Mitarbeiter[] liste,
-            double[] match) {
+
+    public String[][] listToStringarrayWithMatch(Mitarbeiter[] liste, double[] match) {
         int i = 1;
         String[][] table = new String[liste.length + 1][6];
         table[0] = new String[] { "ID", "Vorname", "Nachname", "Abteilung", "Rolle",
@@ -99,11 +97,11 @@ public class MitarbeiterView extends MemberView<Mitarbeiter>{
         /**
          * EXPERTISEN WERDEN HIER ENTFERNT BZW NICHT BEACHTET.
          */
-        
+
         for (Mitarbeiter ma : liste) {
             table[i] = new String[] { "" + ma.getID(), ma.getVorname(), ma.getName(),
                     ma.getAbteilung(), ma.getRolle(),
-                    " "+(int) Math.round(match[i - 1] * 100.0)+" %"};
+                    " " + (int) Math.round(match[i - 1] * 100.0) + " %" };
             i++;
         }
         return table;

@@ -21,7 +21,9 @@ public class ConsoleTest {
         ConsoleUI ui = new ConsoleUI(ps);
         Scanner a = new Scanner("drucken\n");
         assertEquals("drucken", ui.searchDialogue(a));
-        assertEquals("Bitte geben Sie eine von Ihnen gesuchte Expertise an. (Case-sensitive)".trim(),
+        assertEquals(
+                "Bitte geben Sie eine von Ihnen gesuchte Expertise an. (Case-sensitive)"
+                        .trim(),
                 os.toString().trim());
     }
 

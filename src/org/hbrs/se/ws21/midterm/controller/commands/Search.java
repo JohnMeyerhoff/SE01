@@ -37,7 +37,8 @@ public class Search extends ContainerCommand {
         } else {
             ui.displayExpertiseFound(fertigkeit);
         }
-        a.dumpSearched(new ArrayList<>(x), fertigkeit); //New Arraylist because List would not be modifiable.
+        a.dumpSearched(new ArrayList<>(x), fertigkeit); // New Arraylist because List
+                                                        // would not be modifiable.
     }
 
 }
