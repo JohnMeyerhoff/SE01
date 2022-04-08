@@ -52,8 +52,8 @@ public class SprintView extends MemberView<Sprint> {
                     "" + ma.getStart().tag() + "." + ma.getStart().monat() + "."
                             + ma.getStart().jahr(),
 
-                    "" + ma.getStart().tag() + "." + ma.getStart().monat() + "."
-                            + ma.getStart().jahr() };
+                    "" + ma.getEnd().tag() + "." + ma.getEnd().monat() + "."
+                            + ma.getEnd().jahr() };
             i++;
         }
         return table;
