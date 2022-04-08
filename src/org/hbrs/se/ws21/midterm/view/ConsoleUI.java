@@ -36,6 +36,7 @@ public class ConsoleUI {
                 enter
                 store
                 load
+                plan
                 dump
                 search
                 exit

@@ -60,6 +60,7 @@ public class ConsoleTest {
                 enter
                 store
                 load
+                plan
                 dump
                 search
                 exit

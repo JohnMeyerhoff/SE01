@@ -45,6 +45,7 @@ public class Launcher {
 
     }
 
+    @SuppressWarnings({ "java:S1192" })
     private static void enableDemoState() {
         Loading l1 = new Loading("Martin", "Mueller", "Planer", "Verwaltung", "Java11", 3,
                 "HTML5", 3, "KaffeTrinken", 1);
