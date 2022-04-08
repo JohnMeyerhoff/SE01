@@ -61,6 +61,7 @@ public class Plan extends ContainerCommand {
             if (expReq.length == 0) {
                 outstream.println("Keine Expertise erfordert.");
             } else {
+                outstream.println("Folgende Expertisen sind relevant:");
                 new ExpertiseView().dumpSorted(singleSprint.getExpertise(), outstream);
                 ui.vspace(2);
             }
