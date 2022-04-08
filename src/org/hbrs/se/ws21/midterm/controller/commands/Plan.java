@@ -68,7 +68,7 @@ public class Plan extends ContainerCommand {
             if (mitarbeiter.size() == 0) {
                 ui.displayNothingFoundTable("Mitarbeiter ");
             } else {
-
+                outstream.println("The following employees are suitable for your sprint:");
                 Mitarbeiter[] ma = mitarbeiter.getCurrentListCopy()
                         .toArray(new Mitarbeiter[0]);
                 MitarbeiterView mv = new MitarbeiterView(outstream);
