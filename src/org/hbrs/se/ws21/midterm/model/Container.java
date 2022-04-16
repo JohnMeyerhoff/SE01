@@ -12,6 +12,7 @@ public abstract class Container<T extends org.hbrs.se.ws21.midterm.model.Member>
 
     protected PersistenceStrategy<T> strategy = null;
 
+    @SuppressWarnings({ "java:S106" })
     public void setStrategy(PersistenceStrategy<T> strategy) {
         if (this.strategy != null) {
             try {

@@ -5,19 +5,47 @@
             "group": "Default"
         },
         {
-            "filePath": "src/org/hbrs/se/ws21/command/controller",
-            "group": "Default"
-        },
-        {
-            "filePath": "src/org/hbrs/se/ws21/midterm",
-            "group": "Default"
-        },
-        {
             "filePath": "src/org/hbrs/se/ws21/midterm/controller/Launcher.java",
             "group": "Default"
         },
         {
             "filePath": "doc/midTerm.drawio",
+            "group": "Default"
+        },
+        {
+            "filePath": "src\\org\\hbrs\\se\\ws21\\midterm\\controller\\commands\\Plan.java",
+            "group": "Default"
+        },
+        {
+            "filePath": "src\\org\\hbrs\\se\\ws21\\midterm\\controller\\commands\\Show.java",
+            "group": "Default"
+        },
+        {
+            "filePath": "src\\org\\hbrs\\se\\ws21\\midterm\\controller\\commands\\ConsoleInputCommand.java",
+            "group": "Default"
+        },
+        {
+            "filePath": "src\\org\\hbrs\\se\\ws21\\midterm\\model\\persistence\\Loading.java",
+            "group": "Default"
+        },
+        {
+            "filePath": "src\\org\\hbrs\\se\\ws21\\midterm\\model\\SprintContainer.java",
+            "group": "Default"
+        },
+        {
+            "filePath": "src\\org\\hbrs\\se\\ws21\\midterm\\model\\MitarbeiterContainer.java",
+            "group": "Default"
+        },
+        {
+            "filePath": "src\\org\\hbrs\\se\\ws21\\midterm\\model\\Sprint.java",
+            "group": "Default"
+        },
+        {
+            "filePath": "src\\org\\hbrs\\se\\ws21\\midterm\\model\\Container.java",
+            "group": "Default"
+        },
+        {
+            "filePath": "src\\org\\hbrs\\se\\ws21\\midterm\\view\\SprintView.java",
             "group": "Default"
         }
     ],

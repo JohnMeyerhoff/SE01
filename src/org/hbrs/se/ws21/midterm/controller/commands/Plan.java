@@ -10,13 +10,11 @@ import org.hbrs.se.ws21.midterm.view.ConsoleUI;
 import org.hbrs.se.ws21.midterm.view.ExpertiseView;
 import org.hbrs.se.ws21.midterm.view.MitarbeiterView;
 import org.hbrs.se.ws21.midterm.view.SprintView;
-import org.hbrs.se.ws21.midterm.view.TablePrinter;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
 
 public class Plan extends ContainerCommand {
 
