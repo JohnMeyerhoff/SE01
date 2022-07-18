@@ -105,10 +105,7 @@ public class Date implements Serializable {
     switch (m) {
       case 2:
         return istSchaltjahr(j) ? 29 : 28;
-      case 4:
-      case 6:
-      case 9:
-      case 11:
+      case 4,6,9,11:
         return 30;
       default:
         return 31;

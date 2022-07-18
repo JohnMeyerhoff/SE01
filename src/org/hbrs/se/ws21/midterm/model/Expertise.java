@@ -5,6 +5,7 @@ package org.hbrs.se.ws21.midterm.model;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Expertise implements Serializable {
 
@@ -29,11 +30,11 @@ public class Expertise implements Serializable {
     this.expertisen.put(faehigkeit, l);
   }
 
-  public HashMap<String, Integer> getErfahrungen() {
+  public Map<String, Integer> getErfahrungen() {
     return this.expertisen;
   }
 
-  public HashMap<Integer, String> getBezeichner() {
+  public Map<Integer, String> getBezeichner() {
     return this.levelBezeichner;
   }
 

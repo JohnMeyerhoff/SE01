@@ -25,7 +25,7 @@ public class Client {
     ui.displayWelcomeMessage();
 
     while (eingabe.hasNext()) {
-      boolean validcommand = false;
+      boolean validCommand = false;
       tmp = eingabe.next();
       if (tmp.equals("exit")) {
         ui.displayGoodBye();
@@ -34,17 +34,17 @@ public class Client {
       }
 
       if (tmp.equals("help")) {
-        validcommand = true;
+        validCommand = true;
         ui.displayHelpMessage();
       }
 
       if (tmp.equals("store")) {
-        validcommand = true;
+        validCommand = true;
         MitarbeiterContainer.getInstance().store();
       }
 
       if (tmp.equals("dump")) {
-        validcommand = true;
+        validCommand = true;
         if (speicher.size() == 0) {
           ui.displayNothingFoundTable();
         } else {
@@ -65,7 +65,7 @@ public class Client {
       }
 
       if (tmp.equals("load")) {
-        validcommand = true;
+        validCommand = true;
         String parameter = ui.loadDialogue(eingabe);
         try {
           if (parameter.equals("merge")) {
@@ -82,7 +82,7 @@ public class Client {
       }
       // bergeunzung der zeichen noch ggf. anpassen!
       if (tmp.equals("enter")) {
-        validcommand = true;
+        validCommand = true;
         String vorname = ui.textonlyDialogue(eingabe, "ihren Vornamen");
         String name = ui.textonlyDialogue(eingabe, "ihren Nachnamen");
         String rolle = ui.textonlyDialogue(eingabe, "ihre Rolle");
@@ -119,7 +119,7 @@ public class Client {
         }
       }
       if (tmp.equals("search")) {
-        validcommand = true;
+        validCommand = true;
         String fertigkeit = ui.searchDialogue(eingabe);
         List<Mitarbeiter> x = speicher.getCurrentListCopy().stream().filter(
                 ma -> ma.getExpertise().getErfahrungen().containsKey(fertigkeit))
@@ -135,9 +135,9 @@ public class Client {
       /**
        * Validcommand setzt sich zu beginn jedes Commands Neu auf False, und
        * innerhalb der einzelnen Befehle Auf true. Die InvalidCommandMessage wird
-       * nur ausgegeben wenn !FALSE == True also validcommand == false
+       * nur ausgegeben wenn !FALSE == True also validCommand == false
        */
-      if (!validcommand) {
+      if (!validCommand) {
         ui.displayInvalidCommandMessage();
       }
 

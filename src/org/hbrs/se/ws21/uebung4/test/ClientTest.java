@@ -61,7 +61,6 @@ public class ClientTest {
     try {
       neu.konsole(c1, sc, ps);
     } catch (PersistenceException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
 

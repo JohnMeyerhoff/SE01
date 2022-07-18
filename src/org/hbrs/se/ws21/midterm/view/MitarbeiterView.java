@@ -8,11 +8,18 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.hbrs.se.ws21.midterm.model.Expertise;
 import org.hbrs.se.ws21.midterm.model.Member;
 import org.hbrs.se.ws21.midterm.model.Mitarbeiter;
 
 public class MitarbeiterView extends MemberView<Mitarbeiter> {
+
+  private static final String VORNAME = "Vorname";
+  private static final String NACHNAME = "Nachname";
+  private static final String ABTEILUNG = "Abteilung";
+  private static final String ROLLE = "Rolle";
+  private static final String ID = "ID";
 
   @SuppressWarnings({"java:S106"})
   public MitarbeiterView() {
@@ -27,7 +34,7 @@ public class MitarbeiterView extends MemberView<Mitarbeiter> {
   protected String[][] listToStringarray(List<? extends Mitarbeiter> liste) {
     int i = 1;
     String[][] table = new String[liste.size() + 1][5];
-    table[0] = new String[]{"ID", "Vorname", "Nachname", "Abteilung", "Rolle",};
+    table[0] = new String[]{ID, VORNAME, NACHNAME, ABTEILUNG, ROLLE,};
     /**
      * EXPERTISEN WERDEN HIER ENTFERNT BZW NICHT BEACHTET.
      */
@@ -54,12 +61,12 @@ public class MitarbeiterView extends MemberView<Mitarbeiter> {
       String fertigkeit) {
     int i = 1;
     String[][] table = new String[liste.size() + 1][6];
-    table[0] = new String[]{"ID", "Vorname", "Nachname", "Abteilung", "Rolle",
+    table[0] = new String[]{ID, VORNAME, NACHNAME, ABTEILUNG, ROLLE,
         "Erfahrungsgrad",};
     /**
      * EXPERTISEN WERDEN HIER ENTFERNT BZW NICHT BEACHTET.
      */
-    HashMap<Integer, String> labels = new Expertise().getBezeichner();
+    Map<Integer, String> labels = new Expertise().getBezeichner();
     for (Mitarbeiter ma : liste) {
       table[i] = new String[]{"" + ma.getID(), ma.getVorname(), ma.getName(),
           ma.getAbteilung(), ma.getRolle(),
@@ -83,7 +90,7 @@ public class MitarbeiterView extends MemberView<Mitarbeiter> {
   public String[][] listToStringarrayWithMatch(Mitarbeiter[] liste, double[] match) {
     int i = 1;
     String[][] table = new String[liste.length + 1][6];
-    table[0] = new String[]{"ID", "Vorname", "Nachname", "Abteilung", "Rolle",
+    table[0] = new String[]{ID, VORNAME, NACHNAME, ABTEILUNG, ROLLE,
         "Übereinstimmungsgrad",};
     /**
      * EXPERTISEN WERDEN HIER ENTFERNT BZW NICHT BEACHTET.

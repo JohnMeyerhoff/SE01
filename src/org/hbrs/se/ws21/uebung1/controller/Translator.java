@@ -8,7 +8,7 @@ package org.hbrs.se.ws21.uebung1.controller;
 
 public interface Translator {
 
-  double version = 1.0;
+  double VERSION = 1.0;
 
   /*
    * Uebersetzt eine numerische Zahl in eine String-basierte Repraesentation

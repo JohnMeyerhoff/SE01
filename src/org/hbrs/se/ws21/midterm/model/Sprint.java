@@ -1,6 +1,7 @@
 package org.hbrs.se.ws21.midterm.model;
 
 import java.util.HashMap;
+import java.util.Map;
 import org.hbrs.se.ws21.midterm.util.Dateconverter;
 
 public class Sprint implements org.hbrs.se.ws21.midterm.model.Member {
@@ -27,7 +28,7 @@ public class Sprint implements org.hbrs.se.ws21.midterm.model.Member {
   // See comment above.
   public Sprint(Date s, Date e, String sprintname) {
 
-    this.id = Math.max(counter, SprintContainer.getInstance().getMaximumID()) + 1;
+    this.id = Math.max(Sprint.counter, SprintContainer.getInstance().getMaximumID()) + 1;
     Sprint.counter = this.id;
     this.start = s;
     this.end = e;
@@ -87,7 +88,7 @@ public class Sprint implements org.hbrs.se.ws21.midterm.model.Member {
     return visibleName;
   }
 
-  public HashMap<String, Integer> getExpertise() {
+  public Map<String, Integer> getExpertise() {
     return this.expertise.getErfahrungen();
   }
 
