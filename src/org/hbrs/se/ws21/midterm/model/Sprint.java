@@ -1,17 +1,16 @@
 package org.hbrs.se.ws21.midterm.model;
 
-import java.util.HashMap;
 import java.util.Map;
 import org.hbrs.se.ws21.midterm.util.Dateconverter;
 
 public class Sprint implements org.hbrs.se.ws21.midterm.model.Member {
 
   private static int counter = 0;
-  private int id = -1;
   private final Date start;
   private final Date end;
-  private String visibleName;
   private final Expertise expertise;
+  private int id = -1;
+  private String visibleName;
 
   // This public constructor could be troublesome because unlike the ui method it
   // will not

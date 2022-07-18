@@ -1,12 +1,12 @@
 package org.hbrs.se.ws21.midterm.view;
 
 import java.io.PrintStream;
-import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 public class ExpertiseView {
 
-  public void dumpSorted(HashMap<String, Integer> expertise, PrintStream output) {
+  public void dumpSorted(Map<String, Integer> expertise, PrintStream output) {
     String[][] tmp = listToStringarray(expertise.keySet());
     TablePrinter printer = new TablePrinter(tmp.length, tmp[0].length);
     printer.setTable(tmp, 40);
