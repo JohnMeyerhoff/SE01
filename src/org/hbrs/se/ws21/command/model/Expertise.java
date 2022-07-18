@@ -33,7 +33,7 @@ public class Expertise implements Serializable {
     return this.expertisen;
   }
 
-  public HashMap<Integer, String> getBezeichner() {
+  public Map<Integer, String> getBezeichner() {
     return this.levelBezeichner;
   }
 

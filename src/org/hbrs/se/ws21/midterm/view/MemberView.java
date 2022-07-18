@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.hbrs.se.ws21.midterm.model.Expertise;
 import org.hbrs.se.ws21.midterm.model.Member;
 import org.hbrs.se.ws21.midterm.model.Mitarbeiter;
@@ -67,7 +68,7 @@ public class MemberView<T extends org.hbrs.se.ws21.midterm.model.Member> {
     /**
      * EXPERTISEN WERDEN HIER ENTFERNT BZW NICHT BEACHTET.
      */
-    HashMap<Integer, String> labels = new Expertise().getBezeichner();
+    Map<Integer, String> labels = new Expertise().getBezeichner();
     for (Mitarbeiter ma : liste) {
       table[i] = new String[]{"" + ma.getID(), ma.getVorname(), ma.getName(),
           ma.getAbteilung(), ma.getRolle(),

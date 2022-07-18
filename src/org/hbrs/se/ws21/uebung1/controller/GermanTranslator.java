@@ -22,7 +22,7 @@ public class GermanTranslator implements Translator {
 
   public String translateNumber(int number) {
     return sprache.getOrDefault(number, "Übersetzung der Zahl " + number
-        + " nicht möglich (" + Translator.version + ")");
+        + " nicht möglich (" + Translator.VERSION + ")");
   }
 
   /**
