@@ -1,6 +1,11 @@
 package org.hbrs.se.ws21.uebung11.test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.hbrs.se.ws21.uebung11.BoundingBoxFactory;
 import org.hbrs.se.ws21.uebung11.MyPoint;

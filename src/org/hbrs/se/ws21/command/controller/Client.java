@@ -20,11 +20,11 @@ import org.hbrs.se.ws21.command.view.ConsoleUI;
 
 public class Client {
 
-  Command defaultCommand;
   private final MitarbeiterContainer speicher;
   private final Scanner eingabe;
   private final PrintStream outstream;
   private final Map<String, Command> executables;
+  Command defaultCommand;
 
   public Client(MitarbeiterContainer speicher, Scanner eingabe, PrintStream outstream) {
     this.speicher = speicher;

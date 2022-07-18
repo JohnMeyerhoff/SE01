@@ -8,10 +8,10 @@ import java.io.PrintStream;
 public class TablePrinter {
 
   private final String[][][] table;
-  private int[] rowHeights;
-  private int[] colWidths;
   private final int rows;
   private final int cols;
+  private int[] rowHeights;
+  private int[] colWidths;
 
   public TablePrinter(int rows, int cols) {
     this.rows = rows;
