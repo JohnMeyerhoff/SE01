@@ -5,19 +5,19 @@ package org.hbrs.se.ws21.midterm.model;
 
 public class SprintContainer extends Container<Sprint> {
 
-    private static SprintContainer instance;
+  private static SprintContainer instance;
 
-    private SprintContainer() {
-        // default-Konstruktor überschrieben
-        // Verwendung des singleton-Pattern
+  private SprintContainer() {
+    // default-Konstruktor überschrieben
+    // Verwendung des singleton-Pattern
 
+  }
+
+  public static SprintContainer getInstance() {
+    if (instance == null) {
+      instance = new SprintContainer();
     }
-
-    public static SprintContainer getInstance() {
-        if (instance == null) {
-            instance = new SprintContainer();
-        }
-        return instance;
-    }
+    return instance;
+  }
 
 }

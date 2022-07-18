@@ -6,110 +6,111 @@ package org.hbrs.se.ws21.midterm.view;
 import java.io.PrintStream;
 
 public class TablePrinter {
-	private String[][][] table;
-	private int[] rowHeights;
-	private int[] colWidths;
-	private int rows;
-	private int cols;
 
-	public TablePrinter(int rows, int cols) {
-		this.rows = rows;
-		this.cols = cols;
-		table = new String[rows][cols][0];
-	}
+  private final String[][][] table;
+  private int[] rowHeights;
+  private int[] colWidths;
+  private final int rows;
+  private final int cols;
 
-	public void setCell(int row, int col, String cell) {
-		table[row][col] = cell.split("\n");
-	}
+  public TablePrinter(int rows, int cols) {
+    this.rows = rows;
+    this.cols = cols;
+    table = new String[rows][cols][0];
+  }
 
-	public void setRow(int row, String[] cells) {
-		for (int col = 0; col < cols; col++) {
-			setCell(row, col, cells[col]);
-		}
-	}
+  public void setCell(int row, int col, String cell) {
+    table[row][col] = cell.split("\n");
+  }
 
-	public void setCol(int col, String[] cells) {
-		for (int row = 0; row < rows; row++) {
-			setCell(row, col, cells[row]);
-		}
-	}
+  public void setRow(int row, String[] cells) {
+    for (int col = 0; col < cols; col++) {
+      setCell(row, col, cells[col]);
+    }
+  }
 
-	public void setTable(String[][] table) {
-		for (int row = 0; row < rows; row++) {
-			setRow(row, table[row]);
-		}
-	}
+  public void setCol(int col, String[] cells) {
+    for (int row = 0; row < rows; row++) {
+      setCell(row, col, cells[row]);
+    }
+  }
 
-	public void setTable(String[][] table, int maxCellWidth, int splitMargin) {
-		for (int row = 0; row < rows; row++) {
-			for (int col = 0; col < cols; col++) {
-				String rest = table[row][col];
-				String wrapped = "";
+  public void setTable(String[][] table) {
+    for (int row = 0; row < rows; row++) {
+      setRow(row, table[row]);
+    }
+  }
 
-				while (rest.length() > maxCellWidth) {
-					int splitIdx = rest.lastIndexOf(' ', maxCellWidth);
-					String line;
+  public void setTable(String[][] table, int maxCellWidth, int splitMargin) {
+    for (int row = 0; row < rows; row++) {
+      for (int col = 0; col < cols; col++) {
+        String rest = table[row][col];
+        String wrapped = "";
 
-					if (splitIdx < maxCellWidth - splitMargin) {
-						line = rest.substring(0, maxCellWidth);
-						rest = rest.substring(maxCellWidth);
-					} else {
-						line = rest.substring(0, splitIdx);
-						rest = rest.substring(splitIdx + 1);
-					}
+        while (rest.length() > maxCellWidth) {
+          int splitIdx = rest.lastIndexOf(' ', maxCellWidth);
+          String line;
 
-					wrapped += line + '\n';
-				}
+          if (splitIdx < maxCellWidth - splitMargin) {
+            line = rest.substring(0, maxCellWidth);
+            rest = rest.substring(maxCellWidth);
+          } else {
+            line = rest.substring(0, splitIdx);
+            rest = rest.substring(splitIdx + 1);
+          }
 
-				setCell(row, col, wrapped + rest);
-			}
-		}
-	}
+          wrapped += line + '\n';
+        }
 
-	public void setTable(String[][] table, int maxCellWidth) {
-		setTable(table, maxCellWidth, 10);
-	}
+        setCell(row, col, wrapped + rest);
+      }
+    }
+  }
 
-	private void calcCellSizes() {
-		rowHeights = new int[rows];
-		colWidths = new int[cols];
+  public void setTable(String[][] table, int maxCellWidth) {
+    setTable(table, maxCellWidth, 10);
+  }
 
-		for (int col = 0; col < cols; col++) {
-			for (int row = 0; row < rows; row++) {
-				if (table[row][col].length > rowHeights[row]) {
-					rowHeights[row] = table[row][col].length;
-				}
+  private void calcCellSizes() {
+    rowHeights = new int[rows];
+    colWidths = new int[cols];
 
-				for (String line : table[row][col]) {
-					if (line.length() + 1 > colWidths[col]) {
-						colWidths[col] = line.length() + 1;
-					}
-				}
-			}
-		}
-	}
+    for (int col = 0; col < cols; col++) {
+      for (int row = 0; row < rows; row++) {
+        if (table[row][col].length > rowHeights[row]) {
+          rowHeights[row] = table[row][col].length;
+        }
 
-	public void print(PrintStream out) {
-		calcCellSizes();
+        for (String line : table[row][col]) {
+          if (line.length() + 1 > colWidths[col]) {
+            colWidths[col] = line.length() + 1;
+          }
+        }
+      }
+    }
+  }
 
-		String rowSep = "+";
-		for (int col = 0; col < cols; col++) {
-			rowSep += "-".repeat(colWidths[col]) + "+";
-		}
+  public void print(PrintStream out) {
+    calcCellSizes();
 
-		for (int row = 0; row < rows; row++) {
-			out.println(rowSep);
+    String rowSep = "+";
+    for (int col = 0; col < cols; col++) {
+      rowSep += "-".repeat(colWidths[col]) + "+";
+    }
 
-			for (int line = 0; line < rowHeights[row]; line++) {
-				for (int col = 0; col < cols; col++) {
-					out.printf("|%-" + colWidths[col] + "s",
-							line < table[row][col].length ? table[row][col][line] : "");
-				}
-				out.println('|');
-			}
-		}
+    for (int row = 0; row < rows; row++) {
+      out.println(rowSep);
 
-		out.println(rowSep);
-	}
+      for (int line = 0; line < rowHeights[row]; line++) {
+        for (int col = 0; col < cols; col++) {
+          out.printf("|%-" + colWidths[col] + "s",
+              line < table[row][col].length ? table[row][col][line] : "");
+        }
+        out.println('|');
+      }
+    }
+
+    out.println(rowSep);
+  }
 
 }

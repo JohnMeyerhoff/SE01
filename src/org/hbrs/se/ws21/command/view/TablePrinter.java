@@ -6,127 +6,128 @@ package org.hbrs.se.ws21.command.view;
 import java.io.PrintStream;
 
 public class TablePrinter {
-	private String[][][] table;
-	private int[] rowHeights;
-	private int[] colWidths;
-	private int rows;
-	private int cols;
 
-	public TablePrinter(int rows, int cols) {
-		this.rows = rows;
-		this.cols = cols;
-		table = new String[rows][cols][0];
-	}
+  private final String[][][] table;
+  private int[] rowHeights;
+  private int[] colWidths;
+  private final int rows;
+  private final int cols;
 
-	public void setCell(int row, int col, String cell) {
-		table[row][col] = cell.split("\n");
-	}
+  public TablePrinter(int rows, int cols) {
+    this.rows = rows;
+    this.cols = cols;
+    table = new String[rows][cols][0];
+  }
 
-	public void setRow(int row, String[] cells) {
-		for (int col = 0; col < cols; col++) {
-			setCell(row, col, cells[col]);
-		}
-	}
+  public static void main(String[] args) {
+    String[][] table = new String[][]{
+        {"id", "First Name", "Last Name", "Age", "Profile"},
+        {"1", "John", "Johnson", "45",
+            "My name is John Johnson. My id is 1. My age is 45."},
+        {"2", "Tom", "", "35", "My name is Tom. My id is 2. My age is 35."},
+        {"3", "Rose",
+            "Johnson Johnson Johnson Johnson Johnson Johnson Johnson Johnson Johnson Johnson",
+            "22", "My name is Rose Johnson. My id is 3. My age is 22."},
+        {"4", "Jimmy", "Kimmel", "",
+            "My name is Jimmy Kimmel. My id is 4. My age is not specified. "
+                + "I am the host of the late night show. I am not a fan of Matt Damon. "}};
 
-	public void setCol(int col, String[] cells) {
-		for (int row = 0; row < rows; row++) {
-			setCell(row, col, cells[row]);
-		}
-	}
+    TablePrinter printer = new TablePrinter(table.length, table[0].length);
+    printer.setTable(table, 40);
+    printer.print(System.out);
+  }
 
-	public void setTable(String[][] table) {
-		for (int row = 0; row < rows; row++) {
-			setRow(row, table[row]);
-		}
-	}
+  public void setCell(int row, int col, String cell) {
+    table[row][col] = cell.split("\n");
+  }
 
-	public void setTable(String[][] table, int maxCellWidth, int splitMargin) {
-		for (int row = 0; row < rows; row++) {
-			for (int col = 0; col < cols; col++) {
-				String rest = table[row][col];
-				String wrapped = "";
+  public void setRow(int row, String[] cells) {
+    for (int col = 0; col < cols; col++) {
+      setCell(row, col, cells[col]);
+    }
+  }
 
-				while (rest.length() > maxCellWidth) {
-					int splitIdx = rest.lastIndexOf(' ', maxCellWidth);
-					String line;
+  public void setCol(int col, String[] cells) {
+    for (int row = 0; row < rows; row++) {
+      setCell(row, col, cells[row]);
+    }
+  }
 
-					if (splitIdx < maxCellWidth - splitMargin) {
-						line = rest.substring(0, maxCellWidth);
-						rest = rest.substring(maxCellWidth);
-					} else {
-						line = rest.substring(0, splitIdx);
-						rest = rest.substring(splitIdx + 1);
-					}
+  public void setTable(String[][] table) {
+    for (int row = 0; row < rows; row++) {
+      setRow(row, table[row]);
+    }
+  }
 
-					wrapped += line + '\n';
-				}
+  public void setTable(String[][] table, int maxCellWidth, int splitMargin) {
+    for (int row = 0; row < rows; row++) {
+      for (int col = 0; col < cols; col++) {
+        String rest = table[row][col];
+        String wrapped = "";
 
-				setCell(row, col, wrapped + rest);
-			}
-		}
-	}
+        while (rest.length() > maxCellWidth) {
+          int splitIdx = rest.lastIndexOf(' ', maxCellWidth);
+          String line;
 
-	public void setTable(String[][] table, int maxCellWidth) {
-		setTable(table, maxCellWidth, 10);
-	}
+          if (splitIdx < maxCellWidth - splitMargin) {
+            line = rest.substring(0, maxCellWidth);
+            rest = rest.substring(maxCellWidth);
+          } else {
+            line = rest.substring(0, splitIdx);
+            rest = rest.substring(splitIdx + 1);
+          }
 
-	private void calcCellSizes() {
-		rowHeights = new int[rows];
-		colWidths = new int[cols];
+          wrapped += line + '\n';
+        }
 
-		for (int col = 0; col < cols; col++) {
-			for (int row = 0; row < rows; row++) {
-				if (table[row][col].length > rowHeights[row]) {
-					rowHeights[row] = table[row][col].length;
-				}
+        setCell(row, col, wrapped + rest);
+      }
+    }
+  }
 
-				for (String line : table[row][col]) {
-					if (line.length() + 1 > colWidths[col]) {
-						colWidths[col] = line.length() + 1;
-					}
-				}
-			}
-		}
-	}
+  public void setTable(String[][] table, int maxCellWidth) {
+    setTable(table, maxCellWidth, 10);
+  }
 
-	public void print(PrintStream out) {
-		calcCellSizes();
+  private void calcCellSizes() {
+    rowHeights = new int[rows];
+    colWidths = new int[cols];
 
-		String rowSep = "+";
-		for (int col = 0; col < cols; col++) {
-			rowSep += "-".repeat(colWidths[col]) + "+";
-		}
+    for (int col = 0; col < cols; col++) {
+      for (int row = 0; row < rows; row++) {
+        if (table[row][col].length > rowHeights[row]) {
+          rowHeights[row] = table[row][col].length;
+        }
 
-		for (int row = 0; row < rows; row++) {
-			out.println(rowSep);
+        for (String line : table[row][col]) {
+          if (line.length() + 1 > colWidths[col]) {
+            colWidths[col] = line.length() + 1;
+          }
+        }
+      }
+    }
+  }
 
-			for (int line = 0; line < rowHeights[row]; line++) {
-				for (int col = 0; col < cols; col++) {
-					out.printf("|%-" + colWidths[col] + "s",
-							line < table[row][col].length ? table[row][col][line] : "");
-				}
-				out.println('|');
-			}
-		}
+  public void print(PrintStream out) {
+    calcCellSizes();
 
-		out.println(rowSep);
-	}
+    String rowSep = "+";
+    for (int col = 0; col < cols; col++) {
+      rowSep += "-".repeat(colWidths[col]) + "+";
+    }
 
-	public static void main(String[] args) {
-		String[][] table = new String[][] {
-				{ "id", "First Name", "Last Name", "Age", "Profile" },
-				{ "1", "John", "Johnson", "45",
-						"My name is John Johnson. My id is 1. My age is 45." },
-				{ "2", "Tom", "", "35", "My name is Tom. My id is 2. My age is 35." },
-				{ "3", "Rose",
-						"Johnson Johnson Johnson Johnson Johnson Johnson Johnson Johnson Johnson Johnson",
-						"22", "My name is Rose Johnson. My id is 3. My age is 22." },
-				{ "4", "Jimmy", "Kimmel", "",
-						"My name is Jimmy Kimmel. My id is 4. My age is not specified. "
-								+ "I am the host of the late night show. I am not a fan of Matt Damon. " } };
+    for (int row = 0; row < rows; row++) {
+      out.println(rowSep);
 
-		TablePrinter printer = new TablePrinter(table.length, table[0].length);
-		printer.setTable(table, 40);
-		printer.print(System.out);
-	}
+      for (int line = 0; line < rowHeights[row]; line++) {
+        for (int col = 0; col < cols; col++) {
+          out.printf("|%-" + colWidths[col] + "s",
+              line < table[row][col].length ? table[row][col][line] : "");
+        }
+        out.println('|');
+      }
+    }
+
+    out.println(rowSep);
+  }
 }

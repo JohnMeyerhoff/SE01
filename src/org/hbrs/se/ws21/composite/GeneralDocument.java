@@ -4,18 +4,18 @@ package org.hbrs.se.ws21.composite;
 // und Johannes Meyerhoff bearbeitet worden.
 public abstract class GeneralDocument implements Document {
 
-	private int id;
+  private int id;
 
-	@Override
-	public boolean setID(int id) {
-		this.id = id;
-		return true;
-		// TODO: Check for collisions?
-	}
+  @Override
+  public boolean setID(int id) {
+    this.id = id;
+    return true;
+    // TODO: Check for collisions?
+  }
 
-	@Override
-	public int getID() {
-		return id;
-	}
+  @Override
+  public int getID() {
+    return id;
+  }
 
 }

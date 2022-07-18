@@ -9,25 +9,26 @@ import org.hbrs.se.ws21.adapting.reiseanbieter.QueryResult;
 import org.hbrs.se.ws21.adapting.reiseanbieter.Reiseanbieter;
 
 public class Adapter implements Formatvorgaben {
-    private Reiseanbieter extern = new EchterReiseanbieter();
 
-    @Override
-    public Suchergebnis suche(Suchauftrag sa) {
-        QueryObject o = concreteIN(sa);
-        // formatiert den Auftrag in dem Format des Reisenabieters
-        QueryResult e = extern.execute(o);
-        // sendet eine für den Reiseanbieter gültige Anfrage
-        return concreteOUT(e);
-        // kovertiert die Rückgabe des RA in unser Format
-    }
+  private final Reiseanbieter extern = new EchterReiseanbieter();
 
-    private QueryObject concreteIN(Suchauftrag auftrag) {
-        // Inhalt dieser Methode für uns nicht wichtig
-        return new QueryObject();
-    }
+  @Override
+  public Suchergebnis suche(Suchauftrag sa) {
+    QueryObject o = concreteIN(sa);
+    // formatiert den Auftrag in dem Format des Reisenabieters
+    QueryResult e = extern.execute(o);
+    // sendet eine für den Reiseanbieter gültige Anfrage
+    return concreteOUT(e);
+    // kovertiert die Rückgabe des RA in unser Format
+  }
 
-    private Suchergebnis concreteOUT(QueryResult ergebnis) {
-        // Inhalt dieser Methode für uns nicht wichtig
-        return new Suchergebnis(5, " ");
-    }
+  private QueryObject concreteIN(Suchauftrag auftrag) {
+    // Inhalt dieser Methode für uns nicht wichtig
+    return new QueryObject();
+  }
+
+  private Suchergebnis concreteOUT(QueryResult ergebnis) {
+    // Inhalt dieser Methode für uns nicht wichtig
+    return new Suchergebnis(5, " ");
+  }
 }

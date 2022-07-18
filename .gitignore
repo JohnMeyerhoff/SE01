@@ -27,3 +27,4 @@ src/reports/*.xml
 src/reports/TEST-junit-jupiter.xml
 *.xml
 .idea/misc.xml
+.idea/sonarlint/issuestore/index.pb

@@ -4,8 +4,8 @@ package org.hbrs.se.ws21.uebung3;
 //und Johannes Meyerhoff bearbeitet worden.
 public class ContainerException extends java.lang.Exception {
 
-    public ContainerException(String string) {
-        super(string);
-    }
+  public ContainerException(String string) {
+    super(string);
+  }
 
 }

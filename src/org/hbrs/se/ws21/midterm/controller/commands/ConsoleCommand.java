@@ -4,15 +4,15 @@ import java.io.PrintStream;
 
 public abstract class ConsoleCommand implements Command {
 
-    protected PrintStream outstream;
+  protected PrintStream outstream;
 
-    @SuppressWarnings({ "java:S106" })
-    protected ConsoleCommand() {
-        this(System.out);
-    }
+  @SuppressWarnings({"java:S106"})
+  protected ConsoleCommand() {
+    this(System.out);
+  }
 
-    protected ConsoleCommand(PrintStream outstream) {
-        this.outstream = outstream;
-    }
+  protected ConsoleCommand(PrintStream outstream) {
+    this.outstream = outstream;
+  }
 
 }

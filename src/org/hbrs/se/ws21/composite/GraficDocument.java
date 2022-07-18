@@ -5,20 +5,20 @@ package org.hbrs.se.ws21.composite;
 
 public class GraficDocument extends CoreDocument {
 
-	private static final int KONSTANTEBYTE = 1200;
+  private static final int KONSTANTEBYTE = 1200;
 
-	private String url;
+  private final String url;
 
-	public GraficDocument(String url) {
-		this.url = url;
-	}
+  public GraficDocument(String url) {
+    this.url = url;
+  }
 
-	@Override
-	public int getSizeInBytes() {
-		return KONSTANTEBYTE;
-	}
+  @Override
+  public int getSizeInBytes() {
+    return KONSTANTEBYTE;
+  }
 
-	public String getUrl() {
-		return url;
-	}
+  public String getUrl() {
+    return url;
+  }
 }
