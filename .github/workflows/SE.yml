@@ -24,7 +24,7 @@ jobs:
           highlight_theme: '.github/workflows/Codetheme.css'
           table_of_contents: true
           extend_default_theme: true
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: 'Exercises'
           path: 'doc/Pdf/'
