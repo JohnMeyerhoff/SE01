@@ -1,7 +1,7 @@
 package org.hbrs.se.ws21.uebung3;
 
-//Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
-//und Johannes Meyerhoff bearbeitet worden.
+// Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
+// und John Meyerhoff bearbeitet worden.
 
 import java.util.List;
 

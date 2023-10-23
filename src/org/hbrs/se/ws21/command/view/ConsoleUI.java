@@ -1,7 +1,7 @@
 package org.hbrs.se.ws21.command.view;
 
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
-// und Johannes Meyerhoff bearbeitet worden.
+// und John Meyerhoff bearbeitet worden.
 
 import java.io.PrintStream;
 import java.util.Scanner;
@@ -17,7 +17,8 @@ public class ConsoleUI {
   }
 
   public void displayWelcomeMessage() {
-    String message = """
+    String message =
+        """
         Willkommen im Sprint-Tool von Klara und John,
         mit dem Befehl help erhalten Sie eine Übersicht.
         >
@@ -26,7 +27,8 @@ public class ConsoleUI {
   }
 
   public void displayHelpMessage() {
-    out.print("""
+    out.print(
+        """
         Mögliche Befehle für Sie sind:
         enter
         store
@@ -58,12 +60,13 @@ public class ConsoleUI {
 
   public void displayExpertiseFound(String fertigkeit) {
     out.println("Folgende Mitarbeiter haben die Expertise " + fertigkeit + ":\n");
-
   }
 
   public void displayInvalidCommandMessage() {
-    out.println("Ihre Eingabe war kein gültiger Befehl. " + "\n"
-        + "Sie können 'help' als Befehl eingeben, um alle Möglichkeiten zu sehen.");
+    out.println(
+        "Ihre Eingabe war kein gültiger Befehl. "
+            + "\n"
+            + "Sie können 'help' als Befehl eingeben, um alle Möglichkeiten zu sehen.");
   }
 
   public String loadDialogue(Scanner input) {
@@ -85,9 +88,7 @@ public class ConsoleUI {
   }
 
   public void displayLoadFailureMessage(Exception e) {
-    /**
-     * TODO: e instanceof zum verbessern der präzision
-     */
+    /** TODO: e instanceof zum verbessern der präzision */
     out.println("Das laden war nicht erfolgreich.");
   }
 
@@ -115,5 +116,4 @@ public class ConsoleUI {
     }
     return "Fehler";
   }
-
 }

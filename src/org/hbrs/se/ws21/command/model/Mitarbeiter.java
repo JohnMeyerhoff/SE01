@@ -1,7 +1,7 @@
 package org.hbrs.se.ws21.command.model;
 
-//Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
-//und Johannes Meyerhoff bearbeitet worden.
+// Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
+// und John Meyerhoff bearbeitet worden.
 public class Mitarbeiter implements Member {
 
   private static int uniqueCounter = 0;
@@ -12,8 +12,8 @@ public class Mitarbeiter implements Member {
   private Expertise expertise;
   private Integer internalID;
 
-  public Mitarbeiter(String vorname, String name, String rolle, String abteilung,
-      Expertise expertise) {
+  public Mitarbeiter(
+      String vorname, String name, String rolle, String abteilung, Expertise expertise) {
     this.internalID = uniqueCounter++;
     this.name = name;
     this.rolle = rolle;
@@ -79,5 +79,4 @@ public class Mitarbeiter implements Member {
   public String toString() {
     return "Member (ID = " + this.getID() + ")";
   }
-
 }

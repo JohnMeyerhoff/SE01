@@ -1,7 +1,7 @@
 package org.hbrs.se.ws21.composite.test;
 
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
-// und Johannes Meyerhoff bearbeitet worden.
+// und John Meyerhoff bearbeitet worden.
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -23,16 +23,17 @@ public class TestClient {
   public void clientExample() {
     ComplexDocument doc0 = new ComplexDocument();
     doc0.setID(1);
-    Document doc2 = new TextDocument("Die Klausur im Fach SE findet bald statt!",
-        TextDocument.Encoding.UTF8);
+    Document doc2 =
+        new TextDocument("Die Klausur im Fach SE findet bald statt!", TextDocument.Encoding.UTF8);
     doc2.setID(2);
     ComplexDocument doc3 = new ComplexDocument();
     doc3.setID(3);
     Document doc4 = new GraficDocument("localhost:8080");
     doc4.setID(4);
-    Document doc5 = new TextDocument(
-        "Software Engineering I ist eine Vorlesung in den Studiengaengen BIS und BCS",
-        TextDocument.Encoding.UTF32);
+    Document doc5 =
+        new TextDocument(
+            "Software Engineering I ist eine Vorlesung in den Studiengaengen BIS und BCS",
+            TextDocument.Encoding.UTF32);
     doc5.setID(5);
 
     doc0.add(doc2);
@@ -51,9 +52,10 @@ public class TestClient {
 
     ComplexDocument doc3 = new ComplexDocument();
     Document doc4 = new GraficDocument("localhost:8080");
-    Document doc5 = new TextDocument(
-        "Software Engineering I ist eine Vorlesung in den Studiengaengen BIS und BCS",
-        TextDocument.Encoding.UTF32);
+    Document doc5 =
+        new TextDocument(
+            "Software Engineering I ist eine Vorlesung in den Studiengaengen BIS und BCS",
+            TextDocument.Encoding.UTF32);
 
     // Es existiert kein Zwang zum direkten setzen der ID.
     doc3.setID(1);
@@ -66,5 +68,4 @@ public class TestClient {
     // Doc 4 und doc 5 sind jetzt im Complex doc in der liste
     assertEquals(1500, doc3.getSizeInBytes());
   }
-
 }

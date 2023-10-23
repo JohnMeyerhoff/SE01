@@ -1,7 +1,8 @@
 package org.hbrs.se.ws21.command.model.persistence;
-//Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
 
-//und Johannes Meyerhoff bearbeitet worden.
+// Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
+
+// und John Meyerhoff bearbeitet worden.
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -16,8 +17,7 @@ import org.hbrs.se.ws21.command.model.Member;
 import org.hbrs.se.ws21.command.model.exception.PersistenceException;
 import org.hbrs.se.ws21.command.model.exception.PersistenceException.ExceptionType;
 
-public class PersistenceStrategyStream<T extends Member>
-    implements PersistenceStrategy<T> {
+public class PersistenceStrategyStream<T extends Member> implements PersistenceStrategy<T> {
 
   // URL of file, in which the objects are stored
   private String location = "objects.ser"; // Name der Datei
@@ -33,9 +33,8 @@ public class PersistenceStrategyStream<T extends Member>
 
   @Override
   /**
-   * Method for opening the connection to a stream (here: Input- and
-   * Output-Stream) In case of having problems while opening the streams, leave
-   * the code in methods load and save
+   * Method for opening the connection to a stream (here: Input- and Output-Stream) In case of
+   * having problems while opening the streams, leave the code in methods load and save
    */
   public void openConnection() throws PersistenceException {
     // CONNECTED besagt ob eine verbindung besteht
@@ -44,8 +43,7 @@ public class PersistenceStrategyStream<T extends Member>
         File file = new File(location);
         if (!file.exists() && !location.endsWith("/")) {
           file.createNewFile();
-          ObjectOutputStream oos = new ObjectOutputStream(
-              new FileOutputStream(file));
+          ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
           oos.writeObject(new ArrayList<>());
           oos.close();
         }
@@ -54,8 +52,7 @@ public class PersistenceStrategyStream<T extends Member>
         objectOutput = new ObjectOutputStream(this.byteOutputStream);
         objectInput = new ObjectInputStream(this.fileInput);
       } catch (IOException r) {
-        throw new PersistenceException(ExceptionType.CONNECTIONNOTAVAILABLE,
-            r.getMessage());
+        throw new PersistenceException(ExceptionType.CONNECTIONNOTAVAILABLE, r.getMessage());
       }
       connected = true;
     } else {
@@ -79,15 +76,13 @@ public class PersistenceStrategyStream<T extends Member>
       objectOutput = new ObjectOutputStream(this.byteOutputStream);
       objectInput = new ObjectInputStream(this.fileInput);
     } catch (IOException r) {
-      throw new PersistenceException(ExceptionType.CONNECTIONNOTAVAILABLE,
-          r.getMessage());
+      throw new PersistenceException(ExceptionType.CONNECTIONNOTAVAILABLE, r.getMessage());
     }
     try {
       File file = new File(location);
       if (!file.exists() && !location.endsWith("/")) {
         file.createNewFile();
-        ObjectOutputStream oos = new ObjectOutputStream(
-            new FileOutputStream(file));
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
         oos.writeObject(new ArrayList<>());
         oos.close();
       }
@@ -96,8 +91,7 @@ public class PersistenceStrategyStream<T extends Member>
       objectOutput = new ObjectOutputStream(this.byteOutputStream);
       objectInput = new ObjectInputStream(this.fileInput);
     } catch (IOException r) {
-      throw new PersistenceException(ExceptionType.CONNECTIONNOTAVAILABLE,
-          r.getMessage());
+      throw new PersistenceException(ExceptionType.CONNECTIONNOTAVAILABLE, r.getMessage());
     }
   }
 
@@ -106,11 +100,8 @@ public class PersistenceStrategyStream<T extends Member>
    * respektiven Methoden Load und Save Input und Output respektive - Auf den filestream Schreiben.
    * mit ObjectInputStream.getByteArray oder toByteArray
    */
-
   @Override
-  /**
-   * Method for closing the connections to a stream
-   */
+  /** Method for closing the connections to a stream */
   public void closeConnection() throws PersistenceException {
     if (connected) { // es gibt eine Verbindung
       try {
@@ -121,8 +112,7 @@ public class PersistenceStrategyStream<T extends Member>
         byteOutputStream.flush();
         byteOutputStream.close();
       } catch (IOException e) {
-        throw new PersistenceException(ExceptionType.CONNECTIONNOTAVAILABLE,
-            e.getMessage());
+        throw new PersistenceException(ExceptionType.CONNECTIONNOTAVAILABLE, e.getMessage());
       }
       connected = false;
     } else { // es gibt keine zu schließende Verbindung
@@ -130,6 +120,7 @@ public class PersistenceStrategyStream<T extends Member>
     }
     // Alda: Schließen, um Speicher zu sparen
   }
+
   /*
    * ObjectOutputStream: Obejekte persistieren/abspreichern ObjectInputStream
    * Objekte persistieren/lesen
@@ -137,9 +128,7 @@ public class PersistenceStrategyStream<T extends Member>
    */
 
   @Override
-  /**
-   * Method for saving a list of Member-objects to a disk (HDD)
-   */
+  /** Method for saving a list of Member-objects to a disk (HDD) */
   public void save(List<T> containerInhalt) throws PersistenceException {
     if (connected) {
       try {
@@ -150,8 +139,7 @@ public class PersistenceStrategyStream<T extends Member>
         fos.write(byteOutputStream.toByteArray());
         fos.close();
       } catch (IOException e) {
-        throw new PersistenceException(ExceptionType.CONNECTIONNOTAVAILABLE,
-            e.getMessage());
+        throw new PersistenceException(ExceptionType.CONNECTIONNOTAVAILABLE, e.getMessage());
       }
     }
   }
@@ -164,8 +152,7 @@ public class PersistenceStrategyStream<T extends Member>
         List<T> result = (List<T>) objectInput.readObject();
         return result;
       } catch (IOException | ClassNotFoundException e) {
-        throw new PersistenceException(ExceptionType.CONNECTIONNOTAVAILABLE,
-            e.getMessage());
+        throw new PersistenceException(ExceptionType.CONNECTIONNOTAVAILABLE, e.getMessage());
         // throw new IllegalArgumentException(e.getMessage());
       }
     }

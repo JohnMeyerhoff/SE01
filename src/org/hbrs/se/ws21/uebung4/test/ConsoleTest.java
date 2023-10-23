@@ -1,7 +1,7 @@
 package org.hbrs.se.ws21.uebung4.test;
 
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
-// und Johannes Meyerhoff bearbeitet worden.
+// und John Meyerhoff bearbeitet worden.
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -20,8 +20,8 @@ public class ConsoleTest {
     ConsoleUI ui = new ConsoleUI(ps);
     Scanner a = new Scanner("drucken\n");
     assertEquals("drucken", ui.searchDialogue(a));
-    assertEquals("Bitte geben Sie eine von Ihnen gesuchte Expertise an.".trim(),
-        os.toString().trim());
+    assertEquals(
+        "Bitte geben Sie eine von Ihnen gesuchte Expertise an.".trim(), os.toString().trim());
   }
 
   @Test
@@ -30,8 +30,8 @@ public class ConsoleTest {
     PrintStream ps = new PrintStream(os);
     ConsoleUI ui = new ConsoleUI(ps);
     ui.displayExpertiseFound("fertigkeit");
-    assertEquals("Folgende Mitarbeiter haben die Expertise fertigkeit:".trim(),
-        os.toString().trim());
+    assertEquals(
+        "Folgende Mitarbeiter haben die Expertise fertigkeit:".trim(), os.toString().trim());
   }
 
   @Test
@@ -49,7 +49,8 @@ public class ConsoleTest {
     ui.displayInvalidCommandMessage();
     ui.displayLoadFailureMessage(new Exception("TEST"));
 
-    String expected = """
+    String expected =
+        """
         Willkommen im Sprint-Tool von Klara und John,
         mit dem Befehl help erhalten Sie eine Übersicht.
         >
@@ -89,8 +90,9 @@ public class ConsoleTest {
     Scanner a = new Scanner("peter5 art1n MARTIN=COOL willi\n");
     String x = ui.textonlyDialogue(a, "den Vornamen");
     assertEquals("willi", x);
-    String expected = "Bitte geben Sie den Vornamen ein.\n"
-        + "Bitte geben sie hier nur Buchstaben ein.\n".repeat(3);
+    String expected =
+        "Bitte geben Sie den Vornamen ein.\n"
+            + "Bitte geben sie hier nur Buchstaben ein.\n".repeat(3);
     String[] lines = os.toString().split("\n");
     String[] expectedlines = expected.split("\n");
     int i = 0;
@@ -107,7 +109,7 @@ public class ConsoleTest {
     Scanner a = new Scanner("*\n");
     String x = ui.textonlyDialogue(a, "den Abteilungsnamen (* für alle)");
     assertEquals("*", x);
-    assertEquals("Bitte geben Sie den Abteilungsnamen (* für alle) ein.\n".trim(),
-        os.toString().trim());
+    assertEquals(
+        "Bitte geben Sie den Abteilungsnamen (* für alle) ein.\n".trim(), os.toString().trim());
   }
 }

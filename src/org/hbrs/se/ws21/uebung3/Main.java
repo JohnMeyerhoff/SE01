@@ -3,7 +3,7 @@ package org.hbrs.se.ws21.uebung3;
 import org.hbrs.se.ws21.uebung3.persistence.PersistenceStrategyStream;
 
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
-// und Johannes Meyerhoff bearbeitet worden.
+// und John Meyerhoff bearbeitet worden.
 public class Main {
 
   public static void main(String[] args) {

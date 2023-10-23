@@ -1,7 +1,7 @@
 package org.hbrs.se.ws21.uebung4.test;
 
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
-// und Johannes Meyerhoff bearbeitet worden.
+// und John Meyerhoff bearbeitet worden.
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -60,8 +60,7 @@ public class MitarbeiterContainerTest {
     assertEquals(0, c1.size());
     assertDoesNotThrow(() -> c1.addMember(m1));
     assertEquals(1, c1.size());
-    PersistenceException exception = assertThrows(PersistenceException.class,
-        () -> c1.store());
+    PersistenceException exception = assertThrows(PersistenceException.class, () -> c1.store());
     assertEquals("Es gibt keine Strategie zum abspeichern.", exception.getMessage());
   }
 
@@ -72,8 +71,7 @@ public class MitarbeiterContainerTest {
     assertEquals(0, c1.size());
     assertDoesNotThrow(() -> c1.addMember(m1));
     assertEquals(1, c1.size());
-    PersistenceException exception = assertThrows(PersistenceException.class,
-        () -> c1.store());
+    PersistenceException exception = assertThrows(PersistenceException.class, () -> c1.store());
     assertEquals("Not implemented!", exception.getMessage());
   }
 
@@ -159,8 +157,7 @@ public class MitarbeiterContainerTest {
     c1.setStrategy(new PersistenceStrategyStream<>());
     assertDoesNotThrow(() -> c1.addMember(m1));
     assertEquals(1, c1.size());
-    ContainerException exception = assertThrows(ContainerException.class,
-        () -> c1.addMember(m1));
+    ContainerException exception = assertThrows(ContainerException.class, () -> c1.addMember(m1));
     assertEquals(
         "Das Member-Objekt mit der ID " + m1.getID() + " ist bereits vorhanden!",
         exception.getMessage());
@@ -197,5 +194,4 @@ public class MitarbeiterContainerTest {
     // This test looks bad because the implementation
     // of deleteMember does not use exceptions
   }
-
 }

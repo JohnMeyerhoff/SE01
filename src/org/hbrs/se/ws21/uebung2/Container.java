@@ -1,7 +1,7 @@
 package org.hbrs.se.ws21.uebung2;
 
-//Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
-//und Johannes Meyerhoff bearbeitet worden.
+// Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
+// und John Meyerhoff bearbeitet worden.
 
 import java.util.ArrayList;
 
@@ -17,8 +17,8 @@ public class Container {
       }
     }
     if (found) {
-      throw new ContainerException("Das Member-Objekt mit der ID " + neu.getID()
-          + " ist bereits vorhanden!");
+      throw new ContainerException(
+          "Das Member-Objekt mit der ID " + neu.getID() + " ist bereits vorhanden!");
     } else {
       inhalt.add(neu);
     }

@@ -1,7 +1,7 @@
 package org.hbrs.se.ws21.uebung4.model;
 
-//Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
-//und Johannes Meyerhoff bearbeitet worden.
+// Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
+// und John Meyerhoff bearbeitet worden.
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,10 +59,7 @@ public class MitarbeiterContainer {
   }
 
   public List<Mitarbeiter> getCurrentListCopy() {
-    /**
-     * In the current implementation, this method returns a copy of the current
-     * list.
-     */
+    /** In the current implementation, this method returns a copy of the current list. */
     List<Mitarbeiter> result = new ArrayList<>();
     for (Mitarbeiter member : this.inhalt) {
       result.add(member);
@@ -72,8 +69,8 @@ public class MitarbeiterContainer {
 
   public void store() throws PersistenceException {
     if (strategy == null) {
-      throw new PersistenceException(ExceptionType.NOSTRATEGYISSET,
-          "Es gibt keine Strategie zum abspeichern.");
+      throw new PersistenceException(
+          ExceptionType.NOSTRATEGYISSET, "Es gibt keine Strategie zum abspeichern.");
     }
 
     strategy.openConnection();
@@ -83,8 +80,8 @@ public class MitarbeiterContainer {
 
   public void load() throws PersistenceException {
     if (strategy == null) {
-      throw new PersistenceException(ExceptionType.NOSTRATEGYISSET,
-          "Es gibt keine Strategie zum abspeichern.");
+      throw new PersistenceException(
+          ExceptionType.NOSTRATEGYISSET, "Es gibt keine Strategie zum abspeichern.");
     }
 
     strategy.openConnection();
@@ -100,8 +97,8 @@ public class MitarbeiterContainer {
       }
     }
     if (found) {
-      throw new ContainerException("Das Member-Objekt mit der ID " + neu.getID()
-          + " ist bereits vorhanden!");
+      throw new ContainerException(
+          "Das Member-Objekt mit der ID " + neu.getID() + " ist bereits vorhanden!");
     } else {
       inhalt.add(neu);
     }

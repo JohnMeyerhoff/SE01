@@ -1,7 +1,7 @@
 package org.hbrs.se.ws21.uebung4.model;
 
-//Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic 
-//und Johannes Meyerhoff bearbeitet worden.
+// Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
+// und John Meyerhoff bearbeitet worden.
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -10,6 +10,7 @@ public class Expertise implements Serializable {
 
   HashMap<String, Integer> expertisen;
   HashMap<Integer, String> levelBezeichner;
+
   // integer (key) ist unser Level
   // String (value) ist unsere Bezeichnung (zb Java)
 
@@ -21,7 +22,6 @@ public class Expertise implements Serializable {
     this.levelBezeichner.put(1, "Beginner");
     this.levelBezeichner.put(2, "Experte");
     this.levelBezeichner.put(3, "Top-Performer");
-
   }
 
   // Kunde gibt uns nur Level
@@ -40,8 +40,6 @@ public class Expertise implements Serializable {
   public String getExpertiseLevel(Integer lvl) {
     // getOrDefault: erste Komponente wie bei get() und zweite falls key nicht
     // exisitert
-    return levelBezeichner.getOrDefault(lvl,
-        "Das Level" + lvl + "ist nicht vorhandeln.");
+    return levelBezeichner.getOrDefault(lvl, "Das Level" + lvl + "ist nicht vorhandeln.");
   }
-
 }

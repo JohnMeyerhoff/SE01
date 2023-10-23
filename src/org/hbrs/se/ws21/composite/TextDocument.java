@@ -1,7 +1,7 @@
 package org.hbrs.se.ws21.composite;
 
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
-// und Johannes Meyerhoff bearbeitet worden.
+// und John Meyerhoff bearbeitet worden.
 
 import java.io.UnsupportedEncodingException;
 
@@ -13,7 +13,6 @@ public class TextDocument extends GeneralDocument {
   public TextDocument(String text, Encoding coding) {
     this.coding = coding;
     this.text = text;
-
   }
 
   @Override
@@ -45,7 +44,5 @@ public class TextDocument extends GeneralDocument {
         return "UTF-32";
       }
     }
-
   }
-
 }

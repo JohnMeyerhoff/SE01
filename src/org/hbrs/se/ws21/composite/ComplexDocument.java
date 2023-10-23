@@ -1,7 +1,7 @@
 package org.hbrs.se.ws21.composite;
 
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
-// und Johannes Meyerhoff bearbeitet worden.
+// und John Meyerhoff bearbeitet worden.
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,5 +45,4 @@ public class ComplexDocument extends GeneralDocument {
     }
     return deleted;
   }
-
 }

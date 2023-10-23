@@ -1,7 +1,7 @@
 package org.hbrs.se.ws21.command.controller;
 
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
-// und Johannes Meyerhoff bearbeitet worden.
+// und John Meyerhoff bearbeitet worden.
 
 import static java.util.Map.entry;
 
@@ -31,11 +31,13 @@ public class Client {
     this.eingabe = eingabe;
     this.outstream = outstream;
     this.defaultCommand = new WrongCommand(this.outstream);
-    this.executables = Map.ofEntries(entry("help", new Help(outstream)),
-        entry("load", new Load(outstream, eingabe, this.speicher)),
-        entry("enter", new Enter(outstream, eingabe, this.speicher)),
-        entry("search", new Search(outstream, eingabe, this.speicher)),
-        entry("store", new Store(outstream)));
+    this.executables =
+        Map.ofEntries(
+            entry("help", new Help(outstream)),
+            entry("load", new Load(outstream, eingabe, this.speicher)),
+            entry("enter", new Enter(outstream, eingabe, this.speicher)),
+            entry("search", new Search(outstream, eingabe, this.speicher)),
+            entry("store", new Store(outstream)));
   }
 
   public int konsole() {
@@ -56,5 +58,4 @@ public class Client {
     }
     return 5; // Eingabe beendet ohne exit
   }
-
 }

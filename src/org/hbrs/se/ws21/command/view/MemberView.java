@@ -1,7 +1,7 @@
 package org.hbrs.se.ws21.command.view;
 
 // Dieses Aufgabenblatt ist in Teamarbeit von Klara Golubovic
-// und Johannes Meyerhoff bearbeitet worden.
+// und John Meyerhoff bearbeitet worden.
 
 import java.io.PrintStream;
 import java.util.Collections;
@@ -30,23 +30,24 @@ public class MemberView {
     TablePrinter printer = new TablePrinter(tmp.length, tmp[0].length);
     printer.setTable(tmp, 40);
     printer.print(out);
-
   }
 
   private String[][] listToStringarray(List<? extends Mitarbeiter> liste) {
     int i = 1;
     String[][] table = new String[liste.size() + 1][5];
-    table[0] = new String[]{"ID", "Vorname", "Nachname", "Abteilung", "Rolle",};
-    /**
-     * EXPERTISEN WERDEN HIER ENTFERNT BZW NICHT BEACHTET.
-     */
+    table[0] =
+        new String[] {
+          "ID", "Vorname", "Nachname", "Abteilung", "Rolle",
+        };
+    /** EXPERTISEN WERDEN HIER ENTFERNT BZW NICHT BEACHTET. */
     for (Mitarbeiter ma : liste) {
-      table[i] = new String[]{"" + ma.getID(), ma.getVorname(), ma.getName(),
-          ma.getAbteilung(), ma.getRolle(),};
+      table[i] =
+          new String[] {
+            "" + ma.getID(), ma.getVorname(), ma.getName(), ma.getAbteilung(), ma.getRolle(),
+          };
       i++;
     }
     return table;
-
   }
 
   public void dumpSearched(List<Mitarbeiter> x, String fertigkeit) {
@@ -55,40 +56,42 @@ public class MemberView {
     TablePrinter printer = new TablePrinter(tmp.length, tmp[0].length);
     printer.setTable(tmp, 40);
     printer.print(out);
-
   }
 
-  private String[][] listToStringarrayWithExpertise(List<? extends Mitarbeiter> liste,
-      String fertigkeit) {
+  private String[][] listToStringarrayWithExpertise(
+      List<? extends Mitarbeiter> liste, String fertigkeit) {
     int i = 1;
     String[][] table = new String[liste.size() + 1][6];
-    table[0] = new String[]{"ID", "Vorname", "Nachname", "Abteilung", "Rolle",
-        "Erfahrungsgrad",};
-    /**
-     * EXPERTISEN WERDEN HIER ENTFERNT BZW NICHT BEACHTET.
-     */
+    table[0] =
+        new String[] {
+          "ID", "Vorname", "Nachname", "Abteilung", "Rolle", "Erfahrungsgrad",
+        };
+    /** EXPERTISEN WERDEN HIER ENTFERNT BZW NICHT BEACHTET. */
     Map<Integer, String> labels = new Expertise().getBezeichner();
     for (Mitarbeiter ma : liste) {
-      table[i] = new String[]{"" + ma.getID(), ma.getVorname(), ma.getName(),
-          ma.getAbteilung(), ma.getRolle(),
-          labels.getOrDefault(ma.getExpertise().getErfahrungen()
-              .getOrDefault(fertigkeit, 0), "keine")};
+      table[i] =
+          new String[] {
+            "" + ma.getID(),
+            ma.getVorname(),
+            ma.getName(),
+            ma.getAbteilung(),
+            ma.getRolle(),
+            labels.getOrDefault(
+                ma.getExpertise().getErfahrungen().getOrDefault(fertigkeit, 0), "keine")
+          };
       i++;
     }
     return table;
-
   }
 
   public void dumpAbteilung(List<Mitarbeiter> x, String abteilungsfilter) {
     Collections.sort(x, new MemberComparator());
-    List<Mitarbeiter> y = x.stream()
-        .filter(ma -> ma.getAbteilung().equalsIgnoreCase(abteilungsfilter))
-        .toList();
+    List<Mitarbeiter> y =
+        x.stream().filter(ma -> ma.getAbteilung().equalsIgnoreCase(abteilungsfilter)).toList();
     String[][] tmp = listToStringarray(y);
     TablePrinter printer = new TablePrinter(tmp.length, tmp[0].length);
     printer.setTable(tmp, 40);
     printer.print(out);
-
   }
 
   private class MemberComparator implements Comparator<Member> {
