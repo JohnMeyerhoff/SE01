@@ -14,8 +14,8 @@ public abstract class ContainerCommand implements Command {
     this(System.out, new Scanner(System.in), MitarbeiterContainer.getInstance());
   }
 
-  protected ContainerCommand(PrintStream outstream, Scanner instream,
-      MitarbeiterContainer mitarbeiterContainer) {
+  protected ContainerCommand(
+      PrintStream outstream, Scanner instream, MitarbeiterContainer mitarbeiterContainer) {
     this.outstream = outstream;
     this.input = instream;
     this.speicher = mitarbeiterContainer;

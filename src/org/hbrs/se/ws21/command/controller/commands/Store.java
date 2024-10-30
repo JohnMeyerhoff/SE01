@@ -22,5 +22,4 @@ public class Store extends ConsoleCommand {
       this.outstream.println("Es ist Fehler beim Speichern aufgetreten.");
     }
   }
-
 }

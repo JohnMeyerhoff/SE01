@@ -14,8 +14,8 @@ public class Search extends ContainerCommand {
     this(System.out, new Scanner(System.in), MitarbeiterContainer.getInstance());
   }
 
-  public Search(PrintStream outstream, Scanner instream,
-      MitarbeiterContainer mitarbeiterContainer) {
+  public Search(
+      PrintStream outstream, Scanner instream, MitarbeiterContainer mitarbeiterContainer) {
     this.outstream = outstream;
     this.input = instream;
     this.speicher = mitarbeiterContainer;
@@ -27,9 +27,10 @@ public class Search extends ContainerCommand {
     MemberView a = new MemberView(outstream);
     ConsoleUI ui = new ConsoleUI(outstream);
     String fertigkeit = ui.searchDialogue(input);
-    List<Mitarbeiter> x = speicher.getCurrentListCopy().stream()
-        .filter(ma -> ma.getExpertise().getErfahrungen().containsKey(fertigkeit))
-        .toList();
+    List<Mitarbeiter> x =
+        speicher.getCurrentListCopy().stream()
+            .filter(ma -> ma.getExpertise().getErfahrungen().containsKey(fertigkeit))
+            .toList();
     if (x.isEmpty()) {
       ui.displayExpertiseNotFound();
     } else {
@@ -37,5 +38,4 @@ public class Search extends ContainerCommand {
     }
     a.dumpSearched(x, fertigkeit);
   }
-
 }

@@ -11,8 +11,7 @@ public class Load extends ContainerCommand {
     this(System.out, new Scanner(System.in), MitarbeiterContainer.getInstance());
   }
 
-  public Load(PrintStream outstream, Scanner instream,
-      MitarbeiterContainer mitarbeiterContainer) {
+  public Load(PrintStream outstream, Scanner instream, MitarbeiterContainer mitarbeiterContainer) {
     this.outstream = outstream;
     this.input = instream;
     this.speicher = mitarbeiterContainer;
@@ -35,5 +34,4 @@ public class Load extends ContainerCommand {
       new ConsoleUI(super.outstream).displayLoadFailureMessage(e);
     }
   }
-
 }

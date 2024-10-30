@@ -14,8 +14,7 @@ public class Enter extends ContainerCommand {
     this(System.out, new Scanner(System.in), MitarbeiterContainer.getInstance());
   }
 
-  public Enter(PrintStream outstream, Scanner instream,
-      MitarbeiterContainer mitarbeiterContainer) {
+  public Enter(PrintStream outstream, Scanner instream, MitarbeiterContainer mitarbeiterContainer) {
     this.outstream = outstream;
     this.input = instream;
     this.speicher = mitarbeiterContainer;
@@ -31,23 +30,25 @@ public class Enter extends ContainerCommand {
     Expertise ax = new Expertise();
     for (int i = 0; i < 3; i++) {
       if (i == 2) {
-        outstream.println("Dies ist Ihr letzter Eintrag als "
-            + "Fähigkeit, da Sie hier nur 3 Ihrer besten Fähigkeiten angeben können. ");
+        outstream.println(
+            "Dies ist Ihr letzter Eintrag als "
+                + "Fähigkeit, da Sie hier nur 3 Ihrer besten Fähigkeiten angeben können. ");
       }
       outstream.println(
-          "Bitte geben Sie Ihre Fähigkeit oder Expertise in einem Wort an.  \n  Wenn Sie keine weitere Fähigkeit haben, dann geben sie bitte '-' ein.");
+          "Bitte geben Sie Ihre Fähigkeit oder Expertise in einem Wort an.  \n"
+              + "  Wenn Sie keine weitere Fähigkeit haben, dann geben sie bitte '-' ein.");
       String faehigkeit = input.next();
       if (faehigkeit.equals("-")) {
         break;
       }
       outstream.println(
-          "Welches Level besitzen Sie in dieser Fähigkeit? + \n +Bitte geben Sie das Level als Zahl zwischen 1 bis 3 an. +\n+ 1 wäre Beginner, 2 wäre Experte und 3 wäre Top-Performer.");
+          "Welches Level besitzen Sie in dieser Fähigkeit? + \n"
+              + " +Bitte geben Sie das Level als Zahl zwischen 1 bis 3 an. +\n"
+              + "+ 1 wäre Beginner, 2 wäre Experte und 3 wäre Top-Performer.");
       int lvl = input.nextInt();
       while (lvl < 1 || lvl > 3) {
-        outstream.println(
-            "Falsche Eingabe. Sie können nur Level von 1 bis 3 angeben.");
+        outstream.println("Falsche Eingabe. Sie können nur Level von 1 bis 3 angeben.");
         lvl = input.nextInt();
-
       }
       ax.putFaehigkeitLvl(faehigkeit, lvl);
     }

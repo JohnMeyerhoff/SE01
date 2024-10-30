@@ -26,7 +26,7 @@ public class MitarbeiterContainer {
     // Konstruktor erzeugt
   }
 
-  public static MitarbeiterContainer getInstance() {
+  public static synchronized MitarbeiterContainer getInstance() {
     if (instance == null) {
       instance = new MitarbeiterContainer();
     }

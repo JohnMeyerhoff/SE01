@@ -22,19 +22,15 @@ public class Dump extends ConsoleInputCommand {
     if (speicher.size() == 0) {
       ui.displayNothingFoundTable();
     } else {
-      String abteilungsfilter = ui.textonlyDialogue(input,
-          "den Abteilungsnamen (* für alle)");
+      String abteilungsfilter = ui.textonlyDialogue(input, "den Abteilungsnamen (* für alle)");
       // * Gibt die Mitarbeiter aller Abteilungen ungefiltert zurück.
       if (abteilungsfilter.equals("*")) {
-        new MemberView().dumpSorted(
-            MitarbeiterContainer.getInstance().getCurrentListCopy());
+        new MemberView().dumpSorted(MitarbeiterContainer.getInstance().getCurrentListCopy());
       } else {
-        new MemberView().dumpAbteilung(
-            MitarbeiterContainer.getInstance().getCurrentListCopy(),
-            abteilungsfilter);
+        new MemberView()
+            .dumpAbteilung(
+                MitarbeiterContainer.getInstance().getCurrentListCopy(), abteilungsfilter);
       }
     }
-
   }
-
 }
